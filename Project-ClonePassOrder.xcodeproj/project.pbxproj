@@ -15,6 +15,7 @@
 		FE4BEF002832058800530B08 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BEEFF2832058800530B08 /* LoginController.swift */; };
 		FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */; };
 		FE5840AD2832265C00287753 /* TabBar in Resources */ = {isa = PBXBuildFile; fileRef = FE5840AC2832265C00287753 /* TabBar */; };
+		FE5840B328322EC100287753 /* EmailLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B228322EC100287753 /* EmailLoginController.swift */; };
 		FED158BD282DF86700605A25 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryController.swift */; };
 		FED158C3282DF92100605A25 /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteController.swift */; };
@@ -36,6 +37,7 @@
 		FE4BEEFF2832058800530B08 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndSignUpExtension.swift; sourceTree = "<group>"; };
 		FE5840AC2832265C00287753 /* TabBar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TabBar; sourceTree = "<group>"; };
+		FE5840B228322EC100287753 /* EmailLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginController.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryController.swift; sourceTree = "<group>"; };
 		FED158C2282DF92100605A25 /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				FE4BEEFF2832058800530B08 /* LoginController.swift */,
+				FE5840B228322EC100287753 /* EmailLoginController.swift */,
 			);
 			path = LoginAndSignUp;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				FED158C3282DF92100605A25 /* FavoriteController.swift in Sources */,
 				FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */,
 				FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */,
+				FE5840B328322EC100287753 /* EmailLoginController.swift in Sources */,
 				FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */,
 				FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */,
 				FE4BEF002832058800530B08 /* LoginController.swift in Sources */,
