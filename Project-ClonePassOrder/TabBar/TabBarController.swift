@@ -52,13 +52,11 @@ class TabBarController: UITabBarController {
         )
         viewControllers = [homeNavi,orderHistoryNavi,favoriteNavi,qrCameraNavi,myPasserNavi]
     }
-    
     private func setAttribute() {
         tabBar.tintColor = .black
         tabBar.backgroundColor = .white
         tabBar.addShadow()
     }
-    
     private func templatNavigation(
         title: String,
         image: UIImage,
