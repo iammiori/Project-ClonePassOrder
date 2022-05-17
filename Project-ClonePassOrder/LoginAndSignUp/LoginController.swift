@@ -101,7 +101,7 @@ class LoginController: UIViewController {
         }
     }
     private func setAtrribute() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         emailLoginButton.addTarget(self, action: #selector(emailLoginButtonTapped), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(emailSignupButtonTapped), for: .touchUpInside)
     }

@@ -63,7 +63,7 @@ class EmailLoginController: UIViewController {
         }
     }
     private func setAtrribute() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         emailTextField.delegate = self
         passwordTextField.delegate = self
         emailLoginButton.addTarget(self,

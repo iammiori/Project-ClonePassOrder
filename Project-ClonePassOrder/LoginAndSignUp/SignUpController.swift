@@ -89,7 +89,7 @@ class SignUpController: UIViewController {
         }
     }
     private func setAtrribute() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         textField.delegate = self
         textField.becomeFirstResponder()
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
