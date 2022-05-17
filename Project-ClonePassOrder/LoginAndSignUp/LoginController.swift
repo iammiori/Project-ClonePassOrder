@@ -27,9 +27,6 @@ class LoginController: UIViewController {
         bt.setTitleColor(.black, for: .normal)
         bt.titleLabel?.font = .systemFont(ofSize: 18)
         bt.layer.cornerRadius = 10
-        bt.snp.makeConstraints { make in
-            make.height.equalTo(60)
-        }
         bt.addTarget(self, action: #selector(kakaoTalkLoginButtonTapped), for: .touchUpInside)
         return bt
     }()
@@ -88,6 +85,9 @@ class LoginController: UIViewController {
     
     private func setLayout() {
         view.addSubview(logoImageView)
+        kakaoTalkLoginButton.snp.makeConstraints { make in
+            make.height.equalTo(60)
+        }
         logoImageView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.snp.top)
