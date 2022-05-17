@@ -38,7 +38,7 @@ class EmailLoginController: UIViewController {
         self.welcomViewSetLayout(view: view, welcomeView: welcomeView)
         view.addSubview(emailTextField)
         emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(welcomeView.snp.bottom).offset(40)
+            make.top.equalTo(welcomeView.snp.bottom).offset(100)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         view.addSubview(emailLabel)

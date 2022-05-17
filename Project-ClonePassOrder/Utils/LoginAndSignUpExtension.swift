@@ -30,7 +30,7 @@ extension UIViewController {
         view.addSubview(button)
         button.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom).offset(40)
-            make.trailing.equalTo(topView.snp.trailing)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
         }
     }
 }
@@ -69,18 +69,22 @@ extension UIView {
 }
 
 extension UIButton {
-     func emailLoginButton() -> UIButton {
+    func emailLoginButton(
+        text: String = " 이메일로 로그인",
+        image: UIImage? = UIImage(systemName: "mail.fill")!,
+        height: Int = 60
+    ) -> UIButton {
         let bt = UIButton(type: .system)
         bt.tintColor = .black
-        bt.setImage(UIImage(systemName: "mail.fill"), for: .normal)
-        bt.setTitle(" 이메일로 로그인", for: .normal)
+        bt.setImage(image, for: .normal)
+        bt.setTitle(text, for: .normal)
         bt.setTitleColor(.black, for: .normal)
         bt.titleLabel?.font = .systemFont(ofSize: 18)
         bt.layer.borderWidth = 1
         bt.layer.borderColor = UIColor.black.cgColor
         bt.layer.cornerRadius = 10
         bt.snp.makeConstraints { make in
-            make.height.equalTo(60)
+            make.height.equalTo(height)
         }
         return bt
     }
@@ -90,8 +94,29 @@ extension UIButton {
         bt.setTitleColor(.darkGray, for: .normal)
         bt.tintColor = .darkGray
         bt.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        bt.titleLabel?.font = .systemFont(ofSize: 18)
         bt.semanticContentAttribute = .forceRightToLeft
         return bt
+    }
+    func agreementButton(title: String, color: UIColor = .systemGray4, size: CGFloat = 20) -> UIButton {
+        let bt = UIButton(type: .system)
+        bt.setTitle(title, for: .normal)
+        bt.setTitleColor(color, for: .normal)
+        bt.titleLabel?.font = .systemFont(ofSize: size)
+        bt.contentHorizontalAlignment = .left
+        return bt
+    }
+}
+
+extension UIImageView {
+    func agreementImage(systemName: String = "chevron.down", size: Int = 26) -> UIImageView {
+        let iv = UIImageView()
+        iv.image = UIImage(systemName: systemName)
+        iv.tintColor = .systemGray4
+        iv.snp.makeConstraints { make in
+            make.height.width.equalTo(size)
+        }
+        return iv
     }
 }
 
@@ -139,3 +164,11 @@ extension UILabel {
     }
 }
 
+extension UIStackView {
+    func agreementStackView(view: [UIView]) -> UIStackView {
+        let sv = UIStackView(arrangedSubviews: view)
+        sv.axis = .horizontal
+        sv.spacing = 5
+        return sv
+    }
+}

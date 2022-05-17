@@ -16,12 +16,8 @@
 		FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */; };
 		FE5840AD2832265C00287753 /* TabBar in Resources */ = {isa = PBXBuildFile; fileRef = FE5840AC2832265C00287753 /* TabBar */; };
 		FE5840B328322EC100287753 /* EmailLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B228322EC100287753 /* EmailLoginController.swift */; };
-		FE5840B5283276D700287753 /* SignUpEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B4283276D700287753 /* SignUpEmailController.swift */; };
-		FE5840B728327CBB00287753 /* SignUpPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B628327CBB00287753 /* SignUpPasswordController.swift */; };
-		FE5840B928327D3100287753 /* SignUpPasswordConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B828327D3100287753 /* SignUpPasswordConfirmController.swift */; };
-		FE5840BB28327D5300287753 /* SignUpPhoneNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840BA28327D5300287753 /* SignUpPhoneNumberController.swift */; };
-		FE5840BD28327D9000287753 /* SignUpContractController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840BC28327D9000287753 /* SignUpContractController.swift */; };
-		FE5840BF28329C7200287753 /* cafeDetailExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840BE28329C7200287753 /* cafeDetailExtension.swift */; };
+		FE5840B5283276D700287753 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B4283276D700287753 /* SignUpController.swift */; };
+		FE5840C328334BC300287753 /* AgreementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840C228334BC300287753 /* AgreementController.swift */; };
 		FED158BD282DF86700605A25 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryController.swift */; };
 		FED158C3282DF92100605A25 /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteController.swift */; };
@@ -44,12 +40,8 @@
 		FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndSignUpExtension.swift; sourceTree = "<group>"; };
 		FE5840AC2832265C00287753 /* TabBar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TabBar; sourceTree = "<group>"; };
 		FE5840B228322EC100287753 /* EmailLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginController.swift; sourceTree = "<group>"; };
-		FE5840B4283276D700287753 /* SignUpEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailController.swift; sourceTree = "<group>"; };
-		FE5840B628327CBB00287753 /* SignUpPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordController.swift; sourceTree = "<group>"; };
-		FE5840B828327D3100287753 /* SignUpPasswordConfirmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordConfirmController.swift; sourceTree = "<group>"; };
-		FE5840BA28327D5300287753 /* SignUpPhoneNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPhoneNumberController.swift; sourceTree = "<group>"; };
-		FE5840BC28327D9000287753 /* SignUpContractController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContractController.swift; sourceTree = "<group>"; };
-		FE5840BE28329C7200287753 /* cafeDetailExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cafeDetailExtension.swift; sourceTree = "<group>"; };
+		FE5840B4283276D700287753 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		FE5840C228334BC300287753 /* AgreementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementController.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryController.swift; sourceTree = "<group>"; };
 		FED158C2282DF92100605A25 /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
@@ -130,11 +122,8 @@
 			children = (
 				FE4BEEFF2832058800530B08 /* LoginController.swift */,
 				FE5840B228322EC100287753 /* EmailLoginController.swift */,
-				FE5840B4283276D700287753 /* SignUpEmailController.swift */,
-				FE5840B628327CBB00287753 /* SignUpPasswordController.swift */,
-				FE5840B828327D3100287753 /* SignUpPasswordConfirmController.swift */,
-				FE5840BA28327D5300287753 /* SignUpPhoneNumberController.swift */,
-				FE5840BC28327D9000287753 /* SignUpContractController.swift */,
+				FE5840B4283276D700287753 /* SignUpController.swift */,
+				FE5840C228334BC300287753 /* AgreementController.swift */,
 			);
 			path = LoginAndSignUp;
 			sourceTree = "<group>";
@@ -183,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				FED158CC282DFB2900605A25 /* Extenstion.swift */,
-				FE5840BE28329C7200287753 /* cafeDetailExtension.swift */,
 				FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */,
 			);
 			path = Utils;
@@ -304,21 +292,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE5840BB28327D5300287753 /* SignUpPhoneNumberController.swift in Sources */,
-				FE5840BD28327D9000287753 /* SignUpContractController.swift in Sources */,
-				FE5840B5283276D700287753 /* SignUpEmailController.swift in Sources */,
-				FE5840BF28329C7200287753 /* cafeDetailExtension.swift in Sources */,
+				FE5840B5283276D700287753 /* SignUpController.swift in Sources */,
 				FED158C0282DF8FC00605A25 /* OrderHistoryController.swift in Sources */,
 				FED158BD282DF86700605A25 /* HomeController.swift in Sources */,
-				FE5840B728327CBB00287753 /* SignUpPasswordController.swift in Sources */,
 				FED158C7282DF95F00605A25 /* qrCameraController.swift in Sources */,
+				FE5840C328334BC300287753 /* AgreementController.swift in Sources */,
 				FED158CA282DF97400605A25 /* MyPasserController.swift in Sources */,
 				FED158C3282DF92100605A25 /* FavoriteController.swift in Sources */,
 				FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */,
 				FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */,
 				FE5840B328322EC100287753 /* EmailLoginController.swift in Sources */,
 				FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */,
-				FE5840B928327D3100287753 /* SignUpPasswordConfirmController.swift in Sources */,
 				FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */,
 				FE4BEF002832058800530B08 /* LoginController.swift in Sources */,
 			);
