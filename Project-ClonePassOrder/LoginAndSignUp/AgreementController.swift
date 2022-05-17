@@ -292,6 +292,11 @@ class AgreementController: UIViewController {
     }
     private func confirmDone() {
         if ageBool, serviceBool, locationBool, privacyBool, privacyProvideBool {
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            guard let delegate = sceneDelegate else {
+                return
+            }
+            delegate.window?.rootViewController = TabBarController()
             print("로그인 성공")
         } else {
             print("동의 아직 안함")
