@@ -1,5 +1,5 @@
 //
-//  qrCameraViewController.swift
+//  HomeViewController.swift
 //  Project-ClonePassOrder
 //
 //  Created by 정덕호 on 2022/05/13.
@@ -7,12 +7,11 @@
 
 import UIKit
 
-class qrCameraController: UIViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-
+        view.backgroundColor = .systemPink
         // Do any additional setup after loading the view.
     }
     
