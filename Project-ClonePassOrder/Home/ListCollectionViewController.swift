@@ -163,7 +163,7 @@ class ListCollectionViewController: UICollectionViewController {
     //MARK: - 메서드
     
     private func setAtrribute() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(FirstADCell.self, forCellWithReuseIdentifier: FirstADCell.identifier)
     }
     
 
@@ -180,8 +180,7 @@ class ListCollectionViewController: UICollectionViewController {
         }
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FirstADCell.identifier, for: indexPath)
         return cell
     }
 }
