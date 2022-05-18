@@ -44,7 +44,14 @@ class StoreDetailStoryView: UIView {
     // MARK: - setLayout
     
     private func setLayout() {
-        self.backgroundColor = .systemGroupedBackground
+        self.backgroundColor = .yellow
+        self.addSubview(storyCollectionView)
+        storyCollectionView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(1200)
+            make.bottom.equalToSuperview().offset(100)
+        }
+    }
     func setDelegate() {
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
