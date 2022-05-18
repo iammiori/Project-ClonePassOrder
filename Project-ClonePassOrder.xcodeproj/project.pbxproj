@@ -13,6 +13,7 @@
 		891C2B362834E88800972E25 /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B322834E88800972E25 /* StoryCollectionViewCell.swift */; };
 		891C2B372834E88800972E25 /* StoreDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B332834E88800972E25 /* StoreDetailInfoView.swift */; };
 		FE0F5AC72834EB570008017C /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */; };
+		FE0F5ACD283524D70008017C /* FistADCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5ACC283524D70008017C /* FistADCell.swift */; };
 		FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */; };
 		FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */; };
 		FE210D5D282BC2CD009A4EB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE210D5C282BC2CD009A4EB8 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		891C2B322834E88800972E25 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		891C2B332834E88800972E25 /* StoreDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailInfoView.swift; sourceTree = "<group>"; };
 		FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
+		FE0F5ACC283524D70008017C /* FistADCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FistADCell.swift; sourceTree = "<group>"; };
 		FE210D50282BC2CC009A4EB8 /* Project-ClonePassOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-ClonePassOrder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		FE0F5AC928350F270008017C /* ListViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				FE0F5ACC283524D70008017C /* FistADCell.swift */,
 			);
 			path = ListViewCell;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			files = (
 				FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */,
 				891C2B342834E88800972E25 /* StoreDetailStoryView.swift in Sources */,
+				FE0F5ACD283524D70008017C /* FistADCell.swift in Sources */,
 				FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */,
 				FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */,
 				FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */,
