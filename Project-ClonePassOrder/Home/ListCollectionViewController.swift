@@ -15,6 +15,7 @@ class ListCollectionViewController: UICollectionViewController {
     //MARK: - 라이프사이클
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.backgroundColor = .red
     }
     
      init() {

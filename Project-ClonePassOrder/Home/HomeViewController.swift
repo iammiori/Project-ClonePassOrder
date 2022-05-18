@@ -87,17 +87,17 @@ class HomeViewController: UIViewController {
     
     //MARK: - 메서드
     private func setLayout() {
-        view.addSubview(searchButton)
+        [searchButton,buttonStack,stateButtonSeparateView].forEach {
+            view.addSubview($0)
+        }
         searchButton.snp.makeConstraints { make in
             make.top.equalTo(view.snp.topMargin).offset(10)
             make.leading.equalToSuperview().offset(20)
         }
-        view.addSubview(buttonStack)
         buttonStack.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(searchButton.snp.bottom).offset(20)
         }
-        view.addSubview(stateButtonSeparateView)
         stateButtonSeparateView.snp.makeConstraints { make in
             make.height.equalTo(3)
             make.top.equalTo(listButton.snp.bottom)
