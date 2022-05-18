@@ -106,6 +106,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .systemPink
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
