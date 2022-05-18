@@ -65,4 +65,16 @@ extension StoreDetailStoryView:
         collectionView.reloadData()
         return 4
     }
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let dequeueReusableCell = storyCollectionView.dequeueReusableCell(
+            withReuseIdentifier: "cellID",
+            for: indexPath
+        )
+        guard let cell =  dequeueReusableCell as? StoryCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        return cell
+    }
 }
