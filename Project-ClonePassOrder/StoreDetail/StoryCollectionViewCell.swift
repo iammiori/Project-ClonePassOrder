@@ -102,7 +102,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
         return view
     }()
 
-    
     // MARK: - Initializer
     
     override init(frame: CGRect) {
@@ -135,7 +134,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(storyImageView)
         contentView.addSubview(buttonStackView)
         contentView.addSubview(seperator)
-        
         
         userStackView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(10)
