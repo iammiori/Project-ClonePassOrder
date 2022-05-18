@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class EmailLoginController: UIViewController {
+class EmailLoginViewController: UIViewController {
     
     //MARK: - 프로퍼티
     

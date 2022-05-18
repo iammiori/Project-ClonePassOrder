@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class LoginController: UIViewController {
+class LoginViewController: UIViewController {
     
     //MARK: - 프로퍼티
     

@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class AgreementController: UIViewController {
+class AgreementViewController: UIViewController {
     
     //MARK: - 프로퍼티
     

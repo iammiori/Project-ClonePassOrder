@@ -14,7 +14,7 @@ enum SignUpState {
     case phoneNumber
 }
 
-class SignUpController: UIViewController {
+class SignUpViewController: UIViewController {
     
     //MARK: - 프로퍼티
     
