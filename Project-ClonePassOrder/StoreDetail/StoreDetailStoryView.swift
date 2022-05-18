@@ -8,10 +8,18 @@
 import UIKit
 
 class StoreDetailStoryView: UIView {
-    
-    let storyView: UICollectionView = {
-        let collectionView = UICollectionView()
-        
+    let storyCollectionView: UICollectionView = {
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(
+            frame: CGRect.zero,
+            collectionViewLayout: collectionViewFlowLayout
+        )
+        collectionView.backgroundColor = .red
+        collectionView.isScrollEnabled = false
+        collectionView.register(
+            StoryCollectionViewCell.classForCoder(),
+            forCellWithReuseIdentifier: "cellID"
+        )
         return collectionView
     }()
     
