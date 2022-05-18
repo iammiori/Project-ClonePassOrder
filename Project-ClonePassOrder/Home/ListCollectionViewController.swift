@@ -26,7 +26,7 @@ class ListCollectionViewController: UICollectionViewController {
                  )
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                      heightDimension: .absolute(120)),
+                                      heightDimension: .absolute(110)),
                     subitems: [item])
                  let section = NSCollectionLayoutSection(group: group)
                  section.boundarySupplementaryItems = [
@@ -48,7 +48,7 @@ class ListCollectionViewController: UICollectionViewController {
                  )
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                      heightDimension: .absolute(100)),
+                                      heightDimension: .absolute(90)),
                     subitems: [item])
                  let section = NSCollectionLayoutSection(group: group)
                  section.boundarySupplementaryItems = [

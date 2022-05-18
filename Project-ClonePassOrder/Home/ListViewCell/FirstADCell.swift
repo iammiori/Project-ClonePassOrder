@@ -17,8 +17,16 @@ class FirstADCell: UICollectionViewCell {
     //MARK: - 프로퍼티
     
     private var currentPage: CGFloat = 0
-    private let scrollView: UIScrollView = UIScrollView()
     private var image = [UIImage(systemName: "heart")!,UIImage(systemName: "star.fill")!,UIImage(named: "패스오더로그인이미지")!,UIImage(systemName: "star.fill")!,UIImage(named: "패스오더로그인이미지")!]
+    private var ADUrl = ["첫번째 링크","두번째링크","세번째링크","네번째링크","다섯번째링크"]
+    private lazy var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.isPagingEnabled = true
+        sv.isScrollEnabled = false
+        let gesutre = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        sv.addGestureRecognizer(gesutre)
+        return sv
+    }()
     
     //MARK: - 라이프사이클
     
@@ -33,6 +41,13 @@ class FirstADCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - 셀렉터 메서드
+    
+    @objc func scrollViewTapped() {
+        let currentImageCount = Int(currentPage / self.bounds.width)
+        print(ADUrl[currentImageCount])
+    }
+    
     //MARK: - 메서드
     
     private func setLayout() {
@@ -42,8 +57,6 @@ class FirstADCell: UICollectionViewCell {
         }
     }
     private func setAtrribute() {
-        scrollView.isPagingEnabled = true
-        scrollView.isScrollEnabled = false
     }
     private func addContentScrollView() {
         for i in 0..<image.count {
