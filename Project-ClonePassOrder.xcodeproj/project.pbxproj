@@ -100,6 +100,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FE0F5AC928350F270008017C /* ListViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ListViewCell;
+			sourceTree = "<group>";
+		};
 		FE210D47282BC2CC009A4EB8 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +160,7 @@
 		FED158BB282DF84900605A25 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				FE0F5AC928350F270008017C /* ListViewCell */,
 				FED158BC282DF86700605A25 /* HomeViewController.swift */,
 				FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */,
 			);

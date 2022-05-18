@@ -84,6 +84,8 @@ class HomeViewController: UIViewController {
         homeState = .mapView
         stateButtonTapped()
     }
+    @objc private func searchButtonTapped() {
+    }
     
     //MARK: - 메서드
     private func setLayout() {
@@ -107,6 +109,7 @@ class HomeViewController: UIViewController {
     }
     private func setAtrribute() {
         view.backgroundColor = .systemBackground
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
     private func naviSetAttribute() {
         navigationController?.navigationBar.isHidden = true
