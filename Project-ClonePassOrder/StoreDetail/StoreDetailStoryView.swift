@@ -35,7 +35,6 @@ class StoreDetailStoryView: UIView {
         super.init(coder: coder)
     }
     
-    
     // MARK: - setAtrribute
     
     private func setAtrribute() {
@@ -52,6 +51,9 @@ class StoreDetailStoryView: UIView {
             make.bottom.equalToSuperview().offset(100)
         }
     }
+    
+    // MARK: - setDelegate
+    
     func setDelegate() {
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
