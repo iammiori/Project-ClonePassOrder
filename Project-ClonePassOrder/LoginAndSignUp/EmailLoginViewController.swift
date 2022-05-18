@@ -79,7 +79,7 @@ class EmailLoginViewController: UIViewController {
 }
 
 //MARK: - 텍스트필드 델리게이트
-extension EmailLoginController: UITextFieldDelegate {
+extension EmailLoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()

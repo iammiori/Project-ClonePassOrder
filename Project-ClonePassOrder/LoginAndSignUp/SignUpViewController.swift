@@ -119,7 +119,7 @@ class SignUpViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
     private func pushNextView() {
-        let vc = SignUpController()
+        let vc = SignUpViewController()
         switch signUpState {
         case .email:
             vc.signUpState = .password
@@ -137,7 +137,7 @@ class SignUpViewController: UIViewController {
             vc.textFieldPlaceHolder = "- 없이번호만입력"
             navigationController?.pushViewController(vc, animated: true)
         case .phoneNumber:
-            let vc = AgreementController()
+            let vc = AgreementViewController()
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -145,7 +145,7 @@ class SignUpViewController: UIViewController {
 
 //MARK: - 텍스트필드 델리게이트
 
-extension SignUpController: UITextFieldDelegate {
+extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushNextView()
         return true
