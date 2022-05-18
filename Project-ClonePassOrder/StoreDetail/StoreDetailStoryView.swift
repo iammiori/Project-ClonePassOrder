@@ -51,6 +51,11 @@ class StoreDetailStoryView: UIView {
     }
 }
 
-extension StoreDetailStoryView: UICollectionViewDelegate {
-    
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+
+extension StoreDetailStoryView:
+    UICollectionViewDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout
+{
 }
