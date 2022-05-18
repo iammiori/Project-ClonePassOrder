@@ -88,17 +88,16 @@ class AgreementViewController: UIViewController {
         }
     }
     private let welcomeView: UIView = UIView().welcomeView()
-    private let nextButton: UIButton = UIButton().nextButton(title: "완료")
-    private let separateView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray4
-        return view
-    }()
     private let allAgreementButton: UIButton = UIButton().agreementButton(
         title: "  모든 약관에 동의합니다.",
         color: .black,
         size: 22
     )
+    private let separateView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray4
+        return view
+    }()
     private let ageAgreementButton: UIButton = UIButton().agreementButton(
         title: "  만 14세 이상여부 (필수)"
     )
@@ -121,6 +120,7 @@ class AgreementViewController: UIViewController {
         systemName: "checkmark.circle.fill",
         size: 40
     )
+    private let nextButton: UIButton = UIButton().nextButton(title: "완료")
     private let ageAgreementImage: UIImageView = UIImageView().agreementImage()
     private let serviceAgreementImage: UIImageView = UIImageView().agreementImage()
     private let locationAgreementImage: UIImageView = UIImageView().agreementImage()

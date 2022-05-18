@@ -20,11 +20,11 @@ class TabBarController: UITabBarController {
     //MARK: - HelperFunction
     
     private func setNavigation() {
-        let homeCV = HomeController()
-        let orderHistoryCV = OrderHistoryController()
-        let favoriteCV = FavoriteController()
-        let qrCameraCV = qrCameraController()
-        let myPasserCV = MyPasserController()
+        let homeCV = HomeViewController()
+        let orderHistoryCV = OrderHistoryViewController()
+        let favoriteCV = FavoriteViewController()
+        let qrCameraCV = qrCameraViewController()
+        let myPasserCV = MyPasserViewController()
         let homeNavi = templatNavigation(
             title: "홈",
             image: UIImage(systemName: "cup.and.saucer.fill")!,
