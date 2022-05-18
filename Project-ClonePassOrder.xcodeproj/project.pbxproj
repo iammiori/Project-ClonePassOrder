@@ -75,10 +75,10 @@
 		891C2B2F2834E88800972E25 /* StoreDetail */ = {
 			isa = PBXGroup;
 			children = (
-				891C2B302834E88800972E25 /* StoreDetailStoryView.swift */,
 				891C2B312834E88800972E25 /* StoreDetailViewController.swift */,
-				891C2B322834E88800972E25 /* StoryCollectionViewCell.swift */,
 				891C2B332834E88800972E25 /* StoreDetailInfoView.swift */,
+				891C2B302834E88800972E25 /* StoreDetailStoryView.swift */,
+				891C2B322834E88800972E25 /* StoryCollectionViewCell.swift */,
 			);
 			path = StoreDetail;
 			sourceTree = "<group>";
