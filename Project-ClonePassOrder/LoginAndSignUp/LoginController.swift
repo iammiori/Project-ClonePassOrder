@@ -27,7 +27,6 @@ class LoginController: UIViewController {
         bt.setTitleColor(.black, for: .normal)
         bt.titleLabel?.font = .systemFont(ofSize: 18)
         bt.layer.cornerRadius = 10
-        bt.addTarget(self, action: #selector(kakaoTalkLoginButtonTapped), for: .touchUpInside)
         return bt
     }()
     private let orLabel: UILabel = {
@@ -104,6 +103,7 @@ class LoginController: UIViewController {
         view.backgroundColor = .systemBackground
         emailLoginButton.addTarget(self, action: #selector(emailLoginButtonTapped), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(emailSignupButtonTapped), for: .touchUpInside)
+        kakaoTalkLoginButton.addTarget(self, action: #selector(kakaoTalkLoginButtonTapped), for: .touchUpInside)
     }
     private func setNavigationAttribute() {
         navigationController?.navigationBar.isHidden = true
