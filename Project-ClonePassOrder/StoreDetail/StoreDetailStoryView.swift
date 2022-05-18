@@ -58,4 +58,11 @@ extension StoreDetailStoryView:
     UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout
 {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        collectionView.reloadData()
+        return 4
+    }
 }
