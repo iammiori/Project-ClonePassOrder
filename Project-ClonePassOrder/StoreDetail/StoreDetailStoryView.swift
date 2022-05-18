@@ -45,6 +45,9 @@ class StoreDetailStoryView: UIView {
     
     private func setLayout() {
         self.backgroundColor = .systemGroupedBackground
+    func setDelegate() {
+        storyCollectionView.delegate = self
+        storyCollectionView.dataSource = self
     }
 }
 
