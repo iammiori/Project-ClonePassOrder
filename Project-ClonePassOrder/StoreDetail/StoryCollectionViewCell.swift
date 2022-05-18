@@ -158,11 +158,4 @@ class StoryCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(1)
         }
     }
-    
-    @objc func moreButtonTapped() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "신고", style: .default))
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-        
-    }
 }
