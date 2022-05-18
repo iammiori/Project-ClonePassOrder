@@ -77,4 +77,12 @@ extension StoreDetailStoryView:
         }
         return cell
     }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let w = self.frame.width
+        return CGSize(width: w, height: 300)
+    }
 }
