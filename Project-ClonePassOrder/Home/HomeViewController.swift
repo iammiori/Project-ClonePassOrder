@@ -110,6 +110,7 @@ class HomeViewController: UIViewController {
     private func setAtrribute() {
         view.backgroundColor = .systemBackground
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        listView.delegate = self
     }
     private func naviSetAttribute() {
         navigationController?.navigationBar.isHidden = true
@@ -151,5 +152,13 @@ class HomeViewController: UIViewController {
                 make.bottom.equalTo(view.snp.bottomMargin)
             }
         }
+    }
+}
+
+//MARK: - 리스트컬렉션뷰 델리게이트
+extension HomeViewController: ListCollectionViewDelegate {
+    func footerTapped(title: String) {
+        let vc = MoreCollectionViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

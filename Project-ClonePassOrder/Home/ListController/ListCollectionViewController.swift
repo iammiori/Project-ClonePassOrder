@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol ListCollectionViewDelegate: AnyObject {
+    func footerTapped(title: String)
+}
+
 class ListCollectionViewController: UICollectionViewController {
+    
+    //MARK: - 프로퍼티
+    
+    weak var delegate: ListCollectionViewDelegate?
     
     //MARK: - 라이프사이클
     
@@ -324,7 +332,6 @@ class ListCollectionViewController: UICollectionViewController {
 
 extension ListCollectionViewController: ListCellDelegate {
     func footerTapped(title: String) {
-        print("타이틀")
+        delegate?.footerTapped(title: title)
     }
-    
 }

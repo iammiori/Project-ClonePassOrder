@@ -25,8 +25,8 @@ class ListCellFooter: UICollectionReusableView {
     
     //MARK: - 프로퍼티
     
-    var delegate: ListCellDelegate?
-     var currentSection: FooterSection = .FirstCell
+    weak var delegate: ListCellDelegate?
+    var currentSection: FooterSection = .FirstCell
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "arrow.right")
