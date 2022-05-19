@@ -130,4 +130,10 @@ class qrCameraViewController: UIViewController {
         
         cameraView.layer.addSublayer(videoPreviewLayer)
     }
+    func stopScan() {
+        captureSession.stopRunning()
+        captureSession = nil
+        stillImageOutput = nil
+        videoPreviewLayer = nil
+    }
 }
