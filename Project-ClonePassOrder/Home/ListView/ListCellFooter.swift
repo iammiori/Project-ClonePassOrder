@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum FooterSection {
+    case FirstCell
+    case SecondCell
+    case ThirdCell
+}
+
 class ListCellFooter: UICollectionReusableView {
     
     //MARK: - 식별자
@@ -15,6 +21,7 @@ class ListCellFooter: UICollectionReusableView {
     
     //MARK: - 프로퍼티
     
+     var currentSection: FooterSection = .FirstCell
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "arrow.right")
@@ -35,9 +42,23 @@ class ListCellFooter: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
+        setAtrribute()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - 셀렉터메서드
+    
+    @objc private func moreButtonTapped() {
+        switch currentSection {
+        case .FirstCell:
+            print("첫번째셀")
+        case .SecondCell:
+            print("두번째셀")
+        case .ThirdCell:
+            print("세번째셀")
+        }
     }
     
     //MARK: - 메서드
@@ -53,6 +74,11 @@ class ListCellFooter: UICollectionReusableView {
         }
         moreButton.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(imageView)
+            make.width.equalTo(60)
+            make.height.equalTo(40)
         }
+    }
+    private func setAtrribute() {
+        moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
     }
 }

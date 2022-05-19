@@ -67,13 +67,13 @@ class ListCollectionViewController: UICollectionViewController {
                                             heightDimension: .absolute(80)),
                           elementKind: UICollectionView.elementKindSectionHeader,
                           alignment: .topLeading),
-//                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-//                                            heightDimension: .absolute(60)),
-//                          elementKind: UICollectionView.elementKindSectionFooter,
-//                          alignment: .bottomTrailing)
+                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                            heightDimension: .absolute(60)),
+                          elementKind: UICollectionView.elementKindSectionFooter,
+                          alignment: .bottomTrailing)
                  ]
                  section.contentInsets.top = 20
-                 section.contentInsets.bottom = 100
+                 section.contentInsets.bottom = 50
                  section.contentInsets.leading = 50
                  return section
                  
@@ -94,14 +94,14 @@ class ListCollectionViewController: UICollectionViewController {
                                             heightDimension: .absolute(80)),
                           elementKind: UICollectionView.elementKindSectionHeader,
                           alignment: .topLeading),
-//                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-//                                            heightDimension: .absolute(60)),
-//                          elementKind: UICollectionView.elementKindSectionFooter,
-//                          alignment: .bottomTrailing)
+                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                            heightDimension: .absolute(60)),
+                          elementKind: UICollectionView.elementKindSectionFooter,
+                          alignment: .bottomTrailing)
                  ]
                  section.contentInsets.leading = 50
                  section.contentInsets.top = 20
-                 section.contentInsets.bottom = 80
+                 section.contentInsets.bottom = 50
                  return section
              case 4:
                  let item = NSCollectionLayoutItem(
@@ -120,15 +120,15 @@ class ListCollectionViewController: UICollectionViewController {
                                             heightDimension: .absolute(80)),
                           elementKind: UICollectionView.elementKindSectionHeader,
                           alignment: .topLeading),
-//                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-//                                            heightDimension: .absolute(60)),
-//                          elementKind: UICollectionView.elementKindSectionFooter,
-//                          alignment: .bottomTrailing)
+                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                            heightDimension: .absolute(60)),
+                          elementKind: UICollectionView.elementKindSectionFooter,
+                          alignment: .bottomTrailing)
                  ]
                  section.orthogonalScrollingBehavior = .continuous
                  section.contentInsets.leading = 50
                  section.contentInsets.top = 20
-                 section.contentInsets.bottom = 100
+                 section.contentInsets.bottom = 50
                  return section
              default:
                  return NSCollectionLayoutSection(
@@ -174,9 +174,13 @@ class ListCollectionViewController: UICollectionViewController {
             ListCellHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: ListCellHeader.identifier)
+        
+        collectionView.register(
+            ListCellFooter.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: ListCellFooter.identifier)
     }
     
-
     //MARK: - 컬렉션뷰 데이터소스
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -288,7 +292,24 @@ class ListCollectionViewController: UICollectionViewController {
                 return header
             }
         case UICollectionView.elementKindSectionFooter:
-            return UICollectionReusableView()
+            let footer = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: ListCellFooter.identifier,
+                for: indexPath
+            ) as! ListCellFooter
+            switch indexPath.section {
+            case 2:
+                footer.currentSection = .FirstCell
+                return footer
+            case 3:
+                footer.currentSection = .SecondCell
+                return footer
+            case 4:
+                footer.currentSection = .ThirdCell
+                return footer
+            default:
+                return UICollectionReusableView()
+            }
         default:
             return UICollectionReusableView()
         }
