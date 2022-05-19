@@ -112,14 +112,14 @@ class FirstListCell: UICollectionViewCell {
         }
         timeStackView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().offset(3)
+            make.leading.trailing.equalToSuperview().offset(5)
         }
         distanceImage.snp.makeConstraints { make in
             make.width.height.equalTo(16)
         }
         distanceStackView.snp.makeConstraints { make in
             make.top.equalTo(timeStackView.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().offset(3)
+            make.leading.trailing.equalToSuperview().offset(5)
         }
         likeImage.snp.makeConstraints { make in
             make.width.height.equalTo(20)
