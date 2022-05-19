@@ -68,10 +68,12 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        naviSetAttribute()
         setAtrribute()
         setLayout()
         stateButtonTapped()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        naviSetAttribute()
     }
     
     //MARK: - 셀렉터메서드
@@ -114,6 +116,7 @@ class HomeViewController: UIViewController {
     }
     private func naviSetAttribute() {
         navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     private func stateButtonTapped() {
         switch homeState {
@@ -159,6 +162,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: ListCollectionViewDelegate {
     func footerTapped(title: String) {
         let vc = MoreCollectionViewController()
+        vc.naviTitle = title
         navigationController?.pushViewController(vc, animated: true)
     }
 }

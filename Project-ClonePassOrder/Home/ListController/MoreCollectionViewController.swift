@@ -8,11 +8,16 @@
 import UIKit
 
 class MoreCollectionViewController: UICollectionViewController {
+    
+    //MARK: - 프로퍼티
+    
+    var naviTitle: String?
 
     //MARK: - 라이프사이클
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        naviSetAttribute()
         setAtrribute()
     }
     init() {
@@ -44,13 +49,19 @@ class MoreCollectionViewController: UICollectionViewController {
     private func setAtrribute() {
         self.collectionView!.register(SortCell.self, forCellWithReuseIdentifier: SortCell.identifier)
     }
+    private func naviSetAttribute() {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationItem.title = naviTitle
+        navigationController?.navigationBar.tintColor = .black
+        tabBarController?.tabBar.isHidden = true
+    }
 
     //MARK: - 컬렉션뷰 데이터소스
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
-
     override func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
