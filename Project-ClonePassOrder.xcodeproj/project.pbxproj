@@ -19,6 +19,7 @@
 		FE1287E42835F6DD00B7CDC4 /* ListExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */; };
 		FE1287E62835FFD600B7CDC4 /* SecondListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */; };
 		FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E72836002600B7CDC4 /* ThirdListCell.swift */; };
+		FE1287EB283614B300B7CDC4 /* ListCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */; };
 		FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */; };
 		FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */; };
 		FE210D5D282BC2CD009A4EB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE210D5C282BC2CD009A4EB8 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExtenstion.swift; sourceTree = "<group>"; };
 		FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondListCell.swift; sourceTree = "<group>"; };
 		FE1287E72836002600B7CDC4 /* ThirdListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdListCell.swift; sourceTree = "<group>"; };
+		FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellHeader.swift; sourceTree = "<group>"; };
 		FE210D50282BC2CC009A4EB8 /* Project-ClonePassOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-ClonePassOrder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +114,7 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FE0F5AC928350F270008017C /* ListViewCell */ = {
+		FE0F5AC928350F270008017C /* ListView */ = {
 			isa = PBXGroup;
 			children = (
 				FE0F5ACC283524D70008017C /* FirstADCell.swift */,
@@ -120,8 +122,9 @@
 				FE1287E12835F5AD00B7CDC4 /* FirstListCell.swift */,
 				FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */,
 				FE1287E72836002600B7CDC4 /* ThirdListCell.swift */,
+				FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */,
 			);
-			path = ListViewCell;
+			path = ListView;
 			sourceTree = "<group>";
 		};
 		FE1287E92836004700B7CDC4 /* ListController */ = {
@@ -187,7 +190,7 @@
 			children = (
 				FED158BC282DF86700605A25 /* HomeViewController.swift */,
 				FE1287E92836004700B7CDC4 /* ListController */,
-				FE0F5AC928350F270008017C /* ListViewCell */,
+				FE0F5AC928350F270008017C /* ListView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */,
 				FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */,
 				FE1287E42835F6DD00B7CDC4 /* ListExtenstion.swift in Sources */,
+				FE1287EB283614B300B7CDC4 /* ListCellHeader.swift in Sources */,
 				FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */,
 				FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */,
 				FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */,
