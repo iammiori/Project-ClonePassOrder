@@ -127,7 +127,6 @@ class HomeViewController: UIViewController {
                 make.trailing.equalTo(listButton.snp.trailing)
             }
             mapView.removeFromSuperview()
-            addChild(listView)
             view.addSubview(listView.view)
             listView.view.snp.makeConstraints { make in
                 make.trailing.leading.equalToSuperview()
@@ -144,7 +143,6 @@ class HomeViewController: UIViewController {
                 make.leading.equalTo(mapButton.snp.leading)
                 make.trailing.equalTo(mapButton.snp.trailing)
             }
-            willMove(toParent: listView)
             listView.view.removeFromSuperview()
             view.addSubview(mapView)
             mapView.snp.makeConstraints { make in

@@ -29,13 +29,6 @@ class ListCollectionViewController: UICollectionViewController {
                                       heightDimension: .absolute(110)),
                     subitems: [item])
                  let section = NSCollectionLayoutSection(group: group)
-                 section.boundarySupplementaryItems = [
-                    .init(layoutSize: .init(widthDimension: .absolute(32),
-                                      heightDimension: .absolute(22)),
-                    elementKind: UICollectionView.elementKindSectionFooter,
-                    containerAnchor: .init(edges: [.bottom,.trailing],
-                                           fractionalOffset: .init(x: -0.5, y: -2.5)))
-                 ]
                  section.orthogonalScrollingBehavior = .none
                  section.contentInsets.top = 20
                  section.contentInsets.bottom = 80
@@ -51,13 +44,6 @@ class ListCollectionViewController: UICollectionViewController {
                                       heightDimension: .absolute(90)),
                     subitems: [item])
                  let section = NSCollectionLayoutSection(group: group)
-                 section.boundarySupplementaryItems = [
-                    .init(layoutSize: .init(widthDimension: .absolute(32),
-                                      heightDimension: .absolute(22)),
-                    elementKind: UICollectionView.elementKindSectionFooter,
-                    containerAnchor: .init(edges: [.bottom,.trailing],
-                                           fractionalOffset: .init(x: -0.5, y: -2.5)))
-                 ]
                  section.orthogonalScrollingBehavior = .none
                  section.contentInsets.top = 20
                  section.contentInsets.bottom = 40
@@ -116,7 +102,6 @@ class ListCollectionViewController: UICollectionViewController {
                  section.contentInsets.top = 20
                  section.contentInsets.bottom = 80
                  return section
-                 
              case 4:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(
@@ -164,7 +149,14 @@ class ListCollectionViewController: UICollectionViewController {
     
     private func setAtrribute() {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.register(FirstADCell.self, forCellWithReuseIdentifier: FirstADCell.identifier)
+        collectionView.register(
+            FirstADCell.self,
+            forCellWithReuseIdentifier: FirstADCell.identifier
+        )
+        collectionView.register(
+            SecondADCell.self,
+            forCellWithReuseIdentifier: SecondADCell.identifier
+        )
     }
     
 
@@ -183,10 +175,22 @@ class ListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FirstADCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: FirstADCell.identifier,
+                for: indexPath
+            ) as! FirstADCell
+            return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SecondADCell.identifier,
+                for: indexPath
+            ) as! SecondADCell
             return cell
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "cell",
+                for: indexPath
+            )
             cell.backgroundColor = .red
             return cell
         }
