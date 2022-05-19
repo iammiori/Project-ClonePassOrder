@@ -38,11 +38,12 @@ extension UICollectionViewCell {
         likeImage: UIView,
         likeStackView: UIView,
         storyImage: UIView,
-        storyStackView: UIView
+        storyStackView: UIView,
+        imageViewHeight: CGFloat
     ) {
         imageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(150)
+            make.height.equalTo(imageViewHeight)
         }
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(7)

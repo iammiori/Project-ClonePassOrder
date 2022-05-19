@@ -99,40 +99,18 @@ class FirstListCell: UICollectionViewCell {
          storyStackView].forEach {
             self.addSubview($0)
         }
-        imageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(300)
-        }
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
-        }
-        timeImage.snp.makeConstraints { make in
-            make.width.height.equalTo(16)
-        }
-        timeStackView.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview()
-        }
-        distanceImage.snp.makeConstraints { make in
-            make.width.height.equalTo(16)
-        }
-        distanceStackView.snp.makeConstraints { make in
-            make.top.equalTo(timeStackView.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview()
-        }
-        likeImage.snp.makeConstraints { make in
-            make.width.height.equalTo(20)
-        }
-        likeStackView.snp.makeConstraints { make in
-            make.leading.bottom.equalTo(imageView).inset(10)
-        }
-        storyImage.snp.makeConstraints { make in
-            make.width.height.equalTo(20)
-        }
-        storyStackView.snp.makeConstraints { make in
-            make.leading.equalTo(likeStackView.snp.trailing).offset(3)
-            make.centerY.equalTo(likeStackView)
-        }
+        self.listCellSetLayout(
+            imageView: imageView,
+            nameLabel: nameLabel,
+            timeImage: timeImage,
+            timeStackView: timeStackView,
+            distanceImage: distanceImage,
+            distanceStackView: distanceStackView,
+            likeImage: likeImage,
+            likeStackView: likeStackView,
+            storyImage: storyImage,
+            storyStackView: storyStackView,
+            imageViewHeight: 300
+        )
     }
 }
