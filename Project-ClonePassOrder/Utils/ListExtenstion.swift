@@ -10,7 +10,7 @@ import UIKit
 extension UILabel {
     func listLabel(text: String, color: UIColor, font: UIFont) -> UILabel {
         let lb = UILabel()
-        lb.text = text
+        lb.text = " \(text)"
         lb.font = font
         lb.textColor = color
         return lb
