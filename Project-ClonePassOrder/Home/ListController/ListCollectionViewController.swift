@@ -317,40 +317,5 @@ class ListCollectionViewController: UICollectionViewController {
 
 //MARK: - 컬렉션뷰 델리게이트
 
-    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 2:
-            let cell = collectionView.cellForItem(at: indexPath)
-            cell?.backgroundColor = .systemGray4
-            return
-        case 3:
-            let cell = collectionView.cellForItem(at: indexPath)
-            cell?.backgroundColor = .systemGray4
-            return
-        case 4:
-            let cell = collectionView.cellForItem(at: indexPath)
-            cell?.backgroundColor = .systemGray4
-            return
-        default:
-            return
-        }
-    }
-    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 2:
-            let cell = collectionView.cellForItem(at: indexPath)
-            cell?.backgroundColor = .white
-            return
-        case 3:
-            let cell = collectionView.cellForItem(at: indexPath)
-            cell?.backgroundColor = .white
-            return
-        case 4:
-            let cell = collectionView.cellForItem(at: indexPath)
-            cell?.backgroundColor = .white
-            return
-        default:
-            return
-        }
-    }
+    
 }
