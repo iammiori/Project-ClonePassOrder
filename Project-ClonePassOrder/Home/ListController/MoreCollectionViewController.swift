@@ -59,7 +59,6 @@ class MoreCollectionViewController: UICollectionViewController {
             withReuseIdentifier: SortCell.identifier,
             for: indexPath
         ) as! SortCell
-        cell.backgroundColor = .blue
         return cell
     }
 }
