@@ -1,18 +1,17 @@
 //
-//  FirstListCell.swift
+//  SecondListCell.swift
 //  Project-ClonePassOrder
 //
 //  Created by 정덕호 on 2022/05/19.
 //
 
-import SnapKit
 import UIKit
 
-class FirstListCell: UICollectionViewCell {
+class SecondListCell: UICollectionViewCell {
     
     //MARK: - 식별자
     
-    static let identifier = "FirstListCell"
+    static let identifier = "SecondListCell"
     
     //MARK: - 프로퍼티
     
@@ -57,11 +56,11 @@ class FirstListCell: UICollectionViewCell {
     )
     private let storyImage: UIImageView = UIImageView().listImageView(
         imageName: "bubble.right.fill",
-        color: .white
+        color: .black
     )
     private let storyLabel: UILabel = UILabel().listLabel(
         text: "0",
-        color: .white,
+        color: .black,
         font: .systemFont(ofSize: 16)
     )
     
@@ -92,36 +91,18 @@ class FirstListCell: UICollectionViewCell {
             self.addSubview($0)
         }
         imageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(300)
+            make.leading.equalToSuperview()
+            make.height.width.equalTo(85)
+            make.centerY.equalToSuperview()
         }
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
-        }
-        timeImage.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview()
-            make.width.height.equalTo(16)
-        }
-        timeLabel.snp.makeConstraints { make in
-            make.leading.equalTo(timeImage.snp.trailing).offset(5)
-            make.trailing.equalToSuperview()
-            make.centerY.equalTo(timeImage)
-        }
-        distanceImage.snp.makeConstraints { make in
-            make.top.equalTo(timeImage.snp.bottom).offset(8)
-            make.leading.equalToSuperview()
-            make.width.height.equalTo(16)
-        }
-        distanceLabel.snp.makeConstraints { make in
-            make.leading.equalTo(distanceImage.snp.trailing).offset(5)
-            make.trailing.equalToSuperview()
-            make.centerY.equalTo(distanceImage)
+            make.top.equalTo(imageView.snp.top).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
         }
         likeImage.snp.makeConstraints { make in
-            make.leading.bottom.equalTo(imageView).inset(10)
-            make.height.width.equalTo(20)
+            make.top.equalTo(nameLabel.snp.bottom).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
+            make.height.width.equalTo(18)
         }
         likeLabel.snp.makeConstraints { make in
             make.leading.equalTo(likeImage.snp.trailing).offset(3)
@@ -130,11 +111,29 @@ class FirstListCell: UICollectionViewCell {
         storyImage.snp.makeConstraints { make in
             make.leading.equalTo(likeLabel.snp.trailing).offset(8)
             make.centerY.equalTo(likeImage)
-            make.height.width.equalTo(20)
+            make.height.width.equalTo(18)
         }
         storyLabel.snp.makeConstraints { make in
             make.leading.equalTo(storyImage.snp.trailing).offset(3)
-            make.centerY.equalTo(storyImage)
+            make.centerY.equalTo(likeImage)
+        }
+        timeImage.snp.makeConstraints { make in
+            make.top.equalTo(likeImage.snp.bottom).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
+            make.height.width.equalTo(18)
+        }
+        timeLabel.snp.makeConstraints { make in
+            make.leading.equalTo(timeImage.snp.trailing).offset(3)
+            make.centerY.equalTo(timeImage)
+        }
+        distanceImage.snp.makeConstraints { make in
+            make.leading.equalTo(timeLabel.snp.trailing).offset(8)
+            make.centerY.equalTo(timeImage)
+            make.height.width.equalTo(16)
+        }
+        distanceLabel.snp.makeConstraints { make in
+            make.leading.equalTo(distanceImage.snp.trailing).offset(3)
+            make.centerY.equalTo(distanceImage)
         }
     }
 }

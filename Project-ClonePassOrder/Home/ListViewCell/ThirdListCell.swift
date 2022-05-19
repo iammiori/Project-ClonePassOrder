@@ -1,18 +1,16 @@
 //
-//  FirstListCell.swift
+//  ThirdListCell.swift
 //  Project-ClonePassOrder
 //
 //  Created by 정덕호 on 2022/05/19.
 //
 
-import SnapKit
 import UIKit
 
-class FirstListCell: UICollectionViewCell {
-    
+class ThirdListCell: UICollectionViewCell {
     //MARK: - 식별자
     
-    static let identifier = "FirstListCell"
+    static let identifier = "ThirdListCell"
     
     //MARK: - 프로퍼티
     

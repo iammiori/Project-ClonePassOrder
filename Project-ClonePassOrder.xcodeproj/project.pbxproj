@@ -17,6 +17,8 @@
 		FE0F5ACF2835E25C0008017C /* SecondADCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5ACE2835E25C0008017C /* SecondADCell.swift */; };
 		FE1287E22835F5AD00B7CDC4 /* FirstListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E12835F5AD00B7CDC4 /* FirstListCell.swift */; };
 		FE1287E42835F6DD00B7CDC4 /* ListExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */; };
+		FE1287E62835FFD600B7CDC4 /* SecondListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */; };
+		FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E72836002600B7CDC4 /* ThirdListCell.swift */; };
 		FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */; };
 		FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */; };
 		FE210D5D282BC2CD009A4EB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE210D5C282BC2CD009A4EB8 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		FE0F5ACE2835E25C0008017C /* SecondADCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondADCell.swift; sourceTree = "<group>"; };
 		FE1287E12835F5AD00B7CDC4 /* FirstListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstListCell.swift; sourceTree = "<group>"; };
 		FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExtenstion.swift; sourceTree = "<group>"; };
+		FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondListCell.swift; sourceTree = "<group>"; };
+		FE1287E72836002600B7CDC4 /* ThirdListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdListCell.swift; sourceTree = "<group>"; };
 		FE210D50282BC2CC009A4EB8 /* Project-ClonePassOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-ClonePassOrder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,8 +118,18 @@
 				FE0F5ACC283524D70008017C /* FirstADCell.swift */,
 				FE0F5ACE2835E25C0008017C /* SecondADCell.swift */,
 				FE1287E12835F5AD00B7CDC4 /* FirstListCell.swift */,
+				FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */,
+				FE1287E72836002600B7CDC4 /* ThirdListCell.swift */,
 			);
 			path = ListViewCell;
+			sourceTree = "<group>";
+		};
+		FE1287E92836004700B7CDC4 /* ListController */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */,
+			);
+			path = ListController;
 			sourceTree = "<group>";
 		};
 		FE210D47282BC2CC009A4EB8 = {
@@ -171,9 +185,9 @@
 		FED158BB282DF84900605A25 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				FE0F5AC928350F270008017C /* ListViewCell */,
 				FED158BC282DF86700605A25 /* HomeViewController.swift */,
-				FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */,
+				FE1287E92836004700B7CDC4 /* ListController */,
+				FE0F5AC928350F270008017C /* ListViewCell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -346,6 +360,7 @@
 				891C2B342834E88800972E25 /* StoreDetailStoryView.swift in Sources */,
 				FE0F5ACD283524D70008017C /* FirstADCell.swift in Sources */,
 				FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */,
+				FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */,
 				FE1287E42835F6DD00B7CDC4 /* ListExtenstion.swift in Sources */,
 				FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */,
 				FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */,
@@ -357,6 +372,7 @@
 				FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */,
 				FE1287E22835F5AD00B7CDC4 /* FirstListCell.swift in Sources */,
 				FE0F5AC72834EB570008017C /* ListCollectionViewController.swift in Sources */,
+				FE1287E62835FFD600B7CDC4 /* SecondListCell.swift in Sources */,
 				891C2B372834E88800972E25 /* StoreDetailInfoView.swift in Sources */,
 				FE5840B328322EC100287753 /* EmailLoginViewController.swift in Sources */,
 				FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */,
