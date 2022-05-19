@@ -106,12 +106,12 @@ class ListCollectionViewController: UICollectionViewController {
              case 4:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(
-                        widthDimension: .absolute(220), heightDimension: .absolute(290))
+                        widthDimension: .absolute(220), heightDimension: .absolute(280))
                  )
                  item.contentInsets.trailing = 20
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .absolute(220),
-                                      heightDimension: .absolute(290)),
+                                      heightDimension: .absolute(280)),
                     subitems: [item]
                  )
                  let section = NSCollectionLayoutSection(group: group)
