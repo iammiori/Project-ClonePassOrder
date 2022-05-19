@@ -29,7 +29,7 @@ class ListCellFooter: UICollectionReusableView {
         iv.alpha = 0.6
         return iv
     }()
-    private let moreButton: UIButton = {
+    private let moreViewButton: UIButton = {
         let bt = UIButton(type: .system)
         bt.setTitle("더보기", for: .normal)
         bt.setTitleColor(.black, for: .normal)
@@ -64,7 +64,7 @@ class ListCellFooter: UICollectionReusableView {
     //MARK: - 메서드
     
     private func setLayout() {
-        [imageView,moreButton].forEach {
+        [imageView,moreViewButton].forEach {
             self.addSubview($0)
         }
         imageView.snp.makeConstraints { make in
@@ -72,13 +72,13 @@ class ListCellFooter: UICollectionReusableView {
             make.width.equalTo(60)
             make.height.equalTo(40)
         }
-        moreButton.snp.makeConstraints { make in
+        moreViewButton.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(imageView)
             make.width.equalTo(60)
             make.height.equalTo(40)
         }
     }
     private func setAtrribute() {
-        moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+        moreViewButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
     }
 }
