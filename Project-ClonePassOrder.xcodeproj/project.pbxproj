@@ -31,6 +31,7 @@
 		FE5840B328322EC100287753 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B228322EC100287753 /* EmailLoginViewController.swift */; };
 		FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B4283276D700287753 /* SignUpViewController.swift */; };
 		FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840C228334BC300287753 /* AgreementViewController.swift */; };
+		FEBBEC44283678180027EE4F /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC43283678180027EE4F /* SortCell.swift */; };
 		FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeViewController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */; };
 		FED158C3282DF92100605A25 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteViewController.swift */; };
@@ -69,6 +70,7 @@
 		FE5840B228322EC100287753 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		FE5840B4283276D700287753 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FE5840C228334BC300287753 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		FEBBEC43283678180027EE4F /* SortCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		FED158C2282DF92100605A25 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		FED158CB282DFAF700605A25 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FEBBEC43283678180027EE4F /* SortCell.swift */,
 				FED158CC282DFB2900605A25 /* Extenstion.swift */,
 				FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */,
 				FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */,
@@ -370,6 +373,7 @@
 				FE0F5ACD283524D70008017C /* FirstADCell.swift in Sources */,
 				FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */,
 				FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */,
+				FEBBEC44283678180027EE4F /* SortCell.swift in Sources */,
 				FE1287E42835F6DD00B7CDC4 /* ListExtenstion.swift in Sources */,
 				FE1287EB283614B300B7CDC4 /* ListCellHeader.swift in Sources */,
 				FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */,
