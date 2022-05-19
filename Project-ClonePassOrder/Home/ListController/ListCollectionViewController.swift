@@ -319,3 +319,23 @@ class ListCollectionViewController: UICollectionViewController {
 
     
 }
+
+
+extension ListCollectionViewController: ListCellDelegate {
+    func firstFooterTapped() {
+        let vc = MoreCollectionViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func secondFooterTapped() {
+        let vc = MoreCollectionViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func thirdFooterTapped() {
+        let vc = MoreCollectionViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+}
