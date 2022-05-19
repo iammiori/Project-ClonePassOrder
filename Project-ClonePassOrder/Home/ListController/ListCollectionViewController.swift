@@ -235,14 +235,12 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: ThirdListCell.identifier,
                 for: indexPath
             ) as! ThirdListCell
-            cell.backgroundColor = .red
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "cell",
                 for: indexPath
             )
-            cell.backgroundColor = .red
             return cell
         }
     }
