@@ -67,10 +67,10 @@ class ListCollectionViewController: UICollectionViewController {
                                             heightDimension: .absolute(80)),
                           elementKind: UICollectionView.elementKindSectionHeader,
                           alignment: .topLeading),
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                            heightDimension: .absolute(60)),
-                          elementKind: UICollectionView.elementKindSectionFooter,
-                          alignment: .bottomTrailing)
+//                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
+//                                            heightDimension: .absolute(60)),
+//                          elementKind: UICollectionView.elementKindSectionFooter,
+//                          alignment: .bottomTrailing)
                  ]
                  section.contentInsets.top = 20
                  section.contentInsets.bottom = 100
@@ -94,10 +94,11 @@ class ListCollectionViewController: UICollectionViewController {
                                             heightDimension: .absolute(80)),
                           elementKind: UICollectionView.elementKindSectionHeader,
                           alignment: .topLeading),
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                            heightDimension: .absolute(60)),
-                          elementKind: UICollectionView.elementKindSectionFooter,
-                          alignment: .bottomTrailing)]
+//                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
+//                                            heightDimension: .absolute(60)),
+//                          elementKind: UICollectionView.elementKindSectionFooter,
+//                          alignment: .bottomTrailing)
+                 ]
                  section.contentInsets.leading = 50
                  section.contentInsets.top = 20
                  section.contentInsets.bottom = 80
@@ -119,10 +120,10 @@ class ListCollectionViewController: UICollectionViewController {
                                             heightDimension: .absolute(80)),
                           elementKind: UICollectionView.elementKindSectionHeader,
                           alignment: .topLeading),
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                            heightDimension: .absolute(60)),
-                          elementKind: UICollectionView.elementKindSectionFooter,
-                          alignment: .bottomTrailing)
+//                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
+//                                            heightDimension: .absolute(60)),
+//                          elementKind: UICollectionView.elementKindSectionFooter,
+//                          alignment: .bottomTrailing)
                  ]
                  section.orthogonalScrollingBehavior = .continuous
                  section.contentInsets.leading = 50
@@ -169,6 +170,10 @@ class ListCollectionViewController: UICollectionViewController {
             ThirdListCell.self,
             forCellWithReuseIdentifier: ThirdListCell.identifier
         )
+        collectionView.register(
+            ListCellHeader.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: ListCellHeader.identifier)
     }
     
 
@@ -226,6 +231,66 @@ class ListCollectionViewController: UICollectionViewController {
             )
             cell.backgroundColor = .red
             return cell
+        }
+    }
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: ListCellHeader.identifier,
+                for: indexPath
+            ) as! ListCellHeader
+            switch indexPath.section {
+            case 2:
+                header.firstLabel.text = "정덕호님과"
+                header.secondLabel.text = "가까이 있는 매장이에요!"
+                let attributedString = NSMutableAttributedString(string: header.secondLabel.text!)
+                attributedString.addAttribute(
+                    .foregroundColor,
+                    value: UIColor.systemOrange,
+                    range: (header.secondLabel.text! as NSString).range(of:"가까이 있는 매장"))
+                header.secondLabel.attributedText = attributedString
+                return header
+            case 3:
+                header.firstLabel.text = "정덕호님 근처에있는"
+                header.secondLabel.text = "스토리가 많은 매장이에요!"
+                let attributedString = NSMutableAttributedString(string: header.secondLabel.text!)
+                //시스템 민트색이 15.0 버전부터 된다고 하네요
+                if #available(iOS 15.0, *) {
+                    attributedString.addAttribute(
+                        .foregroundColor,
+                        value: UIColor.systemMint,
+                        range: (header.secondLabel.text! as NSString).range(of:"스토리가 많은 매장이에요!"))
+                } else {
+                    attributedString.addAttribute(
+                        .foregroundColor,
+                        value: UIColor.systemBrown,
+                        range: (header.secondLabel.text! as NSString).range(of:"스토리가 많은 매장이에요!"))
+                }
+                header.secondLabel.attributedText = attributedString
+                return header
+            case 4:
+                header.firstLabel.text = "새로추가된"
+                header.secondLabel.text = "신규매장을 소개합니다!"
+                let attributedString = NSMutableAttributedString(string: header.secondLabel.text!)
+                attributedString.addAttribute(
+                    .foregroundColor,
+                    value: UIColor.systemGreen,
+                    range: (header.secondLabel.text! as NSString).range(of:"신규매장을 소개합니다!"))
+                header.secondLabel.attributedText = attributedString
+                return header
+            default:
+                return header
+            }
+        case UICollectionView.elementKindSectionFooter:
+            return UICollectionReusableView()
+        default:
+            return UICollectionReusableView()
         }
     }
 }

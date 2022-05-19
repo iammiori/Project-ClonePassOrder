@@ -15,14 +15,14 @@ class ListCellHeader: UICollectionReusableView {
     
     //MARK: - 프로퍼티
     let firstLabel: UILabel = UILabel().listLabel(
-        text: "정덕호님과",
+        text: "",
         color: .black,
-        font: .boldSystemFont(ofSize: 24)
+        font: .boldSystemFont(ofSize: 22)
     )
     let secondLabel: UILabel = UILabel().listLabel(
         text: "",
         color: .black,
-        font: .boldSystemFont(ofSize: 30)
+        font: .boldSystemFont(ofSize: 28)
     )
     
     //MARK: - 라이프사이클
