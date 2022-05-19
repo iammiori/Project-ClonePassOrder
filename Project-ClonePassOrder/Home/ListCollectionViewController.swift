@@ -157,6 +157,10 @@ class ListCollectionViewController: UICollectionViewController {
             SecondADCell.self,
             forCellWithReuseIdentifier: SecondADCell.identifier
         )
+        collectionView.register(
+            FirstListCell.self,
+            forCellWithReuseIdentifier: FirstListCell.identifier
+        )
     }
     
 
@@ -188,6 +192,13 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: SecondADCell.identifier,
                 for: indexPath
             ) as! SecondADCell
+            return cell
+        case 2:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: FirstListCell.identifier,
+                for: indexPath
+            ) as! FirstListCell
+            cell.backgroundColor = .red
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(
