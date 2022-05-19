@@ -77,9 +77,21 @@ class qrCameraViewController: UIViewController {
         return stackView
     }()
 
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        setLayout()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startScan()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopScan()
+    }
+    
     // MARK: - setLayout
     
     func setLayout() {
