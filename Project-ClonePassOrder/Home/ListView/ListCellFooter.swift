@@ -13,6 +13,12 @@ enum FooterSection {
     case ThirdCell
 }
 
+protocol ListCellDelegate: AnyObject {
+    func firstFooterTapped()
+    func secondFooterTapped()
+    func thirdFooterTapped()
+}
+
 class ListCellFooter: UICollectionReusableView {
     
     //MARK: - 식별자
@@ -21,6 +27,7 @@ class ListCellFooter: UICollectionReusableView {
     
     //MARK: - 프로퍼티
     
+    var delegate: ListCellDelegate?
      var currentSection: FooterSection = .FirstCell
     private let imageView: UIImageView = {
         let iv = UIImageView()
@@ -53,11 +60,11 @@ class ListCellFooter: UICollectionReusableView {
     @objc private func moreButtonTapped() {
         switch currentSection {
         case .FirstCell:
-            print("첫번째셀")
+            delegate?.firstFooterTapped()
         case .SecondCell:
-            print("두번째셀")
+            delegate?.secondFooterTapped()
         case .ThirdCell:
-            print("세번째셀")
+            delegate?.thirdFooterTapped()
         }
     }
     
