@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MoreCollectionViewController()
+        window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
     }
 

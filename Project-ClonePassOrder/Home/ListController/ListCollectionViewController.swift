@@ -297,6 +297,7 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: ListCellFooter.identifier,
                 for: indexPath
             ) as! ListCellFooter
+            footer.delegate = self
             switch indexPath.section {
             case 2:
                 footer.currentSection = .FirstCell
