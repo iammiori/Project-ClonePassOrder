@@ -80,6 +80,20 @@ class qrCameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+    // MARK: - setLayout
+    
+    func setLayout() {
+        view.addSubview(cameraView)
+        cameraView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        view.addSubview(guideView)
+        view.addSubview(descriptionStackView)
+        descriptionStackView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(130)
+        }
     }
     
 }
