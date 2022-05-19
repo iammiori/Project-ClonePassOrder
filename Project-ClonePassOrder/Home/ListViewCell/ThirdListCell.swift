@@ -62,6 +62,18 @@ class ThirdListCell: UICollectionViewCell {
         color: .white,
         font: .systemFont(ofSize: 16)
     )
+    private lazy var timeStackView: UIStackView = UIStackView(
+        arrangedSubviews: [timeImage,timeLabel]
+    )
+    private lazy var distanceStackView: UIStackView = UIStackView(
+        arrangedSubviews: [distanceImage,distanceLabel]
+    )
+    private lazy var likeStackView: UIStackView = UIStackView(
+        arrangedSubviews: [likeImage,likeLabel]
+    )
+    private lazy var storyStackView: UIStackView = UIStackView(
+        arrangedSubviews: [storyImage,storyLabel]
+    )
     
     //MARK: - 라이프사이클
     
@@ -79,60 +91,46 @@ class ThirdListCell: UICollectionViewCell {
     private func setLayout() {
         [imageView,
          nameLabel,
-         timeLabel,
-         timeImage,
-         distanceLabel,
-         distanceImage,
-         likeImage,
-         likeLabel,
-         storyImage,
-         storyLabel].forEach {
+         timeStackView,
+         distanceStackView,
+         likeStackView,
+         storyStackView].forEach {
             self.addSubview($0)
         }
         imageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(300)
+            make.height.equalTo(200)
         }
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview()
         }
         timeImage.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview()
             make.width.height.equalTo(16)
         }
-        timeLabel.snp.makeConstraints { make in
-            make.leading.equalTo(timeImage.snp.trailing).offset(5)
-            make.trailing.equalToSuperview()
-            make.centerY.equalTo(timeImage)
+        timeStackView.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview()
         }
         distanceImage.snp.makeConstraints { make in
-            make.top.equalTo(timeImage.snp.bottom).offset(8)
-            make.leading.equalToSuperview()
             make.width.height.equalTo(16)
         }
-        distanceLabel.snp.makeConstraints { make in
-            make.leading.equalTo(distanceImage.snp.trailing).offset(5)
-            make.trailing.equalToSuperview()
-            make.centerY.equalTo(distanceImage)
+        distanceStackView.snp.makeConstraints { make in
+            make.top.equalTo(timeStackView.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview()
         }
         likeImage.snp.makeConstraints { make in
-            make.leading.bottom.equalTo(imageView).inset(10)
-            make.height.width.equalTo(20)
+            make.width.height.equalTo(20)
         }
-        likeLabel.snp.makeConstraints { make in
-            make.leading.equalTo(likeImage.snp.trailing).offset(3)
-            make.centerY.equalTo(likeImage)
+        likeStackView.snp.makeConstraints { make in
+            make.leading.bottom.equalTo(imageView).inset(10)
         }
         storyImage.snp.makeConstraints { make in
-            make.leading.equalTo(likeLabel.snp.trailing).offset(8)
-            make.centerY.equalTo(likeImage)
-            make.height.width.equalTo(20)
+            make.width.height.equalTo(20)
         }
-        storyLabel.snp.makeConstraints { make in
-            make.leading.equalTo(storyImage.snp.trailing).offset(3)
-            make.centerY.equalTo(storyImage)
+        storyStackView.snp.makeConstraints { make in
+            make.leading.equalTo(likeStackView.snp.trailing).offset(3)
+            make.centerY.equalTo(likeStackView)
         }
     }
 }
