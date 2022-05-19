@@ -96,4 +96,38 @@ class qrCameraViewController: UIViewController {
         }
     }
     
+    // MARK: - Instance Methods
+    
+    func startScan() {
+        captureSession = AVCaptureSession()
+        captureSession.sessionPreset = .high
+        guard let camera = AVCaptureDevice.default(for: .video) else {
+            print("접근권한 없음")
+            return
+        }
+        do {
+            let input = try AVCaptureDeviceInput(device: camera)
+            stillImageOutput = AVCapturePhotoOutput()
+            if captureSession.canAddInput(input) && captureSession.canAddOutput(stillImageOutput) {
+                captureSession.addInput(input)
+                captureSession.addOutput(stillImageOutput)
+                setLivePreview()
+            }
+        } catch let error {
+            print(error)
+        }
+        DispatchQueue.global().async {
+            self.captureSession.startRunning()
+            DispatchQueue.main.async {
+                self.videoPreviewLayer.frame = self.cameraView.bounds
+            }
+        }
+    }
+    func setLivePreview() {
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        videoPreviewLayer.videoGravity = .resizeAspect
+        videoPreviewLayer.connection?.videoOrientation = .portrait
+        
+        cameraView.layer.addSublayer(videoPreviewLayer)
+    }
 }
