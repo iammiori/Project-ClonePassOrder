@@ -108,7 +108,7 @@ class ThirdListCell: UICollectionViewCell {
             likeStackView: likeStackView,
             storyImage: storyImage,
             storyStackView: storyStackView,
-            imageViewHeight: 150
+            imageViewHeight: 220
         )
     }
 }

@@ -114,12 +114,12 @@ class ListCollectionViewController: UICollectionViewController {
              case 4:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(
-                        widthDimension: .absolute(220), heightDimension: .absolute(280))
+                        widthDimension: .absolute(240), heightDimension: .absolute(320))
                  )
                  item.contentInsets.trailing = 20
                  let group = NSCollectionLayoutGroup.horizontal(
-                    layoutSize: .init(widthDimension: .absolute(220),
-                                      heightDimension: .absolute(280)),
+                    layoutSize: .init(widthDimension: .absolute(240),
+                                      heightDimension: .absolute(320)),
                     subitems: [item]
                  )
                  let section = NSCollectionLayoutSection(group: group)
@@ -235,6 +235,7 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: ThirdListCell.identifier,
                 for: indexPath
             ) as! ThirdListCell
+            cell.backgroundColor = .red
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(
