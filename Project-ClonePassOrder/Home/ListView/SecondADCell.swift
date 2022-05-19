@@ -104,10 +104,14 @@ class SecondADCell: UICollectionViewCell {
             }
             if self?.currentPage == Int(width * CGFloat(count - 1)) {
                 self?.currentPage = 0
-                self?.scrollView.contentOffset.x = 0
+                UIView.animate(withDuration: 0.2) {
+                    self?.scrollView.contentOffset.x = 0
+                }
             } else {
                 self?.currentPage += Int(width)
-                self?.scrollView.contentOffset.x += CGFloat(width)
+                UIView.animate(withDuration: 0.2) {
+                    self?.scrollView.contentOffset.x += CGFloat(width)
+                }
             }
         }
     }
