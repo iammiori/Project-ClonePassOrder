@@ -20,6 +20,7 @@
 		FE1287E62835FFD600B7CDC4 /* SecondListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */; };
 		FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E72836002600B7CDC4 /* ThirdListCell.swift */; };
 		FE1287EB283614B300B7CDC4 /* ListCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */; };
+		FE1287ED28361B0500B7CDC4 /* ListCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287EC28361B0400B7CDC4 /* ListCellFooter.swift */; };
 		FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */; };
 		FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */; };
 		FE210D5D282BC2CD009A4EB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE210D5C282BC2CD009A4EB8 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondListCell.swift; sourceTree = "<group>"; };
 		FE1287E72836002600B7CDC4 /* ThirdListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdListCell.swift; sourceTree = "<group>"; };
 		FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellHeader.swift; sourceTree = "<group>"; };
+		FE1287EC28361B0400B7CDC4 /* ListCellFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellFooter.swift; sourceTree = "<group>"; };
 		FE210D50282BC2CC009A4EB8 /* Project-ClonePassOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-ClonePassOrder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */,
 				FE1287E72836002600B7CDC4 /* ThirdListCell.swift */,
 				FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */,
+				FE1287EC28361B0400B7CDC4 /* ListCellFooter.swift */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */,
 				FEDFF5222833852900E65E45 /* TabBarController.swift in Sources */,
 				FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */,
+				FE1287ED28361B0500B7CDC4 /* ListCellFooter.swift in Sources */,
 				FE0F5ACF2835E25C0008017C /* SecondADCell.swift in Sources */,
 				FE4BEF002832058800530B08 /* LoginViewController.swift in Sources */,
 				891C2B362834E88800972E25 /* StoryCollectionViewCell.swift in Sources */,
