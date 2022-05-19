@@ -9,21 +9,21 @@ import UIKit
 import SnapKit
 import AVFoundation
 
-class qrCameraViewController: UIViewController {
+final class qrCameraViewController: UIViewController {
     
     // MARK: - Instance Properties
     
-    var captureSession: AVCaptureSession!
-    var stillImageOutput: AVCapturePhotoOutput!
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    private var captureSession: AVCaptureSession!
+    private var stillImageOutput: AVCapturePhotoOutput!
+    private var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     
     // MARK: - UI Properties
     
-    let cameraView: UIView = {
+    private let cameraView: UIView = {
         let view = UIView()
         return view
     }()
-    lazy var guideView: UIView = {
+    private lazy var guideView: UIView = {
         let view = UIView(frame: view.frame)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .black.withAlphaComponent(0.6)
@@ -40,7 +40,7 @@ class qrCameraViewController: UIViewController {
         view.layer.mask = maskLayer
         return view
     }()
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "테이블 선택"
         label.font = .preferredFont(forTextStyle: .title1)
@@ -48,7 +48,7 @@ class qrCameraViewController: UIViewController {
         label.textColor = .white
         return label
     }()
-    let description1Label: UILabel = {
+    private let description1Label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.text = """
@@ -60,7 +60,7 @@ class qrCameraViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    let descriptions2Label: UILabel = {
+    private let descriptions2Label: UILabel = {
         let label = UILabel()
         label.text = "해당 테이블 번호로 주문됩니다."
         label.textColor = .systemGray5
@@ -68,7 +68,7 @@ class qrCameraViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    lazy var descriptionStackView: UIStackView = {
+    private lazy var descriptionStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, description1Label, descriptions2Label])
         stackView.axis = .vertical
         stackView.spacing = 15
@@ -94,7 +94,7 @@ class qrCameraViewController: UIViewController {
     
     // MARK: - setLayout
     
-    func setLayout() {
+    private func setLayout() {
         view.addSubview(cameraView)
         cameraView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
@@ -110,7 +110,7 @@ class qrCameraViewController: UIViewController {
     
     // MARK: - Instance Methods
     
-    func startScan() {
+    private func startScan() {
         captureSession = AVCaptureSession()
         captureSession.sessionPreset = .high
         guard let camera = AVCaptureDevice.default(for: .video) else {
@@ -135,14 +135,14 @@ class qrCameraViewController: UIViewController {
             }
         }
     }
-    func setLivePreview() {
+    private func setLivePreview() {
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer.videoGravity = .resizeAspect
         videoPreviewLayer.connection?.videoOrientation = .portrait
         
         cameraView.layer.addSublayer(videoPreviewLayer)
     }
-    func stopScan() {
+    private func stopScan() {
         captureSession.stopRunning()
         captureSession = nil
         stillImageOutput = nil
