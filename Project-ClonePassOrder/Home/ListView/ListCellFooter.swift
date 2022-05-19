@@ -14,9 +14,7 @@ enum FooterSection {
 }
 
 protocol ListCellDelegate: AnyObject {
-    func firstFooterTapped()
-    func secondFooterTapped()
-    func thirdFooterTapped()
+    func footerTapped(title: String)
 }
 
 class ListCellFooter: UICollectionReusableView {
@@ -60,11 +58,11 @@ class ListCellFooter: UICollectionReusableView {
     @objc private func moreButtonTapped() {
         switch currentSection {
         case .FirstCell:
-            delegate?.firstFooterTapped()
+            delegate?.footerTapped(title: "가까이 있는 매장")
         case .SecondCell:
-            delegate?.secondFooterTapped()
+            delegate?.footerTapped(title: "스토리가 많은 매장")
         case .ThirdCell:
-            delegate?.thirdFooterTapped()
+            delegate?.footerTapped(title: "신규매장")
         }
     }
     

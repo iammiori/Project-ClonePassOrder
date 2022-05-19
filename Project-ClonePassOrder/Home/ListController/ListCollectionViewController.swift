@@ -323,20 +323,8 @@ class ListCollectionViewController: UICollectionViewController {
 
 
 extension ListCollectionViewController: ListCellDelegate {
-    func firstFooterTapped() {
-        let vc = MoreCollectionViewController()
-        navigationController?.pushViewController(vc, animated: true)
+    func footerTapped(title: String) {
+        print("타이틀")
     }
-    
-    func secondFooterTapped() {
-        let vc = MoreCollectionViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func thirdFooterTapped() {
-        let vc = MoreCollectionViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     
 }
