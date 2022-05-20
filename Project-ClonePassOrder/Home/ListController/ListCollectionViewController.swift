@@ -215,7 +215,7 @@ class ListCollectionViewController: UICollectionViewController {
         switch section {
         case 0: return 1
         case 1: return 1
-        case 5: return 2
+        case 5: return 1
         default: return 10
         }
     }
@@ -259,7 +259,6 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: FourthListCell.identifier
                 , for: indexPath
             ) as! FourthListCell
-            cell.backgroundColor = .red
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(
@@ -347,12 +346,9 @@ class ListCollectionViewController: UICollectionViewController {
             return UICollectionReusableView()
         }
     }
-
-//MARK: - 컬렉션뷰 델리게이트
-
-    
 }
 
+//MARK: - 리스트셀 델리게이트
 
 extension ListCollectionViewController: ListCellDelegate {
     func footerTapped(title: String) {

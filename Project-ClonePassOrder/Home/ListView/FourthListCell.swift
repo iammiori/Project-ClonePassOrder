@@ -14,6 +14,12 @@ class FourthListCell: UICollectionViewCell {
     
     //MARK: - 프로퍼티
     
+    private let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
     //MARK: - 라이프사이클
     
     override init(frame: CGRect) {
@@ -27,5 +33,12 @@ class FourthListCell: UICollectionViewCell {
     //MARK: - 메서드
     
     private func setLayout() {
+        [separatorView].forEach {
+            self.addSubview($0)
+        }
+        separatorView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(10)
+        }
     }
 }
