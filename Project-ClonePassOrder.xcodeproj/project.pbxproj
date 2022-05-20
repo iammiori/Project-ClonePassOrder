@@ -32,6 +32,7 @@
 		FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B4283276D700287753 /* SignUpViewController.swift */; };
 		FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840C228334BC300287753 /* AgreementViewController.swift */; };
 		FEBBEC44283678180027EE4F /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC43283678180027EE4F /* SortCell.swift */; };
+		FEBBEC4B28373A7A0027EE4F /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */; };
 		FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeViewController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */; };
 		FED158C3282DF92100605A25 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteViewController.swift */; };
@@ -71,6 +72,7 @@
 		FE5840B4283276D700287753 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FE5840C228334BC300287753 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		FEBBEC43283678180027EE4F /* SortCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
+		FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		FED158C2282DF92100605A25 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -193,10 +195,19 @@
 			path = LoginAndSignUp;
 			sourceTree = "<group>";
 		};
+		FEBBEC4928373A660027EE4F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		FED158BB282DF84900605A25 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				FED158BC282DF86700605A25 /* HomeViewController.swift */,
+				FEBBEC4928373A660027EE4F /* Search */,
 				FE1287E92836004700B7CDC4 /* ListController */,
 				FE0F5AC928350F270008017C /* ListView */,
 			);
@@ -378,6 +389,7 @@
 				FE1287EB283614B300B7CDC4 /* ListCellHeader.swift in Sources */,
 				FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */,
 				FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */,
+				FEBBEC4B28373A7A0027EE4F /* SearchCollectionViewController.swift in Sources */,
 				FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */,
 				FED158CA282DF97400605A25 /* MyPasserViewController.swift in Sources */,
 				FED158C3282DF92100605A25 /* FavoriteViewController.swift in Sources */,
