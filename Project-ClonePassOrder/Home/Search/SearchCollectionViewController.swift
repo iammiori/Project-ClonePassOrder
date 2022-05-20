@@ -10,7 +10,7 @@ import UIKit
 class SearchCollectionViewController: UICollectionViewController {
 
     //MARK: - 프로퍼티
-    
+    private var 임시카운트 = 0
     private let searchController = UISearchController(searchResultsController: nil)
     private let imageView: UIImageView = {
         let iv = UIImageView()
@@ -83,7 +83,13 @@ class SearchCollectionViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 10
+        if 임시카운트 == 0 {
+            imageView.isHidden = false
+            return 임시카운트
+        } else {
+            imageView.isHidden = true
+            return 임시카운트
+        }
     }
     override func collectionView(
         _ collectionView: UICollectionView,
@@ -103,6 +109,7 @@ class SearchCollectionViewController: UICollectionViewController {
 
 extension SearchCollectionViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("123")
+        임시카운트 += 1
+        collectionView.reloadData()
     }
 }
