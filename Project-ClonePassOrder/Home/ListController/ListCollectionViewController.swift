@@ -145,7 +145,7 @@ class ListCollectionViewController: UICollectionViewController {
                  )
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                      heightDimension: .estimated(400)),
+                                      heightDimension: .estimated(200)),
                     subitems: [item])
                  let section = NSCollectionLayoutSection(group: group)
                  section.orthogonalScrollingBehavior = .none
@@ -192,8 +192,8 @@ class ListCollectionViewController: UICollectionViewController {
             forCellWithReuseIdentifier: ThirdListCell.identifier
         )
         collectionView.register(
-            LastListCell.self,
-            forCellWithReuseIdentifier: LastListCell.identifier
+            FourthListCell.self,
+            forCellWithReuseIdentifier: FourthListCell.identifier
         )
         collectionView.register(
             ListCellHeader.self,
@@ -215,7 +215,7 @@ class ListCollectionViewController: UICollectionViewController {
         switch section {
         case 0: return 1
         case 1: return 1
-        case 5: return 1
+        case 5: return 2
         default: return 10
         }
     }
@@ -256,9 +256,9 @@ class ListCollectionViewController: UICollectionViewController {
             return cell
         case 5:
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: LastListCell.identifier
+                withReuseIdentifier: FourthListCell.identifier
                 , for: indexPath
-            ) as! LastListCell
+            ) as! FourthListCell
             cell.backgroundColor = .red
             return cell
         default:

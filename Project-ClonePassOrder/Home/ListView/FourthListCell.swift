@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LastListCell: UICollectionViewCell {
+class FourthListCell: UICollectionViewCell {
     //MARK: - 식별자
     
     static let identifier = "LastListCell"
