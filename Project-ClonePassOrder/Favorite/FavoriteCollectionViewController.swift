@@ -69,7 +69,7 @@ class FavoriteViewController: UICollectionViewController {
         view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.snp.topMargin)
+            make.top.equalTo(view.snp.topMargin).offset(110)
             make.bottom.equalToSuperview().offset(-120)
         }
     }
