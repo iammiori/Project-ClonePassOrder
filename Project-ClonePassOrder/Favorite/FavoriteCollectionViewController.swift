@@ -68,8 +68,9 @@ class FavoriteViewController: UICollectionViewController {
     private func setLayout() {
         view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.snp.topMargin)
+            make.bottom.equalToSuperview().offset(-120)
         }
     }
     private func setAtrribute() {
