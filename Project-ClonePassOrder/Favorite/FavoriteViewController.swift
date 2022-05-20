@@ -31,7 +31,7 @@ class FavoriteViewController: UICollectionViewController {
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .none
                 section.contentInsets.top = 20
-                section.contentInsets.bottom = 40
+                section.contentInsets.bottom = 100
                 section.contentInsets.leading = 50
                 return section
             default:
@@ -51,6 +51,10 @@ class FavoriteViewController: UICollectionViewController {
             SortCell.self,
             forCellWithReuseIdentifier: SortCell.identifier
         )
+        collectionView.register(
+            SecondADCell.self,
+            forCellWithReuseIdentifier: SecondADCell.identifier
+        )
     }
     private func naviSetAttribute() {
     }
@@ -63,16 +67,30 @@ class FavoriteViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 2
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 10
+        }
     }
     override func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SortCell.identifier,
-            for: indexPath
-        )
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SecondADCell.identifier,
+                for: indexPath
+            )
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SortCell.identifier,
+                for: indexPath
+            )
+            return cell
+        }
     }
 }
