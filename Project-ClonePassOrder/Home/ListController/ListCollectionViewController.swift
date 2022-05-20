@@ -60,12 +60,12 @@ class ListCollectionViewController: UICollectionViewController {
              case 2:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(widthDimension: .absolute(240),
-                        heightDimension: .absolute(380))
+                        heightDimension: .estimated(380))
                  )
                  item.contentInsets.trailing = 20
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .absolute(240),
-                                      heightDimension: .absolute(380)),
+                                      heightDimension: .estimated(380)),
                     subitems: [item]
                  )
                  let section = NSCollectionLayoutSection(group: group)
@@ -88,7 +88,7 @@ class ListCollectionViewController: UICollectionViewController {
              case 3:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(widthDimension: .absolute(350),
-                        heightDimension: .fractionalHeight(1))
+                        heightDimension: .estimated(300))
                  )
                  item.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 20)
                  let group = NSCollectionLayoutGroup.vertical(
@@ -114,12 +114,12 @@ class ListCollectionViewController: UICollectionViewController {
              case 4:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(
-                        widthDimension: .absolute(240), heightDimension: .absolute(320))
+                        widthDimension: .absolute(240), heightDimension: .estimated(320))
                  )
                  item.contentInsets.trailing = 20
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .absolute(240),
-                                      heightDimension: .absolute(320)),
+                                      heightDimension: .estimated(320)),
                     subitems: [item]
                  )
                  let section = NSCollectionLayoutSection(group: group)
