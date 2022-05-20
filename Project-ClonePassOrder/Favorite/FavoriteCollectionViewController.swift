@@ -9,6 +9,15 @@ import UIKit
 
 class FavoriteViewController: UICollectionViewController {
 
+    //MARK: - 프로퍼티
+    private var 임시카운트 = 0
+    private let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "검색결과없음이미지")
+        iv.backgroundColor = .lightGray
+        return iv
+    }()
+    
     //MARK: - 라이프사이클
     
     override func viewDidLoad() {
