@@ -8,7 +8,7 @@
 import UIKit
 
 extension UICollectionViewCompositionalLayout {
-    func sortLayout() -> UICollectionViewCompositionalLayout {
+   static func sortLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { section, env in
             let item = NSCollectionLayoutItem(
                 layoutSize: .init(widthDimension: .fractionalWidth(1),
