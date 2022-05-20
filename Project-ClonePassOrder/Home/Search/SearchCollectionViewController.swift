@@ -9,6 +9,9 @@ import UIKit
 
 class SearchCollectionViewController: UICollectionViewController {
 
+    //MARK: - 프로퍼티
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     //MARK: - 라이프사이클
     
     override func viewDidLoad() {
