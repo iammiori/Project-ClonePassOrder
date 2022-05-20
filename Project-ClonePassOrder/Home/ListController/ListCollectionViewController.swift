@@ -277,12 +277,12 @@ class ListCollectionViewController: UICollectionViewController {
                     attributedString.addAttribute(
                         .foregroundColor,
                         value: UIColor.systemMint,
-                        range: (header.secondLabel.text! as NSString).range(of:"스토리가 많은 매장이에요!"))
+                        range: (header.secondLabel.text! as NSString).range(of:"스토리가 많은 매장"))
                 } else {
                     attributedString.addAttribute(
                         .foregroundColor,
                         value: UIColor.systemBrown,
-                        range: (header.secondLabel.text! as NSString).range(of:"스토리가 많은 매장이에요!"))
+                        range: (header.secondLabel.text! as NSString).range(of:"스토리가 많은 매장"))
                 }
                 header.secondLabel.attributedText = attributedString
                 return header
@@ -293,7 +293,7 @@ class ListCollectionViewController: UICollectionViewController {
                 attributedString.addAttribute(
                     .foregroundColor,
                     value: UIColor.systemGreen,
-                    range: (header.secondLabel.text! as NSString).range(of:"신규매장을 소개합니다!"))
+                    range: (header.secondLabel.text! as NSString).range(of:"신규매장"))
                 header.secondLabel.attributedText = attributedString
                 return header
             default:
