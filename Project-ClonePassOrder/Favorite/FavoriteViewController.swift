@@ -17,7 +17,27 @@ class FavoriteViewController: UICollectionViewController {
         naviSetAttribute()
     }
     init() {
-        let layout = UICollectionViewCompositionalLayout.sortLayout()
+        let layout = UICollectionViewCompositionalLayout { section, env in
+            switch section {
+            case 0:
+                let item = NSCollectionLayoutItem(
+                   layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                     heightDimension: .fractionalHeight(1))
+                )
+                let group = NSCollectionLayoutGroup.horizontal(
+                   layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                     heightDimension: .absolute(90)),
+                   subitems: [item])
+                let section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .none
+                section.contentInsets.top = 20
+                section.contentInsets.bottom = 40
+                section.contentInsets.leading = 50
+                return section
+            default:
+                return NSCollectionLayoutSection.sortLayout()
+            }
+        }
         super.init(collectionViewLayout: layout)
     }
     required init?(coder: NSCoder) {
@@ -43,7 +63,7 @@ class FavoriteViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 10
+        return 2
     }
     override func collectionView(
         _ collectionView: UICollectionView,

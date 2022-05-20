@@ -28,7 +28,9 @@ class SearchCollectionViewController: UICollectionViewController {
         setLayout()
     }
     init() {
-        let layout = UICollectionViewCompositionalLayout.sortLayout()
+        let layout = UICollectionViewCompositionalLayout { section, env in
+            return NSCollectionLayoutSection.sortLayout()
+        }
         super.init(collectionViewLayout: layout)
     }
     required init?(coder: NSCoder) {
