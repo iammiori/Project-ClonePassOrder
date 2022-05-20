@@ -90,6 +90,8 @@ class SecondADCell: UICollectionViewCell {
                 height: self.bounds.height
             )
             imageView.image = image[i]
+            imageView.clipsToBounds = true
+            imageView.layer.cornerRadius = 10
             scrollView.addSubview(imageView)
             scrollView.contentSize.width = imageView.frame.width * CGFloat(i + 1)
         }

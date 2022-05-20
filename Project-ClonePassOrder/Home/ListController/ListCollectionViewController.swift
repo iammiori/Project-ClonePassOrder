@@ -56,6 +56,7 @@ class ListCollectionViewController: UICollectionViewController {
                  section.contentInsets.top = 20
                  section.contentInsets.bottom = 40
                  section.contentInsets.leading = 50
+                 section.contentInsets.trailing = -5
                  return section
              case 2:
                  let item = NSCollectionLayoutItem(
