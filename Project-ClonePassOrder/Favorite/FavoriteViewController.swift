@@ -57,6 +57,9 @@ class FavoriteViewController: UICollectionViewController {
         )
     }
     private func naviSetAttribute() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "자주가요"
     }
     
     //MARK: - 컬렉션뷰 데이터소스
@@ -84,7 +87,6 @@ class FavoriteViewController: UICollectionViewController {
                 withReuseIdentifier: SecondADCell.identifier,
                 for: indexPath
             )
-            cell.backgroundColor = .red
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(
