@@ -10,6 +10,7 @@ import UIKit
 class SearchCollectionViewController: UICollectionViewController {
 
     //MARK: - 프로퍼티
+    
     private let searchController = UISearchController(searchResultsController: nil)
     
     //MARK: - 라이프사이클
@@ -46,12 +47,20 @@ class SearchCollectionViewController: UICollectionViewController {
     //MARK: - 메서드
     private func setAtrribute() {
         collectionView.register(SortCell.self, forCellWithReuseIdentifier: SortCell.identifier)
+        
     }
     private func naviSetAttribute() {
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.topItem?.title = ""
         tabBarController?.tabBar.isHidden = true
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "키워드로 검색하기"
+        searchController.searchBar.setValue("취소", forKey: "cancelButtonText")
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     //MARK: - 컬렉션뷰 데이터소스
@@ -73,4 +82,13 @@ class SearchCollectionViewController: UICollectionViewController {
         return cell
     }
 
+}
+
+
+//MARK: - SearchResultsUpdating
+
+extension SearchCollectionViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print("123")
+    }
 }
