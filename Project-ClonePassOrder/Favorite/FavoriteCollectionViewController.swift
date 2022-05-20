@@ -35,7 +35,16 @@ class FavoriteViewController: UICollectionViewController {
                 )
                 return section
             default:
-                return NSCollectionLayoutSection.sortLayout()
+                return NSCollectionLayoutSection.sortLayout(
+                    supplementaryItem: .init(
+                        layoutSize: .init(
+                            widthDimension: .fractionalWidth(1),
+                            heightDimension: .estimated(100)
+                        ),
+                        elementKind: UICollectionView.elementKindSectionHeader,
+                        alignment: .topLeading
+                    )
+                )
             }
         }
         super.init(collectionViewLayout: layout)
@@ -54,6 +63,11 @@ class FavoriteViewController: UICollectionViewController {
         collectionView.register(
             SecondADCell.self,
             forCellWithReuseIdentifier: SecondADCell.identifier
+        )
+        collectionView.register(
+            FavoriteHeader.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: FavoriteHeader.identifier
         )
     }
     private func naviSetAttribute() {
@@ -95,5 +109,17 @@ class FavoriteViewController: UICollectionViewController {
             )
             return cell
         }
+    }
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String
+        , at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: FavoriteHeader.identifier,
+            for: indexPath
+        ) as! FavoriteHeader
+        return header
     }
 }
