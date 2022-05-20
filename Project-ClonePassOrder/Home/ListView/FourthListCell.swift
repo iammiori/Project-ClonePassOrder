@@ -46,9 +46,10 @@ class FourthListCell: UICollectionViewCell {
             make.height.equalTo(20)
         }
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(separatorView)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(200)
+            make.top.equalTo(separatorView).offset(20)
+            make.leading.equalToSuperview().offset(50)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(220)
         }
     }
 }

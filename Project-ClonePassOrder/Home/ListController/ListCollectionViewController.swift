@@ -145,7 +145,7 @@ class ListCollectionViewController: UICollectionViewController {
                  )
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                      heightDimension: .estimated(200)),
+                                      heightDimension: .estimated(260)),
                     subitems: [item])
                  let section = NSCollectionLayoutSection(group: group)
                  section.orthogonalScrollingBehavior = .none
