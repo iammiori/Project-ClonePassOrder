@@ -31,7 +31,7 @@ class FavoriteViewController: UICollectionViewController {
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .none
                 section.contentInsets = NSDirectionalEdgeInsets(
-                    top: 20, leading: 10, bottom: 100, trailing: 10
+                    top: 20, leading: 10, bottom: 50, trailing: 10
                 )
                 return section
             default:
