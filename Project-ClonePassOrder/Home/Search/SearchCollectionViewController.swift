@@ -9,9 +9,34 @@ import UIKit
 
 class SearchCollectionViewController: UICollectionViewController {
 
+    //MARK: - 라이프사이클
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setAtrribute()
+    }
+    init() {
+        let layout = UICollectionViewCompositionalLayout { section, env in
+             let item = NSCollectionLayoutItem(
+                layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                  heightDimension: .fractionalHeight(1))
+             )
+             item.contentInsets = NSDirectionalEdgeInsets(
+                top:0, leading: 0, bottom: 20, trailing: 10
+             )
+             let group = NSCollectionLayoutGroup.horizontal(
+                layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                  heightDimension: .fractionalHeight(1/2.7)),
+                subitem: item, count: 2
+             )
+             group.contentInsets.leading = 10
+             let section = NSCollectionLayoutSection(group: group)
+            return section
+        }
+        super.init(collectionViewLayout: layout)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: - 메서드
@@ -25,7 +50,7 @@ class SearchCollectionViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 0
+        return 10
     }
     override func collectionView(
         _ collectionView: UICollectionView,
