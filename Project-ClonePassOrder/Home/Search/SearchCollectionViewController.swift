@@ -15,7 +15,7 @@ class SearchCollectionViewController: UICollectionViewController {
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "검색결과없음이미지")
-        iv.backgroundColor = .red
+        iv.backgroundColor = .lightGray
         return iv
     }()
     
