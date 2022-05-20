@@ -8,7 +8,9 @@
 import UIKit
 
 extension NSCollectionLayoutSection {
-   static func sortLayout() -> NSCollectionLayoutSection {
+    static func sortLayout(
+        supplementaryItem: NSCollectionLayoutBoundarySupplementaryItem? = nil
+    ) -> NSCollectionLayoutSection {
             let item = NSCollectionLayoutItem(
                 layoutSize: .init(widthDimension: .fractionalWidth(1),
                                   heightDimension: .fractionalHeight(1))
@@ -23,6 +25,11 @@ extension NSCollectionLayoutSection {
             )
             group.contentInsets.leading = 10
             let section = NSCollectionLayoutSection(group: group)
+        if let item = supplementaryItem {
+            section.boundarySupplementaryItems = [item]
             return section
+        } else {
+            return section
+        }
     }
 }
