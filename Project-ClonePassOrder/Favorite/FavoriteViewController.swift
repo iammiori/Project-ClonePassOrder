@@ -30,9 +30,9 @@ class FavoriteViewController: UICollectionViewController {
                    subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .none
-                section.contentInsets.top = 20
-                section.contentInsets.bottom = 100
-                section.contentInsets.leading = 50
+                section.contentInsets = NSDirectionalEdgeInsets(
+                    top: 20, leading: 10, bottom: 100, trailing: 10
+                )
                 return section
             default:
                 return NSCollectionLayoutSection.sortLayout()
@@ -84,6 +84,7 @@ class FavoriteViewController: UICollectionViewController {
                 withReuseIdentifier: SecondADCell.identifier,
                 for: indexPath
             )
+            cell.backgroundColor = .red
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(
