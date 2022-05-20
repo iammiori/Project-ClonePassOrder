@@ -87,6 +87,8 @@ class HomeViewController: UIViewController {
         stateButtonTapped()
     }
     @objc private func searchButtonTapped() {
+        let vc = SearchCollectionViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - 메서드

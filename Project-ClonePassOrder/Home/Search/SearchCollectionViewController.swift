@@ -14,6 +14,7 @@ class SearchCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setAtrribute()
+        naviSetAttribute()
     }
     init() {
         let layout = UICollectionViewCompositionalLayout { section, env in
@@ -42,6 +43,12 @@ class SearchCollectionViewController: UICollectionViewController {
     //MARK: - 메서드
     private func setAtrribute() {
         collectionView.register(SortCell.self, forCellWithReuseIdentifier: SortCell.identifier)
+    }
+    private func naviSetAttribute() {
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.topItem?.title = ""
+        tabBarController?.tabBar.isHidden = true
     }
 
     //MARK: - 컬렉션뷰 데이터소스
