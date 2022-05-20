@@ -12,6 +12,12 @@ class SearchCollectionViewController: UICollectionViewController {
     //MARK: - 프로퍼티
     
     private let searchController = UISearchController(searchResultsController: nil)
+    private let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "검색결과없음이미지")
+        iv.backgroundColor = .red
+        return iv
+    }()
     
     //MARK: - 라이프사이클
     
@@ -19,6 +25,7 @@ class SearchCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         setAtrribute()
         naviSetAttribute()
+        setLayout()
     }
     init() {
         let layout = UICollectionViewCompositionalLayout { section, env in
@@ -45,6 +52,13 @@ class SearchCollectionViewController: UICollectionViewController {
     }
     
     //MARK: - 메서드
+    private func setLayout() {
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(view.snp.topMargin)
+        }
+    }
     private func setAtrribute() {
         collectionView.register(SortCell.self, forCellWithReuseIdentifier: SortCell.identifier)
         
