@@ -16,8 +16,13 @@ class FourthListCell: UICollectionViewCell {
     
     private let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemGray5
         return view
+    }()
+    private let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "리스트로보기이미지")
+        return iv
     }()
     
     //MARK: - 라이프사이클
@@ -33,12 +38,17 @@ class FourthListCell: UICollectionViewCell {
     //MARK: - 메서드
     
     private func setLayout() {
-        [separatorView].forEach {
+        [separatorView,imageView].forEach {
             self.addSubview($0)
         }
         separatorView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(20)
+        }
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(separatorView)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(200)
         }
     }
 }
