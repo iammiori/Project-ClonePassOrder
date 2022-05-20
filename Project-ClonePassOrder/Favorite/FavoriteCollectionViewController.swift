@@ -13,8 +13,9 @@ class FavoriteViewController: UICollectionViewController {
     private var 임시카운트 = 0
     private let imageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "검색결과없음이미지")
-        iv.backgroundColor = .lightGray
+        iv.image = UIImage(named: "즐겨찾기없음이미지")
+        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = .white
         return iv
     }()
     
@@ -22,6 +23,7 @@ class FavoriteViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLayout()
         setAtrribute()
         naviSetAttribute()
     }
@@ -63,7 +65,13 @@ class FavoriteViewController: UICollectionViewController {
     }
     
     //MARK: - 메서드
-    
+    private func setLayout() {
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(view.snp.topMargin)
+        }
+    }
     private func setAtrribute() {
         collectionView.register(
             SortCell.self,
@@ -97,7 +105,13 @@ class FavoriteViewController: UICollectionViewController {
         case 0:
             return 1
         default:
-            return 10
+            if 임시카운트 == 0 {
+                imageView.isHidden = false
+                return 임시카운트
+            } else {
+                imageView.isHidden = true
+                return 임시카운트
+            }
         }
     }
     override func collectionView(
