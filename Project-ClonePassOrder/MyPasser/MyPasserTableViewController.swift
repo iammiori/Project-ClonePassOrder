@@ -23,6 +23,8 @@ class MyPasserTableViewController: UITableViewController {
             MyPasserCell.self,
             forCellReuseIdentifier: MyPasserCell.identifier
         )
+        let headerView = MyPasserHeader(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 150))
+        tableView.tableHeaderView = headerView
         tableView.rowHeight = 50
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemBackground
@@ -140,6 +142,4 @@ class MyPasserTableViewController: UITableViewController {
         }
         
     }
-    
-
 }
