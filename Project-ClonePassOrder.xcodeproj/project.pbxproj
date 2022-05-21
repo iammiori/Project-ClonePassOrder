@@ -16,12 +16,7 @@
 		3D2ED9B02835455B000B0501 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9A72835455B000B0501 /* MenuCollectionViewCell.swift */; };
 		3D2ED9B12835455B000B0501 /* DetailMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9A82835455B000B0501 /* DetailMenuTableView.swift */; };
 		3D2ED9B22835455B000B0501 /* MenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9A92835455B000B0501 /* MenuCollectionView.swift */; };
-		3D2ED9B728354579000B0501 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9B428354579000B0501 /* APIKeys.swift */; };
 		3D2ED9B828354579000B0501 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9B628354579000B0501 /* Constant.swift */; };
-		3D2ED9BB28355A2B000B0501 /* OrderMenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9BA28355A2B000B0501 /* OrderMenuDetailViewController.swift */; };
-		3D2ED9C0283600E8000B0501 /* OrderMenuDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9BF283600E8000B0501 /* OrderMenuDetailTableView.swift */; };
-		3D2ED9C328361613000B0501 /* OrderMenuDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9C228361613000B0501 /* OrderMenuDetailInfoCell.swift */; };
-		3D2ED9C528361BEB000B0501 /* QuantitySelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9C428361BEB000B0501 /* QuantitySelectCell.swift */; };
 		4B870C8CF724795D1547B76C /* Pods_Project_ClonePassOrder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007EB4BE1D657C1590A20F12 /* Pods_Project_ClonePassOrder.framework */; };
 		891C2B342834E88800972E25 /* StoreDetailStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B302834E88800972E25 /* StoreDetailStoryView.swift */; };
 		891C2B352834E88800972E25 /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B312834E88800972E25 /* StoreDetailViewController.swift */; };
@@ -41,25 +36,25 @@
 		FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */; };
 		FE210D5D282BC2CD009A4EB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE210D5C282BC2CD009A4EB8 /* Assets.xcassets */; };
 		FE210D60282BC2CD009A4EB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE210D5E282BC2CD009A4EB8 /* LaunchScreen.storyboard */; };
+		FE2D31832838DB1A005E5E31 /* MyPasserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C9282DF97400605A25 /* MyPasserTableViewController.swift */; };
+		FE2D31842838DB1E005E5E31 /* FavoriteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteCollectionViewController.swift */; };
 		FE4BEF002832058800530B08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BEEFF2832058800530B08 /* LoginViewController.swift */; };
 		FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */; };
 		FE5840B328322EC100287753 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B228322EC100287753 /* EmailLoginViewController.swift */; };
 		FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B4283276D700287753 /* SignUpViewController.swift */; };
 		FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840C228334BC300287753 /* AgreementViewController.swift */; };
-		FE6D68122838914C00184329 /* MyPasserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D68112838914C00184329 /* MyPasserCell.swift */; };
-		FE6D68142838A02500184329 /* MyPasserHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D68132838A02500184329 /* MyPasserHeader.swift */; };
 		FE6D680C28378C2100184329 /* CompositionalLayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */; };
 		FE6D680E2837986000184329 /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D680D2837986000184329 /* FavoriteHeader.swift */; };
+		FE6D68122838914C00184329 /* MyPasserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D68112838914C00184329 /* MyPasserCell.swift */; };
+		FE6D68142838A02500184329 /* MyPasserHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D68132838A02500184329 /* MyPasserHeader.swift */; };
 		FEBBEC44283678180027EE4F /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC43283678180027EE4F /* SortCell.swift */; };
 		FEBBEC4B28373A7A0027EE4F /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */; };
+		FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4C283747C60027EE4F /* FourthListCell.swift */; };
 		FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeViewController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */; };
-		FED158C3282DF92100605A25 /* FavoriteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteCollectionViewController.swift */; };
 		FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C6282DF95F00605A25 /* qrCameraViewController.swift */; };
-		FED158CA282DF97400605A25 /* MyPasserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C9282DF97400605A25 /* MyPasserTableViewController.swift */; };
 		FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158CC282DFB2900605A25 /* Extenstion.swift */; };
 		FEDFF5222833852900E65E45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDFF5212833852900E65E45 /* TabBarController.swift */; };
-    FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4C283747C60027EE4F /* FourthListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,12 +68,7 @@
 		3D2ED9A72835455B000B0501 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		3D2ED9A82835455B000B0501 /* DetailMenuTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMenuTableView.swift; sourceTree = "<group>"; };
 		3D2ED9A92835455B000B0501 /* MenuCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionView.swift; sourceTree = "<group>"; };
-		3D2ED9B428354579000B0501 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		3D2ED9B628354579000B0501 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		3D2ED9BA28355A2B000B0501 /* OrderMenuDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMenuDetailViewController.swift; sourceTree = "<group>"; };
-		3D2ED9BF283600E8000B0501 /* OrderMenuDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMenuDetailTableView.swift; sourceTree = "<group>"; };
-		3D2ED9C228361613000B0501 /* OrderMenuDetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMenuDetailInfoCell.swift; sourceTree = "<group>"; };
-		3D2ED9C428361BEB000B0501 /* QuantitySelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitySelectCell.swift; sourceTree = "<group>"; };
 		624AC09E484F17F2CD08E630 /* Pods-Project-ClonePassOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project-ClonePassOrder.release.xcconfig"; path = "Target Support Files/Pods-Project-ClonePassOrder/Pods-Project-ClonePassOrder.release.xcconfig"; sourceTree = "<group>"; };
 		7680081A2B264A925D9F6DE1 /* Pods-Project-ClonePassOrder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project-ClonePassOrder.debug.xcconfig"; path = "Target Support Files/Pods-Project-ClonePassOrder/Pods-Project-ClonePassOrder.debug.xcconfig"; sourceTree = "<group>"; };
 		891C2B302834E88800972E25 /* StoreDetailStoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailStoryView.swift; sourceTree = "<group>"; };
@@ -106,12 +96,13 @@
 		FE5840B228322EC100287753 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		FE5840B4283276D700287753 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FE5840C228334BC300287753 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
-		FE6D68112838914C00184329 /* MyPasserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserCell.swift; sourceTree = "<group>"; };
-		FE6D68132838A02500184329 /* MyPasserHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserHeader.swift; sourceTree = "<group>"; };
 		FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayoutExtension.swift; sourceTree = "<group>"; };
 		FE6D680D2837986000184329 /* FavoriteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeader.swift; sourceTree = "<group>"; };
+		FE6D68112838914C00184329 /* MyPasserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserCell.swift; sourceTree = "<group>"; };
+		FE6D68132838A02500184329 /* MyPasserHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserHeader.swift; sourceTree = "<group>"; };
 		FEBBEC43283678180027EE4F /* SortCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
 		FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
+		FEBBEC4C283747C60027EE4F /* FourthListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthListCell.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		FED158C2282DF92100605A25 /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +110,6 @@
 		FED158C9282DF97400605A25 /* MyPasserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserTableViewController.swift; sourceTree = "<group>"; };
 		FED158CC282DFB2900605A25 /* Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstion.swift; sourceTree = "<group>"; };
 		FEDFF5212833852900E65E45 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-    FEBBEC4C283747C60027EE4F /* FourthListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,14 +172,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		3D2ED9B328354579000B0501 /* Secret */ = {
-			isa = PBXGroup;
-			children = (
-				3D2ED9B428354579000B0501 /* APIKeys.swift */,
-			);
-			path = Secret;
-			sourceTree = "<group>";
-		};
 		3D2ED9B528354579000B0501 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,44 +183,8 @@
 		3D2ED9B928355A16000B0501 /* OrderMenuDetail */ = {
 			isa = PBXGroup;
 			children = (
-				3D2ED9BE2835FF95000B0501 /* Model */,
-				3D2ED9BD2835FF82000B0501 /* View */,
-				3D2ED9BC2835FF76000B0501 /* ViewModel */,
-				3D2ED9BA28355A2B000B0501 /* OrderMenuDetailViewController.swift */,
 			);
 			path = OrderMenuDetail;
-			sourceTree = "<group>";
-		};
-		3D2ED9BC2835FF76000B0501 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3D2ED9BD2835FF82000B0501 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3D2ED9BF283600E8000B0501 /* OrderMenuDetailTableView.swift */,
-				3D2ED9C1283615F5000B0501 /* Cell */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3D2ED9BE2835FF95000B0501 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		3D2ED9C1283615F5000B0501 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3D2ED9C228361613000B0501 /* OrderMenuDetailInfoCell.swift */,
-				3D2ED9C428361BEB000B0501 /* QuantitySelectCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		891C2B2F2834E88800972E25 /* StoreDetail */ = {
@@ -403,7 +349,6 @@
 			isa = PBXGroup;
 			children = (
 				3D2ED9B528354579000B0501 /* Constant */,
-				3D2ED9B328354579000B0501 /* Secret */,
 				FEBBEC43283678180027EE4F /* SortCell.swift */,
 				FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */,
 				FED158CC282DFB2900605A25 /* Extenstion.swift */,
@@ -535,7 +480,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D2ED9C0283600E8000B0501 /* OrderMenuDetailTableView.swift in Sources */,
+				FE2D31842838DB1E005E5E31 /* FavoriteCollectionViewController.swift in Sources */,
+				FE2D31832838DB1A005E5E31 /* MyPasserTableViewController.swift in Sources */,
 				FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */,
 				FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */,
 				891C2B342834E88800972E25 /* StoreDetailStoryView.swift in Sources */,
@@ -551,12 +497,7 @@
 				FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */,
 				3D2ED9AD2835455B000B0501 /* CategoryModel.swift in Sources */,
 				3D2ED9AE2835455B000B0501 /* OrderMenuSearchBar.swift in Sources */,
-				FED158CA282DF97400605A25 /* MyPasserViewController.swift in Sources */,
 				FE6D68142838A02500184329 /* MyPasserHeader.swift in Sources */,
-				FED158CA282DF97400605A25 /* MyPasserTableViewController.swift in Sources */,
-				FED158C3282DF92100605A25 /* FavoriteViewController.swift in Sources */,
-				FED158CA282DF97400605A25 /* MyPasserViewController.swift in Sources */,
-				FED158C3282DF92100605A25 /* FavoriteCollectionViewController.swift in Sources */,
 				FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */,
 				FE6D68122838914C00184329 /* MyPasserCell.swift in Sources */,
 				891C2B352834E88800972E25 /* StoreDetailViewController.swift in Sources */,
@@ -564,9 +505,6 @@
 				FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */,
 				FE1287E22835F5AD00B7CDC4 /* FirstListCell.swift in Sources */,
 				FE0F5AC72834EB570008017C /* ListCollectionViewController.swift in Sources */,
-				3D2ED9C528361BEB000B0501 /* QuantitySelectCell.swift in Sources */,
-				3D2ED9B728354579000B0501 /* APIKeys.swift in Sources */,
-				3D2ED9BB28355A2B000B0501 /* OrderMenuDetailViewController.swift in Sources */,
 				3D2ED9AC2835455B000B0501 /* DetailMenuTableViewModel.swift in Sources */,
 				3D2ED9B828354579000B0501 /* Constant.swift in Sources */,
 				3D2ED9AA2835455B000B0501 /* OrderMenuViewController.swift in Sources */,
@@ -577,7 +515,6 @@
 				FE1287E62835FFD600B7CDC4 /* SecondListCell.swift in Sources */,
 				FE6D680C28378C2100184329 /* CompositionalLayoutExtension.swift in Sources */,
 				891C2B372834E88800972E25 /* StoreDetailInfoView.swift in Sources */,
-				3D2ED9C328361613000B0501 /* OrderMenuDetailInfoCell.swift in Sources */,
 				FE5840B328322EC100287753 /* EmailLoginViewController.swift in Sources */,
 				FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */,
 				FE6D680E2837986000184329 /* FavoriteHeader.swift in Sources */,
