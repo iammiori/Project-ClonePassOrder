@@ -23,6 +23,7 @@
 		FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B4283276D700287753 /* SignUpViewController.swift */; };
 		FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840C228334BC300287753 /* AgreementViewController.swift */; };
 		FE6D68122838914C00184329 /* MyPasserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D68112838914C00184329 /* MyPasserCell.swift */; };
+		FE6D68142838A02500184329 /* MyPasserHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D68132838A02500184329 /* MyPasserHeader.swift */; };
 		FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeViewController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */; };
 		FED158C3282DF92100605A25 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteViewController.swift */; };
@@ -53,6 +54,7 @@
 		FE5840B4283276D700287753 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FE5840C228334BC300287753 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		FE6D68112838914C00184329 /* MyPasserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserCell.swift; sourceTree = "<group>"; };
+		FE6D68132838A02500184329 /* MyPasserHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserHeader.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		FED158C2282DF92100605A25 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				FED158C9282DF97400605A25 /* MyPasserTableViewController.swift */,
 				FE6D68112838914C00184329 /* MyPasserCell.swift */,
+				FE6D68132838A02500184329 /* MyPasserHeader.swift */,
 			);
 			path = MyPasser;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */,
 				FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */,
 				FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */,
+				FE6D68142838A02500184329 /* MyPasserHeader.swift in Sources */,
 				FED158CA282DF97400605A25 /* MyPasserTableViewController.swift in Sources */,
 				FED158C3282DF92100605A25 /* FavoriteViewController.swift in Sources */,
 				FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */,
