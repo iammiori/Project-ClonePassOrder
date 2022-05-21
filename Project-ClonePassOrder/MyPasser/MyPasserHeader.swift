@@ -35,7 +35,6 @@ class MyPasserHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setLayout()
-        setAtrribute()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -44,8 +43,18 @@ class MyPasserHeader: UITableViewHeaderFooterView {
     //MARK: - 메서드
     
     private func setLayout() {
-        
-    }
-    private func setAtrribute() {
+        [imageView,label].forEach {
+            self.addSubview($0)
+        }
+        imageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.height.width.equalTo(50)
+            make.centerY.equalToSuperview()
+        }
+        label.snp.makeConstraints { make in
+            make.leading.equalTo(imageView).offset(10)
+            make.trailing.equalToSuperview().offset(20)
+            make.centerY.equalTo(imageView)
+        }
     }
 }
