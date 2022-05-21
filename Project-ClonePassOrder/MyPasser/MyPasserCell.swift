@@ -10,6 +10,12 @@ import UIKit
 class MyPasserCell: UITableViewCell {
     
     //MARK: - 프로퍼티
+    private let label: UILabel = {
+        let lb = UILabel()
+        lb.textColor = .black
+        lb.font = .systemFont(ofSize: 20)
+        return lb
+    }()
     
     //MARK: - 라이프사이클
 
@@ -19,11 +25,15 @@ class MyPasserCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        setLayout()
     }
     
     //MARK: - 메서드
     private func setLayout() {
-        
+        self.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
     }
 
 }
