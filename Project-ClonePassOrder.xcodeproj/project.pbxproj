@@ -28,6 +28,15 @@
 		891C2B362834E88800972E25 /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B322834E88800972E25 /* StoryCollectionViewCell.swift */; };
 		891C2B372834E88800972E25 /* StoreDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B332834E88800972E25 /* StoreDetailInfoView.swift */; };
 		FE0F5AC72834EB570008017C /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */; };
+		FE0F5ACD283524D70008017C /* FirstADCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5ACC283524D70008017C /* FirstADCell.swift */; };
+		FE0F5ACF2835E25C0008017C /* SecondADCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5ACE2835E25C0008017C /* SecondADCell.swift */; };
+		FE1287E22835F5AD00B7CDC4 /* FirstListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E12835F5AD00B7CDC4 /* FirstListCell.swift */; };
+		FE1287E42835F6DD00B7CDC4 /* ListExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */; };
+		FE1287E62835FFD600B7CDC4 /* SecondListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */; };
+		FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287E72836002600B7CDC4 /* ThirdListCell.swift */; };
+		FE1287EB283614B300B7CDC4 /* ListCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */; };
+		FE1287ED28361B0500B7CDC4 /* ListCellFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287EC28361B0400B7CDC4 /* ListCellFooter.swift */; };
+		FE1287F1283623BF00B7CDC4 /* MoreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1287F0283623BF00B7CDC4 /* MoreCollectionViewController.swift */; };
 		FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */; };
 		FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */; };
 		FE210D5D282BC2CD009A4EB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE210D5C282BC2CD009A4EB8 /* Assets.xcassets */; };
@@ -37,13 +46,20 @@
 		FE5840B328322EC100287753 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B228322EC100287753 /* EmailLoginViewController.swift */; };
 		FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840B4283276D700287753 /* SignUpViewController.swift */; };
 		FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5840C228334BC300287753 /* AgreementViewController.swift */; };
+		FE6D68122838914C00184329 /* MyPasserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D68112838914C00184329 /* MyPasserCell.swift */; };
+		FE6D68142838A02500184329 /* MyPasserHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D68132838A02500184329 /* MyPasserHeader.swift */; };
+		FE6D680C28378C2100184329 /* CompositionalLayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */; };
+		FE6D680E2837986000184329 /* FavoriteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D680D2837986000184329 /* FavoriteHeader.swift */; };
+		FEBBEC44283678180027EE4F /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC43283678180027EE4F /* SortCell.swift */; };
+		FEBBEC4B28373A7A0027EE4F /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */; };
 		FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeViewController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */; };
-		FED158C3282DF92100605A25 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteViewController.swift */; };
+		FED158C3282DF92100605A25 /* FavoriteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C2282DF92100605A25 /* FavoriteCollectionViewController.swift */; };
 		FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C6282DF95F00605A25 /* qrCameraViewController.swift */; };
-		FED158CA282DF97400605A25 /* MyPasserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C9282DF97400605A25 /* MyPasserViewController.swift */; };
+		FED158CA282DF97400605A25 /* MyPasserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C9282DF97400605A25 /* MyPasserTableViewController.swift */; };
 		FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158CC282DFB2900605A25 /* Extenstion.swift */; };
 		FEDFF5222833852900E65E45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDFF5212833852900E65E45 /* TabBarController.swift */; };
+    FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4C283747C60027EE4F /* FourthListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +86,15 @@
 		891C2B322834E88800972E25 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		891C2B332834E88800972E25 /* StoreDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailInfoView.swift; sourceTree = "<group>"; };
 		FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
+		FE0F5ACC283524D70008017C /* FirstADCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstADCell.swift; sourceTree = "<group>"; };
+		FE0F5ACE2835E25C0008017C /* SecondADCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondADCell.swift; sourceTree = "<group>"; };
+		FE1287E12835F5AD00B7CDC4 /* FirstListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstListCell.swift; sourceTree = "<group>"; };
+		FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExtenstion.swift; sourceTree = "<group>"; };
+		FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondListCell.swift; sourceTree = "<group>"; };
+		FE1287E72836002600B7CDC4 /* ThirdListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdListCell.swift; sourceTree = "<group>"; };
+		FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellHeader.swift; sourceTree = "<group>"; };
+		FE1287EC28361B0400B7CDC4 /* ListCellFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellFooter.swift; sourceTree = "<group>"; };
+		FE1287F0283623BF00B7CDC4 /* MoreCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCollectionViewController.swift; sourceTree = "<group>"; };
 		FE210D50282BC2CC009A4EB8 /* Project-ClonePassOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project-ClonePassOrder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE210D53282BC2CC009A4EB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE210D55282BC2CC009A4EB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,13 +106,20 @@
 		FE5840B228322EC100287753 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		FE5840B4283276D700287753 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FE5840C228334BC300287753 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		FE6D68112838914C00184329 /* MyPasserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserCell.swift; sourceTree = "<group>"; };
+		FE6D68132838A02500184329 /* MyPasserHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserHeader.swift; sourceTree = "<group>"; };
+		FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayoutExtension.swift; sourceTree = "<group>"; };
+		FE6D680D2837986000184329 /* FavoriteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeader.swift; sourceTree = "<group>"; };
+		FEBBEC43283678180027EE4F /* SortCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
+		FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
-		FED158C2282DF92100605A25 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		FED158C2282DF92100605A25 /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
 		FED158C6282DF95F00605A25 /* qrCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCameraViewController.swift; sourceTree = "<group>"; };
-		FED158C9282DF97400605A25 /* MyPasserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserViewController.swift; sourceTree = "<group>"; };
+		FED158C9282DF97400605A25 /* MyPasserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserTableViewController.swift; sourceTree = "<group>"; };
 		FED158CC282DFB2900605A25 /* Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstion.swift; sourceTree = "<group>"; };
 		FEDFF5212833852900E65E45 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+    FEBBEC4C283747C60027EE4F /* FourthListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +269,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FE0F5AC928350F270008017C /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F5ACC283524D70008017C /* FirstADCell.swift */,
+				FE0F5ACE2835E25C0008017C /* SecondADCell.swift */,
+				FE1287E12835F5AD00B7CDC4 /* FirstListCell.swift */,
+				FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */,
+				FE1287E72836002600B7CDC4 /* ThirdListCell.swift */,
+				FEBBEC4C283747C60027EE4F /* FourthListCell.swift */,
+				FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */,
+				FE1287EC28361B0400B7CDC4 /* ListCellFooter.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		FE1287E92836004700B7CDC4 /* ListController */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */,
+				FE1287F0283623BF00B7CDC4 /* MoreCollectionViewController.swift */,
+			);
+			path = ListController;
+			sourceTree = "<group>";
+		};
 		FE210D47282BC2CC009A4EB8 = {
 			isa = PBXGroup;
 			children = (
@@ -289,11 +345,21 @@
 			path = LoginAndSignUp;
 			sourceTree = "<group>";
 		};
+		FEBBEC4928373A660027EE4F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		FED158BB282DF84900605A25 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				FED158BC282DF86700605A25 /* HomeViewController.swift */,
-				FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */,
+				FEBBEC4928373A660027EE4F /* Search */,
+				FE1287E92836004700B7CDC4 /* ListController */,
+				FE0F5AC928350F270008017C /* ListView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -309,7 +375,8 @@
 		FED158C1282DF90A00605A25 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				FED158C2282DF92100605A25 /* FavoriteViewController.swift */,
+				FED158C2282DF92100605A25 /* FavoriteCollectionViewController.swift */,
+				FE6D680D2837986000184329 /* FavoriteHeader.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -325,7 +392,9 @@
 		FED158C8282DF96400605A25 /* MyPasser */ = {
 			isa = PBXGroup;
 			children = (
-				FED158C9282DF97400605A25 /* MyPasserViewController.swift */,
+				FED158C9282DF97400605A25 /* MyPasserTableViewController.swift */,
+				FE6D68112838914C00184329 /* MyPasserCell.swift */,
+				FE6D68132838A02500184329 /* MyPasserHeader.swift */,
 			);
 			path = MyPasser;
 			sourceTree = "<group>";
@@ -335,8 +404,11 @@
 			children = (
 				3D2ED9B528354579000B0501 /* Constant */,
 				3D2ED9B328354579000B0501 /* Secret */,
+				FEBBEC43283678180027EE4F /* SortCell.swift */,
+				FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */,
 				FED158CC282DFB2900605A25 /* Extenstion.swift */,
 				FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */,
+				FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -465,19 +537,32 @@
 			files = (
 				3D2ED9C0283600E8000B0501 /* OrderMenuDetailTableView.swift in Sources */,
 				FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */,
+				FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */,
 				891C2B342834E88800972E25 /* StoreDetailStoryView.swift in Sources */,
+				FE0F5ACD283524D70008017C /* FirstADCell.swift in Sources */,
 				FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */,
+				FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */,
+				FEBBEC44283678180027EE4F /* SortCell.swift in Sources */,
+				FE1287E42835F6DD00B7CDC4 /* ListExtenstion.swift in Sources */,
+				FE1287EB283614B300B7CDC4 /* ListCellHeader.swift in Sources */,
 				FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */,
 				FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */,
+				FEBBEC4B28373A7A0027EE4F /* SearchCollectionViewController.swift in Sources */,
 				FE5840C328334BC300287753 /* AgreementViewController.swift in Sources */,
 				3D2ED9AD2835455B000B0501 /* CategoryModel.swift in Sources */,
 				3D2ED9AE2835455B000B0501 /* OrderMenuSearchBar.swift in Sources */,
 				FED158CA282DF97400605A25 /* MyPasserViewController.swift in Sources */,
+				FE6D68142838A02500184329 /* MyPasserHeader.swift in Sources */,
+				FED158CA282DF97400605A25 /* MyPasserTableViewController.swift in Sources */,
 				FED158C3282DF92100605A25 /* FavoriteViewController.swift in Sources */,
+				FED158CA282DF97400605A25 /* MyPasserViewController.swift in Sources */,
+				FED158C3282DF92100605A25 /* FavoriteCollectionViewController.swift in Sources */,
 				FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */,
+				FE6D68122838914C00184329 /* MyPasserCell.swift in Sources */,
 				891C2B352834E88800972E25 /* StoreDetailViewController.swift in Sources */,
 				3D2ED9AB2835455B000B0501 /* MenuCollectionViewModel.swift in Sources */,
 				FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */,
+				FE1287E22835F5AD00B7CDC4 /* FirstListCell.swift in Sources */,
 				FE0F5AC72834EB570008017C /* ListCollectionViewController.swift in Sources */,
 				3D2ED9C528361BEB000B0501 /* QuantitySelectCell.swift in Sources */,
 				3D2ED9B728354579000B0501 /* APIKeys.swift in Sources */,
@@ -489,14 +574,20 @@
 				3D2ED9AF2835455B000B0501 /* DetailMenuTableViewCell.swift in Sources */,
 				3D2ED9B22835455B000B0501 /* MenuCollectionView.swift in Sources */,
 				3D2ED9B12835455B000B0501 /* DetailMenuTableView.swift in Sources */,
+				FE1287E62835FFD600B7CDC4 /* SecondListCell.swift in Sources */,
+				FE6D680C28378C2100184329 /* CompositionalLayoutExtension.swift in Sources */,
 				891C2B372834E88800972E25 /* StoreDetailInfoView.swift in Sources */,
 				3D2ED9C328361613000B0501 /* OrderMenuDetailInfoCell.swift in Sources */,
 				FE5840B328322EC100287753 /* EmailLoginViewController.swift in Sources */,
 				FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */,
+				FE6D680E2837986000184329 /* FavoriteHeader.swift in Sources */,
 				FEDFF5222833852900E65E45 /* TabBarController.swift in Sources */,
 				FE210D56282BC2CC009A4EB8 /* SceneDelegate.swift in Sources */,
+				FE1287ED28361B0500B7CDC4 /* ListCellFooter.swift in Sources */,
+				FE0F5ACF2835E25C0008017C /* SecondADCell.swift in Sources */,
 				FE4BEF002832058800530B08 /* LoginViewController.swift in Sources */,
 				891C2B362834E88800972E25 /* StoryCollectionViewCell.swift in Sources */,
+				FE1287F1283623BF00B7CDC4 /* MoreCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
