@@ -14,7 +14,12 @@ class MyPasserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    //MARK: - 메서드
+    private func setAtrribute() {
+        
+    }
+    
     //MARK: - 테이블뷰 데이터소스
 
     override func numberOfSections(in tableView: UITableView) -> Int {
