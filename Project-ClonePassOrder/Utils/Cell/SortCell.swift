@@ -22,7 +22,7 @@ class SortCell: UICollectionViewCell {
          iv.layer.cornerRadius = 10
          return iv
      }()
-    private let nameLabel: UILabel = UILabel().listLabel(
+     let nameLabel: UILabel = UILabel().listLabel(
          text: "메가커피 양주점",
          color: .black,
          font: .boldSystemFont(ofSize: 18)

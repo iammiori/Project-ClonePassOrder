@@ -280,6 +280,25 @@
 			path = "Project-ClonePassOrder";
 			sourceTree = "<group>";
 		};
+		FE2D31862838DE1B005E5E31 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FEBBEC43283678180027EE4F /* SortCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FE2D31872838DE21005E5E31 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */,
+				FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */,
+				FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */,
+				FED158CC282DFB2900605A25 /* Extenstion.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		FE4BEEFE2832055100530B08 /* LoginAndSignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,12 +367,9 @@
 		FED158CB282DFAF700605A25 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FE2D31872838DE21005E5E31 /* Extension */,
+				FE2D31862838DE1B005E5E31 /* Cell */,
 				3D2ED9B528354579000B0501 /* Constant */,
-				FEBBEC43283678180027EE4F /* SortCell.swift */,
-				FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */,
-				FED158CC282DFB2900605A25 /* Extenstion.swift */,
-				FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */,
-				FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
