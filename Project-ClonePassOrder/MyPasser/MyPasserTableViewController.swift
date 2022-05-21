@@ -14,6 +14,7 @@ class MyPasserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setAtrribute()
+        setNaviAtrribute()
     }
     
     //MARK: - 메서드
@@ -25,6 +26,11 @@ class MyPasserTableViewController: UITableViewController {
         tableView.rowHeight = 50
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemBackground
+    }
+    private func setNaviAtrribute() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "마이패써"
     }
     
     //MARK: - 테이블뷰 데이터소스
