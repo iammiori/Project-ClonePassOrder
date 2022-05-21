@@ -15,8 +15,8 @@ class MyPasserCell: UITableViewCell {
     //MARK: - 프로퍼티
      let label: UILabel = {
         let lb = UILabel()
-        lb.textColor = .black
-        lb.font = .systemFont(ofSize: 20)
+        lb.textColor = .darkGray
+        lb.font = .systemFont(ofSize: 25)
         return lb
     }()
     
@@ -35,7 +35,8 @@ class MyPasserCell: UITableViewCell {
     private func setLayout() {
         self.addSubview(label)
         label.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.top.bottom.trailing.equalToSuperview()
+            make.leading.equalTo(20)
         }
     }
 
