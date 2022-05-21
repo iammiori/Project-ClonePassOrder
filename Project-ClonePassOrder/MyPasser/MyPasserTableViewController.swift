@@ -39,7 +39,7 @@ class MyPasserTableViewController: UITableViewController {
         _ tableView: UITableView,
         heightForHeaderInSection section: Int
     ) -> CGFloat {
-        return 20
+        return 10
     }
     override func tableView(
         _ tableView: UITableView,
@@ -56,7 +56,10 @@ class MyPasserTableViewController: UITableViewController {
             return ""
         }
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: MyPasserCell.identifier,
             for: indexPath
@@ -64,5 +67,6 @@ class MyPasserTableViewController: UITableViewController {
         cell.label.text = "\u{1F44D}\u{1F3FB}   내 스토리"
         return cell
     }
+    
 
 }
