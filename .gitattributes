@@ -1,1 +1,1 @@
-$ vi .gitattributes
+*.pbxproj binary merge=union
