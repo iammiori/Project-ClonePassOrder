@@ -62,6 +62,7 @@ extension UICollectionViewCell {
         distanceStackView.snp.makeConstraints { make in
             make.top.equalTo(timeStackView.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
         likeImage.snp.makeConstraints { make in
             make.width.height.equalTo(20)
