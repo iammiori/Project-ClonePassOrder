@@ -56,6 +56,7 @@ class ListCollectionViewController: UICollectionViewController {
                  section.contentInsets.top = 20
                  section.contentInsets.bottom = 40
                  section.contentInsets.leading = 50
+                 section.contentInsets.trailing = -5
                  return section
              case 2:
                  let item = NSCollectionLayoutItem(
@@ -205,6 +206,23 @@ class ListCollectionViewController: UICollectionViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
             withReuseIdentifier: ListCellFooter.identifier)
     }
+    private func setListCellHeader(
+        header: ListCellHeader,
+        firstText: String,
+        secondText: String,
+        rangeText: String,
+        color: UIColor
+    ) -> ListCellHeader {
+        header.firstLabel.text = firstText
+        header.secondLabel.text = secondText
+        let attributedString = NSMutableAttributedString(string: header.secondLabel.text!)
+        attributedString.addAttribute(
+            .foregroundColor,
+            value: color,
+            range: (header.secondLabel.text! as NSString).range(of:rangeText))
+        header.secondLabel.attributedText = attributedString
+        return header
+    }
     
     //MARK: - 컬렉션뷰 데이터소스
     
@@ -282,43 +300,29 @@ class ListCollectionViewController: UICollectionViewController {
             ) as! ListCellHeader
             switch indexPath.section {
             case 2:
-                header.firstLabel.text = "정덕호님과"
-                header.secondLabel.text = "가까이 있는 매장이에요!"
-                let attributedString = NSMutableAttributedString(string: header.secondLabel.text!)
-                attributedString.addAttribute(
-                    .foregroundColor,
-                    value: UIColor.systemOrange,
-                    range: (header.secondLabel.text! as NSString).range(of:"가까이 있는 매장"))
-                header.secondLabel.attributedText = attributedString
-                return header
+               return self.setListCellHeader(
+                header: header,
+                firstText: "정덕호님과",
+                secondText: "가까이 있는 매장이에요!",
+                rangeText: "가까이 있는 매장",
+                color: .systemOrange
+               )
             case 3:
-                header.firstLabel.text = "정덕호님 근처에있는"
-                header.secondLabel.text = "스토리가 많은 매장이에요!"
-                let attributedString = NSMutableAttributedString(string: header.secondLabel.text!)
-                //시스템 민트색이 15.0 버전부터 된다고 하네요
-                if #available(iOS 15.0, *) {
-                    attributedString.addAttribute(
-                        .foregroundColor,
-                        value: UIColor.systemMint,
-                        range: (header.secondLabel.text! as NSString).range(of:"스토리가 많은 매장이에요!"))
-                } else {
-                    attributedString.addAttribute(
-                        .foregroundColor,
-                        value: UIColor.systemBrown,
-                        range: (header.secondLabel.text! as NSString).range(of:"스토리가 많은 매장이에요!"))
-                }
-                header.secondLabel.attributedText = attributedString
-                return header
+                return self.setListCellHeader(
+                 header: header,
+                 firstText: "정덕호님 근처에있는",
+                 secondText: "스토리가 많은 매장이에요!",
+                 rangeText: "스토리가 많은 매장",
+                 color: .systemBlue
+                )
             case 4:
-                header.firstLabel.text = "새로추가된"
-                header.secondLabel.text = "신규매장을 소개합니다!"
-                let attributedString = NSMutableAttributedString(string: header.secondLabel.text!)
-                attributedString.addAttribute(
-                    .foregroundColor,
-                    value: UIColor.systemGreen,
-                    range: (header.secondLabel.text! as NSString).range(of:"신규매장을 소개합니다!"))
-                header.secondLabel.attributedText = attributedString
-                return header
+                return self.setListCellHeader(
+                 header: header,
+                 firstText: "새로추가된",
+                 secondText: "신규매장을 소개합니다!",
+                 rangeText: "신규매장",
+                 color: .systemGreen
+                )
             default:
                 return header
             }
@@ -347,6 +351,7 @@ class ListCollectionViewController: UICollectionViewController {
         }
     }
 }
+//MARK: - 컬렉션뷰 델리게이트
 
 //MARK: - 리스트셀 델리게이트
 

@@ -29,21 +29,7 @@ class SearchCollectionViewController: UICollectionViewController {
     }
     init() {
         let layout = UICollectionViewCompositionalLayout { section, env in
-             let item = NSCollectionLayoutItem(
-                layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                  heightDimension: .fractionalHeight(1))
-             )
-             item.contentInsets = NSDirectionalEdgeInsets(
-                top:0, leading: 0, bottom: 20, trailing: 10
-             )
-             let group = NSCollectionLayoutGroup.horizontal(
-                layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                  heightDimension: .fractionalHeight(1/2.7)),
-                subitem: item, count: 2
-             )
-             group.contentInsets.leading = 10
-             let section = NSCollectionLayoutSection(group: group)
-            return section
+            return NSCollectionLayoutSection.sortLayout()
         }
         super.init(collectionViewLayout: layout)
     }
@@ -55,8 +41,9 @@ class SearchCollectionViewController: UICollectionViewController {
     private func setLayout() {
         view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.snp.topMargin)
+            make.bottom.equalToSuperview().offset(-120)
         }
     }
     private func setAtrribute() {
