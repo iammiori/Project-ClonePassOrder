@@ -17,6 +17,8 @@ class MyPasserHeader: UITableViewHeaderFooterView {
     //MARK: - 라이프사이클
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        setLayout()
+        setAtrribute()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -24,5 +26,7 @@ class MyPasserHeader: UITableViewHeaderFooterView {
     //MARK: - 메서드
     private func setLayout() {
         
+    }
+    private func setAtrribute() {
     }
 }
