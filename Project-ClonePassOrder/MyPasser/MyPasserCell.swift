@@ -16,7 +16,7 @@ class MyPasserCell: UITableViewCell {
      let label: UILabel = {
         let lb = UILabel()
         lb.textColor = .darkGray
-        lb.font = .systemFont(ofSize: 20)
+        lb.font = .systemFont(ofSize: 18)
         return lb
     }()
     

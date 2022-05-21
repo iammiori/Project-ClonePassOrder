@@ -19,14 +19,14 @@ class MyPasserHeader: UITableViewHeaderFooterView {
         let iv = UIImageView()
         iv.backgroundColor = .lightGray
         iv.clipsToBounds = true
-        iv.layer.cornerRadius = 1
+        iv.layer.cornerRadius = 45 / 2
         return iv
     }()
     private let label: UILabel = {
         let lb = UILabel()
         lb.text = "정덕호"
         lb.textColor = .black
-        lb.font = .boldSystemFont(ofSize: 20)
+        lb.font = .systemFont(ofSize: 20)
         return lb
     }()
     
@@ -48,11 +48,11 @@ class MyPasserHeader: UITableViewHeaderFooterView {
         }
         imageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
-            make.height.width.equalTo(50)
-            make.centerY.equalToSuperview()
+            make.height.width.equalTo(45)
+            make.centerY.equalToSuperview().offset(-10)
         }
         label.snp.makeConstraints { make in
-            make.leading.equalTo(imageView).offset(10)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.trailing.equalToSuperview().offset(20)
             make.centerY.equalTo(imageView)
         }
