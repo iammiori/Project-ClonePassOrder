@@ -61,12 +61,12 @@ class ListCollectionViewController: UICollectionViewController {
              case 2:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(widthDimension: .absolute(240),
-                        heightDimension: .absolute(380))
+                        heightDimension: .estimated(380))
                  )
                  item.contentInsets.trailing = 20
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .absolute(240),
-                                      heightDimension: .absolute(380)),
+                                      heightDimension: .estimated(380)),
                     subitems: [item]
                  )
                  let section = NSCollectionLayoutSection(group: group)
@@ -89,7 +89,7 @@ class ListCollectionViewController: UICollectionViewController {
              case 3:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(widthDimension: .absolute(350),
-                        heightDimension: .fractionalHeight(1))
+                        heightDimension: .estimated(300))
                  )
                  item.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 20)
                  let group = NSCollectionLayoutGroup.vertical(
@@ -115,12 +115,12 @@ class ListCollectionViewController: UICollectionViewController {
              case 4:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(
-                        widthDimension: .absolute(240), heightDimension: .absolute(320))
+                        widthDimension: .absolute(240), heightDimension: .estimated(320))
                  )
                  item.contentInsets.trailing = 20
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .absolute(240),
-                                      heightDimension: .absolute(320)),
+                                      heightDimension: .estimated(320)),
                     subitems: [item]
                  )
                  let section = NSCollectionLayoutSection(group: group)
@@ -138,6 +138,19 @@ class ListCollectionViewController: UICollectionViewController {
                  section.contentInsets.leading = 50
                  section.contentInsets.top = 20
                  section.contentInsets.bottom = 50
+                 return section
+             case 5:
+                 let item = NSCollectionLayoutItem(
+                    layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                      heightDimension: .estimated(390))
+                 )
+                 let group = NSCollectionLayoutGroup.horizontal(
+                    layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                      heightDimension: .estimated(390)),
+                    subitems: [item])
+                 let section = NSCollectionLayoutSection(group: group)
+                 section.orthogonalScrollingBehavior = .none
+                 section.contentInsets.top = 40
                  return section
              default:
                  return NSCollectionLayoutSection(
@@ -180,6 +193,10 @@ class ListCollectionViewController: UICollectionViewController {
             forCellWithReuseIdentifier: ThirdListCell.identifier
         )
         collectionView.register(
+            FourthListCell.self,
+            forCellWithReuseIdentifier: FourthListCell.identifier
+        )
+        collectionView.register(
             ListCellHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: ListCellHeader.identifier)
@@ -210,12 +227,13 @@ class ListCollectionViewController: UICollectionViewController {
     //MARK: - 컬렉션뷰 데이터소스
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 6
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
         case 1: return 1
+        case 5: return 1
         default: return 10
         }
     }
@@ -253,6 +271,12 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: ThirdListCell.identifier,
                 for: indexPath
             ) as! ThirdListCell
+            return cell
+        case 5:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: FourthListCell.identifier
+                , for: indexPath
+            ) as! FourthListCell
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(
@@ -329,6 +353,7 @@ class ListCollectionViewController: UICollectionViewController {
 }
 //MARK: - 컬렉션뷰 델리게이트
 
+//MARK: - 리스트셀 델리게이트
 
 extension ListCollectionViewController: ListCellDelegate {
     func footerTapped(title: String) {

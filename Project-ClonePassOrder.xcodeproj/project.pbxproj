@@ -42,6 +42,7 @@
 		FED158CA282DF97400605A25 /* MyPasserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C9282DF97400605A25 /* MyPasserViewController.swift */; };
 		FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158CC282DFB2900605A25 /* Extenstion.swift */; };
 		FEDFF5222833852900E65E45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDFF5212833852900E65E45 /* TabBarController.swift */; };
+    FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4C283747C60027EE4F /* FourthListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		FED158C9282DF97400605A25 /* MyPasserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasserViewController.swift; sourceTree = "<group>"; };
 		FED158CC282DFB2900605A25 /* Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstion.swift; sourceTree = "<group>"; };
 		FEDFF5212833852900E65E45 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+    FEBBEC4C283747C60027EE4F /* FourthListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				FE1287E12835F5AD00B7CDC4 /* FirstListCell.swift */,
 				FE1287E52835FFD600B7CDC4 /* SecondListCell.swift */,
 				FE1287E72836002600B7CDC4 /* ThirdListCell.swift */,
+				FEBBEC4C283747C60027EE4F /* FourthListCell.swift */,
 				FE1287EA283614B300B7CDC4 /* ListCellHeader.swift */,
 				FE1287EC28361B0400B7CDC4 /* ListCellFooter.swift */,
 			);
@@ -386,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE5840B5283276D700287753 /* SignUpViewController.swift in Sources */,
+				FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */,
 				891C2B342834E88800972E25 /* StoreDetailStoryView.swift in Sources */,
 				FE0F5ACD283524D70008017C /* FirstADCell.swift in Sources */,
 				FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */,
