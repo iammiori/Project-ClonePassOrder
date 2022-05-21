@@ -9,8 +9,11 @@ import UIKit
 
 class MyPasserCell: UITableViewCell {
     
+    //MARK: - 식별자
+    static let identifier: String = "MyPasserCell"
+    
     //MARK: - 프로퍼티
-    private let label: UILabel = {
+     let label: UILabel = {
         let lb = UILabel()
         lb.textColor = .black
         lb.font = .systemFont(ofSize: 20)
