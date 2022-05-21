@@ -40,7 +40,16 @@ class MyPasserTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        switch section {
+        case 0:
+            return 4
+        case 1:
+            return 5
+        case 2:
+            return 4
+        default:
+            return 0
+        }
     }
     override func tableView(
         _ tableView: UITableView,
@@ -71,8 +80,65 @@ class MyPasserTableViewController: UITableViewController {
             withIdentifier: MyPasserCell.identifier,
             for: indexPath
         ) as! MyPasserCell
-        cell.label.text = "\u{1F44D}\u{1F3FB}   내 스토리"
-        return cell
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                cell.label.text = "📄   내 스토리"
+                return cell
+            case 1:
+                cell.label.text = "🪙   내 포인트/스탬프"
+                return cell
+            case 2:
+                cell.label.text = "🏷   내 쿠폰"
+                return cell
+            case 3:
+                cell.label.text = "💳   내 카드"
+                return cell
+            default:
+                return cell
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                cell.label.text = "💰   패스머니"
+                return cell
+            case 1:
+                cell.label.text = "📞   전화주문 이벤트"
+                return cell
+            case 2:
+                cell.label.text = "✉️   친구 초대하기"
+                return cell
+            case 3:
+                cell.label.text = "❗️   공지사항/이벤트"
+                return cell
+            case 4:
+                cell.label.text = "🔎   자주 묻는 질문"
+                return cell
+            default:
+                return cell
+            }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                cell.label.text = "😀   프로필 수정"
+                return cell
+            case 1:
+                cell.label.text = "⏱   알림 설정"
+                return cell
+            case 2:
+                cell.label.text = "📱   버전 정보"
+                return cell
+            case 3:
+                cell.label.text = "🚪   로그아웃"
+                return cell
+            default:
+                return cell
+            }
+        default:
+            return cell
+        }
+        
     }
     
 
