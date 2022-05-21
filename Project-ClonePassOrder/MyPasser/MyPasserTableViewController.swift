@@ -24,6 +24,7 @@ class MyPasserTableViewController: UITableViewController {
         )
         tableView.rowHeight = 50
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .systemBackground
     }
     
     //MARK: - 테이블뷰 데이터소스
@@ -47,7 +48,7 @@ class MyPasserTableViewController: UITableViewController {
     ) -> String? {
         switch section {
         case 0:
-            return "마이페이지"
+            return "마이 페이지"
         case 1:
             return "모아 보기"
         case 2:
