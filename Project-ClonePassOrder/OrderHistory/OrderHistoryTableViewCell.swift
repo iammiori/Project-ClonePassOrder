@@ -192,6 +192,16 @@ class OrderHistoryTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    // MARK: - Initializer
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setLayout()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - setLayout
     
     private func setLayout() {
