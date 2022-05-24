@@ -224,7 +224,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
             make.top.leading.trailing.equalToSuperview().inset(20)
         }
         seperatorView.snp.makeConstraints { make in
-            make.top.equalTo(orderInfoStackView).offset(10)
+            make.top.equalTo(orderInfoStackView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(10)
         }
         menuLabel.snp.makeConstraints { make in
@@ -234,18 +234,18 @@ class OrderHistoryTableViewCell: UITableViewCell {
             make.width.equalTo(60)
         }
         menuStackView.snp.makeConstraints { make in
-            make.top.equalTo(seperatorView).offset(10)
+            make.top.equalTo(seperatorView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         priceLabel.snp.makeConstraints { make in
             make.width.equalTo(80)
         }
         priceStackView.snp.makeConstraints { make in
-            make.top.equalTo(seperatorView).offset(10)
+            make.top.equalTo(menuStackView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         reorderStorystackView.snp.makeConstraints { make in
-            make.top.equalTo(priceStackView).offset(10)
+            make.top.equalTo(priceStackView.snp.bottom).offset(10)
             make.leading.trailing.bottom.equalToSuperview().inset(10)
         }
     }
