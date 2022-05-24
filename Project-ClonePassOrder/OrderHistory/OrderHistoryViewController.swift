@@ -61,6 +61,14 @@ class OrderHistoryViewController: UIViewController {
         navigationItem.leftBarButtonItem?.target = self
         navigationItem.leftBarButtonItem?.action = #selector(orderDateSelectButtonTapped)
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let orderHistorTableViewHeaderHeight = orderHistorTableView.headerView(forSection: 0)?.frame.height ?? 0
+        if scrollView.contentOffset.y > orderHistorTableViewHeaderHeight {
+            navigationController?.setNavigationBarHidden(false, animated: true)
+        } else {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
