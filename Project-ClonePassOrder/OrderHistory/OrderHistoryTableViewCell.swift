@@ -191,4 +191,52 @@ class OrderHistoryTableViewCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
+    // MARK: - setLayout
+    
+    private func setLayout() {
+        contentView.backgroundColor = .systemGray5
+        
+        contentView.addSubview(orderHystoryCellView)
+        orderHystoryCellView.addSubview(orderInfoStackView)
+        orderHystoryCellView.addSubview(seperatorView)
+        orderHystoryCellView.addSubview(menuStackView)
+        orderHystoryCellView.addSubview(priceStackView)
+        orderHystoryCellView.addSubview(reorderStorystackView)
+        
+        orderHystoryCellView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview().inset(10)
+        }
+        orderNumberStateStackView.snp.makeConstraints { make in
+            make.width.equalTo(80)
+        }
+        orderInfoStackView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(20)
+        }
+        seperatorView.snp.makeConstraints { make in
+            make.top.equalTo(orderInfoStackView).offset(10)
+            make.leading.trailing.equalToSuperview().inset(10)
+        }
+        menuLabel.snp.makeConstraints { make in
+            make.width.equalTo(80)
+        }
+        moreButton.snp.makeConstraints { make in
+            make.width.equalTo(60)
+        }
+        menuStackView.snp.makeConstraints { make in
+            make.top.equalTo(seperatorView).offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        priceLabel.snp.makeConstraints { make in
+            make.width.equalTo(80)
+        }
+        priceStackView.snp.makeConstraints { make in
+            make.top.equalTo(seperatorView).offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        reorderStorystackView.snp.makeConstraints { make in
+            make.top.equalTo(priceStackView).offset(10)
+            make.leading.trailing.bottom.equalToSuperview().inset(10)
+        }
+    }
 }
