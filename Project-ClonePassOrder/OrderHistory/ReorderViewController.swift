@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ReOrderViewController: UIViewController {
+class ReorderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
