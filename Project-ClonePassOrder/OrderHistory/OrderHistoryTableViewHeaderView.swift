@@ -28,6 +28,17 @@ class OrderHistoryTableViewHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
+    // MARK: - Initializer
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        setLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK - setLayout
     
     private func setLayout() {
