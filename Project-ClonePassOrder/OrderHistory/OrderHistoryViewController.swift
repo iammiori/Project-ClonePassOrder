@@ -26,5 +26,14 @@ class OrderHistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+    // MARK - setLayout
+    
+    private func setLayout() {
+        view.addSubview(orderHistorTableView)
+        orderHistorTableView.snp.makeConstraints({ make in
+            make.leading.trailing.top.bottom.equalToSuperview()
+        })
+    }
     }
 }
