@@ -27,4 +27,22 @@ class OrderHistoryTableViewHeaderView: UITableViewHeaderFooterView {
         button.contentHorizontalAlignment = .left
         return button
     }()
+    
+    // MARK - setLayout
+    
+    private func setLayout() {
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(orderDateSelectButton)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        orderDateSelectButton.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.width.equalTo(200)
+            make.leading.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().offset(-10)
+        }
+    }
 }
