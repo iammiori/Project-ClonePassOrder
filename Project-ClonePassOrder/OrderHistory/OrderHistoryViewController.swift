@@ -31,6 +31,8 @@ class OrderHistoryViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         setDelegate()
         setLayout()
+        setNvavigation()
+        
         orderHistorTableView.register(OrderHistoryTableViewCell.self, forCellReuseIdentifier: "cellID")
         orderHistorTableView.register(OrderHistoryTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
     }
@@ -49,6 +51,15 @@ class OrderHistoryViewController: UIViewController {
     private func setDelegate() {
         orderHistorTableView.dataSource = self
         orderHistorTableView.delegate = self
+    }
+    
+    // MARK: - setNavigation
+    
+    func setNavigation() {
+        title = "주문내역"
+        navigationItem.leftBarButtonItem = orderDateSelectButton
+        navigationItem.leftBarButtonItem?.target = self
+        navigationItem.leftBarButtonItem?.action = #selector(orderDateSelectButtonTapped)
     }
 }
 
