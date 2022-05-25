@@ -22,7 +22,6 @@ class OrderHistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
         setDelegate()
         setLayout()
         setNavigation()
@@ -50,6 +49,7 @@ class OrderHistoryViewController: UIViewController {
     // MARK: - setNavigation
 
     func setNavigation() {
+        navigationController?.isNavigationBarHidden = true
         title = "주문내역"
         let orderDateSelectButton = UIBarButtonItem()
         orderDateSelectButton.title = "2022년 05월 >"
