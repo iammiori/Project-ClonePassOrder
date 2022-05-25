@@ -136,4 +136,9 @@ class WriteStoryViewController: UIViewController {
             $0.top.bottom.leading.trailing.equalToSuperview().inset(20)
         }
     }
+
+    fileprivate func setNavigation() {
+        title = "스토리 작성"
+        navigationController?.isNavigationBarHidden = false
+    }
 }
