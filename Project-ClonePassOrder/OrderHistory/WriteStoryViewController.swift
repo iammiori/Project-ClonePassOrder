@@ -147,6 +147,8 @@ final class WriteStoryViewController: UIViewController {
 
     private func setNavigation() {
         title = "스토리 작성"
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.isNavigationBarHidden = false
     }
     @objc private func back() {
