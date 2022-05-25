@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class OrderHistoryViewController: UIViewController {
+final class OrderHistoryViewController: UIViewController {
 
     // MARK: - UI Properties
 
-    let orderHistorTableView: UITableView = {
+    private let orderHistorTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.separatorStyle = .none
         return tableView
@@ -48,7 +48,7 @@ class OrderHistoryViewController: UIViewController {
 
     // MARK: - setNavigation
 
-    func setNavigation() {
+    private func setNavigation() {
         navigationController?.isNavigationBarHidden = true
         title = "주문내역"
         let orderDateSelectButton = UIBarButtonItem()
@@ -72,7 +72,7 @@ class OrderHistoryViewController: UIViewController {
 
     // MARK: - Methods
 
-    @objc func orderDateSelectButtonTapped() {
+    @objc private func orderDateSelectButtonTapped() {
         let alert = UIAlertController(title: "나의 주문 내역", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         
@@ -83,12 +83,12 @@ class OrderHistoryViewController: UIViewController {
         
         present(alert, animated: true)
     }
-    @objc func reorderButtonTapped() {
+    @objc private func reorderButtonTapped() {
         let nextViewController = UINavigationController(rootViewController: ReorderViewController())
         nextViewController.modalPresentationStyle = .fullScreen
         present(nextViewController, animated: true)
     }
-    @objc func writeStoryButtonTapped() {
+    @objc private func writeStoryButtonTapped() {
         let nextViewController = WriteStoryViewController()
         nextViewController.navigationController?.setToolbarHidden(false, animated: true)
         nextViewController.navigationController?.isNavigationBarHidden = false
