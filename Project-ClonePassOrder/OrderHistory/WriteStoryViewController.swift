@@ -141,4 +141,7 @@ class WriteStoryViewController: UIViewController {
         title = "스토리 작성"
         navigationController?.isNavigationBarHidden = false
     }
+    @objc func back() {
+        dismiss(animated: true)
+    }
 }
