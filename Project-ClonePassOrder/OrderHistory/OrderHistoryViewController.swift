@@ -17,12 +17,6 @@ class OrderHistoryViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
-    let orderDateSelectButton: UIBarButtonItem = {
-        let button = UIBarButtonItem()
-        button.title = "2022년 05월 >"
-        button.tintColor = .black
-        return button
-    }()
 
     // MARK: - View Life Cycle
 
@@ -57,6 +51,9 @@ class OrderHistoryViewController: UIViewController {
 
     func setNavigation() {
         title = "주문내역"
+        let orderDateSelectButton = UIBarButtonItem()
+        orderDateSelectButton.title = "2022년 05월 >"
+        orderDateSelectButton.tintColor = .black
         navigationItem.leftBarButtonItem = orderDateSelectButton
         navigationItem.leftBarButtonItem?.target = self
         navigationItem.leftBarButtonItem?.action = #selector(orderDateSelectButtonTapped)
