@@ -89,6 +89,14 @@ class WriteStoryViewController: UIViewController {
         return stackView
     }()
 
+    // MARK: - View Life Cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setNavigation()
+        setLayout()
+    }
+
     // MARK: - setLayout
 
     private func setLayout() {
