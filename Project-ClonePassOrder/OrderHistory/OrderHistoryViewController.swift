@@ -22,10 +22,10 @@ class OrderHistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDelegate()
-        setLayout()
-        setNavigation()
         
+        setNavigation()
+        setOrderHistorTableView()
+        setLayout()
     }
 
     // MARK: - setLayout
