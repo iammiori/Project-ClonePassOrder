@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 
 class OrderHistoryViewController: UIViewController {
-    
+
     // MARK: - UI Properties
-    
+
     let orderHistorTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.separatorStyle = .none
@@ -25,7 +25,7 @@ class OrderHistoryViewController: UIViewController {
     }()
 
     // MARK: - View Life Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -36,25 +36,25 @@ class OrderHistoryViewController: UIViewController {
         orderHistorTableView.register(OrderHistoryTableViewCell.self, forCellReuseIdentifier: "cellID")
         orderHistorTableView.register(OrderHistoryTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
     }
-    
-    // MARK - setLayout
-    
+
+    // MARK: - setLayout
+
     private func setLayout() {
         view.addSubview(orderHistorTableView)
         orderHistorTableView.snp.makeConstraints({ make in
             make.leading.trailing.top.bottom.equalToSuperview()
         })
     }
-    
-    // MARK - setDelegate
-    
-    private func setDelegate() {
+
+    // MARK: - setorderHistorTableView
+
+    private func setOrderHistorTableView() {
         orderHistorTableView.dataSource = self
         orderHistorTableView.delegate = self
     }
-    
+
     // MARK: - setNavigation
-    
+
     func setNavigation() {
         title = "주문내역"
         navigationItem.leftBarButtonItem = orderDateSelectButton
@@ -91,7 +91,6 @@ class OrderHistoryViewController: UIViewController {
         nextViewController.navigationController?.isNavigationBarHidden = false
         navigationController?.pushViewController(nextViewController, animated: true)
     }
-    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
