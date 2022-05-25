@@ -8,40 +8,40 @@
 import UIKit
 import SnapKit
 
-class WriteStoryViewController: UIViewController {
-    
+final class WriteStoryViewController: UIViewController {
+
     // MARK: - UI Properties
-    
-    let storeNameLabel: UILabel = {
+
+    private let storeNameLabel: UILabel = {
         let label = UILabel()
         label.text = "오늘도, 카페일리터 동두천점"
         label.numberOfLines = 2
         label.font = .boldSystemFont(ofSize: 25)
         return label
     }()
-    let informationLabel: UILabel = {
+    private let informationLabel: UILabel = {
         let label = UILabel()
         label.text = "스토리를 작성해 주세요"
         label.font = .boldSystemFont(ofSize: 25)
         return label
     }()
-    let storeImageView: UIImageView = {
+    private let storeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         return imageView
     }()
-    let registePictureTitleLabel: UILabel = {
+    private let registePictureTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "사진 등록이 필요해요"
         label.font = .systemFont(ofSize: 20)
         return label
     }()
-    let registePictureButton: UIButton = {
+    private let registePictureButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(#imageLiteral(resourceName: "addPicture"), for: .normal)
         return button
     }()
-    let storytitleLabel: UILabel = {
+    private let storytitleLabel: UILabel = {
         let label = UILabel()
         let text = "Q 음료의 양은 어땠나요?"
         label.text = "Q 음료의 양은 어땠나요?"
@@ -52,7 +52,7 @@ class WriteStoryViewController: UIViewController {
         label.attributedText = attributeString
         return label
     }()
-    let storyTextView: UITextView = {
+    private let storyTextView: UITextView = {
         let textView = UITextView()
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.systemGray3.cgColor
@@ -72,7 +72,7 @@ class WriteStoryViewController: UIViewController {
         button.layer.cornerRadius = 10
         return button
     }()
-    lazy var informationLabelStackView: UIStackView = {
+    private lazy var informationLabelStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [storeNameLabel, informationLabel])
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -80,7 +80,7 @@ class WriteStoryViewController: UIViewController {
         
         return stackView
     }()
-    lazy var writeStoryInpormationStackView: UIStackView = {
+    private lazy var writeStoryInpormationStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [informationLabelStackView, storeImageView])
         stackView.axis = .horizontal
         stackView.alignment = .top
@@ -145,11 +145,11 @@ class WriteStoryViewController: UIViewController {
         }
     }
 
-    fileprivate func setNavigation() {
+    private func setNavigation() {
         title = "스토리 작성"
         navigationController?.isNavigationBarHidden = false
     }
-    @objc func back() {
+    @objc private func back() {
         dismiss(animated: true)
     }
 }
