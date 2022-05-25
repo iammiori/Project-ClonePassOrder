@@ -266,5 +266,16 @@ class ReorderViewController: UIViewController {
         attributeString.addAttribute(.foregroundColor, value: UIColor.black, range: (text as NSString).range(of: "원"))
         self.priceValueLabel.attributedText = attributeString
     }
+    
+    fileprivate func setNavigation() {
+        title = "재주문"
+        let backButton = UIBarButtonItem()
+        backButton.title = "X"
+        backButton.tintColor = .black
+        
+        backButton.target = self
+        backButton.action = #selector(back)
+        navigationItem.leftBarButtonItem = backButton
+    }
     }
 }
