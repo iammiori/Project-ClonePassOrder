@@ -88,4 +88,52 @@ class WriteStoryViewController: UIViewController {
         stackView.spacing = 10
         return stackView
     }()
+
+    // MARK: - setLayout
+
+    private func setLayout() {
+        view.backgroundColor = .white
+        tabBarController?.tabBar.isHidden = true
+        
+        view.addSubview(writeStoryInpormationStackView)
+        view.addSubview(registePictureTitleLabel)
+        view.addSubview(registePictureButton)
+        view.addSubview(storytitleLabel)
+        view.addSubview(storyTextView)
+        view.addSubview(floatingView)
+        floatingView.addSubview(floatingButton)
+        
+        storeImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(80)
+        }
+        writeStoryInpormationStackView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        registePictureTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(writeStoryInpormationStackView.snp.bottom).offset(30)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        registePictureButton.snp.makeConstraints { make in
+            make.height.width.equalTo(100)
+            make.centerX.equalTo(view.snp.centerX)
+            make.top.equalTo(registePictureTitleLabel.snp.bottom).offset(20)
+        }
+        storytitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(registePictureButton.snp.bottom).offset(30)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        storyTextView.snp.makeConstraints { make in
+            make.top.equalTo(storytitleLabel.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(150)
+        }
+        floatingView.snp.makeConstraints {
+            $0.left.right.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(100)
+        }
+        floatingButton.snp.makeConstraints {
+            $0.top.bottom.leading.trailing.equalToSuperview().inset(20)
+        }
+    }
 }
