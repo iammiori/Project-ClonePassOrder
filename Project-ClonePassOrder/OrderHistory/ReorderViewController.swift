@@ -167,5 +167,104 @@ class ReorderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+    // MARK: - setLayout
+    
+    private func setLayout() {
+        view.backgroundColor = .white
+        
+        view.addSubview(reorderInfomationLabel)
+        view.addSubview(receiptView)
+        view.bringSubviewToFront(reorderInfomationLabel)
+        receiptView.addSubview(storeNameLabel)
+        receiptView.addSubview(currentOrderDateLabel)
+        receiptView.addSubview(seperator1)
+        receiptView.addSubview(menuTitleLabel)
+        receiptView.addSubview(reorderMenuTableView)
+        receiptView.addSubview(seperator2)
+        receiptView.addSubview(expectationStackView)
+        receiptView.addSubview(requestsTitleLabel)
+        receiptView.addSubview(requestsTextField)
+        receiptView.addSubview(textFieldLineView)
+        receiptView.addSubview(paymentMethodStackView)
+        receiptView.addSubview(priceStackView)
+        receiptView.addSubview(paymentStackView)
+        
+        reorderInfomationLabel.snp.makeConstraints { make in
+            make.width.equalTo(view.frame.width / 2)
+            make.height.equalTo(50)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        receiptView.snp.makeConstraints { make in
+            make.top.equalTo(reorderInfomationLabel.snp.centerY)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview()
+        }
+        storeNameLabel.snp.makeConstraints { make in
+            make.top.equalTo(reorderInfomationLabel.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        currentOrderDateLabel.snp.makeConstraints { make in
+            make.top.equalTo(storeNameLabel.snp.bottom).offset(5)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        seperator1.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.top.equalTo(currentOrderDateLabel.snp.bottom).offset(15)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        menuTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(seperator1).offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        reorderMenuTableView.snp.makeConstraints { make in
+            make.top.equalTo(menuTitleLabel.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(200)
+        }
+        seperator2.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.top.equalTo(reorderMenuTableView.snp.bottom).offset(15)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        expectationStackView.snp.makeConstraints { make in
+            make.top.equalTo(seperator2.snp.bottom).offset(15)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        requestsTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(expectationStackView.snp.bottom).offset(15)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        requestsTextField.snp.makeConstraints { make in
+            make.top.equalTo(requestsTitleLabel.snp.bottom).offset(15)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        textFieldLineView.snp.makeConstraints { make in
+            make.top.equalTo(requestsTextField.snp.bottom)
+            make.height.equalTo(1)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        paymentMethodStackView.snp.makeConstraints { make in
+            make.top.equalTo(textFieldLineView).offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        priceStackView.snp.makeConstraints { make in
+            make.top.equalTo(paymentMethodStackView.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        paymentStackView.snp.makeConstraints { make in
+            make.top.equalTo(priceStackView.snp.bottom).offset(40)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(50)
+        }
+        
+        guard let text = priceValueLabel.text else {
+            return
+        }
+        let attributeString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(.foregroundColor, value: UIColor.black, range: (text as NSString).range(of: "원"))
+        self.priceValueLabel.attributedText = attributeString
+    }
     }
 }
