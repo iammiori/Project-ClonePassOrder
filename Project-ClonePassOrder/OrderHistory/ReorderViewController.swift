@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class ReorderViewController: UIViewController {
+final class ReorderViewController: UIViewController {
     
     // MARK: - UI Properties
     
-    let reorderInfomationLabel: UILabel = {
+    private let reorderInfomationLabel: UILabel = {
         let label = UILabel()
         label.text = "간편하게 재주문하세요"
         label.backgroundColor = .darkGray
@@ -22,7 +22,7 @@ class ReorderViewController: UIViewController {
         label.layer.cornerRadius = 25
         return label
     }()
-    let receiptView: UIView = {
+    private let receiptView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.borderWidth = 1
@@ -31,93 +31,93 @@ class ReorderViewController: UIViewController {
         view.layer.shadowOpacity = 0.5
         return view
     }()
-    let storeNameLabel: UILabel = {
+    private let storeNameLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 30)
         label.text = "빽따방 부천점"
         return label
     }()
-    let currentOrderDateLabel: UILabel = {
+    private let currentOrderDateLabel: UILabel = {
         let label = UILabel()
         label.text = "2022.05.12 15:03"
         label.textColor = .systemGray3
         return label
     }()
-    let seperator1: UIView = {
+    private let seperator1: UIView = {
         let view = UIView()
         view.backgroundColor = .gray
         return view
     }()
-    let menuTitleLabel: UILabel = {
+    private let menuTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "메뉴"
         label.textColor = .orange
         return label
     }()
-    let reorderMenuTableView: UITableView = {
+    private let reorderMenuTableView: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
-    let seperator2: UIView = {
+    private let seperator2: UIView = {
         let view = UIView()
         view.backgroundColor = .gray
         return view
     }()
-    let expectationReceiveLabel: UILabel = {
+    private let expectationReceiveLabel: UILabel = {
         let label = UILabel()
         label.text = "예상수령시간"
         label.textColor = .orange
         return label
     }()
-    let selecteExpectation: UIButton = {
+    private let selecteExpectation: UIButton = {
         let button = UIButton()
         button.setTitle("15분 ▼", for: .normal)
         button.setTitleColor(.black, for: .normal)
         return button
     }()
-    let requestsTitleLabel: UILabel = {
+    private let requestsTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "요청사항"
         label.textColor = .orange
         return label
     }()
-    let requestsTextField: UITextField = {
+    private let requestsTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "ex) 아메리카노 하나는 연하게 주세요."
         textField.clearButtonMode = .always
         textField.borderStyle = .none
         return textField
     }()
-    let textFieldLineView: UIView = {
+    private let textFieldLineView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         return view
     }()
-    let paymentMethodTitleLabel: UILabel = {
+    private let paymentMethodTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "결제수단"
         label.textColor = .orange
         return label
     }()
-    let selectePaymentMethod: UIButton = {
+    private let selectePaymentMethod: UIButton = {
         let button = UIButton()
         button.setTitle("카카오페이 ▼", for: .normal)
         button.setTitleColor(.black, for: .normal)
         return button
     }()
-    let priceTitleLabel: UILabel = {
+    private let priceTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "결제금액"
         label.textColor = .orange
         return label
     }()
-    let priceValueLabel: UILabel = {
+    private let priceValueLabel: UILabel = {
         let label = UILabel()
         label.text = "5,600원"
         label.textColor = .orange
         return label
     }()
-    let usePointButton: UIButton = {
+    private let usePointButton: UIButton = {
         let button = UIButton()
         button.setTitle("포인트사용", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -126,7 +126,7 @@ class ReorderViewController: UIViewController {
         button.layer.cornerRadius = 10
         return button
     }()
-    let paymentButton: UIButton = {
+    private let paymentButton: UIButton = {
         let button = UIButton()
         button.setTitle("결제", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -135,28 +135,28 @@ class ReorderViewController: UIViewController {
         button.backgroundColor = .darkGray
         return button
     }()
-    lazy var expectationStackView: UIStackView = {
+    private lazy var expectationStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [expectationReceiveLabel, selecteExpectation])
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         return stackView
     }()
-    lazy var paymentMethodStackView: UIStackView = {
+    private lazy var paymentMethodStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [paymentMethodTitleLabel, selectePaymentMethod])
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         return stackView
     }()
-    lazy var priceStackView: UIStackView = {
+    private lazy var priceStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [priceTitleLabel, priceValueLabel])
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         return stackView
     }()
-    lazy var paymentStackView: UIStackView = {
+    private lazy var paymentStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [usePointButton, paymentButton])
         stackView.axis = .horizontal
         stackView.spacing = 10
@@ -272,7 +272,7 @@ class ReorderViewController: UIViewController {
         self.priceValueLabel.attributedText = attributeString
     }
     
-    fileprivate func setNavigation() {
+    private func setNavigation() {
         title = "재주문"
         let backButton = UIBarButtonItem()
         backButton.title = "X"
@@ -283,7 +283,7 @@ class ReorderViewController: UIViewController {
         navigationItem.leftBarButtonItem = backButton
     }
     
-    @objc func back() {
+    @objc private func back() {
         dismiss(animated: true)
     }
 }
