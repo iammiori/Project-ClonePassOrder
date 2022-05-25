@@ -111,7 +111,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    let storyButton: UIButton = {
+    let writeStoryButton: UIButton = {
         let button = UIButton()
         button.setTitle("스토리 작성", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -183,7 +183,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
         return stackView
     }()
     lazy var reorderStorystackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [reorderButton, storyButton])
+        let stackView = UIStackView(arrangedSubviews: [reorderButton, writeStoryButton])
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.alignment = .fill
