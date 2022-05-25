@@ -85,6 +85,13 @@ class OrderHistoryViewController: UIViewController {
         nextViewController.modalPresentationStyle = .fullScreen
         present(nextViewController, animated: true)
     }
+    @objc func writeStoryButtonTapped() {
+        let nextViewController = WriteStoryViewController()
+        nextViewController.navigationController?.setToolbarHidden(false, animated: true)
+        nextViewController.navigationController?.isNavigationBarHidden = false
+        navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -97,6 +104,7 @@ extension OrderHistoryViewController: UITableViewDataSource, UITableViewDelegate
             return UITableViewCell()
         }
         cell.reorderButton.addTarget(self, action: #selector(reorderButtonTapped), for: .touchUpInside)
+        cell.writeStoryButton.addTarget(self, action: #selector(writeStoryButtonTapped), for: .touchUpInside)
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
