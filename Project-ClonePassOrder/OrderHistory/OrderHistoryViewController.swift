@@ -80,6 +80,11 @@ class OrderHistoryViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    @objc func reorderButtonTapped() {
+        let nextViewController = UINavigationController(rootViewController: ReorderViewController())
+        nextViewController.modalPresentationStyle = .fullScreen
+        present(nextViewController, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -91,6 +96,7 @@ extension OrderHistoryViewController: UITableViewDataSource, UITableViewDelegate
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as? OrderHistoryTableViewCell else {
             return UITableViewCell()
         }
+        cell.reorderButton.addTarget(self, action: #selector(reorderButtonTapped), for: .touchUpInside)
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
