@@ -19,7 +19,7 @@ final class OrderHistoryTableViewHeaderView: UITableViewHeaderFooterView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let orderDateSelectButton: UIButton = {
+    let orderDateSelectButton: UIButton = {
         let button = UIButton()
         button.setTitle("2022년 05월 >", for: .normal)
         button.setTitleColor(.black, for: .normal)
