@@ -31,7 +31,7 @@ class OrderHistoryViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         setDelegate()
         setLayout()
-        setNvavigation()
+        setNavigation()
         
         orderHistorTableView.register(OrderHistoryTableViewCell.self, forCellReuseIdentifier: "cellID")
         orderHistorTableView.register(OrderHistoryTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
