@@ -8,18 +8,18 @@
 import UIKit
 import SnapKit
 
-class OrderHistoryTableViewHeaderView: UITableViewHeaderFooterView {
+final class OrderHistoryTableViewHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - UI Properties
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "주문내역"
         label.font = .boldSystemFont(ofSize: 50)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    let orderDateSelectButton: UIButton = {
+    private let orderDateSelectButton: UIButton = {
         let button = UIButton()
         button.setTitle("2022년 05월 >", for: .normal)
         button.setTitleColor(.black, for: .normal)
