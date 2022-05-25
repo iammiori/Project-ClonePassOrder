@@ -38,7 +38,7 @@ class OrderHistoryTableViewHeaderView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK - setLayout
+    // MARK: - setLayout
     
     private func setLayout() {
         contentView.addSubview(titleLabel)
