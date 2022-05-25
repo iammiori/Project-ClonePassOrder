@@ -277,5 +277,8 @@ class ReorderViewController: UIViewController {
         backButton.action = #selector(back)
         navigationItem.leftBarButtonItem = backButton
     }
+    
+    @objc func back() {
+        dismiss(animated: true)
     }
 }
