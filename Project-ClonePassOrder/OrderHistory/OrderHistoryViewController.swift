@@ -58,6 +58,9 @@ class OrderHistoryViewController: UIViewController {
         navigationItem.leftBarButtonItem?.target = self
         navigationItem.leftBarButtonItem?.action = #selector(orderDateSelectButtonTapped)
     }
+
+    // MARK: - Inherited Method
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let orderHistorTableViewHeaderHeight = orderHistorTableView.headerView(forSection: 0)?.frame.height ?? 0
         if scrollView.contentOffset.y > orderHistorTableViewHeaderHeight {
@@ -66,6 +69,9 @@ class OrderHistoryViewController: UIViewController {
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
+
+    // MARK: - Methods
+
     @objc func orderDateSelectButtonTapped() {
         let alert = UIAlertController(title: "나의 주문 내역", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
