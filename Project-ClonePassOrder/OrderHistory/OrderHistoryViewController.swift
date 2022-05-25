@@ -26,8 +26,6 @@ class OrderHistoryViewController: UIViewController {
         setLayout()
         setNavigation()
         
-        orderHistorTableView.register(OrderHistoryTableViewCell.self, forCellReuseIdentifier: "cellID")
-        orderHistorTableView.register(OrderHistoryTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
     }
 
     // MARK: - setLayout
@@ -44,6 +42,8 @@ class OrderHistoryViewController: UIViewController {
     private func setOrderHistorTableView() {
         orderHistorTableView.dataSource = self
         orderHistorTableView.delegate = self
+        orderHistorTableView.register(OrderHistoryTableViewCell.self, forCellReuseIdentifier: "cellID")
+        orderHistorTableView.register(OrderHistoryTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
     }
 
     // MARK: - setNavigation
