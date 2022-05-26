@@ -99,6 +99,14 @@ class StoryCommentViewController: UIViewController {
     @objc private func backButtonTapped() {
         dismiss(animated: true)
     }
+    @objc private func moreButtonTapped() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "신고", style: .default))
+        alert.addAction(UIAlertAction(title: "삭제", style: .destructive))
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        
+        present(alert, animated: true)
+    }
 // MARK: - extension UITextField
 
 extension UITextField {
