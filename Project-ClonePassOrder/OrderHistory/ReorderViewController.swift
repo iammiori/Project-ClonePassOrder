@@ -171,6 +171,7 @@ final class ReorderViewController: UIViewController {
         super.viewDidLoad()
         setNavigation()
         setLayout()
+        setTableView()
     }
     
     // MARK: - setLayout
@@ -272,6 +273,15 @@ final class ReorderViewController: UIViewController {
         self.priceValueLabel.attributedText = attributeString
     }
     
+    // MARK: - setTableView
+
+    private func setTableView() {
+        reorderMenuTableView.dataSource = self
+        reorderMenuTableView.register(ReorderMenuTableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+
+    // MARK: - setNavigation
+
     private func setNavigation() {
         title = "재주문"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -282,8 +292,27 @@ final class ReorderViewController: UIViewController {
         )
         navigationController?.navigationBar.tintColor = .black
     }
-    
+
+    // MARK: - Methods
+
     @objc private func backButtonTapped() {
         dismiss(animated: true)
     }
+}
+
+extension ReorderViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let dequedCell = reorderMenuTableView.dequeueReusableCell(withIdentifier: "cell")
+        guard let cell = dequedCell as? ReorderMenuTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.isSelected = false
+        return cell
+    }
+    
+    
 }

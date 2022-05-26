@@ -12,6 +12,7 @@
 		891C2B352834E88800972E25 /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B312834E88800972E25 /* StoreDetailViewController.swift */; };
 		891C2B362834E88800972E25 /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B322834E88800972E25 /* StoryCollectionViewCell.swift */; };
 		891C2B372834E88800972E25 /* StoreDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891C2B332834E88800972E25 /* StoreDetailInfoView.swift */; };
+		8953D6C2283F72A2006682A5 /* ReorderMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8953D6C1283F72A2006682A5 /* ReorderMenuTableViewCell.swift */; };
 		8956F68D283C6E9200A94EC2 /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956F68C283C6E9200A94EC2 /* OrderHistoryTableViewCell.swift */; };
 		8956F68F283C7E9900A94EC2 /* OrderHistoryTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956F68E283C7E9900A94EC2 /* OrderHistoryTableViewHeaderView.swift */; };
 		8956F695283D154800A94EC2 /* ReorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956F694283D154800A94EC2 /* ReorderViewController.swift */; };
@@ -43,6 +44,7 @@
 		891C2B312834E88800972E25 /* StoreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		891C2B322834E88800972E25 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		891C2B332834E88800972E25 /* StoreDetailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailInfoView.swift; sourceTree = "<group>"; };
+		8953D6C1283F72A2006682A5 /* ReorderMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderMenuTableViewCell.swift; sourceTree = "<group>"; };
 		8956F68C283C6E9200A94EC2 /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		8956F68E283C7E9900A94EC2 /* OrderHistoryTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewHeaderView.swift; sourceTree = "<group>"; };
 		8956F694283D154800A94EC2 /* ReorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				8956F68E283C7E9900A94EC2 /* OrderHistoryTableViewHeaderView.swift */,
 				8956F68C283C6E9200A94EC2 /* OrderHistoryTableViewCell.swift */,
 				8956F694283D154800A94EC2 /* ReorderViewController.swift */,
+				8953D6C1283F72A2006682A5 /* ReorderMenuTableViewCell.swift */,
 				8956F696283D762B00A94EC2 /* WriteStoryViewController.swift */,
 			);
 			path = OrderHistory;
@@ -346,6 +349,7 @@
 				891C2B352834E88800972E25 /* StoreDetailViewController.swift in Sources */,
 				8956F68F283C7E9900A94EC2 /* OrderHistoryTableViewHeaderView.swift in Sources */,
 				8956F695283D154800A94EC2 /* ReorderViewController.swift in Sources */,
+				8953D6C2283F72A2006682A5 /* ReorderMenuTableViewCell.swift in Sources */,
 				8956F697283D762B00A94EC2 /* WriteStoryViewController.swift in Sources */,
 				FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */,
 				FE0F5AC72834EB570008017C /* ListCollectionViewController.swift in Sources */,
