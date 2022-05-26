@@ -68,6 +68,15 @@ class StoryCommentViewController: UIViewController {
             make.trailing.equalTo(commentTextField).inset(10)
         }
     }
+
+    // MARK: - setTableView
+
+    private func setTableView() {
+        commentTableView.separatorStyle = .none
+        commentTableView.delegate = self
+        commentTableView.dataSource = self
+        commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: "cell")
+    }
 // MARK: - extension UITextField
 
 extension UITextField {
