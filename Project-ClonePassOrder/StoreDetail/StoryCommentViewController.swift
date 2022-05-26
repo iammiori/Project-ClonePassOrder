@@ -83,6 +83,19 @@ class StoryCommentViewController: UIViewController {
     private func setTextField() {
         commentTextField.delegate = self
     }
+
+    // MARK: - setNavigation
+
+    private func setNavigation() {
+        title = "댓글"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "xmark")
+            , style: .plain,
+            target: self,
+            action: #selector(backButtonTapped)
+        )
+        navigationController?.navigationBar.tintColor = .black
+    }
 // MARK: - extension UITextField
 
 extension UITextField {
