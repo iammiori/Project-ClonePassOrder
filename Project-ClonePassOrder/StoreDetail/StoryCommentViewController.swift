@@ -39,6 +39,12 @@ class StoryCommentViewController: UIViewController {
         return button
     }()
 
+    // MARK: - viewLifeCycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
     // MARK: - setLayout
 
     private func setLayout() {
