@@ -154,4 +154,7 @@ final class WriteStoryViewController: UIViewController {
     @objc private func back() {
         dismiss(animated: true)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
