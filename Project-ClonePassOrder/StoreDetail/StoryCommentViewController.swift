@@ -43,6 +43,7 @@ class StoryCommentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender:))))
     }
 
     // MARK: - setLayout
@@ -112,6 +113,12 @@ class StoryCommentViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
         
         present(alert, animated: true)
+    }
+    @objc func viewTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            view.endEditing(true)
+        }
+        sender.cancelsTouchesInView = false
     }
 // MARK: - extension UITextField
 
