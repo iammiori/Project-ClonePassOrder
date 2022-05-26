@@ -77,6 +77,12 @@ class StoryCommentViewController: UIViewController {
         commentTableView.dataSource = self
         commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: "cell")
     }
+
+    // MARK: - setTextField
+
+    private func setTextField() {
+        commentTextField.delegate = self
+    }
 // MARK: - extension UITextField
 
 extension UITextField {
