@@ -96,6 +96,9 @@ class StoryCommentViewController: UIViewController {
         )
         navigationController?.navigationBar.tintColor = .black
     }
+    @objc private func backButtonTapped() {
+        dismiss(animated: true)
+    }
 // MARK: - extension UITextField
 
 extension UITextField {
