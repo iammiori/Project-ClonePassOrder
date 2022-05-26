@@ -43,6 +43,12 @@ class StoryCommentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setLayout()
+        setNavigation()
+        setTableView()
+        setTextField()
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender:))))
     }
 
