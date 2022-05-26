@@ -298,6 +298,9 @@ final class ReorderViewController: UIViewController {
     @objc private func backButtonTapped() {
         dismiss(animated: true)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
 extension ReorderViewController: UITableViewDataSource {
