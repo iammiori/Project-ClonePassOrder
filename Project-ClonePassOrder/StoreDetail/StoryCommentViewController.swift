@@ -149,6 +149,23 @@ class StoryCommentViewController: UIViewController {
         self.view.frame.origin.y = 0
     }
 }
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension StoryCommentViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = commentTableView.dequeueReusableCell(withIdentifier: "cell") as? CommentTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.selectionStyle = .none
+        cell.moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+        return cell
+    }
+}
 // MARK: - extension UITextField
 
 extension UITextField {
