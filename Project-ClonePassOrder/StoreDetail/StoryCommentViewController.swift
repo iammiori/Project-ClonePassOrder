@@ -122,6 +122,9 @@ class StoryCommentViewController: UIViewController {
         )
         navigationController?.navigationBar.tintColor = .black
     }
+
+    // MARK: - Methods
+
     @objc private func backButtonTapped() {
         dismiss(animated: true)
     }
