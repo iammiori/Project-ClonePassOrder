@@ -166,6 +166,26 @@ extension StoryCommentViewController: UITableViewDelegate, UITableViewDataSource
         return cell
     }
 }
+
+// MARK: - UITextFieldDelegate
+
+extension StoryCommentViewController: UITextFieldDelegate {
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        if range.location == 0 && range.length != 0 {
+            commentWriteCompletButton.isEnabled = false
+            commentWriteCompletButton.setTitleColor(.gray, for: .normal)
+        } else {
+            commentWriteCompletButton.isEnabled = true
+            commentWriteCompletButton.setTitleColor(.orange, for: .normal)
+        }
+        return true
+    }
+}
+
 // MARK: - extension UITextField
 
 extension UITextField {
