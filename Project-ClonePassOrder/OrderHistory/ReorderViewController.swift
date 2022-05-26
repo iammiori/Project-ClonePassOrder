@@ -274,16 +274,16 @@ final class ReorderViewController: UIViewController {
     
     private func setNavigation() {
         title = "재주문"
-        let backButton = UIBarButtonItem()
-        backButton.title = "X"
-        backButton.tintColor = .black
-        
-        backButton.target = self
-        backButton.action = #selector(back)
-        navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "xmark")
+            , style: .plain,
+            target: self,
+            action: #selector(backButtonTapped)
+        )
+        navigationController?.navigationBar.tintColor = .black
     }
     
-    @objc private func back() {
+    @objc private func backButtonTapped() {
         dismiss(animated: true)
     }
 }
