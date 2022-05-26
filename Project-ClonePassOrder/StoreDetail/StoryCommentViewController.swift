@@ -38,6 +38,36 @@ class StoryCommentViewController: UIViewController {
         button.isEnabled = false
         return button
     }()
+
+    // MARK: - setLayout
+
+    private func setLayout() {
+        view.backgroundColor = .white
+        
+        view.addSubview(commentTableView)
+        view.addSubview(floatingView)
+        floatingView.addSubview(commentTextField)
+        floatingView.addSubview(commentWriteCompletButton)
+        
+        commentTableView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(floatingView.snp.top)
+        }
+        floatingView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview().inset(10)
+            make.height.equalTo(80)
+        }
+        commentTextField.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(30)
+        }
+        commentWriteCompletButton.snp.makeConstraints { make in
+            make.centerY.equalTo(commentTextField)
+            make.width.equalTo(40)
+            make.trailing.equalTo(commentTextField).inset(10)
+        }
+    }
 // MARK: - extension UITextField
 
 extension UITextField {
