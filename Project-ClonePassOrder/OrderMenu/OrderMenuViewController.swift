@@ -8,12 +8,19 @@
 import Foundation
 import SnapKit
 
+protocol OrderMenuDelegate {
+    func checkDidOrder()
+}
 class OrderMenuViewController : UIViewController {
     let searchBar = OrderMenuSearchBar()
     let categoryCV = MenuCollectionView()
     let categoryCVVM = MenuCollectionViewModel()
     let menuTV = DetailMenuTableView()
     let menuTVVM = DetailMenuTableViewModel()
+    let btnContainView = OrangeSelectButton()
+    var didOrder : Bool = false
+    var delegate : OrderMenuDelegate?
+    var cvCellSelected : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,14 +30,28 @@ class OrderMenuViewController : UIViewController {
         setCollectionView()
         setTabelView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        if didOrder {
+            print("주문됨")
+            changeTableViewLayout()
+            btnContainView.isHidden = false
+        } else {
+            btnContainView.isHidden = true
+            resetTableViewLayout()
+        }
+    }
 }
 extension OrderMenuViewController {
     private func setAttribute(){
         view.backgroundColor = .white
         self.title = "빽다방 미사스마트밸리점"
+        btnContainView.isHidden = true
+        btnContainView.getButton.setTitle("장바구니 보기", for: .normal)
+        btnContainView.getButton.addTarget(self, action: #selector(payTapped), for: .touchUpInside)
     }
     private func setLayout(){
-        [searchBar,categoryCV,menuTV].forEach {self.view.addSubview($0)}
+        [searchBar,categoryCV,menuTV,btnContainView].forEach {self.view.addSubview($0)}
         searchBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
@@ -43,6 +64,24 @@ extension OrderMenuViewController {
         menuTV.snp.makeConstraints {
             $0.top.equalTo(categoryCV.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        btnContainView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.11)
+        }
+    }
+    private func changeTableViewLayout(){
+        menuTV.snp.remakeConstraints { make in
+            make.top.equalTo(categoryCV.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(btnContainView.snp.top)
+        }
+    }
+    private func resetTableViewLayout(){
+        menuTV.snp.remakeConstraints { make in
+            make.top.equalTo(categoryCV.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     private func setLeftBarButtonItem(){
@@ -63,6 +102,12 @@ extension OrderMenuViewController {
     @objc func backButtonTapped(){
         self.dismiss(animated: true)
     }
+    @objc func payTapped() {
+        let nextVC = UINavigationController(rootViewController:  OrderPayViewController())
+        nextVC.modalTransitionStyle = .coverVertical
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC,animated: true)
+    }
 }
 extension OrderMenuViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -79,6 +124,12 @@ extension OrderMenuViewController : UICollectionViewDelegate, UICollectionViewDa
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
         }
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        cvCellSelected = true
+        let tIndexPath = IndexPath(row: 0, section: indexPath.row)
+        menuTV.scrollToRow(at: tIndexPath, at: .top, animated: true)
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
     }
 }
 extension OrderMenuViewController : UICollectionViewDelegateFlowLayout {
@@ -99,6 +150,15 @@ extension OrderMenuViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return menuTVVM.getCategoryName(index: section).categoryName
     }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = .systemGray5
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = .black
+        header.textLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return ScreenConstant.deviceHeight * 0.05
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -109,23 +169,30 @@ extension OrderMenuViewController : UITableViewDelegate, UITableViewDataSource {
 //        let shoppingItem  = shoppingTVVM.storage.value[indexPath.row]
 //
 //        cell.setData(shoppingItem)
+        cell.selectionStyle = .none
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = OrderMenuDetailViewController()
+        nextVC.preVC = self
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
 }
 extension OrderMenuViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == self.menuTV {
+        if scrollView == self.menuTV && !cvCellSelected {
             let topSectionIndex = self.menuTV.indexPathsForVisibleRows?.map({ $0.section }).sorted().first
             let selectedCollectionIndex = self.categoryCV.indexPathsForSelectedItems?.first?.row
             if selectedCollectionIndex != topSectionIndex {
                 let indexPath = IndexPath(item: topSectionIndex!, section: 0)
                 self.categoryCV.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
             }
+        }
+    }
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        if scrollView == self.menuTV {
+            cvCellSelected = false
         }
     }
 }
