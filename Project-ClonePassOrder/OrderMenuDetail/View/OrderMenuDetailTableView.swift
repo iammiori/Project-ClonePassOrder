@@ -1,17 +1,17 @@
 //
-//  DetailMenuTableView.swift
+//  OrderMenuDetailTableView.swift
 //  Project-ClonePassOrder
 //
-//  Created by miori Lee on 2022/05/17.
+//  Created by miori Lee on 2022/05/19.
 //
 
 import Foundation
 import UIKit
 import SnapKit
 
-class DetailMenuTableView : UITableView {
+class OrderMenuDetailTableView : UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: .plain)
+        super.init(frame: frame, style: .grouped)
         
         setTableView()
     }
@@ -22,13 +22,13 @@ class DetailMenuTableView : UITableView {
     
     private func setTableView() {
         self.backgroundColor = .white
-        self.register(DetailMenuTableViewCell.self, forCellReuseIdentifier: DetailMenuTableViewCell.registerID)
         self.rowHeight = UITableView.automaticDimension
-        self.estimatedRowHeight = ScreenConstant.deviceHeight * 0.2
-        self.separatorStyle = .singleLine
+        self.separatorStyle = .none
         if #available(iOS 15.0, *) {
           self.sectionHeaderTopPadding = 0
         }
-        self.bounces = false
+        self.register(OrderMenuDetailInfoCell.self, forCellReuseIdentifier: OrderMenuDetailInfoCell.registerID)
+        self.register(QuantitySelectCell.self, forCellReuseIdentifier: QuantitySelectCell.registerID)
+        self.register(IceSelectCell.self, forCellReuseIdentifier: IceSelectCell.registerID)
     }
 }
