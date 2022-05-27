@@ -268,7 +268,6 @@
 		FE210D52282BC2CC009A4EB8 /* Project-ClonePassOrder */ = {
 			isa = PBXGroup;
 			children = (
-				FED480CE2840805C00A36638 /* Story */,
 				FED480CD28407FC900A36638 /* StoreDetail */,
 				FEDFF5202833850F00E65E45 /* TabBar */,
 				FE4BEEFE2832055100530B08 /* LoginAndSignUp */,
@@ -399,13 +398,6 @@
 				FED845F528407F510090D09A /* StoryTableViewCell.swift */,
 			);
 			path = StoreDetail;
-			sourceTree = "<group>";
-		};
-		FED480CE2840805C00A36638 /* Story */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Story;
 			sourceTree = "<group>";
 		};
 		FED845E2284079850090D09A /* Recovered References */ = {
