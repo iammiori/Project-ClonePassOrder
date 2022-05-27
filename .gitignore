@@ -11,6 +11,7 @@ Pods/
 Secret/
 Podfile
 Podfile.lock
+.DS_Store
 ### Swift ###
 # Xcode
 #
