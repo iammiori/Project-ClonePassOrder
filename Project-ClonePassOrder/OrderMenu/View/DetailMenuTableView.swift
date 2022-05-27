@@ -29,5 +29,6 @@ class DetailMenuTableView : UITableView {
         if #available(iOS 15.0, *) {
           self.sectionHeaderTopPadding = 0
         }
+        self.bounces = false
     }
 }
