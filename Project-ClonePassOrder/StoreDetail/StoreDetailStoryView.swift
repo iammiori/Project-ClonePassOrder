@@ -8,10 +8,18 @@
 import UIKit
 
 class StoreDetailStoryView: UIView {
-    
-    let storyView: UICollectionView = {
-        let collectionView = UICollectionView()
-        
+    let storyCollectionView: UICollectionView = {
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(
+            frame: CGRect.zero,
+            collectionViewLayout: collectionViewFlowLayout
+        )
+        collectionView.backgroundColor = .red
+        collectionView.isScrollEnabled = false
+        collectionView.register(
+            StoryCollectionViewCell.classForCoder(),
+            forCellWithReuseIdentifier: "cellID"
+        )
         return collectionView
     }()
     
@@ -19,14 +27,13 @@ class StoreDetailStoryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .yellow
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        setDelegate()
+        setAtrribute()
+        setLayout()
     }
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
-    
     
     // MARK: - setAtrribute
     
@@ -36,10 +43,55 @@ class StoreDetailStoryView: UIView {
     // MARK: - setLayout
     
     private func setLayout() {
-        self.backgroundColor = .systemGroupedBackground
+        self.backgroundColor = .yellow
+        self.addSubview(storyCollectionView)
+        storyCollectionView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(1200)
+            make.bottom.equalToSuperview().offset(100)
+        }
+    }
+    
+    // MARK: - setDelegate
+    
+    func setDelegate() {
+        storyCollectionView.delegate = self
+        storyCollectionView.dataSource = self
     }
 }
 
-extension StoreDetailStoryView: UICollectionViewDelegate {
-    
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+
+extension StoreDetailStoryView:
+    UICollectionViewDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout
+{
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        collectionView.reloadData()
+        return 4
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let dequeueReusableCell = storyCollectionView.dequeueReusableCell(
+            withReuseIdentifier: "cellID",
+            for: indexPath
+        )
+        guard let cell =  dequeueReusableCell as? StoryCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        return cell
+    }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let w = self.frame.width
+        return CGSize(width: w, height: 300)
+    }
 }
