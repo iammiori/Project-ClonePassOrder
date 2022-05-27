@@ -14,4 +14,8 @@ extension UIView {
         layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         layer.masksToBounds = false
     }
+    func getLabelHeight(_ yourLabel : UILabel) -> CGFloat {
+        var height = ("1" as! NSString).size(withAttributes: [NSAttributedString.Key.font : yourLabel.font]).height
+        return height
+    }
 }
