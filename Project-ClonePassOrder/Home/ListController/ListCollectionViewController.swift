@@ -350,9 +350,11 @@ class ListCollectionViewController: UICollectionViewController {
             return UICollectionReusableView()
         }
     }
-}
-//MARK: - 컬렉션뷰 델리게이트
 
+//MARK: - 컬렉션뷰 델리게이트
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+}
 //MARK: - 리스트셀 델리게이트
 
 extension ListCollectionViewController: ListCellDelegate {
@@ -360,3 +362,4 @@ extension ListCollectionViewController: ListCellDelegate {
         delegate?.footerTapped(title: title)
     }
 }
+
