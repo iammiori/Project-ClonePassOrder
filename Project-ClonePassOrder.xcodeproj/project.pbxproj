@@ -53,7 +53,7 @@
 		FED480FE2840923800A36638 /* OrderMenuDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED480F62840923800A36638 /* OrderMenuDetailInfoCell.swift */; };
 		FED480FF2840923800A36638 /* IceSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED480F72840923800A36638 /* IceSelectCell.swift */; };
 		FED481002840923800A36638 /* OrderMenuDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED480F82840923800A36638 /* OrderMenuDetailTableView.swift */; };
-		FED481232840924F00A36638 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED481032840924F00A36638 /* UIViewController.swift */; };
+		FED481232840924F00A36638 /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED481032840924F00A36638 /* dismissKeyboard.swift */; };
 		FED481242840924F00A36638 /* TimeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED481062840924F00A36638 /* TimeBtn.swift */; };
 		FED481252840924F00A36638 /* PayItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED481072840924F00A36638 /* PayItemInfoView.swift */; };
 		FED481262840924F00A36638 /* LeftImgRightLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED481082840924F00A36638 /* LeftImgRightLabelView.swift */; };
@@ -152,7 +152,7 @@
 		FED480F62840923800A36638 /* OrderMenuDetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderMenuDetailInfoCell.swift; sourceTree = "<group>"; };
 		FED480F72840923800A36638 /* IceSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceSelectCell.swift; sourceTree = "<group>"; };
 		FED480F82840923800A36638 /* OrderMenuDetailTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderMenuDetailTableView.swift; sourceTree = "<group>"; };
-		FED481032840924F00A36638 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		FED481032840924F00A36638 /* dismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
 		FED481062840924F00A36638 /* TimeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBtn.swift; sourceTree = "<group>"; };
 		FED481072840924F00A36638 /* PayItemInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayItemInfoView.swift; sourceTree = "<group>"; };
 		FED481082840924F00A36638 /* LeftImgRightLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftImgRightLabelView.swift; sourceTree = "<group>"; };
@@ -311,6 +311,7 @@
 		FE2D31872838DE21005E5E31 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				FED481032840924F00A36638 /* dismissKeyboard.swift */,
 				FE6D680B28378C2100184329 /* CompositionalLayoutExtension.swift */,
 				FE4BEF0128321F9700530B08 /* LoginAndSignUpExtension.swift */,
 				FE1287E32835F6DD00B7CDC4 /* ListExtenstion.swift */,
@@ -471,19 +472,10 @@
 		FED481012840924F00A36638 /* OrderPay */ = {
 			isa = PBXGroup;
 			children = (
-				FED481022840924F00A36638 /* Extension */,
 				FED481042840924F00A36638 /* View */,
 				FED481122840924F00A36638 /* OrderPayViewController.swift */,
 			);
 			path = OrderPay;
-			sourceTree = "<group>";
-		};
-		FED481022840924F00A36638 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				FED481032840924F00A36638 /* UIViewController.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		FED481042840924F00A36638 /* View */ = {
@@ -786,7 +778,7 @@
 				FED4812B2840924F00A36638 /* LocationView.swift in Sources */,
 				FED845FC28407F510090D09A /* StoreDetailInfoTableViewCell.swift in Sources */,
 				FED481532840939F00A36638 /* MenuCollectionView.swift in Sources */,
-				FED481232840924F00A36638 /* UIViewController.swift in Sources */,
+				FED481232840924F00A36638 /* dismissKeyboard.swift in Sources */,
 				FED845F628407F510090D09A /* StoreDetailViewController.swift in Sources */,
 				FE1287EB283614B300B7CDC4 /* ListCellHeader.swift in Sources */,
 				FED845FD28407F510090D09A /* StoryTableViewCell.swift in Sources */,
