@@ -40,7 +40,6 @@ final class AuthViewModel: AuthViewModelProtocol {
     var loginError: Observer<LoginError> = Observer(value: .loginFaildError)
     
     var service: AuthServiceProtocol
-    
     init(service: AuthServiceProtocol = AuthService()) {
         self.service = service
     }
@@ -58,6 +57,7 @@ extension AuthViewModel {
         } else {
             self.email = email
             self.password = password
+            loginUser()
         }
     }
     func textFieldEmptyString() -> String {

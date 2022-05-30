@@ -117,6 +117,7 @@
 		FEFEEF6528450AD50063D160 /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEED608428449DE800CD8FC1 /* MockAuthService.swift */; };
 		FEFEEF6628450ADC0063D160 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7208CB28447E0000C32AA3 /* Observer.swift */; };
 		FEFEEF6728450ADC0063D160 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7208CB28447E0000C32AA3 /* Observer.swift */; };
+		FEFEEF6A2845171C0063D160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEFEEF692845171C0063D160 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +263,7 @@
 		FEFEEF4828450A040063D160 /* ViewUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUITest.swift; sourceTree = "<group>"; };
 		FEFEEF5528450A150063D160 /* IntegrationUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEFEEF5728450A150063D160 /* IntegrationUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationUITest.swift; sourceTree = "<group>"; };
+		FEFEEF692845171C0063D160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +399,7 @@
 				FE210D5C282BC2CD009A4EB8 /* Assets.xcassets */,
 				FE210D5E282BC2CD009A4EB8 /* LaunchScreen.storyboard */,
 				FE210D61282BC2CD009A4EB8 /* Info.plist */,
+				FEFEEF692845171C0063D160 /* GoogleService-Info.plist */,
 			);
 			path = "Project-ClonePassOrder";
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 			files = (
 				FED845E328407B140090D09A /* Assets.xcassets in Resources */,
 				FE210D60282BC2CD009A4EB8 /* LaunchScreen.storyboard in Resources */,
+				FEFEEF6A2845171C0063D160 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

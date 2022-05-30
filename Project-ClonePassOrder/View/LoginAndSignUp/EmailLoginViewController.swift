@@ -39,6 +39,7 @@ class EmailLoginViewController: UIViewController {
             return
         }
         authViewModel.textFieldEmptyVaild(email: email, password: password)
+        
     }
     
     //MARK: - 메서드
@@ -85,6 +86,17 @@ class EmailLoginViewController: UIViewController {
     private func setBind() {
         authViewModel.textfildEmpty.bind { [weak self] _ in
             Toast.message(superView: self!.view, text: self!.authViewModel.textFieldEmptyString())
+        }
+        authViewModel.loginError.bind { [weak self] error in
+            Toast.message(superView: self!.view, text: error.errorMessage)
+        }
+        authViewModel.uid.bind { uid in
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            guard let delegate = sceneDelegate else {
+                return
+            }
+            delegate.window?.rootViewController = TabBarController()
+            print(uid!)
         }
     }
 }
