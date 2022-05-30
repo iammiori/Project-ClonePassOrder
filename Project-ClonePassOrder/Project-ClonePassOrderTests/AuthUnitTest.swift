@@ -16,7 +16,7 @@ class AuthUnitTest: XCTestCase {
         try super.setUpWithError()
         sut = AuthViewModel()
     }
-
+    
     override func tearDownWithError() throws {
         try super.tearDownWithError()
         sut = nil
@@ -65,5 +65,47 @@ class AuthUnitTest: XCTestCase {
         //then
         XCTAssertEqual(vaild,"비빌번호를 입력해주세요!", "리턴하지않습니다")
     }
-
+    func test_loginUser를_호출후_로그인에_실패하는경우_loginFaildError가_전달되는지() {
+        //given
+        let mockAuthService = MockAuthService(loginResult: .failure(.loginFaildError))
+        sut.service = mockAuthService
+        
+        sut.email = "qwer@naver.com"
+        sut.password = "123456"
+        
+        //when
+        sut.loginUser()
+        
+        //then
+        XCTAssertEqual(sut.loginError.value, .loginFaildError, "loginFaildError가 아닙니다")
+    }
+    func test_loginUser를_호출후_authResult를_받는것에_실패한경우_authResultNilError가_전달되는지() {
+        //given
+        let mockAuthService = MockAuthService(loginResult: .failure(.authResultNilError))
+        sut.service = mockAuthService
+        
+        sut.email = "qwer@naver.com"
+        sut.password = "123456"
+        
+        //when
+        sut.loginUser()
+        
+        //then
+        XCTAssertEqual(sut.loginError.value, .authResultNilError, "authResultNilError가 아닙니다")
+    }
+    func test_loginUser를_호출후_로그인에_성공해서_전달된uid가_viewModel의_uid와_동일한지() {
+        //given
+        let userID = "awqmeklqwrklwerjlk"
+        let mockAuthService = MockAuthService(loginResult: .success(userID))
+        sut.service = mockAuthService
+        
+        sut.email = "qwer@naver.com"
+        sut.password = "123456"
+        
+        //when
+        sut.loginUser()
+        
+        //then
+        XCTAssertEqual(sut.uid, userID, "uid가 동일하지않습니다")
+    }
 }
