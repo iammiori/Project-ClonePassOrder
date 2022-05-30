@@ -15,12 +15,15 @@ enum EmptyTextField {
 protocol AuthViewModelInput {
     func textFieldEmptyVaild(email: String, password: String)
     func textFieldEmptyString() -> String
+    func loginUser()
 }
 
 protocol AuthViewModelOutput {
     var email: String? {get set}
     var password: String? {get set}
     var textfildEmpty: Observer<EmptyTextField> {get set}
+    var uid: String? {get set}
+    var loginError: Observer<LoginError> {get set}
 }
 
 protocol AuthViewModelProtocol: AuthViewModelInput, AuthViewModelOutput {
