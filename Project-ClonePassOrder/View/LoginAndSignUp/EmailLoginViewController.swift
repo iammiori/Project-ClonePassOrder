@@ -7,6 +7,7 @@
 
 import SnapKit
 import UIKit
+import SVProgressHUD
 
 class EmailLoginViewController: UIViewController {
     
@@ -28,6 +29,7 @@ class EmailLoginViewController: UIViewController {
         setAtrribute()
         setLayout()
         setBind()
+        emailTextField.text = "aoao1216@naver.com"
     }
     
     //MARK: - 셀렉터메서드
@@ -39,7 +41,6 @@ class EmailLoginViewController: UIViewController {
             return
         }
         authViewModel.textFieldEmptyVaild(email: email, password: password)
-        
     }
     
     //MARK: - 메서드
@@ -77,6 +78,7 @@ class EmailLoginViewController: UIViewController {
                                    action: #selector(emailLoginButtonTapped),
                                    for: .touchUpInside)
         emailTextField.becomeFirstResponder()
+        passwordTextField.isSecureTextEntry = true
     }
     private func naviSetAttribute() {
         navigationController?.navigationBar.isHidden = false
@@ -87,8 +89,12 @@ class EmailLoginViewController: UIViewController {
         authViewModel.textfildEmpty.bind { [weak self] _ in
             Toast.message(superView: self!.view, text: self!.authViewModel.textFieldEmptyString())
         }
-        authViewModel.loginError.bind { [weak self] error in
+        authViewModel.loginStart.bind { [weak self] bool in
+            SVProgressHUD.SVshow(view: self!.view, text: "로그인중입니다...", button: [self!.emailLoginButton])
+        }
+        authViewModel.authError.bind { [weak self] error in
             Toast.message(superView: self!.view, text: error.errorMessage)
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.emailLoginButton])
         }
         authViewModel.uid.bind { uid in
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
@@ -96,7 +102,6 @@ class EmailLoginViewController: UIViewController {
                 return
             }
             delegate.window?.rootViewController = TabBarController()
-            print(uid!)
         }
     }
 }

@@ -8,14 +8,19 @@
 import Foundation
 
 struct MockAuthService: AuthServiceProtocol {
-    var loginResult: Result<String,LoginError>?
+    
+    var loginResult: Result<String, AuthError>?
+    var logoutResult: Result<Void, AuthError>?
     
     func login(
         email: String,
         password: String,
-        completion: @escaping (Result<String, LoginError>) -> Void
+        completion: @escaping (Result<String, AuthError>) -> Void
     ) {
         completion(loginResult!)
+    }
+    func logout(completion: @escaping (Result<Void, AuthError>) -> Void) throws {
+        completion(logoutResult!)
     }
     
 }

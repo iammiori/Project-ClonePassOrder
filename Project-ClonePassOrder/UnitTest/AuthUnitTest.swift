@@ -77,7 +77,7 @@ class AuthUnitTest: XCTestCase {
         sut.loginUser()
         
         //then
-        XCTAssertEqual(sut.loginError.value, .loginFaildError, "loginFaildError가 아닙니다")
+        XCTAssertEqual(sut.authError.value, .loginFaildError, "loginFaildError가 아닙니다")
     }
     func test_loginUser를_호출후_authResult를_받는것에_실패한경우_authResultNilError가_전달되는지() {
         //given
@@ -91,7 +91,7 @@ class AuthUnitTest: XCTestCase {
         sut.loginUser()
         
         //then
-        XCTAssertEqual(sut.loginError.value, .authResultNilError, "authResultNilError가 아닙니다")
+        XCTAssertEqual(sut.authError.value, .authResultNilError, "authResultNilError가 아닙니다")
     }
     func test_loginUser를_호출후_로그인에_성공해서_전달된uid가_viewModel의_uid와_동일한지() {
         //given
@@ -107,5 +107,29 @@ class AuthUnitTest: XCTestCase {
         
         //then
         XCTAssertEqual(sut.uid.value, userID, "uid가 동일하지않습니다")
+    }
+    func test_logoutUser를_호출후_로그아웃에_실패하는경우_logoutFaildError를_전달하는지() {
+        //given
+        var mockAuthservice = MockAuthService()
+        mockAuthservice.logoutResult = .failure(.logoutFaildError)
+        sut.service = mockAuthservice
+        
+        //when
+        sut.logoutUser()
+        
+        //then
+        XCTAssertEqual(sut.authError.value, .logoutFaildError, "logoutFaildError가 아닙니다")
+    }
+    func test_logoutUser를_호출후_로그아웃에_성공하는경우_logoutSuccess_value에_true를_전달하는지() {
+        //given
+        var mockAuthservice = MockAuthService()
+        mockAuthservice.logoutResult = .success(())
+        sut.service = mockAuthservice
+        
+        //when
+        sut.logoutUser()
+        
+        //then
+        XCTAssertEqual(sut.logoutSuccess.value, true, "logoutSuccess.value가 true가 아닙니다")
     }
 }

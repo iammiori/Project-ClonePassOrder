@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navi = UINavigationController(rootViewController: LoginViewController())
         window?.rootViewController = navi
         window?.makeKeyAndVisible()
+        AppDelegate.shared.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -118,6 +118,7 @@
 		FEFEEF6628450ADC0063D160 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7208CB28447E0000C32AA3 /* Observer.swift */; };
 		FEFEEF6728450ADC0063D160 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7208CB28447E0000C32AA3 /* Observer.swift */; };
 		FEFEEF6A2845171C0063D160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEFEEF692845171C0063D160 /* GoogleService-Info.plist */; };
+		FEFEEF6C28451B790063D160 /* SVProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFEEF6B28451B790063D160 /* SVProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,6 +265,7 @@
 		FEFEEF5528450A150063D160 /* IntegrationUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEFEEF5728450A150063D160 /* IntegrationUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationUITest.swift; sourceTree = "<group>"; };
 		FEFEEF692845171C0063D160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		FEFEEF6B28451B790063D160 /* SVProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVProgressHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,6 +424,7 @@
 				FED158CC282DFB2900605A25 /* Extenstion.swift */,
 				FE7208CD28447E5A00C32AA3 /* ToastMessage.swift */,
 				FE7208CB28447E0000C32AA3 /* Observer.swift */,
+				FEFEEF6B28451B790063D160 /* SVProgressHUD.swift */,
 				FED4813A2840927900A36638 /* Secret */,
 			);
 			path = Extension;
@@ -1229,6 +1232,7 @@
 				8956F68D283C6E9200A94EC2 /* OrderHistoryTableViewCell.swift in Sources */,
 				FE1287F1283623BF00B7CDC4 /* MoreCollectionViewController.swift in Sources */,
 				FED4814F2840939F00A36638 /* OrderMenuSearchBar.swift in Sources */,
+				FEFEEF6C28451B790063D160 /* SVProgressHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

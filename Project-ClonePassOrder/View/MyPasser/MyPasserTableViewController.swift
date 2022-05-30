@@ -8,6 +8,8 @@
 import UIKit
 
 class MyPasserTableViewController: UITableViewController {
+    
+    let authViewModel: AuthViewModel = AuthViewModel()
 
     //MARK: - 라이프사이클
     
@@ -15,6 +17,7 @@ class MyPasserTableViewController: UITableViewController {
         super.viewDidLoad()
         setAtrribute()
         setNaviAtrribute()
+        setBinding()
     }
     
     //MARK: - 메서드
@@ -33,6 +36,18 @@ class MyPasserTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "마이패써"
+    }
+    private func setBinding() {
+        authViewModel.authError.bind { [weak self] error in
+            Toast.message(superView: self!.view, text: error.errorMessage)
+        }
+        authViewModel.logoutSuccess.bind { _ in
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            guard let delegate = sceneDelegate else {
+                return
+            }
+            delegate.window?.rootViewController = LoginViewController()
+        }
     }
     
     //MARK: - 테이블뷰 데이터소스
@@ -141,5 +156,17 @@ class MyPasserTableViewController: UITableViewController {
             return cell
         }
         
+    }
+}
+
+//MARK: - 테이블뷰 델리게이트
+
+extension MyPasserTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            if indexPath.row == 3 {
+                authViewModel.logoutUser()
+            }
+        }
     }
 }
