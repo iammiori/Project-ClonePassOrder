@@ -18,14 +18,6 @@ class LoginViewController: UIViewController {
         iv.image = UIImage(named: "패스오더로그인이미지")
         return iv
     }()
-    private let orLabel: UILabel = {
-        let lb = UILabel()
-        lb.text = "OR"
-        lb.textColor = .darkGray
-        lb.font = .systemFont(ofSize: 18)
-        lb.textAlignment = .center
-        return lb
-    }()
     private let signupButton: UIButton = {
         let bt = UIButton(type: .system)
         bt.setTitle("이메일로 회원가입하기", for: .normal)
@@ -38,8 +30,7 @@ class LoginViewController: UIViewController {
     }()
     private lazy var loginStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews:
-                                [orLabel,
-                                 emailLoginButton,
+                                [emailLoginButton,
                                  signupButton])
         sv.axis = .vertical
         sv.spacing = 15
