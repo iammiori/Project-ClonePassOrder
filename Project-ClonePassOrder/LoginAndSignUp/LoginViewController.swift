@@ -18,17 +18,6 @@ class LoginViewController: UIViewController {
         iv.image = UIImage(named: "패스오더로그인이미지")
         return iv
     }()
-    private let kakaoTalkLoginButton: UIButton = {
-        let bt = UIButton(type: .system)
-        bt.backgroundColor = .systemYellow
-        bt.tintColor = .black
-        bt.setImage(UIImage(systemName: "message.fill"), for: .normal)
-        bt.setTitle(" 3초만에 카카오톡으로 로그인", for: .normal)
-        bt.setTitleColor(.black, for: .normal)
-        bt.titleLabel?.font = .systemFont(ofSize: 18)
-        bt.layer.cornerRadius = 10
-        return bt
-    }()
     private let orLabel: UILabel = {
         let lb = UILabel()
         lb.text = "OR"
@@ -49,8 +38,7 @@ class LoginViewController: UIViewController {
     }()
     private lazy var loginStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews:
-                                [kakaoTalkLoginButton,
-                                 orLabel,
+                                [orLabel,
                                  emailLoginButton,
                                  signupButton])
         sv.axis = .vertical
@@ -70,9 +58,7 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: - 셀렉터메서드
-    @objc private func kakaoTalkLoginButtonTapped() {
-        
-    }
+    
     @objc private func emailLoginButtonTapped() {
         navigationController?.pushViewController(EmailLoginViewController(), animated: true)
     }
@@ -85,9 +71,6 @@ class LoginViewController: UIViewController {
     private func setLayout() {
         [logoImageView,loginStackView].forEach {
             view.addSubview($0)
-        }
-        kakaoTalkLoginButton.snp.makeConstraints { make in
-            make.height.equalTo(60)
         }
         logoImageView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
@@ -104,7 +87,6 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .systemBackground
         emailLoginButton.addTarget(self, action: #selector(emailLoginButtonTapped), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(emailSignupButtonTapped), for: .touchUpInside)
-        kakaoTalkLoginButton.addTarget(self, action: #selector(kakaoTalkLoginButtonTapped), for: .touchUpInside)
     }
     private func setNavigationAttribute() {
         navigationController?.navigationBar.isHidden = true
