@@ -12,6 +12,7 @@ class EmailLoginViewController: UIViewController {
     
     //MARK: - 프로퍼티
     
+    private let authViewModel: AuthViewModel = AuthViewModel()
     private let emailLoginButton: UIButton = UIButton().emailLoginButton()
     private let emailTextField: UITextField = UITextField().loginTextField(returnKey: .next)
     private let passwordTextField: UITextField = UITextField().loginTextField(returnKey: .continue)
@@ -26,11 +27,18 @@ class EmailLoginViewController: UIViewController {
         naviSetAttribute()
         setAtrribute()
         setLayout()
+        setBind()
     }
     
     //MARK: - 셀렉터메서드
     @objc func emailLoginButtonTapped() {
-        print("이메일 로그인 버튼 클릭")
+        guard let email = emailTextField.text else {
+            return
+        }
+        guard let password = passwordTextField.text else {
+            return
+        }
+        authViewModel.textFieldEmptyVaild(email: email, password: password)
     }
     
     //MARK: - 메서드
@@ -73,6 +81,11 @@ class EmailLoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.tintColor = .black
+    }
+    private func setBind() {
+        authViewModel.textfildEmpty.bind { [weak self] _ in
+            Toast.message(superView: self!.view, text: self!.authViewModel.textFieldEmptyString())
+        }
     }
 }
 
