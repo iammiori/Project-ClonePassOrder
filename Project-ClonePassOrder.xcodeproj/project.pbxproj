@@ -41,6 +41,7 @@
 		FE7208CC28447E0000C32AA3 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7208CB28447E0000C32AA3 /* Observer.swift */; };
 		FE7208CE28447E5A00C32AA3 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7208CD28447E5A00C32AA3 /* ToastMessage.swift */; };
 		FE7208D0284480B700C32AA3 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7208CF284480B700C32AA3 /* AuthViewModel.swift */; };
+		FE7208DC2844844200C32AA3 /* AuthUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7208DB2844844200C32AA3 /* AuthUnitTest.swift */; };
 		FEBBEC44283678180027EE4F /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC43283678180027EE4F /* SortCell.swift */; };
 		FEBBEC4B28373A7A0027EE4F /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */; };
 		FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4C283747C60027EE4F /* FourthListCell.swift */; };
@@ -99,6 +100,16 @@
 		FEDFF5222833852900E65E45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDFF5212833852900E65E45 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FE7208DD2844844200C32AA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE210D48282BC2CC009A4EB8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE210D4F282BC2CC009A4EB8;
+			remoteInfo = "Project-ClonePassOrder";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		007EB4BE1D657C1590A20F12 /* Pods_Project_ClonePassOrder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_ClonePassOrder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2ED9B628354579000B0501 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -141,6 +152,8 @@
 		FE7208CB28447E0000C32AA3 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		FE7208CD28447E5A00C32AA3 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		FE7208CF284480B700C32AA3 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		FE7208D92844844200C32AA3 /* Project-ClonePassOrderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project-ClonePassOrderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE7208DB2844844200C32AA3 /* AuthUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUnitTest.swift; sourceTree = "<group>"; };
 		FEBBEC43283678180027EE4F /* SortCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
 		FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		FEBBEC4C283747C60027EE4F /* FourthListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthListCell.swift; sourceTree = "<group>"; };
@@ -206,6 +219,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B870C8CF724795D1547B76C /* Pods_Project_ClonePassOrder.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE7208D62844844200C32AA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				FE210D50282BC2CC009A4EB8 /* Project-ClonePassOrder.app */,
+				FE7208D92844844200C32AA3 /* Project-ClonePassOrderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,8 +382,17 @@
 			isa = PBXGroup;
 			children = (
 				FE7208CF284480B700C32AA3 /* AuthViewModel.swift */,
+				FE7208DA2844844200C32AA3 /* Project-ClonePassOrderTests */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		FE7208DA2844844200C32AA3 /* Project-ClonePassOrderTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE7208DB2844844200C32AA3 /* AuthUnitTest.swift */,
+			);
+			path = "Project-ClonePassOrderTests";
 			sourceTree = "<group>";
 		};
 		FEBBEC4928373A660027EE4F /* Search */ = {
@@ -699,6 +729,24 @@
 			productReference = FE210D50282BC2CC009A4EB8 /* Project-ClonePassOrder.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FE7208D82844844200C32AA3 /* Project-ClonePassOrderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE7208DF2844844200C32AA3 /* Build configuration list for PBXNativeTarget "Project-ClonePassOrderTests" */;
+			buildPhases = (
+				FE7208D52844844200C32AA3 /* Sources */,
+				FE7208D62844844200C32AA3 /* Frameworks */,
+				FE7208D72844844200C32AA3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE7208DE2844844200C32AA3 /* PBXTargetDependency */,
+			);
+			name = "Project-ClonePassOrderTests";
+			productName = "Project-ClonePassOrderTests";
+			productReference = FE7208D92844844200C32AA3 /* Project-ClonePassOrderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -711,6 +759,10 @@
 				TargetAttributes = {
 					FE210D4F282BC2CC009A4EB8 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					FE7208D82844844200C32AA3 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = FE210D4F282BC2CC009A4EB8;
 					};
 				};
 			};
@@ -728,6 +780,7 @@
 			projectRoot = "";
 			targets = (
 				FE210D4F282BC2CC009A4EB8 /* Project-ClonePassOrder */,
+				FE7208D82844844200C32AA3 /* Project-ClonePassOrderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -739,6 +792,13 @@
 			files = (
 				FED845E328407B140090D09A /* Assets.xcassets in Resources */,
 				FE210D60282BC2CD009A4EB8 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE7208D72844844200C32AA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,7 +941,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE7208D52844844200C32AA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE7208DC2844844200C32AA3 /* AuthUnitTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE7208DE2844844200C32AA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE210D4F282BC2CC009A4EB8 /* Project-ClonePassOrder */;
+			targetProxy = FE7208DD2844844200C32AA3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FE210D5E282BC2CD009A4EB8 /* LaunchScreen.storyboard */ = {
@@ -1071,6 +1147,44 @@
 			};
 			name = Release;
 		};
+		FE7208E02844844200C32AA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L3L2WN7T88;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DeokHo98.Project-ClonePassOrderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project-ClonePassOrder.app/Project-ClonePassOrder";
+			};
+			name = Debug;
+		};
+		FE7208E12844844200C32AA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L3L2WN7T88;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DeokHo98.Project-ClonePassOrderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project-ClonePassOrder.app/Project-ClonePassOrder";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1088,6 +1202,15 @@
 			buildConfigurations = (
 				FE210D65282BC2CD009A4EB8 /* Debug */,
 				FE210D66282BC2CD009A4EB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE7208DF2844844200C32AA3 /* Build configuration list for PBXNativeTarget "Project-ClonePassOrderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE7208E02844844200C32AA3 /* Debug */,
+				FE7208E12844844200C32AA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
