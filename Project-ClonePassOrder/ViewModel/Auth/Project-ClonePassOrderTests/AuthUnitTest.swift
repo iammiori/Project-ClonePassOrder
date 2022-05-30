@@ -29,7 +29,7 @@ class AuthUnitTest: XCTestCase {
         sut.emailTextFieldEmptyVaild(input: textFieldText)
         
         //then
-        XCTAssertEqual(sut.email, nil, "이메일이 Nil이 아닙니다.")
+        XCTAssertEqual(sut.email.value, nil, "이메일이 Nil이 아닙니다.")
     }
     func test_emailTextFiledEmptyVaild를_호출시_비어있지않은_문자열을_전달했을때_email변수가_문자열과_일치하는지() {
         //given
@@ -39,7 +39,7 @@ class AuthUnitTest: XCTestCase {
         sut.emailTextFieldEmptyVaild(input: textFieldText)
         
         //then
-        XCTAssertEqual(sut.email, textFieldText, "이메일과 textFieldText가 일치하지않습니다.")
+        XCTAssertEqual(sut.email.value, textFieldText, "이메일과 textFieldText가 일치하지않습니다.")
     }
 
 }

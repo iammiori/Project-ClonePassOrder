@@ -12,7 +12,7 @@ protocol AuthViewModelInput {
 }
 
 protocol AuthViewModelOutput {
-    var email: String? { get set }
+    var email: Observer<String?> { get set }
 }
 
 protocol AuthViewModelProtocol: AuthViewModelInput, AuthViewModelOutput {
@@ -22,7 +22,7 @@ final class AuthViewModel: AuthViewModelProtocol {
     
     //MARK: - output
     
-    var email: String?
+    var email: Observer<String?> = Observer(value: nil)
 }
 
 extension AuthViewModel {
@@ -31,9 +31,9 @@ extension AuthViewModel {
     
     func emailTextFieldEmptyVaild(input: String) {
         if input == "" {
-            email = nil
+            email.value = nil
         } else {
-            email = input
+            email.value = input
         }
     }
 }
