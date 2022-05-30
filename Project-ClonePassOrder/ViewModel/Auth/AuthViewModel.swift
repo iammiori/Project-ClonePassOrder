@@ -14,6 +14,7 @@ enum EmptyTextField {
 
 protocol AuthViewModelInput {
     func textFieldEmptyVaild(email: String, password: String)
+    func textFieldEmptyString() -> String
 }
 
 protocol AuthViewModelOutput {
@@ -32,6 +33,14 @@ final class AuthViewModel: AuthViewModelProtocol {
     var email: String?
     var password: String?
     var textfildEmpty: Observer<EmptyTextField> = Observer(value: .emailEmpty)
+    var uid: String?
+    var loginError: Observer<LoginError> = Observer(value: .loginFaildError)
+    
+    var service: AuthServiceProtocol
+    
+    init(service: AuthServiceProtocol = AuthService()) {
+        self.service = service
+    }
 }
 
 extension AuthViewModel {
@@ -54,6 +63,20 @@ extension AuthViewModel {
             return "아이디를 입력해주세요!"
         case .passwordEmpty:
             return "비빌번호를 입력해주세요!"
+        }
+    }
+    func loginUser() {
+        guard let email = email,
+            let password = password else {
+            return
+        }
+        service.login(email: email, password: password) { [weak self] result in
+            switch result {
+            case .success(let uid):
+                self?.uid = uid
+            case .failure(let error):
+                self?.loginError.value = error
+            }
         }
     }
     
