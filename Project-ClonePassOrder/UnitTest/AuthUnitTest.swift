@@ -106,6 +106,6 @@ class AuthUnitTest: XCTestCase {
         sut.loginUser()
         
         //then
-        XCTAssertEqual(sut.uid, userID, "uid가 동일하지않습니다")
+        XCTAssertEqual(sut.uid.value, userID, "uid가 동일하지않습니다")
     }
 }

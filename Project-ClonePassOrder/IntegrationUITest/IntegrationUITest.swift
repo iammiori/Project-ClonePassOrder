@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Project_ClonePassOrder
 
 class IntegrationUITest: XCTestCase {
 

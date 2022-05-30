@@ -839,6 +839,7 @@
 				FEFEEF22284509940063D160 /* Sources */,
 				FEFEEF23284509940063D160 /* Frameworks */,
 				FEFEEF24284509940063D160 /* Resources */,
+				03C7BD098561A83F5C738722 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -858,6 +859,7 @@
 				FEFEEF4228450A040063D160 /* Sources */,
 				FEFEEF4328450A040063D160 /* Frameworks */,
 				FEFEEF4428450A040063D160 /* Resources */,
+				8C809DF067CF7FC478A072B0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -877,6 +879,7 @@
 				FEFEEF5128450A150063D160 /* Sources */,
 				FEFEEF5228450A150063D160 /* Frameworks */,
 				FEFEEF5328450A150063D160 /* Resources */,
+				CB24BADE8083938CBFE1754D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -970,6 +973,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03C7BD098561A83F5C738722 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnitTest/Pods-UnitTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnitTest/Pods-UnitTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnitTest/Pods-UnitTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		44FBD92AE682B19A1B2F9A4D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1053,6 +1073,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8C809DF067CF7FC478A072B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViewUITest/Pods-ViewUITest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViewUITest/Pods-ViewUITest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViewUITest/Pods-ViewUITest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B1EB098C6DDE2F7534D46B80 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1073,6 +1110,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB24BADE8083938CBFE1754D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntegrationUITest/Pods-IntegrationUITest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntegrationUITest/Pods-IntegrationUITest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IntegrationUITest/Pods-IntegrationUITest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1422,6 +1476,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F9585D1E0C44B8B8D912868 /* Pods-UnitTest.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1442,6 +1497,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0D212CAEFF8596F57E6840D /* Pods-UnitTest.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1462,6 +1518,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A68B7288909C723AAF56091 /* Pods-ViewUITest.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3L2WN7T88;
@@ -1481,6 +1538,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74C9DBE9A5F1D282FE96CE40 /* Pods-ViewUITest.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3L2WN7T88;
@@ -1500,6 +1558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6D8E58D454AD9CA7DF78C55D /* Pods-IntegrationUITest.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3L2WN7T88;
@@ -1519,6 +1578,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F70F3F07B065D56A210BFAD /* Pods-IntegrationUITest.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3L2WN7T88;

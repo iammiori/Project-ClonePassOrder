@@ -22,7 +22,7 @@ protocol AuthViewModelOutput {
     var email: String? {get set}
     var password: String? {get set}
     var textfildEmpty: Observer<EmptyTextField> {get set}
-    var uid: String? {get set}
+    var uid: Observer<String?> {get set}
     var loginError: Observer<LoginError> {get set}
 }
 
@@ -36,7 +36,7 @@ final class AuthViewModel: AuthViewModelProtocol {
     var email: String?
     var password: String?
     var textfildEmpty: Observer<EmptyTextField> = Observer(value: .emailEmpty)
-    var uid: String?
+    var uid: Observer<String?> = Observer(value: nil)
     var loginError: Observer<LoginError> = Observer(value: .loginFaildError)
     
     var service: AuthServiceProtocol
@@ -76,7 +76,7 @@ extension AuthViewModel {
         service.login(email: email, password: password) { [weak self] result in
             switch result {
             case .success(let uid):
-                self?.uid = uid
+                self?.uid.value = uid
             case .failure(let error):
                 self?.loginError.value = error
             }
