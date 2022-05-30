@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+protocol AuthViewModelInput {
+    
+}
+
+protocol AuthViewModelOutput {
+    
+}
+
+protocol AuthViewModelProtocol: AuthViewModelInput, AuthViewModelOutput {
+}
+
+final class AuthViewModel: AuthViewModelProtocol {
+    
+}
