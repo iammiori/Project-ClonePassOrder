@@ -10,15 +10,32 @@ import UIKit
 
 protocol SignUpViewModelInput {
     func profileImageConrvertData(image: UIImage)
-    func textFieldEmptyVaild(text: String)
-    func textFieldEmptyString() -> String?
+    func textFieldEmptyVaild(text: String) -> Bool
     func userNameToLongValid(userName: String) -> Bool
+    func emailValidCheck(email: String) -> Bool
+    func passwordToShortValid(password: String) -> Bool
+    func confirmPasswordValid(confirmPassword: String) -> Bool
+    func requiredAgreedValid() -> Bool
+    func profileImageUpload()
+    func signUpUser()
 }
 
 protocol SignUpViewModelOutput {
-    var textFieldEmpty: Observer<Bool> {get set}
     var profileImageData: Data? {get set}
     var userName: String {get set}
+    var email: String {get set}
+    var password: String {get set}
+    var confirmPassword: String {get set}
+    var imageURL: Observer<String> {get set}
+    var is14YearsOld: Observer<Bool> {get set}
+    var isAgreeService: Observer<Bool> {get set}
+    var isAgreeLocationService: Observer<Bool> {get set}
+    var isAgreePrivacyInformation: Observer<Bool> {get set}
+    var isAgreePrivacyThirdPartyInformation: Observer<Bool> {get set}
+    var isAgreeMarketingReceive: Observer<Bool> {get set}
+    var imageUploadError: Observer<ImageUploaderError> {get set}
+    var signUpError: Observer<SigunUpError> {get set}
+    var signUpEnd: Observer<Bool> {get set}
 }
 
 protocol SignUpViewModelProtocol: SignUpViewModelInput, SignUpViewModelOutput {
@@ -28,12 +45,35 @@ protocol SignUpViewModelProtocol: SignUpViewModelInput, SignUpViewModelOutput {
 //MARK: - input
 
 final class SignUpViewModel: SignUpViewModelProtocol {
-    
+ 
     static let shared: SignUpViewModel = SignUpViewModel()
     
-    var textFieldEmpty: Observer<Bool> = Observer(value: false)
+    var imageUploaderService: ImageUploaderServiceProtocol
+    var signUpService: SignUpServiceProtocol
+    
     var profileImageData: Data? = nil
     var userName: String = ""
+    var email: String = ""
+    var password: String = ""
+    var confirmPassword: String = ""
+    var imageURL: Observer<String> = Observer(value: "")
+    var is14YearsOld: Observer<Bool> = Observer(value: false)
+    var isAgreeService: Observer<Bool> = Observer(value: false)
+    var isAgreeLocationService: Observer<Bool> = Observer(value: false)
+    var isAgreePrivacyInformation: Observer<Bool> = Observer(value: false)
+    var isAgreePrivacyThirdPartyInformation: Observer<Bool> = Observer(value: false)
+    var isAgreeMarketingReceive: Observer<Bool> = Observer(value: false)
+    var imageUploadError: Observer<ImageUploaderError> = Observer(value: .uploadImageFaildError)
+    var signUpError: Observer<SigunUpError> = Observer(value: .upLoadFireStoreError)
+    var signUpEnd: Observer<Bool> = Observer(value: false)
+    
+    init(
+        imageUploaderService: ImageUploaderServiceProtocol = ImageUploaderService(),
+        signUpService: SignUpServiceProtocol = SignUpService()
+    ) {
+        self.imageUploaderService = imageUploaderService
+        self.signUpService = signUpService
+    }
 }
 
 //MARK: - output
@@ -45,18 +85,11 @@ extension SignUpViewModel {
         }
         self.profileImageData = imageData
     }
-    func textFieldEmptyVaild(text: String) {
+    func textFieldEmptyVaild(text: String) -> Bool{
         if text == "" {
-            textFieldEmpty.value = false
+            return false
         } else {
-            textFieldEmpty.value = true
-        }
-    }
-    func textFieldEmptyString() -> String? {
-        if textFieldEmpty.value == false {
-            return "입력해주세요!"
-        } else {
-            return nil
+            return true
         }
     }
     func userNameToLongValid(userName: String) -> Bool {
@@ -67,4 +100,81 @@ extension SignUpViewModel {
             return false
         }
     }
+    func emailValidCheck(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if emailTest.evaluate(with: email) {
+            self.email = email
+            return true
+        } else {
+            return false
+        }
+    }
+    func passwordToShortValid(password: String) -> Bool {
+        if password.count > 7 {
+            self.password = password
+            return true
+        } else {
+            return false
+        }
+    }
+    func confirmPasswordValid(confirmPassword: String) -> Bool {
+        if confirmPassword == self.password {
+            self.confirmPassword = confirmPassword
+            return true
+        } else {
+            return false
+        }
+    }
+    func requiredAgreedValid() -> Bool {
+        if is14YearsOld.value &&
+            isAgreeService.value &&
+            isAgreeLocationService.value &&
+            isAgreePrivacyInformation.value &&
+            isAgreePrivacyThirdPartyInformation.value {
+            return true
+        } else {
+            return false
+        }
+    }
+    func profileImageUpload() {
+        guard let imageData = profileImageData else {
+            return
+        }
+        imageUploaderService.uploadImage(
+            fileName: "프로필이미지",
+            imageData: imageData) { [weak self] result in
+                switch result {
+                case .success(let url):
+                    self?.imageURL.value = url
+                case .failure(let error):
+                    self?.imageUploadError.value = error
+                }
+            }
+    }
+    func signUpUser() {
+        let model = SignUpModel(
+            email: self.email,
+            password: self.password,
+            phoneNumber: "",
+            profileImageURL: self.imageURL.value,
+            userName: self.userName,
+            is14YearsOld: self.is14YearsOld.value,
+            isAgreeService: self.isAgreeService.value,
+            isAgreeLocationService: self.isAgreeLocationService.value,
+            isAgreePrivacyInformation: self.isAgreePrivacyInformation.value,
+            isAgreePrivacyThirdPartyInformation: self.isAgreePrivacyThirdPartyInformation.value,
+            isAgreeMarketingReceive: self.isAgreeMarketingReceive.value
+        )
+        signUpService.signUp(model: model) { [weak self] result in
+            switch result {
+            case .success():
+                print("디버그")
+                self?.signUpEnd.value = true
+            case .failure(let error):
+                self?.signUpError.value = error
+            }
+        }
+    }
+    
 }

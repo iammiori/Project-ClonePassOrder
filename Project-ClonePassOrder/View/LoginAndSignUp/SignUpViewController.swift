@@ -47,21 +47,27 @@ class SignUpViewController: UIViewController {
         pushNextView()
     }
     @objc private func phoneNumberConfirmButtonTapped() {
-        guard let phoneNumberConfirmTextField = phoneNumberConfirmTextField else {
-            return
+        if SignUpViewModel.shared.textFieldEmptyVaild(text: textField.text ?? "") {
+            guard let phoneNumberConfirmTextField = phoneNumberConfirmTextField else {
+                return
+            }
+            view.addSubview(phoneNumberConfirmTextField)
+            phoneNumberConfirmTextField.snp.makeConstraints { make in
+                make.top.equalTo(textField.snp.bottom).offset(40)
+                make.leading.equalToSuperview().offset(20)
+                make.trailing.equalTo(view.snp.trailing).offset(-20)
+            }
+           
+            nextButton.snp.removeConstraints()
+            self.nextButtonSetLayout(
+                view: view,
+                button: nextButton,
+                topView: phoneNumberConfirmTextField
+            )
+        } else {
+            Toast.message(superView: view, text: "전화번호를 입력해주세요")
         }
-        view.addSubview(phoneNumberConfirmTextField)
-        phoneNumberConfirmTextField.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(40)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalTo(view.snp.trailing).offset(-20)
-        }
-        nextButton.snp.removeConstraints()
-        self.nextButtonSetLayout(
-            view: view,
-            button: nextButton,
-            topView: phoneNumberConfirmTextField
-        )
+        
     }
     
     //MARK: - 메서드
@@ -122,64 +128,69 @@ class SignUpViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
     private func setBinding() {
-        SignUpViewModel.shared.textFieldEmpty.bind { [weak self] bool in
-            if bool == false {
-                let emptyString = SignUpViewModel.shared.textFieldEmptyString() ?? ""
-                var text = ""
-                self!.textField.resignFirstResponder()
-                switch self!.signUpState {
-                case .userName:
-                    text = "닉네임을 \(emptyString)"
-                case .email:
-                    text = "아이디를 \(emptyString)"
-                case .password:
-                    text = "비밀번호를 \(emptyString)"
-                case .passwordConfirm:
-                    text = "확인 비밀번호를 \(emptyString)"
-                case .phoneNumber:
-                    text = "전화번호를 \(emptyString)"
+    }
+    private func pushNextView() {
+        let vc = SignUpViewController()
+        let text = textField.text ?? ""
+        switch self.signUpState {
+        case .userName:
+            if SignUpViewModel.shared.textFieldEmptyVaild(text: text) {
+                if SignUpViewModel.shared.userNameToLongValid(userName: text) {
+                    vc.signUpState = .email
+                    vc.textFieldText = "이메일"
+                    vc.textFieldPlaceHolder = "passorder@gmail.com"
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    Toast.message(superView: view, text: "닉네임을 8글자이하로 작성해주세요")
                 }
-                Toast.message(
-                    superView: self!.view,
-                    text: text
-                )
             } else {
-                let vc = SignUpViewController()
-                switch self!.signUpState {
-                case .userName:
-                    if SignUpViewModel.shared.userNameToLongValid(userName: self!.textFieldText) {
-                        vc.signUpState = .email
-                        vc.textFieldText = "이메일"
-                        vc.textFieldPlaceHolder = "passorder@gmail.com"
-                        self!.navigationController?.pushViewController(vc, animated: true)
-                    } else {
-                        Toast.message(superView: self!.view, text: "닉네임을 8글자 이하로 작성해주세요!")
-                    }
-                case .email:
+                Toast.message(superView: view, text: "닉네임을 입력해주세요!")
+            }
+        case .email:
+            if SignUpViewModel.shared.textFieldEmptyVaild(text: text) {
+                if SignUpViewModel.shared.emailValidCheck(email: text) {
                     vc.signUpState = .password
                     vc.textFieldText = "비밀번호"
-                    vc.textFieldPlaceHolder = "영문 + 특수문자 + 숫자8자리이상"
-                    self!.navigationController?.pushViewController(vc, animated: true)
-                case .password:
+                    vc.textFieldPlaceHolder = "8자리이상으로 작성해주세요"
+                    vc.textField.isSecureTextEntry = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    Toast.message(superView: view, text: "이메일을 확인해주세요!")
+                }
+            } else {
+                Toast.message(superView: view, text: "이메일을 입력해주세요!")
+            }
+        case .password:
+            if SignUpViewModel.shared.textFieldEmptyVaild(text: text) {
+                if SignUpViewModel.shared.passwordToShortValid(password: text) {
                     vc.signUpState = .passwordConfirm
                     vc.textFieldText = "비밀번호 한번더 입력"
                     vc.textFieldPlaceHolder = "비밀번호 한번더 입력"
-                    self!.navigationController?.pushViewController(vc, animated: true)
-                case .passwordConfirm:
+                    vc.textField.isSecureTextEntry = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    Toast.message(superView: view, text: "비밀번호를 8자리 이상으로 작성해주세요!")
+                }
+            } else {
+                Toast.message(superView: view, text: "비밀번호를 입력해주세요")
+            }
+        case .passwordConfirm:
+            if SignUpViewModel.shared.textFieldEmptyVaild(text: text) {
+                if SignUpViewModel.shared.confirmPasswordValid(confirmPassword: text) {
                     vc.signUpState = .phoneNumber
                     vc.textFieldText = "휴대폰으로 인증"
                     vc.textFieldPlaceHolder = "- 없이번호만입력"
-                    self!.navigationController?.pushViewController(vc, animated: true)
-                case .phoneNumber:
-                    let vc = AgreementViewController()
-                    self!.navigationController?.pushViewController(vc, animated: true)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    Toast.message(superView: view, text: "비밀번호가 일치하지않습니다 다시입력해주세요!")
                 }
+            } else {
+                Toast.message(superView: view, text: "비밀번호를 입력해주세요")
             }
-        
+        case .phoneNumber:
+            let vc = AgreementViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-    }
-    private func pushNextView() {
-        SignUpViewModel.shared.textFieldEmptyVaild(text: textField.text ?? "")
     }
 }
 

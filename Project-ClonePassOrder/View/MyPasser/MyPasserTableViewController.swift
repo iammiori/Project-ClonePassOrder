@@ -46,7 +46,8 @@ class MyPasserTableViewController: UITableViewController {
             guard let delegate = sceneDelegate else {
                 return
             }
-            delegate.window?.rootViewController = LoginViewController()
+            let navi = UINavigationController(rootViewController: LoginViewController())
+            delegate.window?.rootViewController = navi
         }
     }
     

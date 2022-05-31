@@ -7,6 +7,7 @@
 
 import SnapKit
 import UIKit
+import SVProgressHUD
 
 class AgreementViewController: UIViewController {
     
@@ -16,75 +17,21 @@ class AgreementViewController: UIViewController {
         didSet {
             if allBool {
                 allAgreementImage.tintColor = .black
-                ageBool = true
-                serviceBool = true
-                locationBool = true
-                privacyBool = true
-                privacyProvideBool = true
-                marketingBool = true
+                SignUpViewModel.shared.is14YearsOld.value = true
+                SignUpViewModel.shared.isAgreeService.value = true
+                SignUpViewModel.shared.isAgreeLocationService.value = true
+                SignUpViewModel.shared.isAgreePrivacyInformation.value = true
+                SignUpViewModel.shared.isAgreePrivacyThirdPartyInformation.value = true
+                SignUpViewModel.shared.isAgreeMarketingReceive.value = true
             } else {
                 allAgreementImage.tintColor = .systemGray4
-                ageBool = false
-                serviceBool = false
-                locationBool = false
-                privacyBool = false
-                privacyProvideBool = false
-                marketingBool = false
+                SignUpViewModel.shared.is14YearsOld.value = false
+                SignUpViewModel.shared.isAgreeService.value = false
+                SignUpViewModel.shared.isAgreeLocationService.value = false
+                SignUpViewModel.shared.isAgreePrivacyInformation.value = false
+                SignUpViewModel.shared.isAgreePrivacyThirdPartyInformation.value = false
+                SignUpViewModel.shared.isAgreeMarketingReceive.value = false
             }
-        }
-    }
-    private var ageBool: Bool = false {
-        didSet {
-            toggleAgreementBool(
-                state: ageBool,
-                button: ageAgreementButton,
-                image: ageAgreementImage
-            )
-        }
-    }
-    private var serviceBool: Bool = false {
-        didSet {
-            toggleAgreementBool(
-                state: serviceBool,
-                button: serviceAgreementButton,
-                image: serviceAgreementImage
-            )
-        }
-    }
-    private var locationBool: Bool = false {
-        didSet {
-            toggleAgreementBool(
-                state: locationBool,
-                button: locationAgreementButton,
-                image: locationAgreementImage
-            )
-        }
-    }
-    private var privacyBool: Bool = false {
-        didSet {
-            toggleAgreementBool(
-                state: privacyBool,
-                button: privacyAgreementButton,
-                image: privacyAgreementImage
-            )
-        }
-    }
-    private var privacyProvideBool: Bool = false {
-        didSet {
-            toggleAgreementBool(
-                state: privacyProvideBool,
-                button: privacyProvideAgreementButton,
-                image: privacyProvideAgreementImage
-            )
-        }
-    }
-    private var marketingBool: Bool = false {
-        didSet {
-            toggleAgreementBool(
-                state: marketingBool,
-                button: marketingAgreementButton,
-                image: marketingAgreementImage
-            )
         }
     }
     private let welcomeView: UIView = UIView().welcomeView()
@@ -169,6 +116,7 @@ class AgreementViewController: UIViewController {
         naviSetAttribute()
         setAtrribute()
         setLayout()
+        setBinding()
     }
     
     //MARK: - 셀렉터메서드
@@ -176,27 +124,27 @@ class AgreementViewController: UIViewController {
         allBool.toggle()
     }
     @objc private func ageAgreementButtonTapped() {
-        ageBool.toggle()
+        SignUpViewModel.shared.is14YearsOld.value.toggle()
         confirmAllSelect()
     }
     @objc private func serviceAgreementButtonTapped() {
-        serviceBool.toggle()
+        SignUpViewModel.shared.isAgreeService.value.toggle()
         confirmAllSelect()
     }
     @objc private func locationAgreementButtonTapped() {
-        locationBool.toggle()
+        SignUpViewModel.shared.isAgreeLocationService.value.toggle()
         confirmAllSelect()
     }
     @objc private func privacyAgreementButtonTapped() {
-        privacyBool.toggle()
+        SignUpViewModel.shared.isAgreePrivacyInformation.value.toggle()
         confirmAllSelect()
     }
     @objc private func privacyProvideAgreementButtonTapped() {
-        privacyProvideBool.toggle()
+        SignUpViewModel.shared.isAgreePrivacyThirdPartyInformation.value.toggle()
         confirmAllSelect()
     }
     @objc private func marketingAgreementButtonTapped() {
-        marketingBool.toggle()
+        SignUpViewModel.shared.isAgreeMarketingReceive.value.toggle()
         confirmAllSelect()
     }
     @objc private func nextButtonTapped() {
@@ -273,6 +221,67 @@ class AgreementViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.tintColor = .black
     }
+    private func setBinding() {
+        SignUpViewModel.shared.is14YearsOld.bind { [weak self] bool in
+            self!.toggleAgreementBool(
+                state: bool,
+                button: self!.ageAgreementButton,
+                image: self!.ageAgreementImage
+            )
+        }
+        SignUpViewModel.shared.isAgreeService.bind { [weak self] bool in
+            self!.toggleAgreementBool(
+                state: bool,
+                button: self!.serviceAgreementButton,
+                image: self!.serviceAgreementImage
+            )
+        }
+        SignUpViewModel.shared.isAgreeLocationService.bind { [weak self] bool in
+            self!.toggleAgreementBool(
+                state: bool,
+                button: self!.locationAgreementButton,
+                image: self!.locationAgreementImage
+            )
+        }
+        SignUpViewModel.shared.isAgreePrivacyInformation.bind { [weak self] bool in
+            self!.toggleAgreementBool(
+                state: bool,
+                button: self!.privacyAgreementButton,
+                image: self!.privacyAgreementImage
+            )
+        }
+        SignUpViewModel.shared.isAgreePrivacyThirdPartyInformation.bind { [weak self] bool in
+            self!.toggleAgreementBool(
+                state: bool,
+                button: self!.privacyProvideAgreementButton,
+                image: self!.privacyProvideAgreementImage
+            )
+        }
+        SignUpViewModel.shared.isAgreeMarketingReceive.bind { [weak self] bool in
+            self!.toggleAgreementBool(
+                state: bool,
+                button: self!.marketingAgreementButton,
+                image: self!.marketingAgreementImage
+            )
+        }
+        SignUpViewModel.shared.imageUploadError.bind { error in
+            SVProgressHUD.SVoff(view: self.view, button: [self.nextButton])
+        }
+        SignUpViewModel.shared.signUpError.bind { error in
+            SVProgressHUD.SVoff(view: self.view, button: [self.nextButton])
+        }
+        SignUpViewModel.shared.imageURL.bind { _ in
+            SignUpViewModel.shared.signUpUser()
+        }
+        SignUpViewModel.shared.signUpEnd.bind { _ in
+            SVProgressHUD.SVoff(view: self.view, button: [self.nextButton])
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            guard let delegate = sceneDelegate else {
+                return
+            }
+            delegate.window?.rootViewController = TabBarController()
+        }
+    }
     private func toggleAgreementBool(state: Bool,button: UIButton, image: UIImageView) {
         if state {
             button.setTitleColor(.black, for: .normal)
@@ -283,23 +292,25 @@ class AgreementViewController: UIViewController {
         }
     }
     private func confirmAllSelect() {
-        if ageBool, serviceBool, locationBool, privacyBool, privacyProvideBool, marketingBool {
+        if SignUpViewModel.shared.is14YearsOld.value,
+           SignUpViewModel.shared.isAgreeService.value,
+           SignUpViewModel.shared.isAgreeLocationService.value,
+           SignUpViewModel.shared.isAgreePrivacyInformation.value,
+           SignUpViewModel.shared.isAgreePrivacyThirdPartyInformation.value,
+           SignUpViewModel.shared.isAgreeMarketingReceive.value {
             allBool = true
         } else {
             allAgreementImage.tintColor = .systemGray4
         }
     }
     private func confirmDone() {
-        if ageBool, serviceBool, locationBool, privacyBool, privacyProvideBool {
-            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-            guard let delegate = sceneDelegate else {
-                return
-            }
-            delegate.window?.rootViewController = TabBarController()
-            print("로그인 성공")
+        if SignUpViewModel.shared.requiredAgreedValid() {
+            SVProgressHUD.SVshow(view: view, text: "회원가입중 입니다...", button: [nextButton])
+            SignUpViewModel.shared.profileImageUpload()
         } else {
-            print("동의 아직 안함")
+            Toast.message(superView: view, text: "필수약관에 모두 동의해주세요!")
         }
+     
     }
 }
 
