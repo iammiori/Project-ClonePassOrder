@@ -51,6 +51,8 @@
 		FECC824F2845C09B005FCCFA /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC824D2845BFD9005FCCFA /* AuthModel.swift */; };
 		FECC82502845C0C5005FCCFA /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC824D2845BFD9005FCCFA /* AuthModel.swift */; };
 		FECC82512845C0C6005FCCFA /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC824D2845BFD9005FCCFA /* AuthModel.swift */; };
+		FECC82552845C19C005FCCFA /* SignUpUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC82542845C19C005FCCFA /* SignUpUnitTest.swift */; };
+		FECC82582845C1EF005FCCFA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC82572845C1EF005FCCFA /* SignUpViewModel.swift */; };
 		FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeViewController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */; };
 		FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C6282DF95F00605A25 /* qrCameraViewController.swift */; };
@@ -207,6 +209,8 @@
 		FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		FEBBEC4C283747C60027EE4F /* FourthListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthListCell.swift; sourceTree = "<group>"; };
 		FECC824D2845BFD9005FCCFA /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		FECC82542845C19C005FCCFA /* SignUpUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUnitTest.swift; sourceTree = "<group>"; };
+		FECC82572845C1EF005FCCFA /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		FED158C2282DF92100605A25 /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
@@ -471,6 +475,7 @@
 		FE7208D3284482E200C32AA3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FECC82562845C1E0005FCCFA /* SignUp */,
 				FE7208D4284482F000C32AA3 /* Auth */,
 			);
 			path = ViewModel;
@@ -523,6 +528,30 @@
 			children = (
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		FECC82522845C149005FCCFA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FEFEEF28284509940063D160 /* AuthUnitTest.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		FECC82532845C182005FCCFA /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				FECC82542845C19C005FCCFA /* SignUpUnitTest.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		FECC82562845C1E0005FCCFA /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				FECC82572845C1EF005FCCFA /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		FED158BB282DF84900605A25 /* Home */ = {
@@ -832,7 +861,8 @@
 		FEFEEF27284509940063D160 /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
-				FEFEEF28284509940063D160 /* AuthUnitTest.swift */,
+				FECC82532845C182005FCCFA /* SignUp */,
+				FECC82522845C149005FCCFA /* Auth */,
 			);
 			path = UnitTest;
 			sourceTree = "<group>";
@@ -1263,6 +1293,7 @@
 				FED481262840924F00A36638 /* LeftImgRightLabelView.swift in Sources */,
 				FED4812F2840924F00A36638 /* OrderPayViewController.swift in Sources */,
 				FE0F5ACF2835E25C0008017C /* SecondADCell.swift in Sources */,
+				FECC82582845C1EF005FCCFA /* SignUpViewModel.swift in Sources */,
 				FE4BEF002832058800530B08 /* LoginViewController.swift in Sources */,
 				FED481332840924F00A36638 /* PayDetailInfoView.swift in Sources */,
 				FED4812D2840924F00A36638 /* TotalOrderView.swift in Sources */,
@@ -1281,6 +1312,7 @@
 			files = (
 				FEFEEF2F284509AC0063D160 /* AuthViewModel.swift in Sources */,
 				FEFEEF32284509B50063D160 /* Observer.swift in Sources */,
+				FECC82552845C19C005FCCFA /* SignUpUnitTest.swift in Sources */,
 				FEFEEF29284509940063D160 /* AuthUnitTest.swift in Sources */,
 				FEFEEF30284509AE0063D160 /* MockAuthService.swift in Sources */,
 				FEFEEF31284509B00063D160 /* AuthService.swift in Sources */,
