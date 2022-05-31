@@ -14,6 +14,7 @@
 		8956F68F283C7E9900A94EC2 /* OrderHistoryTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956F68E283C7E9900A94EC2 /* OrderHistoryTableViewHeaderView.swift */; };
 		8956F695283D154800A94EC2 /* ReorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956F694283D154800A94EC2 /* ReorderViewController.swift */; };
 		8956F697283D762B00A94EC2 /* WriteStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956F696283D762B00A94EC2 /* WriteStoryViewController.swift */; };
+		89C6508728451055008AA9DD /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C6508628451055008AA9DD /* APIKeys.swift */; };
 		FE0F5AC72834EB570008017C /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */; };
 		FE0F5ACD283524D70008017C /* FirstADCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5ACC283524D70008017C /* FirstADCell.swift */; };
 		FE0F5ACF2835E25C0008017C /* SecondADCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F5ACE2835E25C0008017C /* SecondADCell.swift */; };
@@ -110,6 +111,7 @@
 		8956F68E283C7E9900A94EC2 /* OrderHistoryTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewHeaderView.swift; sourceTree = "<group>"; };
 		8956F694283D154800A94EC2 /* ReorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderViewController.swift; sourceTree = "<group>"; };
 		8956F696283D762B00A94EC2 /* WriteStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteStoryViewController.swift; sourceTree = "<group>"; };
+		89C6508628451055008AA9DD /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		FE0F5AC62834EB570008017C /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
 		FE0F5ACC283524D70008017C /* FirstADCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstADCell.swift; sourceTree = "<group>"; };
 		FE0F5ACE2835E25C0008017C /* SecondADCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondADCell.swift; sourceTree = "<group>"; };
@@ -212,6 +214,14 @@
 				3D2ED9B628354579000B0501 /* Constant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		89C6508528451055008AA9DD /* Secret */ = {
+			isa = PBXGroup;
+			children = (
+				89C6508628451055008AA9DD /* APIKeys.swift */,
+			);
+			path = Secret;
 			sourceTree = "<group>";
 		};
 		C9D5BDBACCE62F352D461422 /* Frameworks */ = {
@@ -394,6 +404,7 @@
 		FED158CB282DFAF700605A25 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				89C6508528451055008AA9DD /* Secret */,
 				FE2D31872838DE21005E5E31 /* Extension */,
 				FE2D31862838DE1B005E5E31 /* Cell */,
 				3D2ED9B528354579000B0501 /* Constant */,
@@ -799,6 +810,7 @@
 				8956F697283D762B00A94EC2 /* WriteStoryViewController.swift in Sources */,
 				FED481252840924F00A36638 /* PayItemInfoView.swift in Sources */,
 				FE210D54282BC2CC009A4EB8 /* AppDelegate.swift in Sources */,
+				89C6508728451055008AA9DD /* APIKeys.swift in Sources */,
 				FE1287E22835F5AD00B7CDC4 /* FirstListCell.swift in Sources */,
 				FED481502840939F00A36638 /* DetailMenuTableViewCell.swift in Sources */,
 				FE0F5AC72834EB570008017C /* ListCollectionViewController.swift in Sources */,
@@ -983,7 +995,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L3L2WN7T88;
+				DEVELOPMENT_TEAM = YLY2249R62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Project-ClonePassOrder/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1013,7 +1025,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L3L2WN7T88;
+				DEVELOPMENT_TEAM = YLY2249R62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Project-ClonePassOrder/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

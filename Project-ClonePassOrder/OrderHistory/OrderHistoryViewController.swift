@@ -27,6 +27,9 @@ final class OrderHistoryViewController: UIViewController {
         setOrderHistorTableView()
         setLayout()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
 
     // MARK: - setLayout
 
