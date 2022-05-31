@@ -170,5 +170,107 @@ class SignUpUnitTest: XCTestCase {
         //then
         XCTAssertFalse(vaild, "필수약관이 모두 동의되지않았지만 false를 리턴하지않습니다")
     }
-   
+    func test_profileImageUpload호출시_이미지업로드에실패하는경우_uploadImageFaildError를_전달하는지() {
+        //given
+        var mockImageUploader = MockImageUploaderService()
+        mockImageUploader.result = .failure(.uploadImageFaildError)
+        sut.imageUploaderService = mockImageUploader
+        sut.profileImageData = Data()
+        
+        //when
+        sut.profileImageUpload()
+        
+        //then
+        XCTAssertEqual(sut.imageUploadError.value, .uploadImageFaildError,"에러가 일치하지않습니다")
+    }
+    func test_profileImageUpload를호출시_이미지업로드에성공후_imageURL을_다운로드하는것에_실패한경우_downLoadImageFaildError_를전달하는지() {
+        //given
+        var mockImageUploader = MockImageUploaderService()
+        mockImageUploader.result = .failure(.downLoadImageFaildError)
+        sut.imageUploaderService = mockImageUploader
+        sut.profileImageData = Data()
+        
+        //when
+        sut.profileImageUpload()
+        
+        //then
+        XCTAssertEqual(sut.imageUploadError.value, .downLoadImageFaildError,"에러가 일치하지않습니다")
+    }
+    func test_profileImageUpload를호출시_이미지업로드에성공_그리고_imageURL을_다운로드하는것에성공한후_String으로변환하는것에_실패한경우_URLError를_전달하는지() {
+        //given
+        var mockImageUploader = MockImageUploaderService()
+        mockImageUploader.result = .failure(.URLError)
+        sut.imageUploaderService = mockImageUploader
+        sut.profileImageData = Data()
+        
+        //when
+        sut.profileImageUpload()
+        
+        //then
+        XCTAssertEqual(sut.imageUploadError.value, .URLError,"에러가 일치하지않습니다")
+    }
+    
+    func test_profileImageUpload를호출시_이미지업로드에성공하는경우_전달된imageURL이_viewModel의imageURL로_성공적으로_전달하는지() {
+        var mockImageUploader = MockImageUploaderService()
+        //given
+        mockImageUploader.result = .success("imageURL")
+        sut.imageUploaderService = mockImageUploader
+        sut.profileImageData = Data()
+        
+        //when
+        sut.profileImageUpload()
+        
+        //then
+        XCTAssertEqual(sut.imageURL.value, "imageURL","URL이 일치하지않습니다")
+    }
+    func test_SignUpUser를호출시_회원가입에실패하는경우_signUpFaildError를_전달하는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.result = .failure(.signUpFaildError)
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.signUpUser()
+        
+        //then
+        XCTAssertEqual(sut.signUpError.value, .signUpFaildError,"에러가 일치하지않습니다.")
+    }
+    func test_SignUpUser를호출시_회원가입성공후_회원정보결과값이없는경우_resultNillError를_전달하는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.result = .failure(.resultNillError)
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.signUpUser()
+        
+        //then
+        XCTAssertEqual(sut.signUpError.value, .resultNillError,"에러가 일치하지않습니다.")
+    }
+    
+    func test_SignUpUser를호출시_회원가입에성공후_회원정보를Model로만들어_firestore에업로드하는것에실패한경우_upLoadFireStoreError를_전달하는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.result = .failure(.upLoadFireStoreError)
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.signUpUser()
+        
+        //then
+        XCTAssertEqual(sut.signUpError.value, .upLoadFireStoreError,"에러가 일치하지않습니다.")
+    }
+    func test_SignUpUser를호출시_회원가입에성공후_회원정보를_firestore에업로드하는것까지_성공하는경우_signUpEnd변수가_ture인지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.result = .success(())
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.signUpUser()
+        
+        //then
+        XCTAssertTrue(sut.signUpEnd.value)
+    }
+    
 }

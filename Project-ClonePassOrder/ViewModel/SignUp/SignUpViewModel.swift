@@ -42,7 +42,7 @@ protocol SignUpViewModelProtocol: SignUpViewModelInput, SignUpViewModelOutput {
     
 }
 
-//MARK: - input
+
 
 final class SignUpViewModel: SignUpViewModelProtocol {
  
@@ -50,6 +50,8 @@ final class SignUpViewModel: SignUpViewModelProtocol {
     
     var imageUploaderService: ImageUploaderServiceProtocol
     var signUpService: SignUpServiceProtocol
+    
+    //MARK: - input
     
     var profileImageData: Data? = nil
     var userName: String = ""
@@ -76,9 +78,10 @@ final class SignUpViewModel: SignUpViewModelProtocol {
     }
 }
 
-//MARK: - output
-
 extension SignUpViewModel {
+    
+    //MARK: - output
+    
     func profileImageConrvertData(image: UIImage) {
         guard let imageData = image.jpegData(compressionQuality: 1) else {
             return

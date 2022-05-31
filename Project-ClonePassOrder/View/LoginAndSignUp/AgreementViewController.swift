@@ -264,17 +264,19 @@ class AgreementViewController: UIViewController {
                 image: self!.marketingAgreementImage
             )
         }
-        SignUpViewModel.shared.imageUploadError.bind { error in
-            SVProgressHUD.SVoff(view: self.view, button: [self.nextButton])
+        SignUpViewModel.shared.imageUploadError.bind { [weak self] error in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.nextButton])
+            Toast.message(superView: self!.view, text: "프로필이미지 저장에 실패했습니다 다시시도해주세요")
         }
-        SignUpViewModel.shared.signUpError.bind { error in
-            SVProgressHUD.SVoff(view: self.view, button: [self.nextButton])
+        SignUpViewModel.shared.signUpError.bind { [weak self] error in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.nextButton])
+            Toast.message(superView: self!.view, text: "회원가입에 실패했습니다 다시시도 해주세요")
         }
         SignUpViewModel.shared.imageURL.bind { _ in
             SignUpViewModel.shared.signUpUser()
         }
-        SignUpViewModel.shared.signUpEnd.bind { _ in
-            SVProgressHUD.SVoff(view: self.view, button: [self.nextButton])
+        SignUpViewModel.shared.signUpEnd.bind { [weak self] _ in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.nextButton])
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
             guard let delegate = sceneDelegate else {
                 return
