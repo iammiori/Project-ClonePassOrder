@@ -21,7 +21,6 @@ final class OrderHistoryTableViewHeaderView: UITableViewHeaderFooterView {
     }()
     let orderDateSelectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("2022년 05월 >", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentHorizontalAlignment = .left
