@@ -8,6 +8,7 @@
 import UIKit
 
 enum SignUpState {
+    case userName
     case email
     case password
     case passwordConfirm
@@ -18,9 +19,9 @@ class SignUpViewController: UIViewController {
     
     //MARK: - 프로퍼티
     
-    private var signUpState: SignUpState = .email
-    private var textFieldText: String = "이메일"
-    private var textFieldPlaceHolder: String = "passorder@gmail.com"
+    private var signUpState: SignUpState = .userName
+    private var textFieldText: String = "닉네임"
+    private var textFieldPlaceHolder: String = "8글자 이하로 작성해주세요"
     private var phoneNumberConfirmTextField: UITextField?
     private let welcomeView: UIView = UIView().welcomeView()
     private let nextButton: UIButton = UIButton().nextButton()
@@ -37,6 +38,7 @@ class SignUpViewController: UIViewController {
         naviSetAttribute()
         setAtrribute()
         setLayout()
+        setBinding()
     }
     
     //MARK: - 셀렉터메서드
@@ -119,28 +121,65 @@ class SignUpViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.tintColor = .black
     }
-    private func pushNextView() {
-        let vc = SignUpViewController()
-        switch signUpState {
-        case .email:
-            vc.signUpState = .password
-            vc.textFieldText = "비밀번호"
-            vc.textFieldPlaceHolder = "영문 + 특수문자 + 숫자8자리이상"
-            navigationController?.pushViewController(vc, animated: true)
-        case .password:
-            vc.signUpState = .passwordConfirm
-            vc.textFieldText = "비밀번호 한번더 입력"
-            vc.textFieldPlaceHolder = "비밀번호 한번더 입력"
-            navigationController?.pushViewController(vc, animated: true)
-        case .passwordConfirm:
-            vc.signUpState = .phoneNumber
-            vc.textFieldText = "휴대폰으로 인증"
-            vc.textFieldPlaceHolder = "- 없이번호만입력"
-            navigationController?.pushViewController(vc, animated: true)
-        case .phoneNumber:
-            let vc = AgreementViewController()
-            navigationController?.pushViewController(vc, animated: true)
+    private func setBinding() {
+        SignUpViewModel.shared.textFieldEmpty.bind { [weak self] bool in
+            if bool == false {
+                let emptyString = SignUpViewModel.shared.textFieldEmptyString() ?? ""
+                var text = ""
+                self!.textField.resignFirstResponder()
+                switch self!.signUpState {
+                case .userName:
+                    text = "닉네임을 \(emptyString)"
+                case .email:
+                    text = "아이디를 \(emptyString)"
+                case .password:
+                    text = "비밀번호를 \(emptyString)"
+                case .passwordConfirm:
+                    text = "확인 비밀번호를 \(emptyString)"
+                case .phoneNumber:
+                    text = "전화번호를 \(emptyString)"
+                }
+                Toast.message(
+                    superView: self!.view,
+                    text: text
+                )
+            } else {
+                let vc = SignUpViewController()
+                switch self!.signUpState {
+                case .userName:
+                    if SignUpViewModel.shared.userNameToLongValid(userName: self!.textFieldText) {
+                        vc.signUpState = .email
+                        vc.textFieldText = "이메일"
+                        vc.textFieldPlaceHolder = "passorder@gmail.com"
+                        self!.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        Toast.message(superView: self!.view, text: "닉네임을 8글자 이하로 작성해주세요!")
+                    }
+                case .email:
+                    vc.signUpState = .password
+                    vc.textFieldText = "비밀번호"
+                    vc.textFieldPlaceHolder = "영문 + 특수문자 + 숫자8자리이상"
+                    self!.navigationController?.pushViewController(vc, animated: true)
+                case .password:
+                    vc.signUpState = .passwordConfirm
+                    vc.textFieldText = "비밀번호 한번더 입력"
+                    vc.textFieldPlaceHolder = "비밀번호 한번더 입력"
+                    self!.navigationController?.pushViewController(vc, animated: true)
+                case .passwordConfirm:
+                    vc.signUpState = .phoneNumber
+                    vc.textFieldText = "휴대폰으로 인증"
+                    vc.textFieldPlaceHolder = "- 없이번호만입력"
+                    self!.navigationController?.pushViewController(vc, animated: true)
+                case .phoneNumber:
+                    let vc = AgreementViewController()
+                    self!.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        
         }
+    }
+    private func pushNextView() {
+        SignUpViewModel.shared.textFieldEmptyVaild(text: textField.text ?? "")
     }
 }
 
