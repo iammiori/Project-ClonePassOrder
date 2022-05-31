@@ -390,6 +390,8 @@
 		FE210D52282BC2CC009A4EB8 /* Project-ClonePassOrder */ = {
 			isa = PBXGroup;
 			children = (
+				FECC824A2845BF3B005FCCFA /* Service */,
+				FECC82492845BF33005FCCFA /* Model */,
 				FEFEEF5628450A150063D160 /* IntegrationUITest */,
 				FEFEEF4728450A040063D160 /* ViewUITest */,
 				FEFEEF27284509940063D160 /* UnitTest */,
@@ -473,8 +475,6 @@
 			isa = PBXGroup;
 			children = (
 				FE7208CF284480B700C32AA3 /* AuthViewModel.swift */,
-				FEED608228449C5800CD8FC1 /* AuthService.swift */,
-				FEED608428449DE800CD8FC1 /* MockAuthService.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -485,6 +485,38 @@
 				FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		FECC82492845BF33005FCCFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FECC824C2845BF59005FCCFA /* Auth */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FECC824A2845BF3B005FCCFA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FECC824B2845BF49005FCCFA /* Auth */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FECC824B2845BF49005FCCFA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FEED608228449C5800CD8FC1 /* AuthService.swift */,
+				FEED608428449DE800CD8FC1 /* MockAuthService.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		FECC824C2845BF59005FCCFA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		FED158BB282DF84900605A25 /* Home */ = {

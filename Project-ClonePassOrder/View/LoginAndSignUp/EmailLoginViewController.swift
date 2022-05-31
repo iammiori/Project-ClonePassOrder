@@ -13,7 +13,7 @@ class EmailLoginViewController: UIViewController {
     
     //MARK: - 프로퍼티
     
-    private let authViewModel: AuthViewModel = AuthViewModel()
+     var authViewModel: AuthViewModel = AuthViewModel()
     private let emailLoginButton: UIButton = UIButton().emailLoginButton()
     private let emailTextField: UITextField = UITextField().loginTextField(returnKey: .next)
     private let passwordTextField: UITextField = UITextField().loginTextField(returnKey: .continue)
@@ -29,11 +29,12 @@ class EmailLoginViewController: UIViewController {
         setAtrribute()
         setLayout()
         setBind()
-        emailTextField.text = "aoao1216@naver.com"
     }
     
     //MARK: - 셀렉터메서드
     @objc func emailLoginButtonTapped() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
         guard let email = emailTextField.text else {
             return
         }
