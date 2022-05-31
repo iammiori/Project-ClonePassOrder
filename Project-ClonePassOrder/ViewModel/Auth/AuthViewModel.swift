@@ -79,7 +79,8 @@ extension AuthViewModel {
             let password = password else {
             return
         }
-        service.login(email: email, password: password) { [weak self] result in
+        let model = AuthModel(email: email, password: password)
+        service.login(model: model) { [weak self] result in
             switch result {
             case .success(let uid):
                 self?.uid.value = uid

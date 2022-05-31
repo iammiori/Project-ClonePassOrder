@@ -13,8 +13,7 @@ struct MockAuthService: AuthServiceProtocol {
     var logoutResult: Result<Void, AuthError>?
     
     func login(
-        email: String,
-        password: String,
+        model: AuthModel,
         completion: @escaping (Result<String, AuthError>) -> Void
     ) {
         completion(loginResult!)

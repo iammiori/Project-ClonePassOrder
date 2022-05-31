@@ -47,6 +47,10 @@
 		FEBBEC44283678180027EE4F /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC43283678180027EE4F /* SortCell.swift */; };
 		FEBBEC4B28373A7A0027EE4F /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */; };
 		FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4C283747C60027EE4F /* FourthListCell.swift */; };
+		FECC824E2845BFD9005FCCFA /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC824D2845BFD9005FCCFA /* AuthModel.swift */; };
+		FECC824F2845C09B005FCCFA /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC824D2845BFD9005FCCFA /* AuthModel.swift */; };
+		FECC82502845C0C5005FCCFA /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC824D2845BFD9005FCCFA /* AuthModel.swift */; };
+		FECC82512845C0C6005FCCFA /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC824D2845BFD9005FCCFA /* AuthModel.swift */; };
 		FED158BD282DF86700605A25 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BC282DF86700605A25 /* HomeViewController.swift */; };
 		FED158C0282DF8FC00605A25 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */; };
 		FED158C7282DF95F00605A25 /* qrCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED158C6282DF95F00605A25 /* qrCameraViewController.swift */; };
@@ -202,6 +206,7 @@
 		FEBBEC43283678180027EE4F /* SortCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
 		FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		FEBBEC4C283747C60027EE4F /* FourthListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthListCell.swift; sourceTree = "<group>"; };
+		FECC824D2845BFD9005FCCFA /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		FED158BC282DF86700605A25 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FED158BF282DF8FC00605A25 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		FED158C2282DF92100605A25 /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
@@ -491,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				FECC824C2845BF59005FCCFA /* Auth */,
+				FECC824D2845BFD9005FCCFA /* AuthModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1191,6 +1197,7 @@
 				FE7208CE28447E5A00C32AA3 /* ToastMessage.swift in Sources */,
 				FED4814D2840939F00A36638 /* DetailMenuTableViewModel.swift in Sources */,
 				FED4812E2840924F00A36638 /* GetTimeView.swift in Sources */,
+				FECC824E2845BFD9005FCCFA /* AuthModel.swift in Sources */,
 				FED4814B2840939F00A36638 /* OrderMenuViewController.swift in Sources */,
 				FED481322840924F00A36638 /* PayDetailViewController.swift in Sources */,
 				FE1287E42835F6DD00B7CDC4 /* ListExtenstion.swift in Sources */,
@@ -1277,6 +1284,7 @@
 				FEFEEF29284509940063D160 /* AuthUnitTest.swift in Sources */,
 				FEFEEF30284509AE0063D160 /* MockAuthService.swift in Sources */,
 				FEFEEF31284509B00063D160 /* AuthService.swift in Sources */,
+				FECC824F2845C09B005FCCFA /* AuthModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1289,6 +1297,7 @@
 				FEFEEF6428450AD40063D160 /* MockAuthService.swift in Sources */,
 				FEFEEF6028450AD00063D160 /* AuthViewModel.swift in Sources */,
 				FEFEEF4928450A040063D160 /* ViewUITest.swift in Sources */,
+				FECC82502845C0C5005FCCFA /* AuthModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1301,6 +1310,7 @@
 				FEFEEF6528450AD50063D160 /* MockAuthService.swift in Sources */,
 				FEFEEF6128450AD00063D160 /* AuthViewModel.swift in Sources */,
 				FEFEEF5828450A150063D160 /* IntegrationUITest.swift in Sources */,
+				FECC82512845C0C6005FCCFA /* AuthModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
