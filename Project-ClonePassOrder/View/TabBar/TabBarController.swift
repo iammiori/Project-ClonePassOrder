@@ -21,6 +21,7 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBinding()
         setImageView()
         auth()
     }
@@ -39,6 +40,7 @@ class TabBarController: UITabBarController {
         let favoriteCV = FavoriteViewController()
         let qrCameraCV = qrCameraViewController()
         let myPasserCV = MyPasserTableViewController(style: .grouped)
+        myPasserCV.viewDidLoad()
         let homeNavi = templatNavigation(
             title: "홈",
             image: UIImage(systemName: "cup.and.saucer.fill")!,
@@ -81,6 +83,15 @@ class TabBarController: UITabBarController {
         navi.tabBarItem.title = title
         return navi
     }
+    func setBinding() {
+        UserViewModel.shared.model.bind { [weak self] _ in
+            self!.setNavigation()
+            self!.setAttribute()
+        }
+        UserViewModel.shared.userImageFetchEnd.bind { [weak self] _ in
+            self!.imageView.removeFromSuperview()
+        }
+    }
     
     func auth() {
         if Auth.auth().currentUser == nil {
@@ -94,11 +105,6 @@ class TabBarController: UITabBarController {
             }
         } else {
             UserViewModel.shared.userFetch(uid: Auth.auth().currentUser!.uid)
-            UserViewModel.shared.model.bind { _ in
-                self.imageView.removeFromSuperview()
-                self.setNavigation()
-                self.setAttribute()
-            }
         }
     }
     
