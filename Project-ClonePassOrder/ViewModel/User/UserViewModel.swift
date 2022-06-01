@@ -14,8 +14,9 @@ protocol UserViewModelInput {
 protocol UserViewModelOutput {
     var model: Observer<UserModel> {get set}
     var userName: String {get}
-    var profileImageUrl: String {get}
+    var profileImageUrl: URL? {get}
     var userServiceError: Observer<UserServiceError> {get set}
+    var userImageFetchEnd: Observer<Bool> {get set}
 }
 
 protocol UserViewModelProtocol: UserViewModelInput, UserViewModelOutput {
@@ -32,14 +33,14 @@ final class UserViewModel: UserViewModelProtocol {
     //MARK: - outPut
     
     var model: Observer<UserModel> = Observer(value: UserModel.EMPTY)
-    
     var userName: String {
         return model.value.userName
     }
-    var profileImageUrl: String {
-        return model.value.profileImageUrl
+    var profileImageUrl: URL? {
+        return URL(string: model.value.profileImageUrl)
     }
     var userServiceError: Observer<UserServiceError> = Observer(value: .snapShotError)
+    var userImageFetchEnd: Observer<Bool> = Observer(value: false)
     
     init(service: UserServiceProtocol = UserService()) {
         self.userService = service
