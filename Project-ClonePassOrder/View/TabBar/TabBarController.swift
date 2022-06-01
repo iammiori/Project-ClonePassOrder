@@ -6,19 +6,33 @@
 //
 
 import UIKit
+import Firebase
 
 class TabBarController: UITabBarController {
+    
+    //MARK: - 프로퍼티
+    private let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "로딩이미지")
+        return iv
+    }()
     
     //MARK: - lifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigation()
-        setAttribute()
+        setImageView()
+        auth()
     }
     
     //MARK: - HelperFunction
     
+    private func setImageView() {
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
     private func setNavigation() {
         let homeCV = HomeViewController()
         let orderHistoryCV = OrderHistoryViewController()
@@ -66,6 +80,26 @@ class TabBarController: UITabBarController {
         navi.tabBarItem.image = image
         navi.tabBarItem.title = title
         return navi
+    }
+    
+    func auth() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                guard let delegate = sceneDelegate else {
+                    return
+                }
+                let vc = UINavigationController(rootViewController: LoginViewController())
+                delegate.window?.rootViewController = vc
+            }
+        } else {
+            UserViewModel.shared.userFetch(uid: Auth.auth().currentUser!.uid)
+            UserViewModel.shared.model.bind { _ in
+                self.imageView.removeFromSuperview()
+                self.setNavigation()
+                self.setAttribute()
+            }
+        }
     }
     
 
