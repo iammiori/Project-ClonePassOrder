@@ -98,6 +98,13 @@ class EmailLoginViewController: UIViewController {
             SVProgressHUD.SVoff(view: self!.view, button: [self!.emailLoginButton])
         }
         authViewModel.uid.bind { uid in
+            guard let uid = uid else {
+                return
+            }
+            UserViewModel.shared.userFetch(uid: uid)
+        }
+        UserViewModel.shared.model.bind { [weak self] _ in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.emailLoginButton])
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
             guard let delegate = sceneDelegate else {
                 return

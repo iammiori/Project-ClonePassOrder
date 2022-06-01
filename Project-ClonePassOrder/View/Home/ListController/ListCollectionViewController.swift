@@ -302,7 +302,7 @@ class ListCollectionViewController: UICollectionViewController {
             case 2:
                return self.setListCellHeader(
                 header: header,
-                firstText: "정덕호님과",
+                firstText: "\(UserViewModel.shared.userName)님과",
                 secondText: "가까이 있는 매장이에요!",
                 rangeText: "가까이 있는 매장",
                 color: .systemOrange
@@ -310,7 +310,7 @@ class ListCollectionViewController: UICollectionViewController {
             case 3:
                 return self.setListCellHeader(
                  header: header,
-                 firstText: "정덕호님 근처에있는",
+                 firstText: "\(UserViewModel.shared.userName)님 근처에있는",
                  secondText: "스토리가 많은 매장이에요!",
                  rangeText: "스토리가 많은 매장",
                  color: .systemBlue

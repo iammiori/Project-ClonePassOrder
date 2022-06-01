@@ -44,7 +44,7 @@ struct SignUpService: SignUpServiceProtocol {
                 let data: [String: Any] = [
                     "email": model.email,
                     "userName": model.userName,
-                    "prifileImageURL": model.profileImageURL,
+                    "profileImageURL": model.profileImageURL,
                     "나의약관동의": model.is14YearsOld,
                     "서비스제공동의": model.isAgreeService,
                     "위치정보제공동의": model.isAgreeLocationService,

@@ -194,7 +194,6 @@ extension SignUpViewModel {
         signUpService.signUp(model: model) { [weak self] result in
             switch result {
             case .success():
-                print("디버그")
                 self?.signUpEnd.value = true
             case .failure(let error):
                 self?.signUpError.value = error
