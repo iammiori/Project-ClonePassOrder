@@ -27,7 +27,7 @@ class UserUnitTest: XCTestCase {
         let model = UserModel(userName: "정한별",
                               email: "aoao1216@naver.com",
                               profileImageUrl: "profileimageUrl")
-        sut.model = model
+        sut.model.value = model
         
         
         //then
@@ -47,8 +47,8 @@ class UserUnitTest: XCTestCase {
         
         sut.userFetch(uid: uid)
         
-        XCTAssertEqual(sut.model.userName, model.userName)
-        XCTAssertEqual(sut.model.profileImageUrl, model.profileImageUrl)
+        XCTAssertEqual(sut.model.value.userName, model.userName)
+        XCTAssertEqual(sut.model.value.profileImageUrl, model.profileImageUrl)
     }
     func test_userFetch를_호출했을때_Firestore통신에실패하는경우_userFetchError를전달하는지() {
         let uid = "fdg2qkdsalk234"
