@@ -9,14 +9,23 @@ import Foundation
 import Firebase
 
 enum SigunUpError: Error {
-    
     case signUpFaildError
     case resultNillError
     case upLoadFireStoreError
+    case phoneNumberAuthError
+    case verificationCodeAuthError
+    case verificationResultNillError
 }
 
 protocol SignUpServiceProtocol {
     func signUp(model: SignUpModel, completion: @escaping (Result<Void,SigunUpError>) -> Void)
+    func phoneAuth(phoneNumber: String, completion: @escaping (Result<String,SigunUpError>) -> Void)
+    func credentialAuth(
+        verificationID: String,
+        verificationcode: String,
+        completion: @escaping (Result<Bool,SigunUpError>) -> Void
+    )
+    
 }
 
 struct SignUpService: SignUpServiceProtocol {
@@ -53,5 +62,42 @@ struct SignUpService: SignUpServiceProtocol {
             }
         }
     }
-
+    func phoneAuth(phoneNumber: String, completion: @escaping (Result<String,SigunUpError>) -> Void) {
+        Auth.auth().languageCode = "ko-KR"
+        PhoneAuthProvider.provider().verifyPhoneNumber(
+            phoneNumber,
+            uiDelegate: nil
+        ) { verificationID, error in
+            if error != nil {
+                completion(.failure(.phoneNumberAuthError))
+            } else {
+                guard let id = verificationID else {
+                    completion(.failure(.verificationResultNillError))
+                    return
+                }
+                completion(.success(id))
+            }
+        }
+    }
+    func credentialAuth(
+        verificationID: String,
+        verificationcode: String,
+        completion: @escaping (Result<Bool,SigunUpError>) -> Void
+    ) {
+        let credential: PhoneAuthCredential = PhoneAuthProvider.provider().credential(
+        withVerificationID: verificationID,
+        verificationCode: verificationcode
+       )
+        Auth.auth().signIn(with: credential) { result, error in
+            if error != nil {
+                completion(.failure(.verificationCodeAuthError))
+            } else {
+                guard let _ = result else {
+                    completion(.failure(.verificationResultNillError))
+                    return
+                }
+                completion(.success(true))
+            }
+        }
+    }
 }

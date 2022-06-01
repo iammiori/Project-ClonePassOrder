@@ -142,6 +142,17 @@ class SignUpUnitTest: XCTestCase {
         XCTAssertFalse(valid, "비밀번호가 일치하여 false를 리턴하지않습니다")
         XCTAssertEqual(sut.confirmPassword, "", "비밀번호가 빈문자열이 아닙니다")
     }
+    func test_phoneNumberConverting를_호출시_휴대폰번호가_82_01_xxxx_xxxx_형식으로_바뀌는지() {
+        //given
+        let phoneNumber = "01012341234"
+        
+    
+        //when
+         sut.phoneNumberConverting(phoneNumber: phoneNumber)
+        
+        //then
+        XCTAssertEqual(sut.phoneNumber, "+82 10-1234-1234")
+    }
     func test_필수약관을_모두동의한경우_true를리턴() {
         //given
         sut.is14YearsOld.value = true
@@ -272,5 +283,108 @@ class SignUpUnitTest: XCTestCase {
         //then
         XCTAssertTrue(sut.signUpEnd.value)
     }
+    func test_phoneNumberAuth를호출시_유효하지않은전화번호일경우에_phoneNumberAuthError를_전달하는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.phoneAuthResult = .failure(.phoneNumberAuthError)
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.phoneNumberAuth()
+        
+        //then
+        XCTAssertEqual(sut.signUpError.value, .phoneNumberAuthError, "에러형식이 다릅니다")
+    }
+    func test_phoneNumberAuth를호출시_verificationID가_nil인경우_verificationResultNillError를_전달하는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.phoneAuthResult = .failure(.verificationCodeAuthError)
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.phoneNumberAuth()
+        
+        //then
+        XCTAssertEqual(sut.signUpError.value, .verificationCodeAuthError, "에러형식이 다릅니다")
+    }
+    func test_phoneNumberAuth를호출시_인증번호전송에성공한경우_verificationID에_id가전달되는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.phoneAuthResult = .success("id")
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.phoneNumberAuth()
+        
+        //then
+        XCTAssertEqual(sut.verificationID.value, "id", "id가 전달되지않았습니다")
+    }
+    func test_phoneNumberAuthValid호출시_전송된인증번호와_입력한인증번호가_다른경우에_verificationCodeAuthError를전달하는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.credentialAuthResult = .failure(.verificationCodeAuthError)
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.phoneNumberAuthValid()
+        
+        //then
+        XCTAssertEqual(sut.signUpError.value, .verificationCodeAuthError, "에러형식이 다릅니다")
+    }
+    func test_phoneNumberAuthValid호출시_인증결과값이Nil인경우에_verificationResultNillError를전달하는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.credentialAuthResult = .failure(.verificationResultNillError)
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.phoneNumberAuthValid()
+        
+        //then
+        XCTAssertEqual(sut.signUpError.value, .verificationResultNillError, "에러형식이 다릅니다")
+    }
+    func test_phoneNumberAuthValid호출시_인증에성곤한경우_phoneNumberAuthSuccess에_true가전달되는지() {
+        //given
+        var mockSignupService = MockSignUpService()
+        mockSignupService.credentialAuthResult = .success(true)
+        sut.signUpService = mockSignupService
+        
+        //when
+        sut.phoneNumberAuthValid()
+        
+        //then
+        XCTAssertTrue(sut.phoneNumberAuthSuccess.value, "true가 전달되지않았습니다")
+    }
+    func test_phoneNumberAuthErrorString호출시_signUpErrorvalue가_phoneNumberAuthError인경우_번호를다시한번확인해주세요_문자열이_반환되는지() {
+        //given
+        sut.signUpError.value = .phoneNumberAuthError
+        
+        //when
+        let valid = sut.phoneNumberAuthErrorString()
+        
+        //then
+        XCTAssertEqual(valid, "번호를 다시한번 확인 해주세요", "반환되는 문자열이 일치하지않습니다")
+    }
+    func test_phoneNumberAuthErrorString호출시_signUpErrorvalue가_verificationCodeAuthError인경우_다시한번시도해주세요_문자열이_반환되는지() {
+        //given
+        sut.signUpError.value = .verificationCodeAuthError
+        
+        //when
+        let valid = sut.phoneNumberAuthErrorString()
+        
+        //then
+        XCTAssertEqual(valid, "다시한번 시도해주세요", "반환되는 문자열이 일치하지않습니다")
+    }
+    func test_phoneNumberAuthErrorString호출시_signUpErrorvalue가_verificationResultNillError인경우_다시한번시도해주세요_문자열이_반환되는지() {
+        //given
+        sut.signUpError.value = .verificationResultNillError
+        
+        //when
+        let valid = sut.phoneNumberAuthErrorString()
+        
+        //then
+        XCTAssertEqual(valid, "다시한번 시도해주세요", "반환되는 문자열이 일치하지않습니다")
+    }
+    
     
 }

@@ -18,6 +18,8 @@ protocol SignUpViewModelInput {
     func requiredAgreedValid() -> Bool
     func profileImageUpload()
     func signUpUser()
+    func phoneNumberAuth()
+    func phoneNumberAuthValid()
 }
 
 protocol SignUpViewModelOutput {
@@ -26,6 +28,9 @@ protocol SignUpViewModelOutput {
     var email: String {get set}
     var password: String {get set}
     var confirmPassword: String {get set}
+    var phoneNumber: String {get set}
+    var verificationID: Observer<String> {get set}
+    var verificationCode: String {get set}
     var imageURL: Observer<String> {get set}
     var is14YearsOld: Observer<Bool> {get set}
     var isAgreeService: Observer<Bool> {get set}
@@ -36,6 +41,7 @@ protocol SignUpViewModelOutput {
     var imageUploadError: Observer<ImageUploaderError> {get set}
     var signUpError: Observer<SigunUpError> {get set}
     var signUpEnd: Observer<Bool> {get set}
+    var phoneNumberAuthSuccess: Observer<Bool> {get set}
 }
 
 protocol SignUpViewModelProtocol: SignUpViewModelInput, SignUpViewModelOutput {
@@ -58,6 +64,9 @@ final class SignUpViewModel: SignUpViewModelProtocol {
     var email: String = ""
     var password: String = ""
     var confirmPassword: String = ""
+    var phoneNumber: String = ""
+    var verificationCode: String = ""
+    var verificationID: Observer<String> = Observer(value: "")
     var imageURL: Observer<String> = Observer(value: "")
     var is14YearsOld: Observer<Bool> = Observer(value: false)
     var isAgreeService: Observer<Bool> = Observer(value: false)
@@ -68,6 +77,7 @@ final class SignUpViewModel: SignUpViewModelProtocol {
     var imageUploadError: Observer<ImageUploaderError> = Observer(value: .uploadImageFaildError)
     var signUpError: Observer<SigunUpError> = Observer(value: .upLoadFireStoreError)
     var signUpEnd: Observer<Bool> = Observer(value: false)
+    var phoneNumberAuthSuccess: Observer<Bool> = Observer(value: false)
     
     init(
         imageUploaderService: ImageUploaderServiceProtocol = ImageUploaderService(),
@@ -129,6 +139,18 @@ extension SignUpViewModel {
             return false
         }
     }
+    func phoneNumberConverting(phoneNumber: String) {
+      var convertPhoneNumber = phoneNumber
+        convertPhoneNumber.removeFirst()
+        convertPhoneNumber.insert(
+            "-", at: convertPhoneNumber.index(convertPhoneNumber.startIndex, offsetBy: 2)
+        )
+        convertPhoneNumber.insert(
+            "-", at: convertPhoneNumber.index(convertPhoneNumber.startIndex, offsetBy: 7)
+        )
+        
+        self.phoneNumber = "+82 \(convertPhoneNumber)"
+    }
     func requiredAgreedValid() -> Bool {
         if is14YearsOld.value &&
             isAgreeService.value &&
@@ -177,6 +199,44 @@ extension SignUpViewModel {
             case .failure(let error):
                 self?.signUpError.value = error
             }
+        }
+    }
+    func phoneNumberAuth() {
+        signUpService.phoneAuth(phoneNumber: phoneNumber) { [weak self] result in
+            switch result {
+            case .success(let id):
+                self!.verificationID.value = id
+            case .failure(let error):
+                self!.signUpError.value = error
+            }
+        }
+    }
+    func phoneNumberAuthValid() {
+        signUpService.credentialAuth(
+            verificationID: self.verificationID.value,
+            verificationcode: self.verificationCode) { [weak self] result in
+                switch result {
+                case .success(let bool):
+                    self!.phoneNumberAuthSuccess.value = bool
+                case .failure(let error):
+                    self!.signUpError.value = error
+                }
+            }
+    }
+    func phoneNumberAuthErrorString() -> String? {
+        switch self.signUpError.value {
+        case .signUpFaildError:
+            return nil
+        case .resultNillError:
+            return nil
+        case .upLoadFireStoreError:
+            return nil
+        case .phoneNumberAuthError:
+            return "번호를 다시한번 확인 해주세요"
+        case .verificationCodeAuthError:
+            return "다시한번 시도해주세요"
+        case .verificationResultNillError:
+            return "다시한번 시도해주세요"
         }
     }
     

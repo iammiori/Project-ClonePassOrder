@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 enum SignUpState {
     case userName
@@ -19,7 +20,7 @@ class SignUpViewController: UIViewController {
     
     //MARK: - 프로퍼티
     
-    private var signUpState: SignUpState = .userName
+     var signUpState: SignUpState = .userName
     private var textFieldText: String = "닉네임"
     private var textFieldPlaceHolder: String = "8글자 이하로 작성해주세요"
     private var phoneNumberConfirmTextField: UITextField?
@@ -30,6 +31,7 @@ class SignUpViewController: UIViewController {
         text: textFieldText,
         placeholder: textFieldPlaceHolder
     )
+    var id = ""
     
     //MARK: - 라이프사이클
     
@@ -48,22 +50,8 @@ class SignUpViewController: UIViewController {
     }
     @objc private func phoneNumberConfirmButtonTapped() {
         if SignUpViewModel.shared.textFieldEmptyVaild(text: textField.text ?? "") {
-            guard let phoneNumberConfirmTextField = phoneNumberConfirmTextField else {
-                return
-            }
-            view.addSubview(phoneNumberConfirmTextField)
-            phoneNumberConfirmTextField.snp.makeConstraints { make in
-                make.top.equalTo(textField.snp.bottom).offset(40)
-                make.leading.equalToSuperview().offset(20)
-                make.trailing.equalTo(view.snp.trailing).offset(-20)
-            }
-           
-            nextButton.snp.removeConstraints()
-            self.nextButtonSetLayout(
-                view: view,
-                button: nextButton,
-                topView: phoneNumberConfirmTextField
-            )
+            SignUpViewModel.shared.phoneNumberConverting(phoneNumber: textField.text!)
+            SignUpViewModel.shared.phoneNumberAuth()
         } else {
             Toast.message(superView: view, text: "전화번호를 입력해주세요")
         }
@@ -128,6 +116,36 @@ class SignUpViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
     private func setBinding() {
+        SignUpViewModel.shared.phoneNumberAuthSuccess.bind { [weak self] _ in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.nextButton])
+            let vc = AgreementViewController()
+            self!.navigationController?.pushViewController(vc, animated: true)
+        }
+        SignUpViewModel.shared.verificationID.bind { [weak self] _ in
+            guard let phoneNumberConfirmTextField = self?.phoneNumberConfirmTextField else {
+                return
+            }
+            self!.view.addSubview(phoneNumberConfirmTextField)
+            phoneNumberConfirmTextField.snp.makeConstraints { make in
+                make.top.equalTo(self!.textField.snp.bottom).offset(40)
+                make.leading.equalToSuperview().offset(20)
+                make.trailing.equalTo(self!.view.snp.trailing).offset(-20)
+            }
+           
+            self!.nextButton.snp.removeConstraints()
+            self!.nextButtonSetLayout(
+                view: self!.view,
+                button: self!.nextButton,
+                topView: phoneNumberConfirmTextField
+            )
+        }
+        SignUpViewModel.shared.signUpError.bind { [weak self] _ in
+            guard let text = SignUpViewModel.shared.phoneNumberAuthErrorString() else {
+                return
+            }
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.nextButton])
+            Toast.message(superView: self!.view, text: text)
+        }
     }
     private func pushNextView() {
         let vc = SignUpViewController()
@@ -188,8 +206,15 @@ class SignUpViewController: UIViewController {
                 Toast.message(superView: view, text: "비밀번호를 입력해주세요")
             }
         case .phoneNumber:
-            let vc = AgreementViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            guard let phoneNumberConfirmTextField = phoneNumberConfirmTextField else {
+                return
+            }
+            guard let text = phoneNumberConfirmTextField.text else {
+                return
+            }
+            SignUpViewModel.shared.verificationCode = text
+            SignUpViewModel.shared.phoneNumberAuthValid()
+            SVProgressHUD.SVshow(view: view, text: "", button: [nextButton])
         }
     }
 }

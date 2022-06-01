@@ -59,6 +59,7 @@
 		FEBA7E4C284648E800BCD132 /* MockImageUploaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBA7E3F2845F5BE00BCD132 /* MockImageUploaderService.swift */; };
 		FEBA7E4D2846490300BCD132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBA7E382845EE2D00BCD132 /* SignUpModel.swift */; };
 		FEBA7E4F2846490300BCD132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBA7E382845EE2D00BCD132 /* SignUpModel.swift */; };
+		FEBA7E53284715F300BCD132 /* UserUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBA7E52284715F300BCD132 /* UserUnitTest.swift */; };
 		FEBBEC44283678180027EE4F /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC43283678180027EE4F /* SortCell.swift */; };
 		FEBBEC4B28373A7A0027EE4F /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */; };
 		FEBBEC4D283747C60027EE4F /* FourthListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBBEC4C283747C60027EE4F /* FourthListCell.swift */; };
@@ -215,6 +216,8 @@
 		FEBA7E3A2845F1EA00BCD132 /* MockSignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSignUpService.swift; sourceTree = "<group>"; };
 		FEBA7E3D2845F5AB00BCD132 /* ImageUploaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploaderService.swift; sourceTree = "<group>"; };
 		FEBA7E3F2845F5BE00BCD132 /* MockImageUploaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageUploaderService.swift; sourceTree = "<group>"; };
+		FEBA7E502846577400BCD132 /* Project-ClonePassOrder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Project-ClonePassOrder.entitlements"; sourceTree = "<group>"; };
+		FEBA7E52284715F300BCD132 /* UserUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUnitTest.swift; sourceTree = "<group>"; };
 		FEBBEC43283678180027EE4F /* SortCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
 		FEBBEC4A28373A7A0027EE4F /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		FEBBEC4C283747C60027EE4F /* FourthListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthListCell.swift; sourceTree = "<group>"; };
@@ -398,6 +401,7 @@
 		FE210D52282BC2CC009A4EB8 /* Project-ClonePassOrder */ = {
 			isa = PBXGroup;
 			children = (
+				FEBA7E502846577400BCD132 /* Project-ClonePassOrder.entitlements */,
 				FEFEEF5628450A150063D160 /* IntegrationUITest */,
 				FEFEEF27284509940063D160 /* UnitTest */,
 				FECC824A2845BF3B005FCCFA /* Service */,
@@ -512,6 +516,14 @@
 				FEBA7E3F2845F5BE00BCD132 /* MockImageUploaderService.swift */,
 			);
 			path = ImageUploader;
+			sourceTree = "<group>";
+		};
+		FEBA7E51284715E300BCD132 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				FEBA7E52284715F300BCD132 /* UserUnitTest.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		FEBBEC4928373A660027EE4F /* Search */ = {
@@ -889,6 +901,7 @@
 		FEFEEF27284509940063D160 /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
+				FEBA7E51284715E300BCD132 /* User */,
 				FECC82532845C182005FCCFA /* SignUp */,
 				FECC82522845C149005FCCFA /* Auth */,
 			);
@@ -1273,6 +1286,7 @@
 				FEBA7E4D2846490300BCD132 /* SignUpModel.swift in Sources */,
 				FECC82592845C2AD005FCCFA /* SignUpViewModel.swift in Sources */,
 				FECC82552845C19C005FCCFA /* SignUpUnitTest.swift in Sources */,
+				FEBA7E53284715F300BCD132 /* UserUnitTest.swift in Sources */,
 				FEFEEF29284509940063D160 /* AuthUnitTest.swift in Sources */,
 				FEBA7E47284648E400BCD132 /* ImageUploaderService.swift in Sources */,
 				FEFEEF30284509AE0063D160 /* MockAuthService.swift in Sources */,
@@ -1449,11 +1463,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Project-ClonePassOrder/Project-ClonePassOrder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3L2WN7T88;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Project-ClonePassOrder/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "사진 및 QR 스캔을 위한 카메라 사용 권한";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -1479,11 +1495,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Project-ClonePassOrder/Project-ClonePassOrder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3L2WN7T88;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Project-ClonePassOrder/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "사진 및 QR 스캔을 위한 카메라 사용 권한";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
