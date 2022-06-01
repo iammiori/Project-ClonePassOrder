@@ -9,35 +9,71 @@ import XCTest
 @testable import Project_ClonePassOrder
 
 class IntegrationUITest: XCTestCase {
+    
+    var app: XCUIApplication!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+       try super.setUpWithError()
+        app = XCUIApplication()
+        app.launchArguments.append("LoginAndSignUpUITesting")
+        app.launch()
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
+        app = nil
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func test_로그인에_성공하는경우_tabBarController로이동하여_성공하는경우_listCollectionView가_보이는지() {
+        let staticText = app/*@START_MENU_TOKEN@*/.staticTexts[" 이메일로 로그인"]/*[[".buttons[\" 이메일로 로그인\"].staticTexts[\" 이메일로 로그인\"]",".staticTexts[\" 이메일로 로그인\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        staticText.tap()
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        let textField = element.children(matching: .textField).element
+        textField.tap()
+        textField.typeText("aoao1216@naver.com")
+        let secureTextField = element.children(matching: .secureTextField).element
+        secureTextField.tap()
+        secureTextField.typeText("123123123")
+        app.buttons[" 이메일로 로그인"].tap()
+        let verticalScrollBar4PagesCollectionView = app.collectionViews.containing(.other, identifier:"Vertical scroll bar, 4 pages").element
+        XCTAssert(verticalScrollBar4PagesCollectionView.waitForExistence(timeout: 5))
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    func test_로그인에성공한후_다시로그아웃을했을때_loginViewController로_돌아와_이메일로로그인버튼이보이는지() {
+        let staticText = app/*@START_MENU_TOKEN@*/.staticTexts[" 이메일로 로그인"]/*[[".buttons[\" 이메일로 로그인\"].staticTexts[\" 이메일로 로그인\"]",".staticTexts[\" 이메일로 로그인\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        staticText.tap()
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        let textField = element.children(matching: .textField).element
+        textField.tap()
+        textField.typeText("aoao1216@naver.com")
+        let secureTextField = element.children(matching: .secureTextField).element
+        secureTextField.tap()
+        secureTextField.typeText("123123123")
+        app.buttons[" 이메일로 로그인"].tap()
+        sleep(2)
+        app.tabBars["Tab Bar"].buttons["마이패써"].tap()
+        let tablesQuery = app.tables
+        tablesQuery.cells.containing(.staticText, identifier:"🔎   자주 묻는 질문").element.swipeUp()
+        tablesQuery.cells.containing(.staticText, identifier:"🚪   로그아웃").element.tap()
+        XCTAssert(staticText.waitForExistence(timeout: 3))
+    }
+    func test_회원가입을_모두성공하는경우_listCollectionView가_보이는지() {
+//        app/*@START_MENU_TOKEN@*/.staticTexts["이메일로 회원가입하기"]/*[[".buttons[\"이메일로 회원가입하기\"].staticTexts[\"이메일로 회원가입하기\"]",".staticTexts[\"이메일로 회원가입하기\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+//        app.buttons.element(boundBy: 1).tap()
+//        sleep(2)
+//        app.images.element(boundBy: 1).tap()
+//        sleep(2)
+//        app.buttons["Choose"].tap()
+//        sleep(2)
+//        app/*@START_MENU_TOKEN@*/.staticTexts["다음  "]/*[[".buttons[\"다음  \"].staticTexts[\"다음  \"]",".staticTexts[\"다음  \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["이메일로 회원가입하기"]/*[[".buttons[\"이메일로 회원가입하기\"].staticTexts[\"이메일로 회원가입하기\"]",".staticTexts[\"이메일로 회원가입하기\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.textFields["8글자 이하로 작성해주세요"].tap()
+        app.textFields["8글자 이하로 작성해주세요"].typeText("가나다라")
+        let staticText = app/*@START_MENU_TOKEN@*/.staticTexts["다음  "]/*[[".buttons[\"다음  \"].staticTexts[\"다음  \"]",".staticTexts[\"다음  \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        staticText.tap()
+        app.textFields["passorder@gmail.com"].tap()
+        app.textFields["passorder@gmail.com"].typeText("wjdejrgh98@naver.com")
+        staticText.tap()
     }
 }
+
