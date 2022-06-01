@@ -32,7 +32,7 @@ class UserUnitTest: XCTestCase {
         
         //then
         XCTAssertEqual(sut.userName, "정한별")
-        XCTAssertEqual(sut.profileImageUrl, "profileimageUrl")
+        XCTAssertEqual(sut.profileImageUrl, URL(string: "profileimageUrl"))
     }
     func test_userFetch를_호출했을때_성공하는경우_model전달되는지() {
         let uid = "fdg2qkdsalk234"

@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(EmailLoginViewController(), animated: true)
     }
     @objc private func emailSignupButtonTapped() {
-        navigationController?.pushViewController(ProfileImageViewController(), animated: true)
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
     
     //MARK: - 메서드

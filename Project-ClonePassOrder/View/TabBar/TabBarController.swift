@@ -92,7 +92,6 @@ class TabBarController: UITabBarController {
             self!.imageView.removeFromSuperview()
         }
     }
-    
     func auth() {
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
