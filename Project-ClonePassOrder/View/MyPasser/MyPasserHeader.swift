@@ -35,6 +35,7 @@ class MyPasserHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setLayout()
+        setAtrribute()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -56,5 +57,8 @@ class MyPasserHeader: UITableViewHeaderFooterView {
             make.trailing.equalToSuperview().offset(20)
             make.centerY.equalTo(imageView)
         }
+    }
+    private func setAtrribute() {
+        label.text = UserViewModel.shared.userName
     }
 }
