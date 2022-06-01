@@ -57,23 +57,39 @@ class IntegrationUITest: XCTestCase {
         tablesQuery.cells.containing(.staticText, identifier:"🚪   로그아웃").element.tap()
         XCTAssert(staticText.waitForExistence(timeout: 3))
     }
-    func test_회원가입을_모두성공하는경우_listCollectionView가_보이는지() {
+//    func test_회원가입을_모두성공하는경우_listCollectionView가_보이는지() {
+//
+////        app/*@START_MENU_TOKEN@*/.staticTexts["이메일로 회원가입하기"]/*[[".buttons[\"이메일로 회원가입하기\"].staticTexts[\"이메일로 회원가입하기\"]",".staticTexts[\"이메일로 회원가입하기\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+////        app.buttons.element(boundBy: 1).tap()
+////        sleep(2)
+////        app.images.element(boundBy: 1).tap()
+////        sleep(2)
+////        app.buttons["Choose"].tap()
+////        sleep(2)
+////        app/*@START_MENU_TOKEN@*/.staticTexts["다음  "]/*[[".buttons[\"다음  \"].staticTexts[\"다음  \"]",".staticTexts[\"다음  \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 //        app/*@START_MENU_TOKEN@*/.staticTexts["이메일로 회원가입하기"]/*[[".buttons[\"이메일로 회원가입하기\"].staticTexts[\"이메일로 회원가입하기\"]",".staticTexts[\"이메일로 회원가입하기\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        app.buttons.element(boundBy: 1).tap()
-//        sleep(2)
-//        app.images.element(boundBy: 1).tap()
-//        sleep(2)
-//        app.buttons["Choose"].tap()
-//        sleep(2)
-//        app/*@START_MENU_TOKEN@*/.staticTexts["다음  "]/*[[".buttons[\"다음  \"].staticTexts[\"다음  \"]",".staticTexts[\"다음  \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.staticTexts["이메일로 회원가입하기"]/*[[".buttons[\"이메일로 회원가입하기\"].staticTexts[\"이메일로 회원가입하기\"]",".staticTexts[\"이메일로 회원가입하기\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.textFields["8글자 이하로 작성해주세요"].tap()
-        app.textFields["8글자 이하로 작성해주세요"].typeText("가나다라")
-        let staticText = app/*@START_MENU_TOKEN@*/.staticTexts["다음  "]/*[[".buttons[\"다음  \"].staticTexts[\"다음  \"]",".staticTexts[\"다음  \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        staticText.tap()
-        app.textFields["passorder@gmail.com"].tap()
-        app.textFields["passorder@gmail.com"].typeText("wjdejrgh98@naver.com")
-        staticText.tap()
-    }
+//        app.textFields["8글자 이하로 작성해주세요"].tap()
+//        app.textFields["8글자 이하로 작성해주세요"].typeText("가나다라")
+//        let staticText = app/*@START_MENU_TOKEN@*/.staticTexts["다음  "]/*[[".buttons[\"다음  \"].staticTexts[\"다음  \"]",".staticTexts[\"다음  \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+//        staticText.tap()
+//        app.textFields["passorder@gmail.com"].tap()
+//        app.textFields["passorder@gmail.com"].typeText("wjdejrgh98@naver.com")
+//        staticText.tap()
+//        app.secureTextFields["8자리이상으로 작성해주세요"].tap()
+//        app.secureTextFields["8자리이상으로 작성해주세요"].typeText("123123123")
+//        staticText.tap()
+//        app.secureTextFields["비밀번호 한번더 입력"].tap()
+//        app.secureTextFields["비밀번호 한번더 입력"].typeText("123123123")
+//        staticText.tap()
+//        app.textFields["- 없이번호만입력"].tap()
+//        app.textFields["- 없이번호만입력"].typeText("01012341234")
+//        app/*@START_MENU_TOKEN@*/.staticTexts["확인"]/*[[".buttons[\"확인\"].staticTexts[\"확인\"]",".staticTexts[\"확인\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+//        XCTAssert(staticText.waitForExistence(timeout: 10))
+//        app.textFields["인증번호 6자리 입력"].tap()
+//        app.textFields["인증번호 6자리 입력"].typeText("123123")
+//        XCTAssert(staticText.waitForExistence(timeout: 10))
+//        staticText.tap()
+//        app/*@START_MENU_TOKEN@*/.staticTexts["  모든 약관에 동의합니다."]/*[[".buttons[\"  모든 약관에 동의합니다.\"].staticTexts[\"  모든 약관에 동의합니다.\"]",".staticTexts[\"  모든 약관에 동의합니다.\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+//    }
 }
 

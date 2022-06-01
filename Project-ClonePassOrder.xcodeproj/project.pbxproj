@@ -134,22 +134,6 @@
 		FED845FB28407F510090D09A /* StoryCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED845F328407F510090D09A /* StoryCommentViewController.swift */; };
 		FED845FC28407F510090D09A /* StoreDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED845F428407F510090D09A /* StoreDetailInfoTableViewCell.swift */; };
 		FED845FD28407F510090D09A /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED845F528407F510090D09A /* StoryTableViewCell.swift */; };
-		FED8A6F22847A9D5002E70A6 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F12847A9D5002E70A6 /* ADModel.swift */; };
-		FED8A6F52847AD2D002E70A6 /* FirstADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F42847AD2D002E70A6 /* FirstADViewModel.swift */; };
-		FED8A6F82847AD59002E70A6 /* ADService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F72847AD59002E70A6 /* ADService.swift */; };
-		FED8A6FA2847AD6F002E70A6 /* MockADService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F92847AD6F002E70A6 /* MockADService.swift */; };
-		FED8A6FC2847AD82002E70A6 /* SecondADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6FB2847AD82002E70A6 /* SecondADViewModel.swift */; };
-		FED8A6FF2847ADCB002E70A6 /* ADUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6FE2847ADCB002E70A6 /* ADUnitTest.swift */; };
-		FED8A7002847ADD0002E70A6 /* ADService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F72847AD59002E70A6 /* ADService.swift */; };
-		FED8A7012847ADD0002E70A6 /* ADService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F72847AD59002E70A6 /* ADService.swift */; };
-		FED8A7022847ADD4002E70A6 /* MockADService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F92847AD6F002E70A6 /* MockADService.swift */; };
-		FED8A7032847ADD5002E70A6 /* MockADService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F92847AD6F002E70A6 /* MockADService.swift */; };
-		FED8A7042847ADD7002E70A6 /* FirstADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F42847AD2D002E70A6 /* FirstADViewModel.swift */; };
-		FED8A7052847ADD8002E70A6 /* FirstADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F42847AD2D002E70A6 /* FirstADViewModel.swift */; };
-		FED8A7062847ADDB002E70A6 /* SecondADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6FB2847AD82002E70A6 /* SecondADViewModel.swift */; };
-		FED8A7072847ADDC002E70A6 /* SecondADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6FB2847AD82002E70A6 /* SecondADViewModel.swift */; };
-		FED8A7082847ADDF002E70A6 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F12847A9D5002E70A6 /* ADModel.swift */; };
-		FED8A7092847ADDF002E70A6 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8A6F12847A9D5002E70A6 /* ADModel.swift */; };
 		FEDFF5222833852900E65E45 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDFF5212833852900E65E45 /* TabBarController.swift */; };
 		FEED608328449C5800CD8FC1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEED608228449C5800CD8FC1 /* AuthService.swift */; };
 		FEED608528449DE800CD8FC1 /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEED608428449DE800CD8FC1 /* MockAuthService.swift */; };
@@ -309,12 +293,6 @@
 		FED845F328407F510090D09A /* StoryCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCommentViewController.swift; sourceTree = "<group>"; };
 		FED845F428407F510090D09A /* StoreDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		FED845F528407F510090D09A /* StoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
-		FED8A6F12847A9D5002E70A6 /* ADModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
-		FED8A6F42847AD2D002E70A6 /* FirstADViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstADViewModel.swift; sourceTree = "<group>"; };
-		FED8A6F72847AD59002E70A6 /* ADService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADService.swift; sourceTree = "<group>"; };
-		FED8A6F92847AD6F002E70A6 /* MockADService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockADService.swift; sourceTree = "<group>"; };
-		FED8A6FB2847AD82002E70A6 /* SecondADViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondADViewModel.swift; sourceTree = "<group>"; };
-		FED8A6FE2847ADCB002E70A6 /* ADUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADUnitTest.swift; sourceTree = "<group>"; };
 		FEDFF5212833852900E65E45 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FEED608228449C5800CD8FC1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		FEED608428449DE800CD8FC1 /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
@@ -516,7 +494,6 @@
 		FE7208D3284482E200C32AA3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FED8A6F32847AD22002E70A6 /* AD */,
 				FEBA7E54284716A400BCD132 /* User */,
 				FECC82562845C1E0005FCCFA /* SignUp */,
 				FE7208D4284482F000C32AA3 /* Auth */,
@@ -602,7 +579,6 @@
 		FECC82492845BF33005FCCFA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FED8A6F02847A981002E70A6 /* AD */,
 				FEBA7E592847177600BCD132 /* User */,
 				FEBA7E352845EDD400BCD132 /* SignUp */,
 				FECC824C2845BF59005FCCFA /* Auth */,
@@ -613,7 +589,6 @@
 		FECC824A2845BF3B005FCCFA /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				FED8A6F62847AD4E002E70A6 /* AD */,
 				FEBA7E3C2845F59000BCD132 /* ImageUploader */,
 				FEBA7E5E28471FC000BCD132 /* User */,
 				FEBA7E342845EDCB00BCD132 /* SignUp */,
@@ -959,40 +934,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		FED8A6F02847A981002E70A6 /* AD */ = {
-			isa = PBXGroup;
-			children = (
-				FED8A6F12847A9D5002E70A6 /* ADModel.swift */,
-			);
-			path = AD;
-			sourceTree = "<group>";
-		};
-		FED8A6F32847AD22002E70A6 /* AD */ = {
-			isa = PBXGroup;
-			children = (
-				FED8A6F42847AD2D002E70A6 /* FirstADViewModel.swift */,
-				FED8A6FB2847AD82002E70A6 /* SecondADViewModel.swift */,
-			);
-			path = AD;
-			sourceTree = "<group>";
-		};
-		FED8A6F62847AD4E002E70A6 /* AD */ = {
-			isa = PBXGroup;
-			children = (
-				FED8A6F72847AD59002E70A6 /* ADService.swift */,
-				FED8A6F92847AD6F002E70A6 /* MockADService.swift */,
-			);
-			path = AD;
-			sourceTree = "<group>";
-		};
-		FED8A6FD2847ADB8002E70A6 /* AD */ = {
-			isa = PBXGroup;
-			children = (
-				FED8A6FE2847ADCB002E70A6 /* ADUnitTest.swift */,
-			);
-			path = AD;
-			sourceTree = "<group>";
-		};
 		FEDFF5202833850F00E65E45 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1004,7 +945,6 @@
 		FEFEEF27284509940063D160 /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
-				FED8A6FD2847ADB8002E70A6 /* AD */,
 				FEBA7E51284715E300BCD132 /* User */,
 				FECC82532845C182005FCCFA /* SignUp */,
 				FECC82522845C149005FCCFA /* Auth */,
@@ -1291,12 +1231,10 @@
 				FED481362840924F00A36638 /* LeftRightLabel.swift in Sources */,
 				FEBBEC44283678180027EE4F /* SortCell.swift in Sources */,
 				FEBA7E392845EE2D00BCD132 /* SignUpModel.swift in Sources */,
-				FED8A6FC2847AD82002E70A6 /* SecondADViewModel.swift in Sources */,
 				FED481302840924F00A36638 /* ThreeLabelView.swift in Sources */,
 				FE7208CE28447E5A00C32AA3 /* ToastMessage.swift in Sources */,
 				FED4814D2840939F00A36638 /* DetailMenuTableViewModel.swift in Sources */,
 				FED4812E2840924F00A36638 /* GetTimeView.swift in Sources */,
-				FED8A6F22847A9D5002E70A6 /* ADModel.swift in Sources */,
 				FECC824E2845BFD9005FCCFA /* AuthModel.swift in Sources */,
 				FED4814B2840939F00A36638 /* OrderMenuViewController.swift in Sources */,
 				FED481322840924F00A36638 /* PayDetailViewController.swift in Sources */,
@@ -1348,7 +1286,6 @@
 				FE4BEF0228321F9700530B08 /* LoginAndSignUpExtension.swift in Sources */,
 				FED4813C2840927900A36638 /* APIKeys.swift in Sources */,
 				FEBA7E372845EE0E00BCD132 /* SignUpService.swift in Sources */,
-				FED8A6FA2847AD6F002E70A6 /* MockADService.swift in Sources */,
 				FED480F92840923800A36638 /* OrderMenuDetailViewController.swift in Sources */,
 				FED481512840939F00A36638 /* MenuCollectionViewCell.swift in Sources */,
 				FEBA7E3B2845F1EA00BCD132 /* MockSignUpService.swift in Sources */,
@@ -1356,7 +1293,6 @@
 				FED481242840924F00A36638 /* TimeBtn.swift in Sources */,
 				FE6D680E2837986000184329 /* FavoriteHeader.swift in Sources */,
 				FEDFF5222833852900E65E45 /* TabBarController.swift in Sources */,
-				FED8A6F82847AD59002E70A6 /* ADService.swift in Sources */,
 				FEBA7E332845CEE600BCD132 /* ProfileImageViewController.swift in Sources */,
 				FED481352840924F00A36638 /* PayFinishViewController.swift in Sources */,
 				FEBA7E642847258700BCD132 /* MockUserService.swift in Sources */,
@@ -1365,7 +1301,6 @@
 				FED845FA28407F510090D09A /* StoreDetailTableViewHeaderView.swift in Sources */,
 				FEED608328449C5800CD8FC1 /* AuthService.swift in Sources */,
 				FED481272840924F00A36638 /* CardCollectionView.swift in Sources */,
-				FED8A6F52847AD2D002E70A6 /* FirstADViewModel.swift in Sources */,
 				FE1287ED28361B0500B7CDC4 /* ListCellFooter.swift in Sources */,
 				FED481282840924F00A36638 /* CardView.swift in Sources */,
 				FED481392840924F00A36638 /* PayFinishInfoView.swift in Sources */,
@@ -1395,7 +1330,6 @@
 				FEFEEF2F284509AC0063D160 /* AuthViewModel.swift in Sources */,
 				FEBA7E44284648E200BCD132 /* SignUpService.swift in Sources */,
 				FEBA7E41284648DF00BCD132 /* MockSignUpService.swift in Sources */,
-				FED8A7042847ADD7002E70A6 /* FirstADViewModel.swift in Sources */,
 				FEBA7E4A284648E800BCD132 /* MockImageUploaderService.swift in Sources */,
 				FEFEEF32284509B50063D160 /* Observer.swift in Sources */,
 				FEBA7E4D2846490300BCD132 /* SignUpModel.swift in Sources */,
@@ -1404,15 +1338,10 @@
 				FECC82552845C19C005FCCFA /* SignUpUnitTest.swift in Sources */,
 				FEBA7E53284715F300BCD132 /* UserUnitTest.swift in Sources */,
 				FEFEEF29284509940063D160 /* AuthUnitTest.swift in Sources */,
-				FED8A7002847ADD0002E70A6 /* ADService.swift in Sources */,
-				FED8A7082847ADDF002E70A6 /* ADModel.swift in Sources */,
-				FED8A6FF2847ADCB002E70A6 /* ADUnitTest.swift in Sources */,
 				FEBA7E5C2847191D00BCD132 /* UserModel.swift in Sources */,
 				FEBA7E47284648E400BCD132 /* ImageUploaderService.swift in Sources */,
-				FED8A7062847ADDB002E70A6 /* SecondADViewModel.swift in Sources */,
 				FEFEEF30284509AE0063D160 /* MockAuthService.swift in Sources */,
 				FEFEEF31284509B00063D160 /* AuthService.swift in Sources */,
-				FED8A7022847ADD4002E70A6 /* MockADService.swift in Sources */,
 				FEBA7E572847170900BCD132 /* UserViewModel.swift in Sources */,
 				FECC824F2845C09B005FCCFA /* AuthModel.swift in Sources */,
 			);
@@ -1427,22 +1356,17 @@
 				FEFEEF6528450AD50063D160 /* MockAuthService.swift in Sources */,
 				FEBA7E4F2846490300BCD132 /* SignUpModel.swift in Sources */,
 				FEBA7E43284648E000BCD132 /* MockSignUpService.swift in Sources */,
-				FED8A7052847ADD8002E70A6 /* FirstADViewModel.swift in Sources */,
 				FEFEEF6128450AD00063D160 /* AuthViewModel.swift in Sources */,
 				FEBA7E4C284648E800BCD132 /* MockImageUploaderService.swift in Sources */,
 				FEFEEF5828450A150063D160 /* IntegrationUITest.swift in Sources */,
 				FEBA7E5D2847191D00BCD132 /* UserModel.swift in Sources */,
-				FED8A7012847ADD0002E70A6 /* ADService.swift in Sources */,
-				FED8A7072847ADDC002E70A6 /* SecondADViewModel.swift in Sources */,
 				FECC82512845C0C6005FCCFA /* AuthModel.swift in Sources */,
 				FEBA7E66284725BE00BCD132 /* MockUserService.swift in Sources */,
-				FED8A7032847ADD5002E70A6 /* MockADService.swift in Sources */,
 				FEBA7E582847170900BCD132 /* UserViewModel.swift in Sources */,
 				FEBA7E6228471FDD00BCD132 /* UserService.swift in Sources */,
 				FEBA7E46284648E300BCD132 /* SignUpService.swift in Sources */,
 				FECC825B2845C2AD005FCCFA /* SignUpViewModel.swift in Sources */,
 				FEBA7E49284648E500BCD132 /* ImageUploaderService.swift in Sources */,
-				FED8A7092847ADDF002E70A6 /* ADModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
