@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MyPasserHeader: UITableViewHeaderFooterView {
     
@@ -60,5 +61,15 @@ class MyPasserHeader: UITableViewHeaderFooterView {
     }
     private func setAtrribute() {
         label.text = UserViewModel.shared.userName
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: UserViewModel.shared.profileImageUrl) { result in
+            switch result {
+            case .success(_):
+                UserViewModel.shared.userImageFetchEnd.value = true
+            case .failure(_):
+                break
+            }
+        }
+
     }
 }
