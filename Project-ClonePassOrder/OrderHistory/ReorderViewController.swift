@@ -172,6 +172,7 @@ final class ReorderViewController: UIViewController {
         setNavigation()
         setLayout()
         setTableView()
+        dismissKeyboardWhenTappedAround()
         
         NotificationCenter.default.addObserver(
             self,
@@ -311,9 +312,6 @@ final class ReorderViewController: UIViewController {
     @objc private func backButtonTapped() {
         dismiss(animated: true)
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
     @objc func keyboardWillShow(_ sender: Notification) {
         self.view.frame.origin.y = -300
     }
@@ -322,11 +320,12 @@ final class ReorderViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension ReorderViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequedCell = reorderMenuTableView.dequeueReusableCell(withIdentifier: "cell")
         guard let cell = dequedCell as? ReorderMenuTableViewCell else {
@@ -335,6 +334,4 @@ extension ReorderViewController: UITableViewDataSource {
         cell.isSelected = false
         return cell
     }
-    
-    
 }

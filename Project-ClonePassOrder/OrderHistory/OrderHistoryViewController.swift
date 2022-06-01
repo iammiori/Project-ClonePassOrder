@@ -22,6 +22,12 @@ final class OrderHistoryViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
+    private let emptyCellImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "emptyOrderHistory")
+        imageView.isHidden = true
+        return imageView
+    }()
 
     // MARK: - View Life Cycle
 
@@ -41,10 +47,18 @@ final class OrderHistoryViewController: UIViewController {
     // MARK: - setLayout
 
     private func setLayout() {
+        orderHistoryTableView.backgroundColor = .white
+        
         view.addSubview(orderHistoryTableView)
+        orderHistoryTableView.addSubview(emptyCellImageView)
+        
         orderHistoryTableView.snp.makeConstraints({ make in
             make.leading.trailing.top.bottom.equalToSuperview()
         })
+        emptyCellImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(200)
+        }
     }
 
     // MARK: - setOrderHistoryTableView
@@ -142,7 +156,11 @@ final class OrderHistoryViewController: UIViewController {
 
 extension OrderHistoryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        let number = 5
+        if number == 0 {
+            emptyCellImageView.isHidden = false
+        }
+        return number
     }
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath
