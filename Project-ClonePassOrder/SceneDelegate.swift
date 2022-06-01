@@ -17,11 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else {
             return
         }
-        window = UIWindow(windowScene: scene)
-        let vc = TabBarController()
-        self.window?.rootViewController = vc
-        window?.makeKeyAndVisible()
-        AppDelegate.shared.window = window
+        if ProcessInfo.processInfo.arguments.contains("LoginAndSignUpUITesting") {
+            window = UIWindow(windowScene: scene)
+            let vc = UINavigationController(rootViewController: LoginViewController())
+            self.window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+            AppDelegate.shared.window = window
+        } else {
+            window = UIWindow(windowScene: scene)
+            let vc = TabBarController()
+            self.window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+            AppDelegate.shared.window = window
+        }
     }
     
       
