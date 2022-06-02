@@ -13,11 +13,17 @@ class SecondADCell: UICollectionViewCell {
     //MARK: - 식별자
     
     static let identifier: String = "SecondADCell"
-    
+    weak var delegate: ADCellDelegate?
+     var viewModel: ADListViewModel? {
+         didSet {
+             setAtrribute()
+             addContentScrollView(index: viewModel?.items.value.count ?? 0)
+             ADTimer(time: 3)
+         }
+     }
     //MARK: - 프로퍼티
     
     private var currentPage: Int = 0
-    private var image = [UIImage(systemName: "heart")!,UIImage(systemName: "star.fill")!,UIImage(named: "패스오더로그인이미지")!,UIImage(systemName: "star.fill")!,UIImage(named: "패스오더로그인이미지")!]
     private var ADUrl = ["첫번째 링크","두번째링크","세번째링크","네번째링크","다섯번째링크"]
     private lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -45,9 +51,6 @@ class SecondADCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
-        setAtrribute()
-        addContentScrollView()
-        ADTimer(time: 3)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,10 +80,16 @@ class SecondADCell: UICollectionViewCell {
         }
     }
     private func setAtrribute() {
-        countLabel.text = "\(1)/\(image.count)"
+        guard let count = self.viewModel?.items.value.count else {
+            return
+        }
+        countLabel.text = "\(1)/\(count)"
     }
-    private func addContentScrollView() {
-        for i in 0..<image.count {
+    private func addContentScrollView(index: Int) {
+        guard let viewModel = viewModel else {
+            return
+        }
+        for i in 0..<viewModel.items.value.count {
             let imageView: UIImageView = UIImageView(frame: self.frame)
             let xPos = self.frame.width * CGFloat(i)
             imageView.frame = CGRect(
@@ -89,7 +98,18 @@ class SecondADCell: UICollectionViewCell {
                 width: self.bounds.width,
                 height: self.bounds.height
             )
-            imageView.image = image[i]
+            imageView.contentMode = .scaleAspectFill
+            imageView.kf.setImage(
+                with: viewModel.items.value[i].ADImageURL,
+                options: [.forceRefresh]
+            ) { [weak self] result in
+                switch result {
+                case .success(_):
+                    self?.delegate?.imageLoadEnd()
+                case .failure(_):
+                    break
+                }
+            }
             imageView.clipsToBounds = true
             imageView.layer.cornerRadius = 10
             scrollView.addSubview(imageView)
@@ -101,7 +121,7 @@ class SecondADCell: UICollectionViewCell {
             guard let width = self?.bounds.width else {
                 return
             }
-            guard let count = self?.image.count else {
+            guard let count = self?.viewModel?.items.value.count else {
                 return
             }
             if self?.currentPage == Int(width * CGFloat(count - 1)) {
@@ -123,9 +143,12 @@ class SecondADCell: UICollectionViewCell {
 
 extension SecondADCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let count = self.viewModel?.items.value.count else {
+            return
+        }
         let pageText = Int(scrollView.contentOffset.x/self.bounds.width)
         currentPage = pageText * Int(self.bounds.width)
-        countLabel.text = "\(pageText + 1)/\(image.count)"
+        countLabel.text = "\(pageText + 1)/\(count)"
     }
 }
 

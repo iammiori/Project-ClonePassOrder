@@ -16,6 +16,30 @@ enum HomeState {
 class HomeViewController: UIViewController {
     
     //MARK: - 프로퍼티
+    var firstADListViewModel: ADListViewModel? {
+        didSet {
+            guard let viewModel = firstADListViewModel else {
+                return
+            }
+            listView.firstADListViewModel = viewModel
+        }
+    }
+    var secondADListViewModel: ADListViewModel? {
+        didSet {
+            guard let viewModel = secondADListViewModel else {
+                return
+            }
+            listView.secondADListViewModel = viewModel
+        }
+    }
+    var imageLoadEndCount: Int = 0 {
+        didSet {
+            if imageLoadEndCount == 2 {
+                indicatorView.removeFromSuperview()
+            }
+        }
+    }
+    private let indicatorView: UIImageView = UIImageView().indicatorView()
     private var homeState: HomeState = .listView
     private let searchButton: UIButton = {
         let bt = UIButton(type: .system)
@@ -71,6 +95,7 @@ class HomeViewController: UIViewController {
         setAtrribute()
         setLayout()
         stateButtonTapped()
+        UIImageView.indicatorSetLayout(view: self.view, imageView: indicatorView)
     }
     override func viewWillAppear(_ animated: Bool) {
         naviSetAttribute()
@@ -118,7 +143,7 @@ class HomeViewController: UIViewController {
     }
     private func naviSetAttribute() {
         navigationController?.navigationBar.isHidden = true
-        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
     private func stateButtonTapped() {
         switch homeState {
@@ -161,10 +186,16 @@ class HomeViewController: UIViewController {
 }
 
 //MARK: - 리스트컬렉션뷰 델리게이트
+
 extension HomeViewController: ListCollectionViewDelegate {
     func footerTapped(title: String) {
         let vc = MoreCollectionViewController()
         vc.naviTitle = title
         navigationController?.pushViewController(vc, animated: true)
     }
+    func firstCellImageloadEnd() {
+        self.imageLoadEndCount += 1
+    }
 }
+
+

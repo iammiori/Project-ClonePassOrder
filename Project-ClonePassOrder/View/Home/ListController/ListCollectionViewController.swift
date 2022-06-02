@@ -10,13 +10,24 @@ import UIKit
 
 protocol ListCollectionViewDelegate: AnyObject {
     func footerTapped(title: String)
+    func firstCellImageloadEnd()
 }
 
 class ListCollectionViewController: UICollectionViewController {
     
     //MARK: - 프로퍼티
-    
+    var firstADListViewModel: ADListViewModel? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    var secondADListViewModel: ADListViewModel? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     weak var delegate: ListCollectionViewDelegate?
+    
     
     //MARK: - 라이프사이클
     
@@ -49,7 +60,7 @@ class ListCollectionViewController: UICollectionViewController {
                  )
                  let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                      heightDimension: .absolute(90)),
+                                      heightDimension: .absolute(105)),
                     subitems: [item])
                  let section = NSCollectionLayoutSection(group: group)
                  section.orthogonalScrollingBehavior = .none
@@ -247,12 +258,22 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: FirstADCell.identifier,
                 for: indexPath
             ) as! FirstADCell
+            guard let viewModel = firstADListViewModel else {
+                return cell
+            }
+            cell.delegate = self
+            cell.viewModel = viewModel
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SecondADCell.identifier,
                 for: indexPath
             ) as! SecondADCell
+            guard let viewModel = secondADListViewModel else {
+                return cell
+            }
+            cell.delegate = self
+            cell.viewModel = viewModel
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(
@@ -363,3 +384,8 @@ extension ListCollectionViewController: ListCellDelegate {
     }
 }
 
+extension ListCollectionViewController: ADCellDelegate {
+    func imageLoadEnd() {
+        delegate?.firstCellImageloadEnd()
+    }
+}
