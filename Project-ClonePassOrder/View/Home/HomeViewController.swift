@@ -34,7 +34,16 @@ class HomeViewController: UIViewController {
     }
     var imageLoadEndCount: Int = 0 {
         didSet {
-            if imageLoadEndCount == 2 {
+            guard let firstADListViewModel = firstADListViewModel else {
+                return
+            }
+            guard let secondADListViewModel = secondADListViewModel else {
+                return
+            }
+            let totalCount =
+            firstADListViewModel.items.value.count
+            + secondADListViewModel.items.value.count
+            if imageLoadEndCount == totalCount {
                 tabBarController?.tabBar.isHidden = false
                 indicatorView.removeFromSuperview()
             }
@@ -194,7 +203,7 @@ extension HomeViewController: ListCollectionViewDelegate {
         vc.naviTitle = title
         navigationController?.pushViewController(vc, animated: true)
     }
-    func firstCellImageloadEnd() {
+    func cellImageloadEnd() {
         self.imageLoadEndCount += 1
     }
 }

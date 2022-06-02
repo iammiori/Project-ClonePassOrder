@@ -10,7 +10,7 @@ import UIKit
 
 protocol ListCollectionViewDelegate: AnyObject {
     func footerTapped(title: String)
-    func firstCellImageloadEnd()
+    func cellImageloadEnd()
 }
 
 class ListCollectionViewController: UICollectionViewController {
@@ -384,8 +384,8 @@ extension ListCollectionViewController: ListCellDelegate {
     }
 }
 
-extension ListCollectionViewController: ADCellDelegate {
+extension ListCollectionViewController: ListViewCellDelegate {
     func imageLoadEnd() {
-        delegate?.firstCellImageloadEnd()
+        delegate?.cellImageloadEnd()
     }
 }

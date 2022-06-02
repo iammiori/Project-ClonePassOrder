@@ -13,7 +13,7 @@ class SecondADCell: UICollectionViewCell {
     //MARK: - 식별자
     
     static let identifier: String = "SecondADCell"
-    weak var delegate: ADCellDelegate?
+    weak var delegate: ListViewCellDelegate?
      var viewModel: ADListViewModel? {
          didSet {
              setAtrribute()
@@ -107,8 +107,7 @@ class SecondADCell: UICollectionViewCell {
             )
             imageView.contentMode = .scaleAspectFill
             imageView.kf.setImage(
-                with: viewModel.items.value[i].ADImageURL,
-                options: [.forceRefresh]
+                with: viewModel.items.value[i].ADImageURL
             ) { [weak self] result in
                 switch result {
                 case .success(_):
