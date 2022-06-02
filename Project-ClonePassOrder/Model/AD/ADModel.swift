@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct ADModel {
+    var ADImageUrl: String
+    
+    init(ADImageUrl: String) {
+        self.ADImageUrl = ADImageUrl
+    }
+}
