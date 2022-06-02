@@ -140,6 +140,7 @@ extension SignUpViewModel {
         }
     }
     func phoneNumberConverting(phoneNumber: String) {
+        if phoneNumber.count >= 10 {
       var convertPhoneNumber = phoneNumber
         convertPhoneNumber.removeFirst()
         convertPhoneNumber.insert(
@@ -150,6 +151,7 @@ extension SignUpViewModel {
         )
         
         self.phoneNumber = "+82 \(convertPhoneNumber)"
+        }
     }
     func requiredAgreedValid() -> Bool {
         if is14YearsOld.value &&
