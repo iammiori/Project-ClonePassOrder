@@ -12,7 +12,7 @@ protocol ADListViewModelInput {
 }
 
 protocol ADListViewModelOutput {
-    var items: Observer<[FirstADViewModelItem]> {get set}
+    var items: Observer<[ADViewModelItem]> {get set}
     var ADServiceError: Observer<ADServiceError> {get set}
 }
 
@@ -25,7 +25,7 @@ final class ADListViewModel: ADListViewModelProtocol {
     
     //MARK: - output
     
-    var items: Observer<[FirstADViewModelItem]> = Observer(value: [])
+    var items: Observer<[ADViewModelItem]> = Observer(value: [])
     var ADServiceError: Observer<ADServiceError> = Observer(value: .snapShotError)
     
     init(service: ADServiceProtocol = ADService()) {
@@ -43,7 +43,7 @@ extension ADListViewModel {
             switch result {
             case .success(let models):
                 let items = models.map {
-                    FirstADViewModelItem(model: $0)
+                    ADViewModelItem(model: $0)
                 }
                 self?.items.value = items
             case .failure(let error):
@@ -53,11 +53,11 @@ extension ADListViewModel {
     }
 }
 
-struct FirstADViewModelItem: Equatable {
+struct ADViewModelItem: Equatable {
     var ADImageURL: URL?
 }
 
-extension FirstADViewModelItem {
+extension ADViewModelItem {
     init(model: ADModel) {
         self.ADImageURL = URL(string: model.ADImageUrl)
     }

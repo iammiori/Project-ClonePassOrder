@@ -16,30 +16,10 @@ enum HomeState {
 class HomeViewController: UIViewController {
     
     //MARK: - 프로퍼티
-    var firstADListViewModel: ADListViewModel? {
-        didSet {
-            guard let viewModel = firstADListViewModel else {
-                return
-            }
-            listView.firstADListViewModel = viewModel
-        }
-    }
-    var secondADListViewModel: ADListViewModel? {
-        didSet {
-            guard let viewModel = secondADListViewModel else {
-                return
-            }
-            listView.secondADListViewModel = viewModel
-        }
-    }
+    var firstADListViewModel: ADListViewModel
+    var secondADListViewModel: ADListViewModel
     var imageLoadEndCount: Int = 0 {
         didSet {
-            guard let firstADListViewModel = firstADListViewModel else {
-                return
-            }
-            guard let secondADListViewModel = secondADListViewModel else {
-                return
-            }
             let totalCount =
             firstADListViewModel.items.value.count
             + secondADListViewModel.items.value.count
@@ -95,11 +75,22 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .blue
         return view
     }()
-    private let listView: ListCollectionViewController = ListCollectionViewController()
+    private lazy var listView: ListCollectionViewController = ListCollectionViewController(
+        firstADViewModel: self.firstADListViewModel,
+        secondADViewModel: self.secondADListViewModel
+    )
 
     
     //MARK: - 라이프사이클
     
+    init(firstADViewModel: ADListViewModel, secondADViewModel: ADListViewModel) {
+        self.firstADListViewModel = firstADViewModel
+        self.secondADListViewModel = secondADViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setAtrribute()

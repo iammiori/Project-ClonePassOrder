@@ -16,16 +16,8 @@ protocol ListCollectionViewDelegate: AnyObject {
 class ListCollectionViewController: UICollectionViewController {
     
     //MARK: - 프로퍼티
-    var firstADListViewModel: ADListViewModel? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    var secondADListViewModel: ADListViewModel? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var firstADListViewModel: ADListViewModel
+    var secondADListViewModel: ADListViewModel
     weak var delegate: ListCollectionViewDelegate?
     
     
@@ -35,7 +27,9 @@ class ListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         setAtrribute()
     }
-     init() {
+    init(firstADViewModel: ADListViewModel, secondADViewModel: ADListViewModel) {
+        self.firstADListViewModel = firstADViewModel
+        self.secondADListViewModel = secondADViewModel
          let layout = UICollectionViewCompositionalLayout { section, env in
              switch section {
              case 0:
@@ -258,22 +252,16 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: FirstADCell.identifier,
                 for: indexPath
             ) as! FirstADCell
-            guard let viewModel = firstADListViewModel else {
-                return cell
-            }
             cell.delegate = self
-            cell.viewModel = viewModel
+            cell.viewModel = firstADListViewModel
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SecondADCell.identifier,
                 for: indexPath
             ) as! SecondADCell
-            guard let viewModel = secondADListViewModel else {
-                return cell
-            }
             cell.delegate = self
-            cell.viewModel = viewModel
+            cell.viewModel = secondADListViewModel
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(

@@ -40,9 +40,10 @@ class TabBarController: UITabBarController {
         UIImageView.indicatorSetLayout(view: self.view, imageView: indicatorView)
     }
     private func setNavigation(firstAD: ADListViewModel,secondAD: ADListViewModel) {
-        let homeVC = HomeViewController()
-        homeVC.firstADListViewModel = firstAD
-        homeVC.secondADListViewModel = secondAD
+        let homeVC = HomeViewController(
+            firstADViewModel: firstAD,
+            secondADViewModel: secondAD
+        )
         let orderHistoryVC = OrderHistoryViewController()
         let favoriteVC = FavoriteViewController()
         let qrCameraVC = qrCameraViewController()
