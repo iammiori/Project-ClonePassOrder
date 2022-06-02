@@ -45,9 +45,9 @@ extension ADListViewModel {
                 let items = models.map {
                     FirstADViewModelItem(model: $0)
                 }
-                self!.items.value = items
+                self?.items.value = items
             case .failure(let error):
-                self!.ADServiceError.value = error
+                self?.ADServiceError.value = error
             }
         }
     }

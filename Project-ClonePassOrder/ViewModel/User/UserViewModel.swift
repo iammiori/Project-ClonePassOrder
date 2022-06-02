@@ -53,9 +53,9 @@ extension UserViewModel {
         userService.fetch(uid: uid) { [weak self] result in
             switch result {
             case .success(let model):
-                self!.model.value = model
+                self?.model.value = model
             case .failure(let error):
-                self!.userServiceError.value = error
+                self?.userServiceError.value = error
             }
         }
     }

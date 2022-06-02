@@ -206,9 +206,9 @@ extension SignUpViewModel {
         signUpService.phoneAuth(phoneNumber: phoneNumber) { [weak self] result in
             switch result {
             case .success(let id):
-                self!.verificationID.value = id
+                self?.verificationID.value = id
             case .failure(let error):
-                self!.signUpError.value = error
+                self?.signUpError.value = error
             }
         }
     }
@@ -218,10 +218,10 @@ extension SignUpViewModel {
             verificationcode: self.verificationCode) { [weak self] result in
                 switch result {
                 case .success(let bool):
-                    self!.phoneNumberAuthSuccess.value = bool
+                    self?.phoneNumberAuthSuccess.value = bool
                     AuthViewModel().logoutUser()
                 case .failure(let error):
-                    self!.signUpError.value = error
+                    self?.signUpError.value = error
                 }
             }
     }
