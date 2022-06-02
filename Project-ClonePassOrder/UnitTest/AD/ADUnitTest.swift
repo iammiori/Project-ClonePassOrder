@@ -6,30 +6,42 @@
 //
 
 import XCTest
+@testable import Project_ClonePassOrder
 
 class ADUnitTest: XCTestCase {
+    
+    var sut: ADListViewModel!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        sut = ADListViewModel()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
+        sut = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_ADViewModel() {
+        //given
+        let model = ADModel(ADImageUrl: "imageUrl")
+        let viewModels: [FirstADViewModelItem] = [FirstADViewModelItem(model: model)]
+        sut.items.value = viewModels
+        //then
+        XCTAssertEqual(sut.items.value[0].ADImageURL, URL(string: model.ADImageUrl))
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_fetchFirstAD호출시_성공하는경우_items에_FirstViewModelItem배열이_담기는지() {
+        //given
+        let models = [ADModel(ADImageUrl: "imageUrl"),ADModel(ADImageUrl: "imageUrl2")]
+        let viewMoodels = [FirstADViewModelItem(model: models[0]),FirstADViewModelItem(model: models[1])]
+        var mockADService = MockADService()
+        mockADService.result = .success(models)
+        sut.adService = mockADService
+        
+        //when
+        sut.fetchAD(collectionName: "firstAD")
+        
+        //then
+        XCTAssertEqual(sut.items.value, viewMoodels)
     }
-
 }
