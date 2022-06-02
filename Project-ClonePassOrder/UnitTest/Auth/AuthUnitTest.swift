@@ -132,4 +132,37 @@ class AuthUnitTest: XCTestCase {
         //then
         XCTAssertEqual(sut.logoutSuccess.value, true, "logoutSuccess.value가 true가 아닙니다")
     }
+    func test_authError가_loginFaildError_인경우_아이디와비밀번호를확인후다시시도해주세요라는_문자열이_바인딩되는지() {
+        //given
+        sut.authError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "아이디와 비밀번호를 확인후 다시 시도해주세요")
+        }
+        
+        //when
+        sut.authError.value = .loginFaildError
+    }
+    func test_authError가_authResultNilError_인경우_회원정보를불러오는것에실패했습니다다시시도해주세요_문자열이_바인딩되는지() {
+        //given
+        sut.authError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "회원정보를 불러오는것에 실패했습니다 다시 시도해주세요")
+        }
+        
+        //when
+        sut.authError.value = .authResultNilError
+    }
+    func test_authError가_logoutFaildError_인경우_로그아웃에실패했습니다다시시도해주세요라는_문자열이_바인딩되는지() {
+        //given
+        sut.authError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "로그아웃에 실패했습니다 다시 시도해주세요")
+        }
+        
+        //when
+        sut.authError.value = .logoutFaildError
+    }
 }

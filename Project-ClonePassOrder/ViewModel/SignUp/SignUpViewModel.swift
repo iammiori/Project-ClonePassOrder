@@ -217,26 +217,10 @@ extension SignUpViewModel {
                 switch result {
                 case .success(let bool):
                     self!.phoneNumberAuthSuccess.value = bool
+                    AuthViewModel().logoutUser()
                 case .failure(let error):
                     self!.signUpError.value = error
                 }
             }
     }
-    func phoneNumberAuthErrorString() -> String? {
-        switch self.signUpError.value {
-        case .signUpFaildError:
-            return nil
-        case .resultNillError:
-            return nil
-        case .upLoadFireStoreError:
-            return nil
-        case .phoneNumberAuthError:
-            return "번호를 다시한번 확인 해주세요"
-        case .verificationCodeAuthError:
-            return "다시한번 시도해주세요"
-        case .verificationResultNillError:
-            return "다시한번 시도해주세요"
-        }
-    }
-    
 }

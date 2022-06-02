@@ -76,6 +76,17 @@ class UserUnitTest: XCTestCase {
         //then
         XCTAssertEqual(sut.userServiceError.value, .snapShotError)
     }
+    func test_userServiceError가발생했을떄_userServiceErrorString호출시_앱종료후다시실행해주세요문자열이_반환되는지() {
+        //given
+        sut.userServiceError.bind { _ in
+            
+            //then
+            XCTAssertEqual(self.sut.userServiceErrorString(), "앱종료후 다시 실핼해주세요")
+        }
+        
+        //when
+        sut.userServiceError.value = .userFetchError
+    }
 
 
 }

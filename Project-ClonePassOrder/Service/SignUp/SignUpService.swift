@@ -9,6 +9,22 @@ import Foundation
 import Firebase
 
 enum SigunUpError: Error {
+    var errorMessage: String {
+        switch self {
+        case .signUpFaildError:
+            return "회원가입에 실패했습니다"
+        case .resultNillError:
+            return "결과값이 nil입니다"
+        case .upLoadFireStoreError:
+            return "파이어스토어 에러입니다"
+        case .phoneNumberAuthError:
+            return "전화번호를 다시 입력해주세요"
+        case .verificationCodeAuthError:
+            return "인증번호가 맞지 않습니다"
+        case .verificationResultNillError:
+            return "인증값이 nil입니다"
+        }
+    }
     case signUpFaildError
     case resultNillError
     case upLoadFireStoreError

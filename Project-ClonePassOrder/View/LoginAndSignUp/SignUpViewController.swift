@@ -139,12 +139,9 @@ class SignUpViewController: UIViewController {
                 topView: phoneNumberConfirmTextField
             )
         }
-        SignUpViewModel.shared.signUpError.bind { [weak self] _ in
-            guard let text = SignUpViewModel.shared.phoneNumberAuthErrorString() else {
-                return
-            }
+        SignUpViewModel.shared.signUpError.bind { [weak self] error in
             SVProgressHUD.SVoff(view: self!.view, button: [self!.nextButton])
-            Toast.message(superView: self!.view, text: text)
+            Toast.message(superView: self!.view, text: error.errorMessage)
         }
     }
     private func pushNextView() {

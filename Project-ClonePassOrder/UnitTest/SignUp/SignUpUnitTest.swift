@@ -355,35 +355,71 @@ class SignUpUnitTest: XCTestCase {
         //then
         XCTAssertTrue(sut.phoneNumberAuthSuccess.value, "true가 전달되지않았습니다")
     }
-    func test_phoneNumberAuthErrorString호출시_signUpErrorvalue가_phoneNumberAuthError인경우_번호를다시한번확인해주세요_문자열이_반환되는지() {
-        //given
+    func test_signUpError가_signUpFaildError_인경우_회원가입에실패했습니다라는_문자열이_바인딩되는지() {
+        //gvien
+        sut.signUpError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "회원가입에 실패했습니다")
+        }
+        
+        //when
+        sut.signUpError.value = .signUpFaildError
+    }
+    func test_signUpError가_resultNillError_인경우_결과값이nil입니다라는_문자열이_바인딩되는지() {
+        //gvien
+        sut.signUpError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "결과값이 nil입니다")
+        }
+        
+        //when
+        sut.signUpError.value = .resultNillError
+    }
+    func test_signUpError가_upLoadFireStoreError_인경우_파이어스토어에러입니다라는_문자열이_바인딩되는지() {
+        //gvien
+        sut.signUpError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "파이어스토어 에러입니다")
+        }
+        
+        //when
+        sut.signUpError.value = .upLoadFireStoreError
+    }
+    func test_signUpError가_phoneNumberAuthError_인경우_전화번호를다시입력해주세요라는_문자열이_바인딩되는지() {
+        //gvien
+        sut.signUpError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "전화번호를 다시 입력해주세요")
+        }
+        
+        //when
         sut.signUpError.value = .phoneNumberAuthError
+    }
+    func test_signUpError가_verificationCodeAuthError_인경우_인증번호가맞지않습니다라는_문자열이_바인딩되는지() {
+        //gvien
+        sut.signUpError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "인증번호가 맞지 않습니다")
+        }
         
         //when
-        let valid = sut.phoneNumberAuthErrorString()
-        
-        //then
-        XCTAssertEqual(valid, "번호를 다시한번 확인 해주세요", "반환되는 문자열이 일치하지않습니다")
-    }
-    func test_phoneNumberAuthErrorString호출시_signUpErrorvalue가_verificationCodeAuthError인경우_다시한번시도해주세요_문자열이_반환되는지() {
-        //given
         sut.signUpError.value = .verificationCodeAuthError
-        
-        //when
-        let valid = sut.phoneNumberAuthErrorString()
-        
-        //then
-        XCTAssertEqual(valid, "다시한번 시도해주세요", "반환되는 문자열이 일치하지않습니다")
     }
-    func test_phoneNumberAuthErrorString호출시_signUpErrorvalue가_verificationResultNillError인경우_다시한번시도해주세요_문자열이_반환되는지() {
-        //given
-        sut.signUpError.value = .verificationResultNillError
+    func test_signUpError가_verificationResultNillError_인경우_인증값이nil입니다라는_문자열이_바인딩되는지() {
+        //gvien
+        sut.signUpError.bind { error in
+            
+            //then
+            XCTAssertEqual(error.errorMessage, "인증값이 nil입니다")
+        }
         
         //when
-        let valid = sut.phoneNumberAuthErrorString()
-        
-        //then
-        XCTAssertEqual(valid, "다시한번 시도해주세요", "반환되는 문자열이 일치하지않습니다")
+        sut.signUpError.value = .verificationResultNillError
     }
     
     

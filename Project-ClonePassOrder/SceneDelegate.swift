@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         if ProcessInfo.processInfo.arguments.contains("LoginAndSignUpUITesting") {
+            Auth.auth().settings?.isAppVerificationDisabledForTesting = true
             window = UIWindow(windowScene: scene)
             let vc = UINavigationController(rootViewController: LoginViewController())
             self.window?.rootViewController = vc

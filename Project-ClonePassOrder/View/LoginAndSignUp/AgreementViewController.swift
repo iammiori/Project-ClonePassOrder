@@ -270,7 +270,7 @@ class AgreementViewController: UIViewController {
         }
         SignUpViewModel.shared.signUpError.bind { [weak self] error in
             SVProgressHUD.SVoff(view: self!.view, button: [self!.nextButton])
-            Toast.message(superView: self!.view, text: "회원가입에 실패했습니다 다시시도 해주세요")
+            Toast.message(superView: self!.view, text: error.errorMessage)
         }
         SignUpViewModel.shared.imageURL.bind { _ in
             SignUpViewModel.shared.signUpUser()

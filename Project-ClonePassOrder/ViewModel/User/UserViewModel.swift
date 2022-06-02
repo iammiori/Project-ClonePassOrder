@@ -16,7 +16,6 @@ protocol UserViewModelOutput {
     var userName: String {get}
     var profileImageUrl: URL? {get}
     var userServiceError: Observer<UserServiceError> {get set}
-    var userImageFetchEnd: Observer<Bool> {get set}
 }
 
 protocol UserViewModelProtocol: UserViewModelInput, UserViewModelOutput {
@@ -40,7 +39,6 @@ final class UserViewModel: UserViewModelProtocol {
         return URL(string: model.value.profileImageUrl)
     }
     var userServiceError: Observer<UserServiceError> = Observer(value: .snapShotError)
-    var userImageFetchEnd: Observer<Bool> = Observer(value: false)
     
     init(service: UserServiceProtocol = UserService()) {
         self.userService = service
@@ -60,5 +58,8 @@ extension UserViewModel {
                 self!.userServiceError.value = error
             }
         }
+    }
+    func userServiceErrorString() -> String {
+       return "앱종료후 다시 실핼해주세요"
     }
 }
