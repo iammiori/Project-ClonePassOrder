@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
     var imageLoadEndCount: Int = 0 {
         didSet {
             if imageLoadEndCount == 2 {
+                tabBarController?.tabBar.isHidden = false
                 indicatorView.removeFromSuperview()
             }
         }
