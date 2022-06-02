@@ -434,7 +434,7 @@ class SignUpUnitTest: XCTestCase {
         //given
         sut.imageUploadError.bind { error in
             //then
-            XCTAssertEqual(error.errorMessage, "미지 다운로드 실패 다시시도해주세요")
+            XCTAssertEqual(error.errorMessage, "이미지 다운로드 실패 다시시도해주세요")
         }
         //when
         sut.imageUploadError.value = .downLoadImageFaildError
