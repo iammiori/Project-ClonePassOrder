@@ -92,22 +92,22 @@ class TabBarController: UITabBarController {
     }
     func setBinding() {
         UserViewModel.shared.model.bind { [weak self] _ in
-            self!.serviceCount += 1
+            self?.serviceCount += 1
         }
         UserViewModel.shared.userServiceError.bind { error in
-            print(error.localizedDescription)
+            UserViewModel.shared.userFetch(uid: Auth.auth().currentUser!.uid)
         }
-        firstADListViewModel.ADServiceError.bind { error  in
-            print(error.localizedDescription)
+        firstADListViewModel.ADServiceError.bind { [weak self] error  in
+            self?.firstADListViewModel.fetchAD(collectionName: "SecondAD")
         }
         firstADListViewModel.items.bind { [weak self] _ in
-            self!.serviceCount += 1
+            self?.serviceCount += 1
         }
-        secondADListViewModel.ADServiceError.bind { error in
-            print(error.localizedDescription)
+        secondADListViewModel.ADServiceError.bind { [weak self] error in
+            self?.secondADListViewModel.fetchAD(collectionName: "FirstAD")
         }
         secondADListViewModel.items.bind { [weak self] _ in
-            self!.serviceCount += 1
+            self?.serviceCount += 1
         }
     }
     func auth() {
