@@ -24,7 +24,6 @@ class SecondADCell: UICollectionViewCell {
             ) { [weak self] _ in
                 self?.ADTimer()
             }
-             
          }
      }
     //MARK: - 프로퍼티
