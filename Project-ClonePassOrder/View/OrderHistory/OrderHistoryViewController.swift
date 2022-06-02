@@ -9,13 +9,24 @@ import UIKit
 import SnapKit
 
 final class OrderHistoryViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private var selectedYear = ""
+    private var selectedMonth = ""
 
     // MARK: - UI Properties
 
-    private let orderHistorTableView: UITableView = {
+    private let orderHistoryTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.separatorStyle = .none
         return tableView
+    }()
+    private let emptyCellImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "emptyOrderHistory")
+        imageView.isHidden = true
+        return imageView
     }()
 
     // MARK: - View Life Cycle
@@ -24,26 +35,45 @@ final class OrderHistoryViewController: UIViewController {
         super.viewDidLoad()
         
         setNavigation()
-        setOrderHistorTableView()
+        setOrderHistoryTableView()
         setLayout()
+        setCurrentYearMont()
+        setButtonTitle()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
 
     // MARK: - setLayout
 
     private func setLayout() {
-        view.addSubview(orderHistorTableView)
-        orderHistorTableView.snp.makeConstraints({ make in
+        orderHistoryTableView.backgroundColor = .white
+        
+        view.addSubview(orderHistoryTableView)
+        orderHistoryTableView.addSubview(emptyCellImageView)
+        
+        orderHistoryTableView.snp.makeConstraints({ make in
             make.leading.trailing.top.bottom.equalToSuperview()
         })
+        emptyCellImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(200)
+        }
     }
 
-    // MARK: - setorderHistorTableView
+    // MARK: - setOrderHistoryTableView
 
-    private func setOrderHistorTableView() {
-        orderHistorTableView.dataSource = self
-        orderHistorTableView.delegate = self
-        orderHistorTableView.register(OrderHistoryTableViewCell.self, forCellReuseIdentifier: "cellID")
-        orderHistorTableView.register(OrderHistoryTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
+    private func setOrderHistoryTableView() {
+        orderHistoryTableView.dataSource = self
+        orderHistoryTableView.delegate = self
+        orderHistoryTableView.register(
+            OrderHistoryTableViewCell.self,
+            forCellReuseIdentifier: "cellID"
+        )
+        orderHistoryTableView.register(
+            OrderHistoryTableViewHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: "header"
+        )
     }
 
     // MARK: - setNavigation
@@ -62,8 +92,10 @@ final class OrderHistoryViewController: UIViewController {
     // MARK: - Inherited Method
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let orderHistorTableViewHeaderHeight = orderHistorTableView.headerView(forSection: 0)?.frame.height ?? 0
-        if scrollView.contentOffset.y > orderHistorTableViewHeaderHeight {
+        let orderHistoryTableViewHeaderHeight = orderHistoryTableView
+            .headerView(forSection: 0)?
+            .frame.height ?? 0
+        if scrollView.contentOffset.y > orderHistoryTableViewHeaderHeight {
             navigationController?.setNavigationBarHidden(false, animated: true)
         } else {
             navigationController?.setNavigationBarHidden(true, animated: true)
@@ -72,16 +104,40 @@ final class OrderHistoryViewController: UIViewController {
 
     // MARK: - Methods
 
+    private func setCurrentYearMont() {
+        let today = Date()
+        
+        let formatterYear = DateFormatter()
+        formatterYear.dateFormat = "yyyy"
+        selectedYear = formatterYear.string(from: today)
+
+        let formatterMonth = DateFormatter()
+        formatterMonth.dateFormat = "MM"
+        selectedMonth = formatterMonth.string(from: today)
+    }
     @objc private func orderDateSelectButtonTapped() {
-        let alert = UIAlertController(title: "나의 주문 내역", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
-        
-        let selectMonthViewController = UIViewController()
-        selectMonthViewController.view.backgroundColor = .gray
-        
+        let alert = UIAlertController(
+            title: "나의 주문 내역",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        let selectMonthViewController = SelectOrderDatePickerViewController()
         alert.setValue(selectMonthViewController, forKey: "contentViewController")
         
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+            self.selectedYear = String(selectMonthViewController.selectedYear)
+            self.selectedMonth = String(selectMonthViewController.selectedMonth)
+            self.setButtonTitle()
+            self.fetchOrderHistory()
+        }))
+        
         present(alert, animated: true)
+    }
+    private func setButtonTitle() {
+        navigationItem.leftBarButtonItem?.title = "\(selectedYear)년 \(selectedMonth)월 >"
+    }
+    private func fetchOrderHistory() {
+        orderHistoryTableView.reloadData()
     }
     @objc private func reorderButtonTapped() {
         let nextViewController = UINavigationController(rootViewController: ReorderViewController())
@@ -97,23 +153,47 @@ final class OrderHistoryViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
+
 extension OrderHistoryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        let number = 5
+        if number == 0 {
+            emptyCellImageView.isHidden = false
+        }
+        return number
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as? OrderHistoryTableViewCell else {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let dequecell = tableView.dequeueReusableCell(withIdentifier: "cellID")
+        guard let cell = dequecell as? OrderHistoryTableViewCell else {
             return UITableViewCell()
         }
-        cell.reorderButton.addTarget(self, action: #selector(reorderButtonTapped), for: .touchUpInside)
-        cell.writeStoryButton.addTarget(self, action: #selector(writeStoryButtonTapped), for: .touchUpInside)
+        cell.reorderButton.addTarget(
+            self,
+            action: #selector(reorderButtonTapped),
+            for: .touchUpInside
+        )
+        cell.writeStoryButton.addTarget(self,
+                                        action: #selector(writeStoryButtonTapped),
+                                        for: .touchUpInside
+        )
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? OrderHistoryTableViewHeaderView else {
+        let dequeheader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header")
+        guard let header = dequeheader as? OrderHistoryTableViewHeaderView else {
             return UIView()
         }
-        headerView.orderDateSelectButton.addTarget(self, action: #selector(orderDateSelectButtonTapped), for: .touchUpInside)
-        return headerView
+        header.orderDateSelectButton.setTitle(
+            "\(selectedYear)년 \(selectedMonth)월 >",
+            for: .normal
+        )
+        header.orderDateSelectButton.addTarget(
+            self,
+            action: #selector(orderDateSelectButtonTapped),
+            for: .touchUpInside
+        )
+        return header
     }
 }

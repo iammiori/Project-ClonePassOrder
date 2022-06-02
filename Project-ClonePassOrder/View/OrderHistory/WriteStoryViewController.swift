@@ -95,6 +95,7 @@ final class WriteStoryViewController: UIViewController {
         super.viewDidLoad()
         setNavigation()
         setLayout()
+        dismissKeyboardWhenTappedAround()
         
         NotificationCenter.default.addObserver(
             self,
@@ -170,9 +171,6 @@ final class WriteStoryViewController: UIViewController {
     // MARK: - Methods
     @objc private func back() {
         dismiss(animated: true)
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
     @objc func keyboardWillShow(_ sender: Notification) {
         self.view.frame.origin.y = -320
