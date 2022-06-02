@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct MockADService: ADServiceProtocol {
+    var result: Result<[ADModel], ADServiceError>?
+    
+    func fetchAD(collectionName: String, completion: @escaping (Result<[ADModel], ADServiceError>) -> Void) {
+        completion(result!)
+    }
+}
