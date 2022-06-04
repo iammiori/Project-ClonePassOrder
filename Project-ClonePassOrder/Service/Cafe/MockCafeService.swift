@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct MockCafeService: CafeServicePorotocol {
+    
+    var result: Result<[CafeModel], CafeServiceError>?
+    
+    func fetchCafe(completion: @escaping (Result<[CafeModel], CafeServiceError>) -> Void) {
+        completion(result!)
+    }
+}
