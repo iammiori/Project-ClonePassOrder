@@ -81,7 +81,7 @@ class UserUnitTest: XCTestCase {
         sut.userServiceError.bind { _ in
             
             //then
-            XCTAssertEqual(self.sut.userServiceErrorString(), "앱종료후 다시 실핼해주세요")
+            XCTAssertEqual(self.sut.userServiceErrorString(), "앱종료후 다시 실행해주세요")
         }
         
         //when

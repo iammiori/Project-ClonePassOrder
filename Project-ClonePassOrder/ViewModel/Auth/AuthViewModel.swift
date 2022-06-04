@@ -12,32 +12,15 @@ enum EmptyTextField {
     case passwordEmpty
 }
 
-protocol AuthViewModelInput {
-    func textFieldEmptyVaild(email: String, password: String)
-    func textFieldEmptyString() -> String
-    func loginUser()
-    func logoutUser()
-}
-
-protocol AuthViewModelOutput {
-    var email: String? {get set}
-    var password: String? {get set}
-    var textfildEmpty: Observer<EmptyTextField> {get set}
-    var uid: Observer<String?> {get set}
-    var authError: Observer<AuthError> {get set}
-    var loginStart: Observer<Bool> {get set}
-    var logoutSuccess: Observer<Bool> {get set}
-}
-
-protocol AuthViewModelProtocol: AuthViewModelInput, AuthViewModelOutput {
-}
-
-final class AuthViewModel: AuthViewModelProtocol {
+final class AuthViewModel {
     
     //MARK: - output
     
-    var service: AuthServiceProtocol
+    init(service: AuthServiceProtocol = AuthService()) {
+        self.service = service
+    }
     
+    var service: AuthServiceProtocol
     var email: String?
     var password: String?
     var textfildEmpty: Observer<EmptyTextField> = Observer(value: .emailEmpty)
@@ -45,16 +28,11 @@ final class AuthViewModel: AuthViewModelProtocol {
     var authError: Observer<AuthError> = Observer(value: .loginFaildError)
     var loginStart: Observer<Bool> = Observer(value: false)
     var logoutSuccess: Observer<Bool> = Observer(value: false)
-    init(service: AuthServiceProtocol = AuthService()) {
-        self.service = service
-    }
 }
 
 extension AuthViewModel {
     
-    //MARK: - input
-    
-    func textFieldEmptyVaild(email: String, password: String) {
+    func userLogin(email: String, password: String) {
         if email == "" {
             textfildEmpty.value = .emailEmpty
         } else if password == "" {
@@ -62,7 +40,7 @@ extension AuthViewModel {
         } else {
             self.email = email
             self.password = password
-            loginUser()
+            login()
             loginStart.value = true
         }
     }
@@ -74,7 +52,7 @@ extension AuthViewModel {
             return "비빌번호를 입력해주세요!"
         }
     }
-    func loginUser() {
+    func login() {
         guard let email = email,
             let password = password else {
             return
@@ -89,7 +67,7 @@ extension AuthViewModel {
             }
         }
     }
-    func logoutUser() {
+    func logout() {
        try? service.logout { [weak self] result in
            switch result {
            case .success():

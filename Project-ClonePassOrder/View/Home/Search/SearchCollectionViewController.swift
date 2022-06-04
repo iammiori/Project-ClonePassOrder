@@ -10,7 +10,7 @@ import UIKit
 class SearchCollectionViewController: UICollectionViewController {
 
     //MARK: - 프로퍼티
-    private var 임시카운트 = 0
+    private var viewModel: CafeListViewModel
     private lazy var searchBar = UISearchBar(frame: CGRect(
         x: 0, y: 0, width: view.bounds.width - 28, height: 0))
     private let imageView: UIImageView = {
@@ -23,8 +23,19 @@ class SearchCollectionViewController: UICollectionViewController {
     
     //MARK: - 라이프사이클
     
+    init(viewModel: CafeListViewModel) {
+        self.viewModel = viewModel
+        let layout = UICollectionViewCompositionalLayout { section, env in
+            return NSCollectionLayoutSection.sortLayout()
+        }
+        super.init(collectionViewLayout: layout)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel.items.value = viewModel.orderNearStore()
         setNotification()
         setAtrribute()
         naviSetAttribute()
@@ -34,15 +45,7 @@ class SearchCollectionViewController: UICollectionViewController {
         super.viewWillDisappear(animated)
         removeNotification()
     }
-    init() {
-        let layout = UICollectionViewCompositionalLayout { section, env in
-            return NSCollectionLayoutSection.sortLayout()
-        }
-        super.init(collectionViewLayout: layout)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
     
     //MARK: - 셀렉터메서드
     
@@ -102,12 +105,12 @@ class SearchCollectionViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        if 임시카운트 == 0 {
+        if viewModel.searchCafe(text: searchBar.text ?? "").count == 0 {
             imageView.isHidden = false
-            return 임시카운트
+            return viewModel.searchCafe(text: searchBar.text ?? "").count
         } else {
             imageView.isHidden = true
-            return 임시카운트
+            return viewModel.searchCafe(text: searchBar.text ?? "").count
         }
     }
     override func collectionView(
@@ -117,17 +120,28 @@ class SearchCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: SortCell.identifier,
             for: indexPath
-        )
+        ) as! SortCell
+        cell.viewModel = viewModel.searchCafe(text: searchBar.text ?? "")[indexPath.row]
         return cell
     }
 
+
+
+//MARK: - 컬렉션뷰 델리게이트
+    
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        let viewModel = viewModel.itemAtIndex(indexPath.row)
+        let vc = StoreDetailViewController(viewModel: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
-
-
 //MARK: - 서치바 델리게이트
 extension SearchCollectionViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        임시카운트 += 1
         searchBar.endEditing(true)
+        collectionView.reloadData()
     }
 }

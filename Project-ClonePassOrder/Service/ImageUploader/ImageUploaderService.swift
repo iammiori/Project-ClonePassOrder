@@ -9,6 +9,16 @@ import Foundation
 import Firebase
 
 enum ImageUploaderError: Error {
+    var errorMessage: String {
+        switch self {
+        case .uploadImageFaildError:
+            return "이미지 업로드 실패 다시시도해주세요"
+        case .downLoadImageFaildError:
+            return "이미지 다운로드 실패 다시시도해주세요"
+        case .URLError:
+            return "URL 변환에 실패했습니다 다시시도해주세요"
+        }
+    }
     case uploadImageFaildError
     case downLoadImageFaildError
     case URLError

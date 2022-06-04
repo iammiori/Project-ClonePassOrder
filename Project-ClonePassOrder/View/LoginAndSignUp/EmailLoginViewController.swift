@@ -41,7 +41,7 @@ class EmailLoginViewController: UIViewController {
         guard let password = passwordTextField.text else {
             return
         }
-        authViewModel.textFieldEmptyVaild(email: email, password: password)
+        authViewModel.userLogin(email: email, password: password)
     }
     
     //MARK: - 메서드

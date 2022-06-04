@@ -7,18 +7,27 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 import SwiftUI
 
 class TabBarController: UITabBarController {
     
     //MARK: - 프로퍼티
+    private var locationManger = CLLocationManager()
+    private lazy var cafeListViewModel: CafeListViewModel = CafeListViewModel(
+        corrdinate: locationManger.location!.coordinate
+    )
     private var firstADListViewModel: ADListViewModel = ADListViewModel()
     private var secondADListViewModel: ADListViewModel = ADListViewModel()
     private let indicatorView: UIImageView = UIImageView().indicatorView()
     var serviceCount: Int = 0 {
         didSet {
-            if serviceCount == 3 {
-                setNavigation(firstAD: self.firstADListViewModel, secondAD: secondADListViewModel)
+            if serviceCount == 4 {
+                setNavigation(
+                    firstAD: self.firstADListViewModel,
+                    secondAD: self.secondADListViewModel,
+                    cafe: self.cafeListViewModel
+                )
                 setAttribute()
                 indicatorView.removeFromSuperview()
             }
@@ -29,6 +38,9 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManger.requestWhenInUseAuthorization()
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.startUpdatingLocation()
         setImageView()
         setBinding()
         auth()
@@ -39,10 +51,12 @@ class TabBarController: UITabBarController {
     private func setImageView() {
         UIImageView.indicatorSetLayout(view: self.view, imageView: indicatorView)
     }
-    private func setNavigation(firstAD: ADListViewModel,secondAD: ADListViewModel) {
-        let homeVC = HomeViewController()
-        homeVC.firstADListViewModel = firstAD
-        homeVC.secondADListViewModel = secondAD
+    private func setNavigation(firstAD: ADListViewModel,secondAD: ADListViewModel, cafe: CafeListViewModel) {
+        let homeVC = HomeViewController(
+            firstADViewModel: firstAD,
+            secondADViewModel: secondAD,
+            cafeViewModel: cafe
+        )
         let orderHistoryVC = OrderHistoryViewController()
         let favoriteVC = FavoriteViewController()
         let qrCameraVC = qrCameraViewController()
@@ -92,22 +106,32 @@ class TabBarController: UITabBarController {
     }
     func setBinding() {
         UserViewModel.shared.model.bind { [weak self] _ in
-            self!.serviceCount += 1
+            self?.serviceCount += 1
         }
-        UserViewModel.shared.userServiceError.bind { error in
-            print(error.localizedDescription)
+        UserViewModel.shared.userServiceError.bind { [weak self] error in
+            Toast.message(superView: self!.view, text: "서버연결에 실패했습니다 인터넷 연결을 확인해주세요")
+            UserViewModel.shared.userFetch(uid: Auth.auth().currentUser?.uid ?? "")
         }
-        firstADListViewModel.ADServiceError.bind { error  in
-            print(error.localizedDescription)
+        firstADListViewModel.ADServiceError.bind { [weak self] error  in
+            Toast.message(superView: self!.view, text: "서버연결에 실패했습니다 인터넷 연결을 확인해주세요")
+            self?.firstADListViewModel.fetchAD(collectionName: "SecondAD")
         }
         firstADListViewModel.items.bind { [weak self] _ in
-            self!.serviceCount += 1
+            self?.serviceCount += 1
         }
-        secondADListViewModel.ADServiceError.bind { error in
-            print(error.localizedDescription)
+        secondADListViewModel.ADServiceError.bind { [weak self] error in
+            Toast.message(superView: self!.view, text: "서버연결에 실패했습니다 인터넷 연결을 확인해주세요")
+            self?.secondADListViewModel.fetchAD(collectionName: "FirstAD")
         }
         secondADListViewModel.items.bind { [weak self] _ in
-            self!.serviceCount += 1
+            self?.serviceCount += 1
+        }
+        cafeListViewModel.cafeServiceError.bind { [weak self] _ in
+            Toast.message(superView: self!.view, text: "서버연결에 실패했습니다 인터넷 연결을 확인해주세요")
+            self?.cafeListViewModel.fetchCafe()
+        }
+        cafeListViewModel.items.bind { [weak self] _ in
+            self?.serviceCount += 1
         }
     }
     func auth() {
@@ -124,8 +148,12 @@ class TabBarController: UITabBarController {
             UserViewModel.shared.userFetch(uid: Auth.auth().currentUser!.uid)
             firstADListViewModel.fetchAD(collectionName: "SecondAD")
             secondADListViewModel.fetchAD(collectionName: "FirstAD")
+            cafeListViewModel.fetchCafe()
         }
     }
+    
+        
+    
     
 
 }

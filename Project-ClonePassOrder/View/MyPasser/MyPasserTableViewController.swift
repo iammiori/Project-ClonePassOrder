@@ -166,7 +166,7 @@ extension MyPasserTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
             if indexPath.row == 3 {
-                authViewModel.logoutUser()
+                authViewModel.logout()
             }
         }
     }

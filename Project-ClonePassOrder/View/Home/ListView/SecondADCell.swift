@@ -13,16 +13,22 @@ class SecondADCell: UICollectionViewCell {
     //MARK: - 식별자
     
     static let identifier: String = "SecondADCell"
-    weak var delegate: ADCellDelegate?
+    weak var delegate: ListViewCellDelegate?
      var viewModel: ADListViewModel? {
          didSet {
              setAtrribute()
              addContentScrollView(index: viewModel?.items.value.count ?? 0)
-             ADTimer(time: 3)
+             timer?.invalidate()
+             timer = Timer.scheduledTimer(
+                withTimeInterval: 3, repeats: true
+            ) { [weak self] _ in
+                self?.ADTimer()
+            }
          }
      }
     //MARK: - 프로퍼티
     
+    private var timer: Timer?
     private var currentPage: Int = 0
     private var ADUrl = ["첫번째 링크","두번째링크","세번째링크","네번째링크","다섯번째링크"]
     private lazy var scrollView: UIScrollView = {
@@ -89,7 +95,7 @@ class SecondADCell: UICollectionViewCell {
         guard let viewModel = viewModel else {
             return
         }
-        for i in 0..<viewModel.items.value.count {
+        for i in 0..<viewModel.count() {
             let imageView: UIImageView = UIImageView(frame: self.frame)
             let xPos = self.frame.width * CGFloat(i)
             imageView.frame = CGRect(
@@ -100,8 +106,7 @@ class SecondADCell: UICollectionViewCell {
             )
             imageView.contentMode = .scaleAspectFill
             imageView.kf.setImage(
-                with: viewModel.items.value[i].ADImageURL,
-                options: [.forceRefresh]
+                with: viewModel.itemAtIndex(i).ADImageURL
             ) { [weak self] result in
                 switch result {
                 case .success(_):
@@ -116,24 +121,20 @@ class SecondADCell: UICollectionViewCell {
             scrollView.contentSize.width = imageView.frame.width * CGFloat(i + 1)
         }
     }
-    private func ADTimer(time: TimeInterval) {
-        let _ = Timer.scheduledTimer(withTimeInterval: time, repeats: true) { [weak self] timer in
-            guard let width = self?.bounds.width else {
-                return
+    private func ADTimer() {
+        guard let count = self.viewModel?.count() else {
+            return
+        }
+        let width = self.bounds.width
+        if self.currentPage == Int(width * CGFloat(count - 1)) {
+            self.currentPage = 0
+            UIView.animate(withDuration: 0.2) {
+                self.scrollView.contentOffset.x = 0
             }
-            guard let count = self?.viewModel?.items.value.count else {
-                return
-            }
-            if self?.currentPage == Int(width * CGFloat(count - 1)) {
-                self?.currentPage = 0
-                UIView.animate(withDuration: 0.2) {
-                    self?.scrollView.contentOffset.x = 0
-                }
-            } else {
-                self?.currentPage += Int(width)
-                UIView.animate(withDuration: 0.2) {
-                    self?.scrollView.contentOffset.x += CGFloat(width)
-                }
+        } else {
+            self.currentPage += Int(width)
+            UIView.animate(withDuration: 0.2) {
+                self.scrollView.contentOffset.x += CGFloat(width)
             }
         }
     }
@@ -143,7 +144,7 @@ class SecondADCell: UICollectionViewCell {
 
 extension SecondADCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let count = self.viewModel?.items.value.count else {
+        guard let count = self.viewModel?.count() else {
             return
         }
         let pageText = Int(scrollView.contentOffset.x/self.bounds.width)

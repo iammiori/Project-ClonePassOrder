@@ -6,61 +6,56 @@
 //
 
 import Foundation
- 
-protocol ADListViewModelInput {
-    func fetchAD(collectionName: String)
-}
 
-protocol ADListViewModelOutput {
-    var items: Observer<[FirstADViewModelItem]> {get set}
-    var ADServiceError: Observer<ADServiceError> {get set}
-}
+//MARK: - List
 
-protocol ADListViewModelProtocol: ADListViewModelInput, ADListViewModelOutput {
-}
-
-final class ADListViewModel: ADListViewModelProtocol {
-    
-    var adService: ADServiceProtocol
-    
-    //MARK: - output
-    
-    var items: Observer<[FirstADViewModelItem]> = Observer(value: [])
-    var ADServiceError: Observer<ADServiceError> = Observer(value: .snapShotError)
+final class ADListViewModel {
     
     init(service: ADServiceProtocol = ADService()) {
         self.adService = service
     }
     
+    var adService: ADServiceProtocol
+    var items: Observer<[ADViewModelItem]> = Observer(value: [])
+    var ADServiceError: Observer<ADServiceError> = Observer(value: .snapShotError)
 }
 
 extension ADListViewModel {
     
-    //MARK: - input
-    
+    func count() -> Int {
+        self.items.value.count
+    }
+    func itemAtIndex(_ index: Int) -> ADViewModelItem {
+        let item = self.items.value[index]
+        return item
+    }
     func fetchAD(collectionName: String) {
         adService.fetchAD(collectionName: collectionName) { [weak self] result in
             switch result {
             case .success(let models):
                 let items = models.map {
-                    FirstADViewModelItem(model: $0)
+                    ADViewModelItem(model: $0)
                 }
-                self!.items.value = items
+                self?.items.value = items
             case .failure(let error):
-                self!.ADServiceError.value = error
+                self?.ADServiceError.value = error
             }
         }
     }
 }
 
-struct FirstADViewModelItem: Equatable {
-    var ADImageURL: URL?
-}
+//MARK: - item
 
-extension FirstADViewModelItem {
-    init(model: ADModel) {
-        self.ADImageURL = URL(string: model.ADImageUrl)
+struct ADViewModelItem: Equatable {
+    
+    static func == (lhs: ADViewModelItem, rhs: ADViewModelItem) -> Bool {
+        return lhs.model == rhs.model
     }
     
+    var model: ADModel
+    
+    var ADImageURL: URL? {
+        return URL(string: model.ADImageUrl)
+    }
 }
 

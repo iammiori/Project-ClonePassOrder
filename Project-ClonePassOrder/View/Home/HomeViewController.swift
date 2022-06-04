@@ -16,25 +16,16 @@ enum HomeState {
 class HomeViewController: UIViewController {
     
     //MARK: - 프로퍼티
-    var firstADListViewModel: ADListViewModel? {
-        didSet {
-            guard let viewModel = firstADListViewModel else {
-                return
-            }
-            listView.firstADListViewModel = viewModel
-        }
-    }
-    var secondADListViewModel: ADListViewModel? {
-        didSet {
-            guard let viewModel = secondADListViewModel else {
-                return
-            }
-            listView.secondADListViewModel = viewModel
-        }
-    }
+    var cafeViewModel: CafeListViewModel
+    var firstADListViewModel: ADListViewModel
+    var secondADListViewModel: ADListViewModel
     var imageLoadEndCount: Int = 0 {
         didSet {
-            if imageLoadEndCount == 2 {
+            let totalCount =
+            firstADListViewModel.items.value.count
+            + secondADListViewModel.items.value.count
+            + cafeViewModel.count()
+            if imageLoadEndCount == totalCount {
                 tabBarController?.tabBar.isHidden = false
                 indicatorView.removeFromSuperview()
             }
@@ -86,11 +77,27 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .blue
         return view
     }()
-    private let listView: ListCollectionViewController = ListCollectionViewController()
+    private lazy var listView: ListCollectionViewController = ListCollectionViewController(
+        firstADViewModel: self.firstADListViewModel,
+        secondADViewModel: self.secondADListViewModel,
+        cafeViewModel: self.cafeViewModel
+    )
 
-    
     //MARK: - 라이프사이클
     
+    init(
+        firstADViewModel: ADListViewModel,
+        secondADViewModel: ADListViewModel,
+        cafeViewModel: CafeListViewModel
+    ) {
+        self.firstADListViewModel = firstADViewModel
+        self.secondADListViewModel = secondADViewModel
+        self.cafeViewModel = cafeViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setAtrribute()
@@ -113,7 +120,7 @@ class HomeViewController: UIViewController {
         stateButtonTapped()
     }
     @objc private func searchButtonTapped() {
-        let vc = SearchCollectionViewController()
+        let vc = SearchCollectionViewController(viewModel: cafeViewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -190,12 +197,15 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: ListCollectionViewDelegate {
     func footerTapped(title: String) {
-        let vc = MoreCollectionViewController()
+        let vc = MoreCollectionViewController(viewModel: cafeViewModel)
         vc.naviTitle = title
         navigationController?.pushViewController(vc, animated: true)
     }
-    func firstCellImageloadEnd() {
+    func cellImageloadEnd() {
         self.imageLoadEndCount += 1
+    }
+    func cellTapped(controller: StoreDetailViewController) {
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

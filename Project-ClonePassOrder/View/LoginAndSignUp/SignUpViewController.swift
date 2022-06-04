@@ -119,13 +119,13 @@ class SignUpViewController: UIViewController {
         SignUpViewModel.shared.phoneNumberAuthSuccess.bind { [weak self] _ in
             SVProgressHUD.SVoff(view: self!.view, button: [self!.nextButton])
             let vc = AgreementViewController()
-            self!.navigationController?.pushViewController(vc, animated: true)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
         SignUpViewModel.shared.verificationID.bind { [weak self] _ in
             guard let phoneNumberConfirmTextField = self?.phoneNumberConfirmTextField else {
                 return
             }
-            self!.view.addSubview(phoneNumberConfirmTextField)
+            self?.view.addSubview(phoneNumberConfirmTextField)
             phoneNumberConfirmTextField.snp.makeConstraints { make in
                 make.top.equalTo(self!.textField.snp.bottom).offset(40)
                 make.leading.equalToSuperview().offset(20)

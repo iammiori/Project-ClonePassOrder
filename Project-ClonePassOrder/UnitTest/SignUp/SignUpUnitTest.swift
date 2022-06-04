@@ -421,6 +421,34 @@ class SignUpUnitTest: XCTestCase {
         //when
         sut.signUpError.value = .verificationResultNillError
     }
+    func test_imageUploadError가_uploadImageFaildError_인경우_이미지업로드실패다시시도해주세요_문자열이_바인딩되는지() {
+        //given
+        sut.imageUploadError.bind { error in
+            //then
+            XCTAssertEqual(error.errorMessage, "이미지 업로드 실패 다시시도해주세요")
+        }
+        //when
+        sut.imageUploadError.value = .uploadImageFaildError
+    }
+    func test_imageUploadError가_downLoadImageFaildError_인경우_이미지다운로드실패다시시도해주세요_문자열이_바인딩되는지() {
+        //given
+        sut.imageUploadError.bind { error in
+            //then
+            XCTAssertEqual(error.errorMessage, "이미지 다운로드 실패 다시시도해주세요")
+        }
+        //when
+        sut.imageUploadError.value = .downLoadImageFaildError
+    }
+    func test_imageUploadError가_URLError_인경우_URL변환에실패했습니다다시시도해주세요_문자열이_바인딩되는지() {
+        
+        //given
+        sut.imageUploadError.bind { error in
+            //then
+            XCTAssertEqual(error.errorMessage, "URL 변환에 실패했습니다 다시시도해주세요")
+        }
+        //when
+        sut.imageUploadError.value = .URLError
+    }
     
     
 }

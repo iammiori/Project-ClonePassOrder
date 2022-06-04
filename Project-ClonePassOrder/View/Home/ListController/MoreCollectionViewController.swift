@@ -11,16 +11,19 @@ class MoreCollectionViewController: UICollectionViewController {
     
     //MARK: - 프로퍼티
     
+    var viewModel: CafeListViewModel
     var naviTitle: String?
-
+    
     //MARK: - 라이프사이클
 
     override func viewDidLoad() {
         super.viewDidLoad()
         naviSetAttribute()
         setAtrribute()
+        
     }
-    init() {
+    init(viewModel: CafeListViewModel) {
+        self.viewModel = viewModel
         let layout = UICollectionViewCompositionalLayout { section, env in
             return NSCollectionLayoutSection.sortLayout()
         }
@@ -46,7 +49,16 @@ class MoreCollectionViewController: UICollectionViewController {
     //MARK: - 컬렉션뷰 데이터소스
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        switch naviTitle {
+        case "가까이 있는 매장":
+            return viewModel.orderNearStore().count
+        case "스토리가 많은 매장":
+            return viewModel.orderManyStoryStore().count
+        case "신규매장":
+            return viewModel.orderNewStore().count
+        default:
+            return 0
+        }
     }
     override func collectionView(
         _ collectionView: UICollectionView,
@@ -56,6 +68,38 @@ class MoreCollectionViewController: UICollectionViewController {
             withReuseIdentifier: SortCell.identifier,
             for: indexPath
         ) as! SortCell
+        switch naviTitle {
+        case "가까이 있는 매장":
+            cell.viewModel = viewModel.orderNearStore()[indexPath.row]
+        case "스토리가 많은 매장":
+            cell.viewModel = viewModel.orderManyStoryStore()[indexPath.row]
+        case "신규매장":
+            cell.viewModel = viewModel.orderNewStore()[indexPath.row]
+        default:
+            return cell
+        }
         return cell
+    }
+    
+    //MARK: - 컬렉션뷰 델리게이트
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch naviTitle {
+        case "가까이 있는 매장":
+            let viewModel = viewModel.orderNearStore()[indexPath.row]
+            let vc = StoreDetailViewController(viewModel: viewModel)
+            navigationController?.pushViewController(vc, animated: true)
+        case "스토리가 많은 매장":
+            let viewModel = viewModel.orderManyStoryStore()[indexPath.row]
+            let vc = StoreDetailViewController(viewModel: viewModel)
+            navigationController?.pushViewController(vc, animated: true)
+        case "신규매장":
+            let viewModel = viewModel.orderNewStore()[indexPath.row]
+            let vc = StoreDetailViewController(viewModel: viewModel)
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
+        
     }
 }

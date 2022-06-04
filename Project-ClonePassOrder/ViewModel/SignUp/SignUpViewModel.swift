@@ -8,57 +8,21 @@
 import Foundation
 import UIKit
 
-protocol SignUpViewModelInput {
-    func profileImageConrvertData(image: UIImage)
-    func textFieldEmptyVaild(text: String) -> Bool
-    func userNameToLongValid(userName: String) -> Bool
-    func emailValidCheck(email: String) -> Bool
-    func passwordToShortValid(password: String) -> Bool
-    func confirmPasswordValid(confirmPassword: String) -> Bool
-    func requiredAgreedValid() -> Bool
-    func profileImageUpload()
-    func signUpUser()
-    func phoneNumberAuth()
-    func phoneNumberAuthValid()
-}
 
-protocol SignUpViewModelOutput {
-    var profileImageData: Data? {get set}
-    var userName: String {get set}
-    var email: String {get set}
-    var password: String {get set}
-    var confirmPassword: String {get set}
-    var phoneNumber: String {get set}
-    var verificationID: Observer<String> {get set}
-    var verificationCode: String {get set}
-    var imageURL: Observer<String> {get set}
-    var is14YearsOld: Observer<Bool> {get set}
-    var isAgreeService: Observer<Bool> {get set}
-    var isAgreeLocationService: Observer<Bool> {get set}
-    var isAgreePrivacyInformation: Observer<Bool> {get set}
-    var isAgreePrivacyThirdPartyInformation: Observer<Bool> {get set}
-    var isAgreeMarketingReceive: Observer<Bool> {get set}
-    var imageUploadError: Observer<ImageUploaderError> {get set}
-    var signUpError: Observer<SigunUpError> {get set}
-    var signUpEnd: Observer<Bool> {get set}
-    var phoneNumberAuthSuccess: Observer<Bool> {get set}
-}
-
-protocol SignUpViewModelProtocol: SignUpViewModelInput, SignUpViewModelOutput {
-    
-}
-
-
-
-final class SignUpViewModel: SignUpViewModelProtocol {
+final class SignUpViewModel {
  
     static let shared: SignUpViewModel = SignUpViewModel()
     
+    init(
+        imageUploaderService: ImageUploaderServiceProtocol = ImageUploaderService(),
+        signUpService: SignUpServiceProtocol = SignUpService()
+    ) {
+        self.imageUploaderService = imageUploaderService
+        self.signUpService = signUpService
+    }
+    
     var imageUploaderService: ImageUploaderServiceProtocol
     var signUpService: SignUpServiceProtocol
-    
-    //MARK: - input
-    
     var profileImageData: Data? = nil
     var userName: String = ""
     var email: String = ""
@@ -78,19 +42,9 @@ final class SignUpViewModel: SignUpViewModelProtocol {
     var signUpError: Observer<SigunUpError> = Observer(value: .upLoadFireStoreError)
     var signUpEnd: Observer<Bool> = Observer(value: false)
     var phoneNumberAuthSuccess: Observer<Bool> = Observer(value: false)
-    
-    init(
-        imageUploaderService: ImageUploaderServiceProtocol = ImageUploaderService(),
-        signUpService: SignUpServiceProtocol = SignUpService()
-    ) {
-        self.imageUploaderService = imageUploaderService
-        self.signUpService = signUpService
-    }
 }
 
 extension SignUpViewModel {
-    
-    //MARK: - output
     
     func profileImageConrvertData(image: UIImage) {
         guard let imageData = image.jpegData(compressionQuality: 1) else {
@@ -140,6 +94,7 @@ extension SignUpViewModel {
         }
     }
     func phoneNumberConverting(phoneNumber: String) {
+        if phoneNumber.count >= 10 {
       var convertPhoneNumber = phoneNumber
         convertPhoneNumber.removeFirst()
         convertPhoneNumber.insert(
@@ -150,6 +105,7 @@ extension SignUpViewModel {
         )
         
         self.phoneNumber = "+82 \(convertPhoneNumber)"
+        }
     }
     func requiredAgreedValid() -> Bool {
         if is14YearsOld.value &&
@@ -204,9 +160,9 @@ extension SignUpViewModel {
         signUpService.phoneAuth(phoneNumber: phoneNumber) { [weak self] result in
             switch result {
             case .success(let id):
-                self!.verificationID.value = id
+                self?.verificationID.value = id
             case .failure(let error):
-                self!.signUpError.value = error
+                self?.signUpError.value = error
             }
         }
     }
@@ -216,10 +172,10 @@ extension SignUpViewModel {
             verificationcode: self.verificationCode) { [weak self] result in
                 switch result {
                 case .success(let bool):
-                    self!.phoneNumberAuthSuccess.value = bool
-                    AuthViewModel().logoutUser()
+                    self?.phoneNumberAuthSuccess.value = bool
+                    AuthViewModel().logout()
                 case .failure(let error):
-                    self!.signUpError.value = error
+                    self?.signUpError.value = error
                 }
             }
     }

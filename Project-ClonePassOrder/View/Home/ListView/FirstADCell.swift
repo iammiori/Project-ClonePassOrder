@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-protocol ADCellDelegate: AnyObject {
+protocol ListViewCellDelegate: AnyObject {
     func imageLoadEnd()
 }
 
@@ -20,7 +20,7 @@ class FirstADCell: UICollectionViewCell {
     
     //MARK: - 프로퍼티
     
-   weak var delegate: ADCellDelegate?
+   weak var delegate: ListViewCellDelegate?
     var viewModel: ADListViewModel? {
         didSet {
             addContentScrollView(index: viewModel?.items.value.count ?? 0)
@@ -67,7 +67,7 @@ class FirstADCell: UICollectionViewCell {
         guard let viewModel = viewModel else {
             return
         }
-        for i in 0..<viewModel.items.value.count {
+        for i in 0..<viewModel.count() {
             let imageView: UIImageView = UIImageView(frame: self.frame)
             let xPos = self.frame.width * CGFloat(i)
             imageView.frame = CGRect(
@@ -77,8 +77,7 @@ class FirstADCell: UICollectionViewCell {
                 height: self.bounds.height
             )
             imageView.kf.setImage(
-                with: viewModel.items.value[i].ADImageURL,
-                options: [.forceRefresh]
+                with: viewModel.itemAtIndex(i).ADImageURL
             ) { [weak self] result in
                 switch result {
                 case .success(_):
@@ -96,7 +95,7 @@ class FirstADCell: UICollectionViewCell {
             guard let width = self?.bounds.width else {
                 return
             }
-            guard let count = self?.viewModel?.items.value.count else {
+            guard let count = self?.viewModel?.count() else {
                 return
             }
             if self?.currentPage == width * CGFloat(count - 1) {
