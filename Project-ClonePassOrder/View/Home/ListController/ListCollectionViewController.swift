@@ -16,20 +16,27 @@ protocol ListCollectionViewDelegate: AnyObject {
 class ListCollectionViewController: UICollectionViewController {
     
     //MARK: - 프로퍼티
+    var cafeViewModel: CafeListViewModel
     var firstADListViewModel: ADListViewModel
     var secondADListViewModel: ADListViewModel
     weak var delegate: ListCollectionViewDelegate?
-    
+    var cellImageView: [UIImageView] = []
     
     //MARK: - 라이프사이클
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setCellImage()
         setAtrribute()
     }
-    init(firstADViewModel: ADListViewModel, secondADViewModel: ADListViewModel) {
+    init(
+        firstADViewModel: ADListViewModel,
+        secondADViewModel: ADListViewModel,
+        cafeViewModel: CafeListViewModel
+    ) {
         self.firstADListViewModel = firstADViewModel
         self.secondADListViewModel = secondADViewModel
+        self.cafeViewModel = cafeViewModel
          let layout = UICollectionViewCompositionalLayout { section, env in
              switch section {
              case 0:
@@ -90,7 +97,6 @@ class ListCollectionViewController: UICollectionViewController {
                  section.contentInsets.bottom = 50
                  section.contentInsets.leading = 50
                  return section
-                 
              case 3:
                  let item = NSCollectionLayoutItem(
                     layoutSize: .init(widthDimension: .absolute(350),
@@ -228,7 +234,26 @@ class ListCollectionViewController: UICollectionViewController {
         header.secondLabel.attributedText = attributedString
         return header
     }
-    
+    private func setCellImage() {
+        var count = 0
+        self.cafeViewModel.items.value.forEach { item in
+            let imageView = UIImageView()
+            imageView.kf.setImage(with: item.cafeImageURL, options: [.forceRefresh]) { result in
+                switch result {
+                case .success(_):
+                    item.cellImage = imageView.image
+                    self.delegate?.cellImageloadEnd()
+                    count += 1
+                    if count == self.cafeViewModel.count() {
+                        self.collectionView.reloadData()
+                    }
+                case .failure(_):
+                    break
+                }
+            }
+            cellImageView.append(imageView)
+        }
+    }
     //MARK: - 컬렉션뷰 데이터소스
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -238,6 +263,9 @@ class ListCollectionViewController: UICollectionViewController {
         switch section {
         case 0: return 1
         case 1: return 1
+        case 2: return cafeViewModel.orderNearStore().count
+        case 3: return cafeViewModel.orderManyStoryStore().count
+        case 4: return cafeViewModel.orderNewStore().count
         case 5: return 1
         default: return 10
         }
@@ -268,18 +296,21 @@ class ListCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: FirstListCell.identifier,
                 for: indexPath
             ) as! FirstListCell
+            cell.viewModel = cafeViewModel.orderNearStore()[indexPath.row]
             return cell
         case 3:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SecondListCell.identifier,
                 for: indexPath
             ) as! SecondListCell
+            cell.viewModel = cafeViewModel.orderManyStoryStore()[indexPath.row]
             return cell
         case 4:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: ThirdListCell.identifier,
                 for: indexPath
             ) as! ThirdListCell
+            cell.viewModel = cafeViewModel.orderNewStore()[indexPath.row]
             return cell
         case 5:
             let cell = collectionView.dequeueReusableCell(
@@ -361,9 +392,11 @@ class ListCollectionViewController: UICollectionViewController {
     }
 
 //MARK: - 컬렉션뷰 델리게이트
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
+
 //MARK: - 리스트셀 델리게이트
 
 extension ListCollectionViewController: ListCellDelegate {

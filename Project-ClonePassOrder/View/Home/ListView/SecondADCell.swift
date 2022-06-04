@@ -95,7 +95,7 @@ class SecondADCell: UICollectionViewCell {
         guard let viewModel = viewModel else {
             return
         }
-        for i in 0..<viewModel.items.value.count {
+        for i in 0..<viewModel.count() {
             let imageView: UIImageView = UIImageView(frame: self.frame)
             let xPos = self.frame.width * CGFloat(i)
             imageView.frame = CGRect(
@@ -106,7 +106,7 @@ class SecondADCell: UICollectionViewCell {
             )
             imageView.contentMode = .scaleAspectFill
             imageView.kf.setImage(
-                with: viewModel.items.value[i].ADImageURL
+                with: viewModel.itemAtIndex(i).ADImageURL
             ) { [weak self] result in
                 switch result {
                 case .success(_):
@@ -122,21 +122,21 @@ class SecondADCell: UICollectionViewCell {
         }
     }
     private func ADTimer() {
-            guard let count = self.viewModel?.items.value.count else {
-                return
+        guard let count = self.viewModel?.count() else {
+            return
+        }
+        let width = self.bounds.width
+        if self.currentPage == Int(width * CGFloat(count - 1)) {
+            self.currentPage = 0
+            UIView.animate(withDuration: 0.2) {
+                self.scrollView.contentOffset.x = 0
             }
-            let width = self.bounds.width
-            if self.currentPage == Int(width * CGFloat(count - 1)) {
-                self.currentPage = 0
-                UIView.animate(withDuration: 0.2) {
-                    self.scrollView.contentOffset.x = 0
-                }
-            } else {
-                self.currentPage += Int(width)
-                UIView.animate(withDuration: 0.2) {
-                    self.scrollView.contentOffset.x += CGFloat(width)
-                }
+        } else {
+            self.currentPage += Int(width)
+            UIView.animate(withDuration: 0.2) {
+                self.scrollView.contentOffset.x += CGFloat(width)
             }
+        }
     }
 }
 
@@ -144,7 +144,7 @@ class SecondADCell: UICollectionViewCell {
 
 extension SecondADCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let count = self.viewModel?.items.value.count else {
+        guard let count = self.viewModel?.count() else {
             return
         }
         let pageText = Int(scrollView.contentOffset.x/self.bounds.width)

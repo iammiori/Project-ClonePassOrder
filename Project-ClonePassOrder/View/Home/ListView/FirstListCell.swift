@@ -16,11 +16,17 @@ class FirstListCell: UICollectionViewCell {
     
     //MARK: - 프로퍼티
     
-   private let imageView: UIImageView = {
+    var viewModel: CafeViewModelItem? {
+        didSet {
+            setAtrribute()
+        }
+    }
+    var imageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .lightGray
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 10
+        iv.contentMode = .scaleAspectFill
         return iv
     }()
    private let nameLabel: UILabel = UILabel().listLabel(
@@ -112,5 +118,18 @@ class FirstListCell: UICollectionViewCell {
             storyStackView: storyStackView,
             imageViewHeight: 300
         )
+        CAGradientLayer().imageViewGradaient(imageView: imageView,bounds: bounds)
+        
+    }
+    func setAtrribute() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        nameLabel.text = viewModel.name
+        timeLabel.text = viewModel.orderTime
+        distanceLabel.text = viewModel.distanceString
+        imageView.image = viewModel.cellImage
+        storyLabel.text = "\(viewModel.storyCount)"
+        likeLabel.text = "\(viewModel.favoriteCount)"
     }
 }

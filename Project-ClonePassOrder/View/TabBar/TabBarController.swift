@@ -7,18 +7,27 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 import SwiftUI
 
 class TabBarController: UITabBarController {
     
     //MARK: - 프로퍼티
+    private var locationManger = CLLocationManager()
+    private lazy var cafeListViewModel: CafeListViewModel = CafeListViewModel(
+        corrdinate: locationManger.location!.coordinate
+    )
     private var firstADListViewModel: ADListViewModel = ADListViewModel()
     private var secondADListViewModel: ADListViewModel = ADListViewModel()
     private let indicatorView: UIImageView = UIImageView().indicatorView()
     var serviceCount: Int = 0 {
         didSet {
-            if serviceCount == 3 {
-                setNavigation(firstAD: self.firstADListViewModel, secondAD: secondADListViewModel)
+            if serviceCount == 4 {
+                setNavigation(
+                    firstAD: self.firstADListViewModel,
+                    secondAD: self.secondADListViewModel,
+                    cafe: self.cafeListViewModel
+                )
                 setAttribute()
                 indicatorView.removeFromSuperview()
             }
@@ -29,6 +38,9 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManger.requestWhenInUseAuthorization()
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.startUpdatingLocation()
         setImageView()
         setBinding()
         auth()
@@ -39,10 +51,11 @@ class TabBarController: UITabBarController {
     private func setImageView() {
         UIImageView.indicatorSetLayout(view: self.view, imageView: indicatorView)
     }
-    private func setNavigation(firstAD: ADListViewModel,secondAD: ADListViewModel) {
+    private func setNavigation(firstAD: ADListViewModel,secondAD: ADListViewModel, cafe: CafeListViewModel) {
         let homeVC = HomeViewController(
             firstADViewModel: firstAD,
-            secondADViewModel: secondAD
+            secondADViewModel: secondAD,
+            cafeViewModel: cafe
         )
         let orderHistoryVC = OrderHistoryViewController()
         let favoriteVC = FavoriteViewController()
@@ -113,6 +126,12 @@ class TabBarController: UITabBarController {
         secondADListViewModel.items.bind { [weak self] _ in
             self?.serviceCount += 1
         }
+        cafeListViewModel.cafeServiceError.bind { _ in
+            
+        }
+        cafeListViewModel.items.bind { [weak self] _ in
+            self?.serviceCount += 1
+        }
     }
     func auth() {
         if Auth.auth().currentUser == nil {
@@ -128,8 +147,12 @@ class TabBarController: UITabBarController {
             UserViewModel.shared.userFetch(uid: Auth.auth().currentUser!.uid)
             firstADListViewModel.fetchAD(collectionName: "SecondAD")
             secondADListViewModel.fetchAD(collectionName: "FirstAD")
+            cafeListViewModel.fetchCafe()
         }
     }
+    
+        
+    
     
 
 }

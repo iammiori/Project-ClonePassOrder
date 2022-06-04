@@ -16,6 +16,7 @@ enum HomeState {
 class HomeViewController: UIViewController {
     
     //MARK: - 프로퍼티
+    var cafeViewModel: CafeListViewModel
     var firstADListViewModel: ADListViewModel
     var secondADListViewModel: ADListViewModel
     var imageLoadEndCount: Int = 0 {
@@ -23,6 +24,7 @@ class HomeViewController: UIViewController {
             let totalCount =
             firstADListViewModel.items.value.count
             + secondADListViewModel.items.value.count
+            + cafeViewModel.count()
             if imageLoadEndCount == totalCount {
                 tabBarController?.tabBar.isHidden = false
                 indicatorView.removeFromSuperview()
@@ -77,15 +79,20 @@ class HomeViewController: UIViewController {
     }()
     private lazy var listView: ListCollectionViewController = ListCollectionViewController(
         firstADViewModel: self.firstADListViewModel,
-        secondADViewModel: self.secondADListViewModel
+        secondADViewModel: self.secondADListViewModel,
+        cafeViewModel: self.cafeViewModel
     )
 
-    
     //MARK: - 라이프사이클
     
-    init(firstADViewModel: ADListViewModel, secondADViewModel: ADListViewModel) {
+    init(
+        firstADViewModel: ADListViewModel,
+        secondADViewModel: ADListViewModel,
+        cafeViewModel: CafeListViewModel
+    ) {
         self.firstADListViewModel = firstADViewModel
         self.secondADListViewModel = secondADViewModel
+        self.cafeViewModel = cafeViewModel
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -113,7 +120,7 @@ class HomeViewController: UIViewController {
         stateButtonTapped()
     }
     @objc private func searchButtonTapped() {
-        let vc = SearchCollectionViewController()
+        let vc = SearchCollectionViewController(viewModel: cafeViewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -190,7 +197,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: ListCollectionViewDelegate {
     func footerTapped(title: String) {
-        let vc = MoreCollectionViewController()
+        let vc = MoreCollectionViewController(viewModel: cafeViewModel)
         vc.naviTitle = title
         navigationController?.pushViewController(vc, animated: true)
     }

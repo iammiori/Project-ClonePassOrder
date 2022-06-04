@@ -56,6 +56,7 @@ class ListCellFooter: UICollectionReusableView {
     //MARK: - 셀렉터메서드
     
     @objc private func moreButtonTapped() {
+        print(currentSection)
         switch currentSection {
         case .FirstCell:
             delegate?.footerTapped(title: "가까이 있는 매장")
