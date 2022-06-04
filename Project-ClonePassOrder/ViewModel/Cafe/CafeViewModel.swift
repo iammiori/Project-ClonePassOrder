@@ -29,6 +29,10 @@ extension CafeListViewModel {
     func count() -> Int {
         self.items.value.count
     }
+    func itemAtIndex(_ index: Int) -> CafeViewModelItem {
+        let item = self.items.value[index]
+        return item
+    }
     func orderNearStore() -> [CafeViewModelItem] {
        let items = items.value.sorted {
             $0.distance < $1.distance

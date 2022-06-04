@@ -126,8 +126,9 @@ class TabBarController: UITabBarController {
         secondADListViewModel.items.bind { [weak self] _ in
             self?.serviceCount += 1
         }
-        cafeListViewModel.cafeServiceError.bind { _ in
-            
+        cafeListViewModel.cafeServiceError.bind { [weak self] _ in
+            Toast.message(superView: self!.view, text: "서버연결에 실패했습니다 인터넷 연결을 확인해주세요")
+            self?.cafeListViewModel.fetchCafe()
         }
         cafeListViewModel.items.bind { [weak self] _ in
             self?.serviceCount += 1

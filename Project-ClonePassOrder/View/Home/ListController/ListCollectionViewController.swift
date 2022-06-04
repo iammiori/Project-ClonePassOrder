@@ -11,6 +11,7 @@ import UIKit
 protocol ListCollectionViewDelegate: AnyObject {
     func footerTapped(title: String)
     func cellImageloadEnd()
+    func cellTapped(controller: StoreDetailViewController)
 }
 
 class ListCollectionViewController: UICollectionViewController {
@@ -393,7 +394,29 @@ class ListCollectionViewController: UICollectionViewController {
 
 //MARK: - 컬렉션뷰 델리게이트
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        switch indexPath.section {
+        case 2:
+            let vc = StoreDetailViewController(
+                viewModel: cafeViewModel.orderNearStore()[indexPath.row]
+            )
+            delegate?.cellTapped(controller: vc)
+        case 3:
+            let vc = StoreDetailViewController(
+                viewModel: cafeViewModel.orderManyStoryStore()[indexPath.row]
+            )
+            delegate?.cellTapped(controller: vc)
+        case 4:
+            let vc = StoreDetailViewController(
+                viewModel: cafeViewModel.orderNearStore()[indexPath.row]
+            )
+            delegate?.cellTapped(controller: vc)
+        default:
+            break
+        }
     }
 }
 

@@ -125,9 +125,19 @@ class SearchCollectionViewController: UICollectionViewController {
         return cell
     }
 
+
+
+//MARK: - 컬렉션뷰 델리게이트
+    
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        let viewModel = viewModel.itemAtIndex(indexPath.row)
+        let vc = StoreDetailViewController(viewModel: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
-
-
 //MARK: - 서치바 델리게이트
 extension SearchCollectionViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

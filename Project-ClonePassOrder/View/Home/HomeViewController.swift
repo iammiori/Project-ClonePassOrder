@@ -204,6 +204,9 @@ extension HomeViewController: ListCollectionViewDelegate {
     func cellImageloadEnd() {
         self.imageLoadEndCount += 1
     }
+    func cellTapped(controller: StoreDetailViewController) {
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 

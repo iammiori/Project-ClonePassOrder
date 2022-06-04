@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: - List
- 
+
 final class ADListViewModel {
     
     init(service: ADServiceProtocol = ADService()) {

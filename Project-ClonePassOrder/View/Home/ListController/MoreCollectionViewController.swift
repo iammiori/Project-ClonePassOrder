@@ -80,4 +80,26 @@ class MoreCollectionViewController: UICollectionViewController {
         }
         return cell
     }
+    
+    //MARK: - 컬렉션뷰 델리게이트
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch naviTitle {
+        case "가까이 있는 매장":
+            let viewModel = viewModel.orderNearStore()[indexPath.row]
+            let vc = StoreDetailViewController(viewModel: viewModel)
+            navigationController?.pushViewController(vc, animated: true)
+        case "스토리가 많은 매장":
+            let viewModel = viewModel.orderManyStoryStore()[indexPath.row]
+            let vc = StoreDetailViewController(viewModel: viewModel)
+            navigationController?.pushViewController(vc, animated: true)
+        case "신규매장":
+            let viewModel = viewModel.orderNewStore()[indexPath.row]
+            let vc = StoreDetailViewController(viewModel: viewModel)
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
+        
+    }
 }
