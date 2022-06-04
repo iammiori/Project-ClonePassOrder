@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct ADModel {
+struct ADModel: Equatable {
     var ADImageUrl: String
-    
-    init(ADImageUrl: String) {
-        self.ADImageUrl = ADImageUrl
-    }
 }

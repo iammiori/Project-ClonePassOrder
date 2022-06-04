@@ -51,6 +51,14 @@
 		FE8E661928490A9000F8708D /* CafeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661828490A9000F8708D /* CafeService.swift */; };
 		FE8E661B28490AA700F8708D /* MockCafeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661A28490AA700F8708D /* MockCafeService.swift */; };
 		FE8E661D28490AB000F8708D /* CafeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661C28490AB000F8708D /* CafeModel.swift */; };
+		FE8E661E28490B2B00F8708D /* CafeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661628490A8900F8708D /* CafeViewModel.swift */; };
+		FE8E661F28490B2B00F8708D /* CafeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661628490A8900F8708D /* CafeViewModel.swift */; };
+		FE8E662028490B2D00F8708D /* CafeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661828490A9000F8708D /* CafeService.swift */; };
+		FE8E662128490B2D00F8708D /* CafeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661828490A9000F8708D /* CafeService.swift */; };
+		FE8E662228490B2F00F8708D /* MockCafeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661A28490AA700F8708D /* MockCafeService.swift */; };
+		FE8E662328490B2F00F8708D /* MockCafeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661A28490AA700F8708D /* MockCafeService.swift */; };
+		FE8E662428490B3100F8708D /* CafeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661C28490AB000F8708D /* CafeModel.swift */; };
+		FE8E662528490B3100F8708D /* CafeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E661C28490AB000F8708D /* CafeModel.swift */; };
 		FEBA7E332845CEE600BCD132 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBA7E322845CEE600BCD132 /* ProfileImageViewController.swift */; };
 		FEBA7E372845EE0E00BCD132 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBA7E362845EE0E00BCD132 /* SignUpService.swift */; };
 		FEBA7E392845EE2D00BCD132 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBA7E382845EE2D00BCD132 /* SignUpModel.swift */; };
@@ -1444,9 +1452,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8E662028490B2D00F8708D /* CafeService.swift in Sources */,
 				FEBA7E65284725BD00BCD132 /* MockUserService.swift in Sources */,
 				FEFEEF2F284509AC0063D160 /* AuthViewModel.swift in Sources */,
 				FEBA7E44284648E200BCD132 /* SignUpService.swift in Sources */,
+				FE8E662228490B2F00F8708D /* MockCafeService.swift in Sources */,
 				FEBA7E41284648DF00BCD132 /* MockSignUpService.swift in Sources */,
 				FEBA7E4A284648E800BCD132 /* MockImageUploaderService.swift in Sources */,
 				FEFEEF32284509B50063D160 /* Observer.swift in Sources */,
@@ -1456,10 +1466,12 @@
 				FECC82552845C19C005FCCFA /* SignUpUnitTest.swift in Sources */,
 				FEBA7E53284715F300BCD132 /* UserUnitTest.swift in Sources */,
 				FEFEEF29284509940063D160 /* AuthUnitTest.swift in Sources */,
+				FE8E662428490B3100F8708D /* CafeModel.swift in Sources */,
 				FED8A7142847B844002E70A6 /* ADService.swift in Sources */,
 				FED8A70F2847B809002E70A6 /* ADUnitTest.swift in Sources */,
 				FED8A71C2847B85F002E70A6 /* ADModel.swift in Sources */,
 				FEBA7E5C2847191D00BCD132 /* UserModel.swift in Sources */,
+				FE8E661E28490B2B00F8708D /* CafeViewModel.swift in Sources */,
 				FEBA7E47284648E400BCD132 /* ImageUploaderService.swift in Sources */,
 				FE8E660A28489C9500F8708D /* ADViewModel.swift in Sources */,
 				FEFEEF30284509AE0063D160 /* MockAuthService.swift in Sources */,
@@ -1477,11 +1489,15 @@
 			files = (
 				FE8E660B28489C9500F8708D /* ADViewModel.swift in Sources */,
 				FEFEEF6328450AD20063D160 /* AuthService.swift in Sources */,
+				FE8E662328490B2F00F8708D /* MockCafeService.swift in Sources */,
+				FE8E662128490B2D00F8708D /* CafeService.swift in Sources */,
 				FEFEEF6728450ADC0063D160 /* Observer.swift in Sources */,
 				FED8A71D2847B860002E70A6 /* ADModel.swift in Sources */,
 				FEFEEF6528450AD50063D160 /* MockAuthService.swift in Sources */,
+				FE8E661F28490B2B00F8708D /* CafeViewModel.swift in Sources */,
 				FEBA7E4F2846490300BCD132 /* SignUpModel.swift in Sources */,
 				FEBA7E43284648E000BCD132 /* MockSignUpService.swift in Sources */,
+				FE8E662528490B3100F8708D /* CafeModel.swift in Sources */,
 				FEFEEF6128450AD00063D160 /* AuthViewModel.swift in Sources */,
 				FEBA7E4C284648E800BCD132 /* MockImageUploaderService.swift in Sources */,
 				FEFEEF5828450A150063D160 /* IntegrationUITest.swift in Sources */,

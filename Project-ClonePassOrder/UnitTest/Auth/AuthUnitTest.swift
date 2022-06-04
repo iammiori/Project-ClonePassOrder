@@ -27,7 +27,7 @@ class AuthUnitTest: XCTestCase {
         let paswordText = "123123"
         
         //when
-        sut.textFieldEmptyVaild(email: emailText, password: paswordText)
+        sut.userLogin(email: emailText, password: paswordText)
         
         //then
         XCTAssertNil(sut.email, "이메일이 Nil이 아닙니다.")
@@ -39,7 +39,7 @@ class AuthUnitTest: XCTestCase {
         let passwordText = "123456"
 
         //when
-        sut.textFieldEmptyVaild(email: emailText, password: passwordText)
+        sut.userLogin(email: emailText, password: passwordText)
         
         //then
         XCTAssertEqual(sut.email, emailText, "이메일이 일치하지않습니다")
@@ -74,7 +74,7 @@ class AuthUnitTest: XCTestCase {
         sut.password = "123456"
         
         //when
-        sut.loginUser()
+        sut.login()
         
         //then
         XCTAssertEqual(sut.authError.value, .loginFaildError, "loginFaildError가 아닙니다")
@@ -88,7 +88,7 @@ class AuthUnitTest: XCTestCase {
         sut.password = "123456"
         
         //when
-        sut.loginUser()
+        sut.login()
         
         //then
         XCTAssertEqual(sut.authError.value, .authResultNilError, "authResultNilError가 아닙니다")
@@ -103,7 +103,7 @@ class AuthUnitTest: XCTestCase {
         sut.password = "123456"
         
         //when
-        sut.loginUser()
+        sut.login()
         
         //then
         XCTAssertEqual(sut.uid.value, userID, "uid가 동일하지않습니다")
@@ -115,7 +115,7 @@ class AuthUnitTest: XCTestCase {
         sut.service = mockAuthservice
         
         //when
-        sut.logoutUser()
+        sut.logout()
         
         //then
         XCTAssertEqual(sut.authError.value, .logoutFaildError, "logoutFaildError가 아닙니다")
@@ -127,7 +127,7 @@ class AuthUnitTest: XCTestCase {
         sut.service = mockAuthservice
         
         //when
-        sut.logoutUser()
+        sut.logout()
         
         //then
         XCTAssertEqual(sut.logoutSuccess.value, true, "logoutSuccess.value가 true가 아닙니다")

@@ -11,12 +11,6 @@ struct UserModel {
     var userName: String
     var email: String
     var profileImageUrl: String
-    
-    init(userName: String, email: String, profileImageUrl: String) {
-        self.userName = userName
-        self.email = email
-        self.profileImageUrl = profileImageUrl
-    }
 }
 
 extension UserModel {

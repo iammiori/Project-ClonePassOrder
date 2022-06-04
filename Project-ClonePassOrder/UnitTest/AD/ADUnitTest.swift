@@ -22,18 +22,43 @@ class ADUnitTest: XCTestCase {
         sut = nil
     }
     
-    func test_ADViewModel() {
+    func test_ADModel이_ADViewModelItem에_원하는값으로_담기는지() {
         //given
         let model = ADModel(ADImageUrl: "imageUrl")
-        let viewModels: [FirstADViewModelItem] = [FirstADViewModelItem(model: model)]
-        sut.items.value = viewModels
+        let item: ADViewModelItem = ADViewModelItem(model: model)
+        
         //then
-        XCTAssertEqual(sut.items.value[0].ADImageURL, URL(string: model.ADImageUrl))
+        XCTAssertEqual(item.ADImageURL, URL(string: model.ADImageUrl))
     }
-    func test_fetchFirstAD호출시_성공하는경우_items에_FirstViewModelItem배열이_담기는지() {
+    func test_count호출시_items의_count를_리턴하는지() {
+        //given
+        let model = ADModel(ADImageUrl: "imageurl1")
+        let items = [ADViewModelItem(model: model),ADViewModelItem(model: model)]
+        sut.items.value = items
+        
+        //when
+        let valid = sut.count()
+        
+        //then
+        XCTAssertEqual(valid, items.count)
+    }
+    func test_itemAtIndex호출시_index에맞는_item을_리턴하는지() {
+        //given
+        let model1 = ADModel(ADImageUrl: "imageurl1")
+        let model2 = ADModel(ADImageUrl: "imageurl2")
+        let items = [ADViewModelItem(model: model1),ADViewModelItem(model: model2)]
+        sut.items.value = items
+        
+        //when
+        let valid = sut.itemAtIndex(0)
+        
+        //then
+        XCTAssertEqual(valid, items[0])
+    }
+    func test_fetchAD호출시_성공하는경우_items에_FirstViewModelItem배열이_담기는지() {
         //given
         let models = [ADModel(ADImageUrl: "imageUrl"),ADModel(ADImageUrl: "imageUrl2")]
-        let viewMoodels = [FirstADViewModelItem(model: models[0]),FirstADViewModelItem(model: models[1])]
+        let items = [ADViewModelItem(model: models[0]),ADViewModelItem(model: models[1])]
         var mockADService = MockADService()
         mockADService.result = .success(models)
         sut.adService = mockADService
@@ -42,6 +67,31 @@ class ADUnitTest: XCTestCase {
         sut.fetchAD(collectionName: "firstAD")
         
         //then
-        XCTAssertEqual(sut.items.value, viewMoodels)
+        XCTAssertEqual(sut.items.value, items)
+    }
+    
+    func test_fetchAD호출시_실패하는경우_ADFetchError인경우_ADServiceError에담기는지() {
+        //given
+        var mockADService = MockADService()
+        mockADService.result = .failure(.ADFetchError)
+        sut.adService = mockADService
+        
+        //when
+        sut.fetchAD(collectionName: "firstAD")
+        
+        //then
+        XCTAssertEqual(sut.ADServiceError.value , .ADFetchError)
+    }
+    func test_fetchAD호출시_실패하는경우_snapShotError인경우_ADServiceError에담기는지() {
+        //given
+        var mockADService = MockADService()
+        mockADService.result = .failure(.snapShotError)
+        sut.adService = mockADService
+        
+        //when
+        sut.fetchAD(collectionName: "firstAD")
+        
+        //then
+        XCTAssertEqual(sut.ADServiceError.value , .snapShotError)
     }
 }
