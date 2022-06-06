@@ -92,6 +92,7 @@ class CafeUnitTest: XCTestCase {
         XCTAssertEqual(valid, items.count)
     }
     func test_orderNearStore호출시_items가_distance가_낮은순으로_정렬이된배열로_반환되는지() {
+        
     }
     
 

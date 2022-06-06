@@ -46,10 +46,10 @@ extension ADListViewModel {
 
 //MARK: - item
 
-struct ADViewModelItem: Equatable {
+final class ADViewModelItem {
     
-    static func == (lhs: ADViewModelItem, rhs: ADViewModelItem) -> Bool {
-        return lhs.model == rhs.model
+    init(model: ADModel) {
+        self.model = model
     }
     
     var model: ADModel
@@ -59,3 +59,9 @@ struct ADViewModelItem: Equatable {
     }
 }
 
+
+extension ADViewModelItem: Equatable {
+    static func == (lhs: ADViewModelItem, rhs: ADViewModelItem) -> Bool {
+        lhs.ADImageURL == lhs.ADImageURL
+    }
+}

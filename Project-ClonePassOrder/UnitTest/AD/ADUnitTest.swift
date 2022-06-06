@@ -55,7 +55,7 @@ class ADUnitTest: XCTestCase {
         //then
         XCTAssertEqual(valid, items[0])
     }
-    func test_fetchAD호출시_성공하는경우_items에_FirstViewModelItem배열이_담기는지() {
+    func test_fetchAD호출시_성공하는경우_items에_ViewModelItem배열이_담기는지() {
         //given
         let models = [ADModel(ADImageUrl: "imageUrl"),ADModel(ADImageUrl: "imageUrl2")]
         let items = [ADViewModelItem(model: models[0]),ADViewModelItem(model: models[1])]
@@ -93,5 +93,18 @@ class ADUnitTest: XCTestCase {
         
         //then
         XCTAssertEqual(sut.ADServiceError.value , .snapShotError)
+    }
+    func test_ADserviceError의_값이변경되었을때_바인딩_되었는지() {
+        //given
+        
+        sut.ADServiceError.bind { error in
+            //then
+            
+            XCTAssertEqual(error, .ADFetchError)
+        }
+        
+        //when
+        sut.ADServiceError.value = .ADFetchError
+        
     }
 }

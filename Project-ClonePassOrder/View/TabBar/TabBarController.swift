@@ -147,6 +147,7 @@ class TabBarController: UITabBarController {
         } else {
             UserViewModel.shared.userFetch(uid: Auth.auth().currentUser!.uid)
             firstADListViewModel.fetchAD(collectionName: "SecondAD")
+            
             secondADListViewModel.fetchAD(collectionName: "FirstAD")
             cafeListViewModel.fetchCafe()
         }
