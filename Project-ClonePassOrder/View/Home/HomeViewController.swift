@@ -25,8 +25,6 @@ class HomeViewController: UIViewController {
             firstADListViewModel.count()
             + secondADListViewModel.count()
             + cafeViewModel.count()
-            print("토탈카운트 \(totalCount)")
-            print("self카운트 \(imageLoadEndCount)")
             if imageLoadEndCount == totalCount {
                 tabBarController?.tabBar.isHidden = false
                 indicatorView.removeFromSuperview()
@@ -102,15 +100,14 @@ class HomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        naviSetAttribute()
         setAtrribute()
         setLayout()
         stateButtonTapped()
         UIImageView.indicatorSetLayout(view: self.view, imageView: indicatorView)
         setBinding()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        naviSetAttribute()
-    }
+   
     
     //MARK: - 셀렉터메서드
     
