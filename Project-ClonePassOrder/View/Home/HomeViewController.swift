@@ -22,9 +22,11 @@ class HomeViewController: UIViewController {
     var imageLoadEndCount: Int = 0 {
         didSet {
             let totalCount =
-            firstADListViewModel.items.value.count
-            + secondADListViewModel.items.value.count
+            firstADListViewModel.count()
+            + secondADListViewModel.count()
             + cafeViewModel.count()
+            print("토탈카운트 \(totalCount)")
+            print("self카운트 \(imageLoadEndCount)")
             if imageLoadEndCount == totalCount {
                 tabBarController?.tabBar.isHidden = false
                 indicatorView.removeFromSuperview()
@@ -104,6 +106,7 @@ class HomeViewController: UIViewController {
         setLayout()
         stateButtonTapped()
         UIImageView.indicatorSetLayout(view: self.view, imageView: indicatorView)
+        setBinding()
     }
     override func viewWillAppear(_ animated: Bool) {
         naviSetAttribute()
@@ -142,6 +145,17 @@ class HomeViewController: UIViewController {
             make.top.equalTo(listButton.snp.bottom)
             make.leading.equalTo(listButton.snp.leading)
             make.trailing.equalTo(listButton.snp.trailing)
+        }
+    }
+    private func setBinding() {
+        firstADListViewModel.imageLoadEnd.bind { [weak self] _ in
+            self!.imageLoadEndCount += 1
+        }
+        secondADListViewModel.imageLoadEnd.bind { [weak self] _ in
+            self!.imageLoadEndCount += 1
+        }
+        cafeViewModel.imageSuccess.bind { [weak self] _ in
+            self!.imageLoadEndCount += 1
         }
     }
     private func setAtrribute() {
@@ -200,9 +214,6 @@ extension HomeViewController: ListCollectionViewDelegate {
         let vc = MoreCollectionViewController(viewModel: cafeViewModel)
         vc.naviTitle = title
         navigationController?.pushViewController(vc, animated: true)
-    }
-    func cellImageloadEnd() {
-        self.imageLoadEndCount += 1
     }
     func cellTapped(controller: StoreDetailViewController) {
         navigationController?.pushViewController(controller, animated: true)
