@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel {
+struct UserModel: Equatable {
     var userName: String
     var email: String
     var profileImageUrl: String

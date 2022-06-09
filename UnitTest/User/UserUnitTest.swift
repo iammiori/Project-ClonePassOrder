@@ -21,71 +21,65 @@ class UserUnitTest: XCTestCase {
        try super.tearDownWithError()
         sut = nil
     }
-
-    func test_UserViewModel() {
+    
+    func test_model의_데이터가_원하는형태로_viewModel의_변수에_담기는지() {
         //given
-        let model = UserModel(userName: "정한별",
-                              email: "aoao1216@naver.com",
-                              profileImageUrl: "profileimageUrl")
+        let model = UserModel(userName: "test", email: "test@naver.com", profileImageUrl: "testimageurl")
+        let url = URL(string: model.profileImageUrl)
         sut.model.value = model
         
         //then
-        XCTAssertEqual(sut.userName, "정한별")
-        XCTAssertEqual(sut.profileImageUrl, URL(string: "profileimageUrl"))
+        XCTAssertEqual(sut.userName, "test")
+        XCTAssertEqual(sut.profileImageUrl, url)
     }
-    func test_userFetch를_호출했을때_성공하는경우_model전달되는지() {
+    func test_userFetch_호출시_성공하는경우_전달되는_model이_ViewModel의_model에_전달되는지() {
         //given
-        let uid = "fdg2qkdsalk234"
-        let model = UserModel(userName: "정한별",
-                              email: "",
-                              profileImageUrl: "profileimageUrl")
-        var mockUserService = MockUserService()
-        mockUserService.result = .success(model)
-        sut.userService = mockUserService
+        let model = UserModel(userName: "test", email: "test@naver.com", profileImageUrl: "testimageurl")
+        var mockService = MockUserService()
+        mockService.result = .success(model)
+        sut.userService = mockService
         
         //when
-        sut.userFetch(uid: uid)
+        sut.userFetch()
         
         //then
-        XCTAssertEqual(sut.model.value.userName, model.userName)
-        XCTAssertEqual(sut.model.value.profileImageUrl, model.profileImageUrl)
+        XCTAssertEqual(sut.model.value, model)
     }
-    func test_userFetch를_호출했을때_Firestore통신에실패하는경우_userFetchError를전달하는지() {
+    func test_userFetch_호출시_유저정보가없어_실패하는경우_currentUserNillError가_userServiceError에_전달되는지() {
         //given
-        let uid = "fdg2qkdsalk234"
-        var mockUserService = MockUserService()
-        mockUserService.result = .failure(.userFetchError)
-        sut.userService = mockUserService
+        var mockService = MockUserService()
+        mockService.result = .failure(.currentUserNillError)
+        sut.userService = mockService
         
         //when
-        sut.userFetch(uid: uid)
+        sut.userFetch()
         
         //then
-        XCTAssertEqual(sut.userServiceError.value, .userFetchError )
+        XCTAssertEqual(sut.userServiceError.value, .currentUserNillError)
     }
-    func test_userFetch를_호출했을때_snapshot데이터가_없는경우_snapShotError를전달하는지() {
+    func test_userFetch_호출시_파이어스토어에서_현재유저정보와_일치하는유저정보를_받아오는것에_실패하는경우_userFetchError가_userServiceError에_전달되는지() {
         //given
-        let uid = "fdg2qkdsalk234"
-        var mockUserService = MockUserService()
-        mockUserService.result = .failure(.snapShotError)
-        sut.userService = mockUserService
+        var mockService = MockUserService()
+        mockService.result = .failure(.userFetchError)
+        sut.userService = mockService
         
         //when
-        sut.userFetch(uid: uid)
+        sut.userFetch()
+        
+        //then
+        XCTAssertEqual(sut.userServiceError.value, .userFetchError)
+    }
+    func test_userFetch_호출시_snapShot을_가져오는것에_실패하는경우_snapShotError가_userServiceError에_전달되는지() {
+        //given
+        var mockService = MockUserService()
+        mockService.result = .failure(.snapShotError)
+        sut.userService = mockService
+        
+        //when
+        sut.userFetch()
         
         //then
         XCTAssertEqual(sut.userServiceError.value, .snapShotError)
-    }
-    func test_userServiceError가발생했을떄_userServiceErrorString호출시_앱종료후다시실행해주세요문자열이_반환되는지() {
-        //given
-        sut.userServiceError.bind { _ in
-            
-            //then
-            XCTAssertEqual(self.sut.userServiceErrorString(), "앱종료후 다시 실행해주세요")
-        }
-        
-        //when
-        sut.userServiceError.value = .userFetchError
     }
 
 

@@ -22,14 +22,11 @@ enum EmptyTextField {
 
 final class AuthViewModel {
     
-    //MARK: - output
-    
     init(service: AuthServiceProtocol = AuthService()) {
         self.service = service
     }
     
     var service: AuthServiceProtocol
-    
     var model = AuthModel.EMPTY
     
     var textfildEmpty: Observer<EmptyTextField> = Observer(value: .emailEmpty)

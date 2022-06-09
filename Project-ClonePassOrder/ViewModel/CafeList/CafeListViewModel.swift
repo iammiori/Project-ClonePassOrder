@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreLocation
-import UIKit
 
 //MARK: - List
 
@@ -78,7 +77,16 @@ extension CafeListViewModel {
 
 //MARK: - item
 
-final class CafeListViewModelItem {
+final class CafeListViewModelItem: Equatable {
+    static func == (lhs: CafeListViewModelItem, rhs: CafeListViewModelItem) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.storyCount == rhs.storyCount &&
+        lhs.favoriteCount == rhs.favoriteCount &&
+        lhs.orderTime == rhs.orderTime &&
+        lhs.newTime == rhs.newTime &&
+        lhs.cafeImageURL == rhs.cafeImageURL
+    }
+    
     
     init(model: CafeListModel) {
         self.model = model

@@ -110,7 +110,7 @@ extension ProfileImageViewController:
         guard let imageData = selectedImage.jpegData(compressionQuality: 0.7) else {
             return
         }
-        SignUpViewModel.shared.model.imageData = imageData
+        SignUpViewModel.shared.profilImageGet(imageData: imageData)
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
         addPhotoButton.layer.masksToBounds = true
         addPhotoButton.layer.borderColor = UIColor.white.cgColor

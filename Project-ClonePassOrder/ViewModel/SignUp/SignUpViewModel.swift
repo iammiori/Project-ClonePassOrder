@@ -97,12 +97,9 @@ final class SignUpViewModel {
 extension SignUpViewModel {
     
     func profileImageUpload() {
-        guard let imageData = model.imageData else {
-            return
-        }
         imageUploaderService.uploadImage(
             fileName: "프로필이미지",
-            imageData: imageData) { [weak self] result in
+            imageData: model.imageData!) { [weak self] result in
                 switch result {
                 case .success(let url):
                     self?.model.profileImageURL = url
@@ -111,6 +108,9 @@ extension SignUpViewModel {
                     self?.imageUploadError.value = error
                 }
             }
+    }
+    func profilImageGet(imageData: Data) {
+        self.model.imageData = imageData
     }
     func isProfileImageEmpty() {
        if self.model.imageData == nil {
