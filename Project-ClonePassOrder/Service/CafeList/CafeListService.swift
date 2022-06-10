@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import Kingfisher
 
 enum CafeListServiceError: Error {
     case CafeFetchError
@@ -15,6 +16,7 @@ enum CafeListServiceError: Error {
 
 protocol CafeListServicePorotocol {
     func fetchCafe(completion: @escaping (Result<[CafeListModel], CafeListServiceError>) -> Void)
+    func imageFetch(model: CafeListModel, completion: @escaping (Data) -> Void)
 }
 
 struct CafeListService: CafeListServicePorotocol {
@@ -40,6 +42,22 @@ struct CafeListService: CafeListServicePorotocol {
                     )
                 }
                 completion(.success(models))
+            }
+        }
+    }
+    func imageFetch(model: CafeListModel, completion: @escaping (Data) -> Void) {
+        guard let url = URL(string: model.imageURL) else {
+            return
+        }
+        KingfisherManager.shared.retrieveImage(with: url) { result in
+            switch result {
+            case .success(let value):
+                guard let imageData = value.image.pngData() else {
+                    return
+                }
+                completion(imageData)
+            case .failure(_):
+                break
             }
         }
     }

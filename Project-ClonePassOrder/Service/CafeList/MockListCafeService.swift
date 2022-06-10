@@ -6,12 +6,17 @@
 //
 
 import Foundation
+import Kingfisher
 
 struct MockCafeListService: CafeListServicePorotocol {
     
     var result: Result<[CafeListModel], CafeListServiceError>?
+    var data: Data?
     
     func fetchCafe(completion: @escaping (Result<[CafeListModel], CafeListServiceError>) -> Void) {
         completion(result!)
+    }
+    func imageFetch(model: CafeListModel, completion: @escaping (Data) -> Void) {
+        completion(data!)
     }
 }
