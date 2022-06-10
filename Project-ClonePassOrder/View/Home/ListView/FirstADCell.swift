@@ -18,7 +18,7 @@ class FirstADCell: UICollectionViewCell {
     
     var viewModel: ADListViewModel? {
         didSet {
-            addContentScrollView(index: viewModel?.items.value.count ?? 0)
+            addContentScrollView(index: viewModel?.items.count ?? 0)
         }
     }
     private var currentPage: CGFloat = 0

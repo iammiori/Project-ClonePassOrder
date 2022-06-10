@@ -16,7 +16,7 @@ class SecondADCell: UICollectionViewCell {
      var viewModel: ADListViewModel? {
          didSet {
              setAtrribute()
-             addContentScrollView(index: viewModel?.items.value.count ?? 0)
+             addContentScrollView(index: viewModel?.items.count ?? 0)
              timer?.invalidate()
              timer = Timer.scheduledTimer(
                 withTimeInterval: 3, repeats: true
@@ -85,7 +85,7 @@ class SecondADCell: UICollectionViewCell {
         }
     }
     private func setAtrribute() {
-        guard let count = self.viewModel?.items.value.count else {
+        guard let count = self.viewModel?.items.count else {
             return
         }
         countLabel.text = "\(1)/\(count)"

@@ -102,7 +102,7 @@ class TabBarController: UITabBarController {
         return navi
     }
     func setBinding() {
-        UserViewModel.shared.model.bind { [weak self] _ in
+        UserViewModel.shared.userFetchEnd.bind { [weak self] _ in
             self?.serviceCount += 1
         }
         UserViewModel.shared.userServiceError.bind { [weak self] error in
@@ -113,21 +113,21 @@ class TabBarController: UITabBarController {
             Toast.message(superView: self!.view, text: "서버연결에 실패했습니다 인터넷 연결을 확인해주세요")
             self?.firstADListViewModel.fetchAD(collectionName: "SecondAD")
         }
-        firstADListViewModel.items.bind { [weak self] _ in
+        firstADListViewModel.ADfetchEnd.bind { [weak self] _ in
             self?.serviceCount += 1
         }
         secondADListViewModel.ADServiceError.bind { [weak self] error in
             Toast.message(superView: self!.view, text: "서버연결에 실패했습니다 인터넷 연결을 확인해주세요")
             self?.secondADListViewModel.fetchAD(collectionName: "FirstAD")
         }
-        secondADListViewModel.items.bind { [weak self] _ in
+        secondADListViewModel.ADfetchEnd.bind { [weak self] _ in
             self?.serviceCount += 1
         }
         cafeListViewModel.cafeServiceError.bind { [weak self] _ in
             Toast.message(superView: self!.view, text: "서버연결에 실패했습니다 인터넷 연결을 확인해주세요")
             self?.cafeListViewModel.fetchCafe()
         }
-        cafeListViewModel.items.bind { [weak self] _ in
+        cafeListViewModel.cafeFetchEnd.bind { [weak self] _ in
             self?.serviceCount += 1
         }
     }
@@ -142,8 +142,8 @@ class TabBarController: UITabBarController {
                 delegate.window?.rootViewController = vc
             }
         } else {
-            UserViewModel.shared.userFetch()
             cafeListViewModel.fetchCafe()
+            UserViewModel.shared.userFetch()
             firstADListViewModel.fetchAD(collectionName: "SecondAD")
             secondADListViewModel.fetchAD(collectionName: "FirstAD")
         }

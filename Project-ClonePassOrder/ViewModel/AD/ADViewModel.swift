@@ -9,8 +9,6 @@ import Foundation
 
 //MARK: - List
 
-
-
 final class ADListViewModel {
     
     init(service: ADServiceProtocol = ADService()) {
@@ -20,17 +18,18 @@ final class ADListViewModel {
     var adService: ADServiceProtocol
     
     var imageLoadEnd: Observer<Bool> = Observer(value: false)
-    var items: Observer<[ADViewModelItem]> = Observer(value: [])
+    var items: [ADViewModelItem] = []
+    var ADfetchEnd: Observer<Bool> = Observer(value: false)
     var ADServiceError: Observer<ADServiceError> = Observer(value: .snapShotError)
 }
 
 extension ADListViewModel {
     
     func count() -> Int {
-        self.items.value.count
+        self.items.count
     }
     func itemAtIndex(_ index: Int) -> ADViewModelItem {
-        let item = self.items.value[index]
+        let item = self.items[index]
         return item
     }
     func fetchAD(collectionName: String) {
@@ -40,7 +39,8 @@ extension ADListViewModel {
                 let items = models.map {
                     ADViewModelItem(model: $0)
                 }
-                self?.items.value = items
+                self?.items = items
+                self?.ADfetchEnd.value = true
             case .failure(let error):
                 self?.ADServiceError.value = error
             }
@@ -50,10 +50,10 @@ extension ADListViewModel {
 
 //MARK: - item
 
-struct ADViewModelItem: Equatable {
+final class ADViewModelItem {
     
-    static func == (lhs: ADViewModelItem, rhs: ADViewModelItem) -> Bool {
-        return lhs.model == rhs.model
+    init(model: ADModel) {
+        self.model = model
     }
     
     var model: ADModel
@@ -63,3 +63,9 @@ struct ADViewModelItem: Equatable {
     }
 }
 
+
+extension ADViewModelItem: Equatable {
+    static func == (lhs: ADViewModelItem, rhs: ADViewModelItem) -> Bool {
+        lhs.ADImageURL == lhs.ADImageURL
+    }
+}

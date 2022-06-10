@@ -16,14 +16,14 @@ final class UserViewModel {
     }
     
     var userService: UserServiceProtocol
-    var model: Observer<UserModel> = Observer(value: UserModel.EMPTY)
+    var model: UserModel = UserModel.EMPTY
     var userServiceError: Observer<UserServiceError> = Observer(value: .snapShotError)
-    
+    var userFetchEnd: Observer<Bool> = Observer(value: false)
     var userName: String {
-        return model.value.userName
+        return model.userName
     }
     var profileImageUrl: URL? {
-        return URL(string: model.value.profileImageUrl)
+        return URL(string: model.profileImageUrl)
     }
 }
 
@@ -34,7 +34,8 @@ extension UserViewModel {
         userService.fetch() { [weak self] result in
             switch result {
             case .success(let model):
-                self?.model.value = model
+                self?.model = model
+                self?.userFetchEnd.value = true
             case .failure(let error):
                 self?.userServiceError.value = error
             }

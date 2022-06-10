@@ -26,8 +26,8 @@ class ListCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCellImage()
         setAtrribute()
+        setBinding()
     }
     init(
         firstADViewModel: ADListViewModel,
@@ -234,25 +234,15 @@ class ListCollectionViewController: UICollectionViewController {
         header.secondLabel.attributedText = attributedString
         return header
     }
-    private func setCellImage() {
-        var count = 0
-        self.cafeViewModel.items.value.forEach { item in
-            let imageView = UIImageView()
-            imageView.kf.setImage(with: item.cafeImageURL, options: [.forceRefresh]) { [weak self] result in
-                switch result {
-                case .success(_):
-                    count += 1
-                    item.cellImageData = imageView.image?.pngData()
-                    self!.cafeViewModel.imageSuccess.value = true
-                    if count == self?.cafeViewModel.count() {
-                        self!.collectionView.reloadData()
-                    }
-                case .failure(_):
-                    break
-                }
+    func setBinding() {
+        cafeViewModel.imageFetchCount.bind { [weak self] count in
+            if count == self!.cafeViewModel.totalCount {
+                self!.cafeViewModel.imageFetchEnd.value = true
+                self!.collectionView.reloadData()
             }
         }
     }
+    
     //MARK: - 컬렉션뷰 데이터소스
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
