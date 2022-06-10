@@ -109,9 +109,10 @@ class HomeViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if imageLoadEndCount == firstADListViewModel.count()
+        if imageLoadEndCount > firstADListViewModel.count()
             + secondADListViewModel.count()
             + 1 {
+            navigationController?.navigationBar.isHidden = true
             tabBarController?.tabBar.isHidden = false
         }
     }
