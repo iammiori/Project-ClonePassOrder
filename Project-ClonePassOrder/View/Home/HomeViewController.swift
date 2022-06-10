@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
             let totalCount =
             firstADListViewModel.count()
             + secondADListViewModel.count()
-            + cafeViewModel.count()
+            + 1
             if imageLoadEndCount == totalCount {
                 tabBarController?.tabBar.isHidden = false
                 indicatorView.removeFromSuperview()
@@ -107,6 +107,14 @@ class HomeViewController: UIViewController {
         UIImageView.indicatorSetLayout(view: self.view, imageView: indicatorView)
         setBinding()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if imageLoadEndCount == firstADListViewModel.count()
+            + secondADListViewModel.count()
+            + 1 {
+            tabBarController?.tabBar.isHidden = false
+        }
+    }
    
     
     //MARK: - 셀렉터메서드
@@ -151,7 +159,7 @@ class HomeViewController: UIViewController {
         secondADListViewModel.imageLoadEnd.bind { [weak self] _ in
             self!.imageLoadEndCount += 1
         }
-        cafeViewModel.imageSuccess.bind { [weak self] _ in
+        cafeViewModel.imageFetchEnd.bind { [weak self] _ in
             self!.imageLoadEndCount += 1
         }
     }
