@@ -26,7 +26,7 @@ class UserUnitTest: XCTestCase {
         //given
         let model = UserModel(userName: "test", email: "test@naver.com", profileImageUrl: "testimageurl")
         let url = URL(string: model.profileImageUrl)
-        sut.model.value = model
+        sut.model = model
         
         //then
         XCTAssertEqual(sut.userName, "test")
@@ -43,7 +43,7 @@ class UserUnitTest: XCTestCase {
         sut.userFetch()
         
         //then
-        XCTAssertEqual(sut.model.value, model)
+        XCTAssertEqual(sut.model, model)
     }
     func test_userFetch_호출시_유저정보가없어_실패하는경우_currentUserNillError가_userServiceError에_전달되는지() {
         //given
