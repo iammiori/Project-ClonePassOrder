@@ -34,7 +34,7 @@ class ADUnitTest: XCTestCase {
         //given
         let model = ADModel(ADImageUrl: "imageurl1")
         let items = [ADViewModelItem(model: model),ADViewModelItem(model: model)]
-        sut.items.value = items
+        sut.items = items
         
         //when
         let valid = sut.count()
@@ -47,7 +47,7 @@ class ADUnitTest: XCTestCase {
         let model1 = ADModel(ADImageUrl: "imageurl1")
         let model2 = ADModel(ADImageUrl: "imageurl2")
         let items = [ADViewModelItem(model: model1),ADViewModelItem(model: model2)]
-        sut.items.value = items
+        sut.items = items
         
         //when
         let valid = sut.itemAtIndex(0)
@@ -67,7 +67,7 @@ class ADUnitTest: XCTestCase {
         sut.fetchAD(collectionName: "firstAD")
         
         //then
-        XCTAssertEqual(sut.items.value, items)
+        XCTAssertEqual(sut.items, items)
     }
     
     func test_fetchAD호출시_실패하는경우_ADFetchError인경우_ADServiceError에담기는지() {

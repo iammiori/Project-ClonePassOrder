@@ -20,17 +20,18 @@ final class ADListViewModel {
     var adService: ADServiceProtocol
     
     var imageLoadEnd: Observer<Bool> = Observer(value: false)
-    var items: Observer<[ADViewModelItem]> = Observer(value: [])
+    var items: [ADViewModelItem] = []
+    var ADfetchEnd: Observer<Bool> = Observer(value: false)
     var ADServiceError: Observer<ADServiceError> = Observer(value: .snapShotError)
 }
 
 extension ADListViewModel {
     
     func count() -> Int {
-        self.items.value.count
+        self.items.count
     }
     func itemAtIndex(_ index: Int) -> ADViewModelItem {
-        let item = self.items.value[index]
+        let item = self.items[index]
         return item
     }
     func fetchAD(collectionName: String) {
@@ -40,7 +41,8 @@ extension ADListViewModel {
                 let items = models.map {
                     ADViewModelItem(model: $0)
                 }
-                self?.items.value = items
+                self?.items = items
+                self?.ADfetchEnd.value = true
             case .failure(let error):
                 self?.ADServiceError.value = error
             }
