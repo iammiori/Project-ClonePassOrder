@@ -47,7 +47,6 @@ class CafeListUnitTest: XCTestCase {
         XCTAssertEqual(viewModel.favoriteCount, 1)
         XCTAssertEqual(viewModel.orderTime, "order")
         XCTAssertEqual(viewModel.newTime, "new")
-        XCTAssertEqual(viewModel.cafeImageURL, URL(string: "testimageurl"))
         XCTAssertEqual(viewModel.distance(coordinate: coordinate), 0)
         XCTAssertEqual(viewModel.distanceString(coordinate: coordinate), "0m")
     }
@@ -69,7 +68,7 @@ class CafeListUnitTest: XCTestCase {
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model)
         ]
-        sut.items.value = items
+        sut.items = items
         
         //when
         let valid = sut.count()
@@ -105,7 +104,7 @@ class CafeListUnitTest: XCTestCase {
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model)
         ]
-        sut.items.value = items
+        sut.items = items
         
         //when
         let valid = sut.itemAtIndex(1)
@@ -139,7 +138,7 @@ class CafeListUnitTest: XCTestCase {
             CafeListViewModelItem(model: model2),
             CafeListViewModelItem(model: model)
         ]
-        sut.items.value = items
+        sut.items = items
         
         //when
         let valid = sut.orderNearStore(coodinate: coordinate)
@@ -174,7 +173,7 @@ class CafeListUnitTest: XCTestCase {
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model2)
         ]
-        sut.items.value = items
+        sut.items = items
         
         //when
         let valid = sut.orderManyStoryStore()
@@ -209,7 +208,7 @@ class CafeListUnitTest: XCTestCase {
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model2)
         ]
-        sut.items.value = items
+        sut.items = items
         
         //when
         let valid = sut.orderNewStore(coodinate: coordinate)
@@ -243,7 +242,7 @@ class CafeListUnitTest: XCTestCase {
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model2)
         ]
-        sut.items.value = items
+        sut.items = items
         let text = "카"
         //when
         let valid = sut.searchCafe(text: text)
@@ -282,19 +281,62 @@ class CafeListUnitTest: XCTestCase {
         )]
         var mockService = MockCafeListService()
         mockService.result = .success(models)
+        mockService.data = Data()
         sut.cafeSerivce = mockService
         
         //when
         sut.fetchCafe()
         
         //then
-        XCTAssertEqual(sut.items.value[0].model,
+        XCTAssertEqual(sut.items[0].model,
                        models[0])
+    }
+    func test_fetchCafe_호출시_성공한후_imageFetch에도_성공하는경우_imageFetchCount가_model의_개수만큼_올라가는지() {
+        let models = [CafeListModel(
+            name: "test1",
+            storyCount: 1,
+            favoriteCount: 1,
+            imageURL: "testimageurl",
+            lat: 127.123,
+            lon: 37.123,
+            orderTime: "order",
+            newTime: "신규매장"
+        ),CafeListModel(
+            name: "test2",
+            storyCount: 1,
+            favoriteCount: 1,
+            imageURL: "testimageurl",
+            lat: 127.123,
+            lon: 37.123,
+            orderTime: "order",
+            newTime: "신규매장"
+        ),CafeListModel(
+            name: "test3",
+            storyCount: 1,
+            favoriteCount: 1,
+            imageURL: "testimageurl",
+            lat: 127.123,
+            lon: 37.123,
+            orderTime: "order",
+            newTime: "신규매장"
+        )]
+        var mockService = MockCafeListService()
+        mockService.result = .success(models)
+        mockService.data = Data()
+        sut.cafeSerivce = mockService
+        
+        //when
+        sut.fetchCafe()
+        
+        //then
+        XCTAssertEqual(sut.imageFetchCount.value,
+                       models.count)
     }
     func test_fetchCafe_호출시_서버와_연결에_실패했을때_CafeFetchError가_cafeServiceError에_전달되는지() {
         //given
         var mockService = MockCafeListService()
         mockService.result = .failure(.CafeFetchError)
+        mockService.data = Data()
         sut.cafeSerivce = mockService
         
         //when
@@ -307,6 +349,7 @@ class CafeListUnitTest: XCTestCase {
         //given
         var mockService = MockCafeListService()
         mockService.result = .failure(.snapShotError)
+        mockService.data = Data()
         sut.cafeSerivce = mockService
         
         //when

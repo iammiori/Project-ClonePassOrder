@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import Kingfisher
 
 //MARK: - List
 
@@ -17,35 +18,38 @@ final class CafeListViewModel {
     }
     
     var cafeSerivce: CafeListServicePorotocol
-    var items: Observer<[CafeListViewModelItem]> = Observer(value: [])
-    var imageSuccess: Observer<Bool> = Observer(value: false)
+    var items: [CafeListViewModelItem] = []
     var cafeServiceError: Observer<CafeListServiceError> = Observer(value: .snapShotError)
+    var cafeFetchEnd: Observer<Bool> = Observer(value: false)
+    var imageFetchEnd: Observer<Bool> = Observer(value: false)
+    var imageFetchCount: Observer<Int> = Observer(value: 0)
+    var totalCount: Int = 0
 }
 
 extension CafeListViewModel {
     
     func count() -> Int {
-        self.items.value.count
+        self.items.count
     }
     func itemAtIndex(_ index: Int) -> CafeListViewModelItem {
-        let item = self.items.value[index]
+        let item = self.items[index]
         return item
     }
     func orderNearStore(coodinate: CLLocation) -> [CafeListViewModelItem] {
-       let items = items.value.sorted {
+       let items = items.sorted {
            $0.distance(coordinate: coodinate) < $1.distance(coordinate: coodinate)
         }
         return items
     }
     func orderManyStoryStore() -> [CafeListViewModelItem] {
-        let items = items.value.sorted {
+        let items = items.sorted {
             $0.storyCount > $1.storyCount
         }
         return items
     }
     func
     orderNewStore(coodinate: CLLocation) -> [CafeListViewModelItem] {
-        let items = items.value.sorted {
+        let items = items.sorted {
              $0.distance(coordinate: coodinate)  < $1.distance(coordinate: coodinate)
         }.filter {
             return $0.newTime == "신규매장"
@@ -53,7 +57,7 @@ extension CafeListViewModel {
         return items
     }
     func searchCafe(text: String) -> [CafeListViewModelItem] {
-        let items = items.value.filter {
+        let items = items.filter {
             $0.name.contains(text)
         }
         return items
@@ -62,17 +66,22 @@ extension CafeListViewModel {
         cafeSerivce.fetchCafe { [weak self] result in
             switch result {
             case .success(let models):
-                let items = models.map {
-                    CafeListViewModelItem.init(
-                        model: $0
-                    )
+                self!.totalCount = models.count
+                self!.cafeFetchEnd.value = true
+                models.forEach { model in
+                    self!.cafeSerivce.imageFetch(model: model) { data in
+                       let item = CafeListViewModelItem(model: model)
+                        item.cellImageData = data
+                        self!.items.append(item)
+                        self!.imageFetchCount.value += 1
+                    }
                 }
-                self?.items.value = items
             case .failure(let error):
                 self?.cafeServiceError.value = error
             }
         }
     }
+    
 }
 
 //MARK: - item
@@ -83,8 +92,7 @@ final class CafeListViewModelItem: Equatable {
         lhs.storyCount == rhs.storyCount &&
         lhs.favoriteCount == rhs.favoriteCount &&
         lhs.orderTime == rhs.orderTime &&
-        lhs.newTime == rhs.newTime &&
-        lhs.cafeImageURL == rhs.cafeImageURL
+        lhs.newTime == rhs.newTime
     }
     
     
@@ -109,9 +117,6 @@ final class CafeListViewModelItem: Equatable {
     var newTime: String {
         return model.newTime
     }
-    var cafeImageURL: URL? {
-        return URL(string: model.imageURL)
-    }
     func distanceString(coordinate: CLLocation) -> String {
         let userCoordinate = coordinate
         let cafeCoordinate = CLLocation(latitude: model.lat, longitude: model.lon)
@@ -128,4 +133,8 @@ final class CafeListViewModelItem: Equatable {
         let distance = userCoordinate.distance(from: cafeCoordinate)
         return Int(distance)
     }
+    
+        
+
+    
 }
