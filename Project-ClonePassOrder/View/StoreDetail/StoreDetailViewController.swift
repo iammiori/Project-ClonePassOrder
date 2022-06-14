@@ -16,7 +16,8 @@ class StoreDetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    var viewModel: CafeListViewModelItem
+    var cafeDetailViewModel: CafeListViewModelItem
+    var storyViewModel: StoryListViewModel = StoryListViewModel()
     var currentSelectedView: SelectedView = .infoView
 
     // MARK: - UI Properties
@@ -32,11 +33,12 @@ class StoreDetailViewController: UIViewController {
         return view
     }()
     private let floatingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("가져 갈게요\n메뉴 보기", for: .normal)
-        button.titleLabel?.lineBreakMode = .byWordWrapping
+        let button = UIButton(type: .system)
+        button.setTitle("메뉴 보기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.titleLabel?.textAlignment = .center
-        button.backgroundColor = #colorLiteral(red: 1, green: 0.4730066061, blue: 0.2864735723, alpha: 1)
+        button.backgroundColor = .systemOrange
         button.layer.cornerRadius = 10
         return button
     }()
@@ -44,7 +46,7 @@ class StoreDetailViewController: UIViewController {
     // MARK: - viewLifeCycle
     
     init(viewModel: CafeListViewModelItem) {
-        self.viewModel = viewModel
+        self.cafeDetailViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -52,6 +54,8 @@ class StoreDetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        binding()
+        storyViewModel.fetchStory(name: cafeDetailViewModel.name)
         setTableView()
         setLayout()
         setNavi()
@@ -65,16 +69,19 @@ class StoreDetailViewController: UIViewController {
         view.bringSubviewToFront(floatingView)
         floatingView.addSubview(floatingButton)
         
-        storeDetailTableView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
         floatingView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.snp.bottomMargin)
             make.height.equalTo(100)
         }
         floatingButton.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview().inset(20)
         }
+        storeDetailTableView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(floatingView.snp.top)
+        }
+        
     }
     
     //MARK: - setNavi
@@ -114,22 +121,17 @@ class StoreDetailViewController: UIViewController {
             case .infoView:
                 currentSelectedView = .storyView
                 reloadstoreDetailTableView()
-            case .storyView:
-                return
+        case .storyView:
+            return
         }
     }
-    @objc func moreButtonTapped() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "신고", style: .default))
-        alert.addAction(UIAlertAction(title: "삭제", style: .destructive))
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-        
-        present(alert, animated: true)
-    }
-    @objc func commentsButtonTapped() {
-        let nextViewController = UINavigationController(rootViewController: StoryCommentViewController())
-        nextViewController.modalPresentationStyle = .fullScreen
-        present(nextViewController, animated: true)
+    
+    //MARK: - 바인딩
+    func binding() {
+        storyViewModel.storyServiceError.bind { [weak self] error in
+            Toast.message(superView: self!.view, text: error.message)
+            self!.storyViewModel.fetchStory(name: self!.cafeDetailViewModel.name)
+        }
     }
 }
 
@@ -138,30 +140,30 @@ class StoreDetailViewController: UIViewController {
 extension StoreDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch currentSelectedView {
-            case .infoView:
-                return 1
-            case .storyView:
-                return 5
+        case .infoView:
+            return 1
+        case .storyView:
+            return storyViewModel.count()
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch currentSelectedView {
-            case .infoView:
-                let dequedCell = tableView.dequeueReusableCell(withIdentifier: "infocell")
-                guard let cell = dequedCell as? StoreDetailInfoTableViewCell else {
-                    return UITableViewCell()
-                }
-                cell.selectionStyle = .none
-                return cell
-            case .storyView:
-                let dequedCell = tableView.dequeueReusableCell(withIdentifier: "storycell")
-                guard let cell = dequedCell as? StoryTableViewCell else {
-                    return UITableViewCell()
-                }
-                cell.commentsButton.addTarget(self, action: #selector(commentsButtonTapped), for: .touchUpInside)
-                cell.moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
-                cell.selectionStyle = .none
-                return cell
+        case .infoView:
+            let dequedCell = tableView.dequeueReusableCell(withIdentifier: "infocell")
+            guard let cell = dequedCell as? StoreDetailInfoTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            cell.viewModel = cafeDetailViewModel
+            return cell
+        case .storyView:
+            let dequedCell = tableView.dequeueReusableCell(withIdentifier: "storycell")
+            guard let cell = dequedCell as? StoryTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.viewModel = storyViewModel.itemAtIndex(indexPath.row)
+            cell.selectionStyle = .none
+            return cell
         }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -169,6 +171,7 @@ extension StoreDetailViewController: UITableViewDelegate, UITableViewDataSource 
         guard let headerView = dequedHeaderView as? StoreDetailTableViewHeaderView else {
             return UIView()
         }
+        headerView.viewModel = cafeDetailViewModel
         headerView.informationButton.addTarget(self, action: #selector(informationButtonTapped), for: .touchUpInside)
         headerView.storyButton.addTarget(self, action: #selector(storyButtonTapped), for: .touchUpInside)
         return headerView

@@ -29,16 +29,7 @@ class CafeListUnitTest: XCTestCase {
     
     func test_model의_데이터가_원하는형태로_viewModelItem의_변수에_담기는지() {
         //given
-        let model = CafeListModel(
-            name: "test",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "new"
-        )
+        let model = CafeListModel(name: "test", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")
         let viewModel = CafeListViewModelItem(model: model)
         
         //then
@@ -49,19 +40,18 @@ class CafeListUnitTest: XCTestCase {
         XCTAssertEqual(viewModel.newTime, "new")
         XCTAssertEqual(viewModel.distance(coordinate: coordinate), 0)
         XCTAssertEqual(viewModel.distanceString(coordinate: coordinate), "0m")
+        XCTAssertEqual(viewModel.info, "info")
+        XCTAssertEqual(viewModel.benefit, "benefit")
+        XCTAssertEqual(viewModel.openTime, "opentime")
+        XCTAssertEqual(viewModel.offDay, "offday")
+        XCTAssertEqual(viewModel.phoneNumber, "031-1234-1234")
+        XCTAssertEqual(viewModel.address, "address")
+        XCTAssertEqual(viewModel.lat, 127.123)
+        XCTAssertEqual(viewModel.lon, 37.123)
     }
     func test_count_호출시_items_count가_리턴되는지() {
         //given
-        let model = CafeListModel(
-            name: "test",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "new"
-        )
+        let model = CafeListModel(name: "test", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")
         let items = [
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model),
@@ -78,26 +68,8 @@ class CafeListUnitTest: XCTestCase {
     }
     func test_itemAthIndex_호출시_index에_일치하는_item을_리턴하는지() {
         //given
-        let model = CafeListModel(
-            name: "test",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "new"
-        )
-        let model2 = CafeListModel(
-            name: "test2",
-            storyCount: 2,
-            favoriteCount: 2,
-            imageURL: "testimageurl2",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order2",
-            newTime: "new2"
-        )
+        let model = CafeListModel(name: "test", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")
+        let model2 = CafeListModel(name: "test2", storyCount: 2, favoriteCount: 2, imageURL: "testimageurl2", lat: 127.123, lon: 37.123, orderTime: "order2", newTime: "new2", info: "info2", benefit: "benefit2", openTime: "opentime2", offDay: "offday2", phoneNumber: "031-1234-1234", address: "address2")
         let items = [
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model2),
@@ -114,26 +86,8 @@ class CafeListUnitTest: XCTestCase {
     }
     func test_orderNearStore_호출시_거리가가까운_순서로_배열이_리턴되는지() {
         //given
-        let model = CafeListModel(
-            name: "test",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "new"
-        )
-        let model2 = CafeListModel(
-            name: "test2",
-            storyCount: 2,
-            favoriteCount: 2,
-            imageURL: "testimageurl2",
-            lat: 127.456,
-            lon: 37.456,
-            orderTime: "order2",
-            newTime: "new2"
-        )
+        let model = CafeListModel(name: "test", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")
+        let model2 = CafeListModel(name: "test2", storyCount: 2, favoriteCount: 2, imageURL: "testimageurl2", lat: 127.456, lon: 37.456, orderTime: "order2", newTime: "new2", info: "info2", benefit: "benefit2", openTime: "opentime2", offDay: "offday2", phoneNumber: "031-1234-1234", address: "address2")
         let items = [
             CafeListViewModelItem(model: model2),
             CafeListViewModelItem(model: model)
@@ -149,26 +103,9 @@ class CafeListUnitTest: XCTestCase {
     }
     func test_orderManyStore_호출시_스토리가많은_순서로_배열이_리턴되는지() {
         //given
-        let model = CafeListModel(
-            name: "test",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "new"
-        )
-        let model2 = CafeListModel(
-            name: "test2",
-            storyCount: 2,
-            favoriteCount: 2,
-            imageURL: "testimageurl2",
-            lat: 127.456,
-            lon: 37.456,
-            orderTime: "order2",
-            newTime: "new2"
-        )
+        //given
+        let model = CafeListModel(name: "test", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")
+        let model2 = CafeListModel(name: "test2", storyCount: 2, favoriteCount: 2, imageURL: "testimageurl2", lat: 127.456, lon: 37.456, orderTime: "order2", newTime: "new2", info: "info2", benefit: "benefit2", openTime: "opentime2", offDay: "offday2", phoneNumber: "031-1234-1234", address: "address2")
         let items = [
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model2)
@@ -184,26 +121,9 @@ class CafeListUnitTest: XCTestCase {
     }
     func test_orderManyStore_호출시_newTime이_신규매장인_배열만_리턴되는지() {
         //given
-        let model = CafeListModel(
-            name: "test",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "신규매장"
-        )
-        let model2 = CafeListModel(
-            name: "test2",
-            storyCount: 2,
-            favoriteCount: 2,
-            imageURL: "testimageurl2",
-            lat: 127.456,
-            lon: 37.456,
-            orderTime: "order2",
-            newTime: "new2"
-        )
+        //given
+        let model = CafeListModel(name: "test", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new2", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")
+        let model2 = CafeListModel(name: "test2", storyCount: 2, favoriteCount: 2, imageURL: "testimageurl2", lat: 127.456, lon: 37.456, orderTime: "order2", newTime: "신규매장", info: "info2", benefit: "benefit2", openTime: "opentime2", offDay: "offday2", phoneNumber: "031-1234-1234", address: "address2")
         let items = [
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model2)
@@ -214,30 +134,12 @@ class CafeListUnitTest: XCTestCase {
         let valid = sut.orderNewStore(coodinate: coordinate)
        
         //then
-        XCTAssertEqual(valid[0], items[0])
+        XCTAssertEqual(valid[0], items[1])
     }
     func test_searchCafe_호출시_text가_name에_포함되는_배열만_리던하는지() {
         //given
-        let model = CafeListModel(
-            name: "test",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "신규매장"
-        )
-        let model2 = CafeListModel(
-            name: "카페",
-            storyCount: 2,
-            favoriteCount: 2,
-            imageURL: "testimageurl2",
-            lat: 127.456,
-            lon: 37.456,
-            orderTime: "order2",
-            newTime: "new2"
-        )
+        let model = CafeListModel(name: "test", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")
+        let model2 = CafeListModel(name: "카test2", storyCount: 2, favoriteCount: 2, imageURL: "testimageurl2", lat: 127.456, lon: 37.456, orderTime: "order2", newTime: "new2", info: "info2", benefit: "benefit2", openTime: "opentime2", offDay: "offday2", phoneNumber: "031-1234-1234", address: "address2")
         let items = [
             CafeListViewModelItem(model: model),
             CafeListViewModelItem(model: model2)
@@ -251,34 +153,7 @@ class CafeListUnitTest: XCTestCase {
         XCTAssertEqual(valid[0], items[1])
     }
     func test_fetchCafe_호출시_성공하는경우_model이_매핑되어_viewModel로변환후_items로_전달되는지() {
-        let models = [CafeListModel(
-            name: "test1",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "신규매장"
-        ),CafeListModel(
-            name: "test2",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "신규매장"
-        ),CafeListModel(
-            name: "test3",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "신규매장"
-        )]
+        let models = [CafeListModel(name: "test1", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address"),CafeListModel(name: "test2", storyCount: 2, favoriteCount: 2, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address"),CafeListModel(name: "test3", storyCount: 3, favoriteCount: 3, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")]
         var mockService = MockCafeListService()
         mockService.result = .success(models)
         mockService.data = Data()
@@ -292,34 +167,7 @@ class CafeListUnitTest: XCTestCase {
                        models[0])
     }
     func test_fetchCafe_호출시_성공한후_imageFetch에도_성공하는경우_imageFetchCount가_model의_개수만큼_올라가는지() {
-        let models = [CafeListModel(
-            name: "test1",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "신규매장"
-        ),CafeListModel(
-            name: "test2",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "신규매장"
-        ),CafeListModel(
-            name: "test3",
-            storyCount: 1,
-            favoriteCount: 1,
-            imageURL: "testimageurl",
-            lat: 127.123,
-            lon: 37.123,
-            orderTime: "order",
-            newTime: "신규매장"
-        )]
+        let models = [CafeListModel(name: "test1", storyCount: 1, favoriteCount: 1, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address"),CafeListModel(name: "test2", storyCount: 2, favoriteCount: 2, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address"),CafeListModel(name: "test3", storyCount: 3, favoriteCount: 3, imageURL: "testimageurl", lat: 127.123, lon: 37.123, orderTime: "order", newTime: "new", info: "info", benefit: "benefit", openTime: "opentime", offDay: "offday", phoneNumber: "031-1234-1234", address: "address")]
         var mockService = MockCafeListService()
         mockService.result = .success(models)
         mockService.data = Data()

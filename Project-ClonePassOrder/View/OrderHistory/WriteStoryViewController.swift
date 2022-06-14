@@ -7,9 +7,12 @@
 
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 final class WriteStoryViewController: UIViewController {
 
+    private let viewModel: WriteStoryViewModel = WriteStoryViewModel()
+    
     // MARK: - UI Properties
 
     private let storeNameLabel: UILabel = {
@@ -55,6 +58,7 @@ final class WriteStoryViewController: UIViewController {
     private let storyTextView: UITextView = {
         let textView = UITextView()
         textView.layer.borderWidth = 1
+        textView.font = .systemFont(ofSize: 15)
         textView.layer.borderColor = UIColor.systemGray3.cgColor
         return textView
     }()
@@ -65,10 +69,12 @@ final class WriteStoryViewController: UIViewController {
     }()
     private let floatingButton: UIButton = {
         let button = UIButton()
+        button.isEnabled = false
         button.setTitle("작성하기", for: .normal)
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
         button.backgroundColor = #colorLiteral(red: 1, green: 0.4730066061, blue: 0.2864735723, alpha: 1)
+        button.alpha = 0.5
         button.layer.cornerRadius = 10
         return button
     }()
@@ -93,6 +99,7 @@ final class WriteStoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        binding()
         setNavigation()
         setLayout()
         dismissKeyboardWhenTappedAround()
@@ -157,6 +164,8 @@ final class WriteStoryViewController: UIViewController {
         floatingButton.snp.makeConstraints {
             $0.top.bottom.leading.trailing.equalToSuperview().inset(20)
         }
+        registePictureButton.addTarget(self, action: #selector(imageButtonTapped), for: .touchUpInside)
+        floatingButton.addTarget(self, action: #selector(writeButtonTapped), for: .touchUpInside)
     }
 
     // MARK: - setNavigation
@@ -173,9 +182,69 @@ final class WriteStoryViewController: UIViewController {
         dismiss(animated: true)
     }
     @objc func keyboardWillShow(_ sender: Notification) {
-        self.view.frame.origin.y = -320
+        title = ""
+        self.view.frame.origin.y = -340
     }
     @objc func keyboardWillHide(_ sender: Notification) {
+        title = "스토리 작성"
         self.view.frame.origin.y = 0
+    }
+    @objc func imageButtonTapped() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    @objc func writeButtonTapped() {
+        viewModel.model.cafeName = "빽다방 동두천지행점"
+        viewModel.model.text = storyTextView.text
+        viewModel.model.storyCount = 10
+        SVProgressHUD.SVshow(view: view, text: "스토리를 올리는 중이에요!", button: [floatingButton,registePictureButton])
+        viewModel.uploadImage()
+    }
+    
+    //MARK: - 바인딩
+    func binding() {
+        viewModel.imageEmpty.bind { [weak self] message in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.floatingButton,self!.registePictureButton])
+            Toast.message(superView: self!.view, text: message)
+        }
+        viewModel.storyServiceError.bind { [weak self] error in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.floatingButton,self!.registePictureButton])
+            Toast.message(superView: self!.view, text: error.message)
+        }
+        viewModel.imageUploaderError.bind { [weak self] error in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.floatingButton,self!.registePictureButton])
+            Toast.message(superView: self!.view, text: error.errorMessage)
+            
+        }
+        viewModel.uploadImageSuccess.bind { [weak self] url in
+            self?.viewModel.uploadStory(imageURL: url)
+        }
+        viewModel.uploadStorySuccess.bind { [weak self] _ in
+            SVProgressHUD.SVoff(view: self!.view, button: [self!.floatingButton,self!.registePictureButton])
+            self!.navigationController?.popViewController(animated: true)
+        }
+    }
+}
+
+//MARK: - 이미지 픽커 델리게이트
+extension WriteStoryViewController:
+    UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        guard let selectedImage = info[.editedImage] as? UIImage else {
+            return
+        }
+        guard let imageData = selectedImage.jpegData(compressionQuality: 0.7) else {
+            return
+        }
+        floatingButton.isEnabled = true
+        floatingButton.alpha = 1
+        viewModel.model.imageData = imageData
+        registePictureButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -7,15 +7,22 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 class StoryTableViewCell: UITableViewCell {
 
+    var viewModel: StoryViewModelItem? {
+        didSet {
+            setViewModel()
+        }
+    }
+    
     // MARK: - UI Properties
 
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 40
+        imageView.layer.cornerRadius = 30
         imageView.backgroundColor = .systemPink
         return imageView
     }()
@@ -48,14 +55,9 @@ class StoryTableViewCell: UITableViewCell {
         stackView.distribution = .fill
         return stackView
     }()
-    let moreButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        return button
-    }()
     lazy var userStackView: UIStackView = {
         let stackView = UIStackView()
-        [profileStackView, moreButton].forEach{ stackView.addArrangedSubview($0) }
+        [profileStackView].forEach{ stackView.addArrangedSubview($0) }
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
@@ -74,32 +76,10 @@ class StoryTableViewCell: UITableViewCell {
     }()
     let storyImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 5
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 10
         imageView.backgroundColor = .gray
         return imageView
-    }()
-    let likeButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .clear
-        button.setTitle("좋아요 0개", for: .normal)
-        button.setTitleColor(.orange, for: .normal)
-        button.titleLabel?.textAlignment = .center
-        return button
-    }()
-    let commentsButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .clear
-        button.setTitle("댓글 0개", for: .normal)
-        button.setTitleColor(.systemGray, for: .normal)
-        button.titleLabel?.textAlignment = .center
-        return button
-    }()
-    lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView()
-        [likeButton, commentsButton].forEach{ stackView.addArrangedSubview($0) }
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        return stackView
     }()
     let seperator: UIView = {
         let view = UIView()
@@ -123,11 +103,10 @@ class StoryTableViewCell: UITableViewCell {
         contentView.addSubview(userStackView)
         contentView.addSubview(storyLabel)
         contentView.addSubview(storyImageView)
-        contentView.addSubview(buttonStackView)
         contentView.addSubview(seperator)
         
         profileImageView.snp.makeConstraints { make in
-            make.height.width.equalTo(80)
+            make.height.width.equalTo(60)
         }
         userStackView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(20)
@@ -141,15 +120,20 @@ class StoryTableViewCell: UITableViewCell {
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(200)
         }
-        buttonStackView.snp.makeConstraints { make in
-            make.top.equalTo(storyImageView.snp.bottom).offset(20)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(80)
-        }
         seperator.snp.makeConstraints { make in
-            make.top.equalTo(buttonStackView.snp.bottom).offset(20)
+            make.top.equalTo(storyImageView.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview()
         }
+    }
+    func setViewModel() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        profileImageView.image = UIImage(data: viewModel.userImage ?? Data())
+        storyImageView.image = UIImage(data: viewModel.storyImage ?? Data())
+        profileNameLabel.text = viewModel.userName
+        createdDateLabel.text = viewModel.time
+        storyLabel.text = viewModel.storyText
     }
 }

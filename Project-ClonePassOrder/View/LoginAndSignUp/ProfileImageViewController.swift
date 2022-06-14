@@ -24,12 +24,8 @@ class ProfileImageViewController: UIViewController {
     }()
     private let addPhotoButton: UIButton = {
         let bt = UIButton(type: .system)
-        bt.setImage(UIImage(named: "이미지추가버튼이미지"), for: .normal)
+        bt.setBackgroundImage(#imageLiteral(resourceName: "addPicture"), for: .normal)
         bt.tintColor = .black
-        bt.layer.cornerRadius = bt.frame.width / 2
-        bt.layer.masksToBounds = true
-        bt.layer.borderColor = UIColor.white.cgColor
-        bt.layer.borderWidth = 2
         return bt
     }()
     private let nextButton: UIButton = UIButton().nextButton()
@@ -110,7 +106,7 @@ extension ProfileImageViewController:
         guard let imageData = selectedImage.jpegData(compressionQuality: 0.7) else {
             return
         }
-        SignUpViewModel.shared.profilImageGet(imageData: imageData)
+        SignUpViewModel.shared.model.imageData = imageData
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
         addPhotoButton.layer.masksToBounds = true
         addPhotoButton.layer.borderColor = UIColor.white.cgColor

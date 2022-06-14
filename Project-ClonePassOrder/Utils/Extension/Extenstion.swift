@@ -8,6 +8,10 @@
 import UIKit
 import CoreLocation
 
+extension UIColor {
+    static let orderColor = UIColor(displayP3Red: 20/255, green: 45/255, blue: 73/255, alpha: 1)
+}
+
 extension UIView {
     func addShadow() {
         layer.shadowColor = UIColor.black.cgColor

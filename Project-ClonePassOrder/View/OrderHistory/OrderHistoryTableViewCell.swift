@@ -42,21 +42,8 @@ final class OrderHistoryTableViewCell: UITableViewCell {
     }()
     private let orderTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "가져갈게요"
+        label.text = ""
         label.textColor = .systemGray3
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    private let orderNumberLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 40)
-        label.text = "1"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    private let orderStateLabel: UILabel = {
-        let label = UILabel()
-        label.text = "수령완료"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -78,12 +65,13 @@ final class OrderHistoryTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 15)
         label.text = "앗!메리카노(Iced)"
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private let moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("더보기 >", for: .normal)
+        button.setTitle("", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13)
         button.setTitleColor(UIColor.orange, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -103,20 +91,26 @@ final class OrderHistoryTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    let reorderButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("재 주문 할게요!", for: .normal)
+    let orderInfoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("주문내역", for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .orange
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
         return button
     }()
     let writeStoryButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("스토리 작성", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .gray
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor.orderColor
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
         return button
     }()
     private lazy var paymentInfoStackView: UIStackView = {
@@ -146,17 +140,8 @@ final class OrderHistoryTableViewCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    private lazy var orderNumberStateStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [orderNumberLabel, orderStateLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        stackView.alignment = .center
-        stackView.distribution = .fill
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
     private lazy var orderInfoStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [storeNamePaymenInfoStackView, orderNumberStateStackView])
+        let stackView = UIStackView(arrangedSubviews: [storeNamePaymenInfoStackView])
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.alignment = .fill
@@ -183,7 +168,7 @@ final class OrderHistoryTableViewCell: UITableViewCell {
         return stackView
     }()
     private lazy var reorderStorystackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [reorderButton, writeStoryButton])
+        let stackView = UIStackView(arrangedSubviews: [orderInfoButton, writeStoryButton])
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.alignment = .fill
@@ -201,12 +186,18 @@ final class OrderHistoryTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20))
+    }
     
     // MARK: - setLayout
     
     private func setLayout() {
-        contentView.backgroundColor = .systemGray5
-        
+        self.backgroundColor = .systemGray5
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 10
+        contentView.backgroundColor = .white
         contentView.addSubview(orderHystoryCellView)
         orderHystoryCellView.addSubview(orderInfoStackView)
         orderHystoryCellView.addSubview(seperatorView)
@@ -214,11 +205,15 @@ final class OrderHistoryTableViewCell: UITableViewCell {
         orderHystoryCellView.addSubview(priceStackView)
         orderHystoryCellView.addSubview(reorderStorystackView)
         
+        orderInfoButton.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        writeStoryButton.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        
         orderHystoryCellView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview().inset(10)
-        }
-        orderNumberStateStackView.snp.makeConstraints { make in
-            make.width.equalTo(80)
         }
         orderInfoStackView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(20)

@@ -68,14 +68,16 @@ extension CafeListViewModel {
             case .success(let models):
                 self!.totalCount = models.count
                 self!.cafeFetchEnd.value = true
-                models.forEach { model in
-                    self!.cafeSerivce.imageFetch(model: model) { data in
-                       let item = CafeListViewModelItem(model: model)
-                        item.cellImageData = data
-                        self!.items.append(item)
-                        self!.imageFetchCount.value += 1
-                    }
+                let items = models.map {
+                    CafeListViewModelItem(model: $0)
                 }
+               items.forEach { item in
+                   self!.cafeSerivce.imageFetch(model: item.model) { data in
+                       item.cellImageData = data
+                       self!.imageFetchCount.value += 1
+                   }
+                }
+                self!.items = items
             case .failure(let error):
                 self?.cafeServiceError.value = error
             }
@@ -92,7 +94,12 @@ final class CafeListViewModelItem: Equatable {
         lhs.storyCount == rhs.storyCount &&
         lhs.favoriteCount == rhs.favoriteCount &&
         lhs.orderTime == rhs.orderTime &&
-        lhs.newTime == rhs.newTime
+        lhs.model == rhs.model &&
+        lhs.address == rhs.address &&
+        lhs.phoneNumber == rhs.phoneNumber &&
+        lhs.lon == rhs.lon &&
+        lhs.lat == rhs.lat &&
+        lhs.benefit == rhs.benefit
     }
     
     
@@ -117,6 +124,30 @@ final class CafeListViewModelItem: Equatable {
     var newTime: String {
         return model.newTime
     }
+    var info: String {
+        return model.info
+    }
+    var benefit: String {
+        return model.benefit
+    }
+    var openTime: String {
+        return model.openTime
+    }
+    var offDay: String {
+        return model.offDay
+    }
+    var phoneNumber: String {
+        return model.phoneNumber
+    }
+    var lat: Double {
+        return model.lat
+    }
+    var lon: Double {
+        return model.lon
+    }
+    var address: String {
+        return model.address
+    }
     func distanceString(coordinate: CLLocation) -> String {
         let userCoordinate = coordinate
         let cafeCoordinate = CLLocation(latitude: model.lat, longitude: model.lon)
@@ -133,8 +164,6 @@ final class CafeListViewModelItem: Equatable {
         let distance = userCoordinate.distance(from: cafeCoordinate)
         return Int(distance)
     }
-    
-        
 
     
 }
