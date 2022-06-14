@@ -9,6 +9,12 @@ import UIKit
 import SnapKit
 
 class StoreDetailTableViewHeaderView: UITableViewHeaderFooterView {
+    
+    var viewModel: CafeListViewModelItem? {
+        didSet {
+            setViewModel()
+        }
+    }
 
     // MARK: - UI Properties
 
@@ -55,6 +61,7 @@ class StoreDetailTableViewHeaderView: UITableViewHeaderFooterView {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fillEqually
+        stackView.spacing = 150
         return stackView
     }()
     private let seperator: UIView = {
@@ -106,14 +113,13 @@ class StoreDetailTableViewHeaderView: UITableViewHeaderFooterView {
         }
         informationStoryButtonStackView.snp.makeConstraints { make in
             make.top.equalTo(storeDescription.snp.bottom).offset(40)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.centerX.equalToSuperview()
         }
         presentingSelectedButtonView.snp.makeConstraints { make in
-            make.top.equalTo(informationStoryButtonStackView.snp.bottom).offset(20)
-            make.width.equalTo(100)
-            make.height.equalTo(1)
+            make.top.equalTo(informationStoryButtonStackView.snp.bottom).offset(0)
+            make.height.equalTo(3)
             make.bottom.equalTo(contentView.snp.bottom)
-            make.centerX.equalTo(informationButton)
+            make.leading.trailing.equalTo(informationButton)
         }
     }
 
@@ -121,11 +127,10 @@ class StoreDetailTableViewHeaderView: UITableViewHeaderFooterView {
 
     @objc private func moveStoryButtonTapped() {
         self.presentingSelectedButtonView.snp.remakeConstraints { make in
-            make.top.equalTo(informationStoryButtonStackView.snp.bottom).offset(20)
-            make.width.equalTo(100)
-            make.height.equalTo(1)
+            make.top.equalTo(informationStoryButtonStackView.snp.bottom).offset(0)
+            make.height.equalTo(3)
             make.bottom.equalTo(contentView.snp.bottom)
-            make.centerX.equalTo(storyButton)
+            make.leading.trailing.equalTo(storyButton)
         }
         storyButton.isEnabled = false
         storyButton.setTitleColor(.black, for: .normal)
@@ -134,15 +139,22 @@ class StoreDetailTableViewHeaderView: UITableViewHeaderFooterView {
     }
     @objc private func informationButtonTapped() {
         self.presentingSelectedButtonView.snp.remakeConstraints { make in
-            make.top.equalTo(informationStoryButtonStackView.snp.bottom).offset(20)
-            make.width.equalTo(100)
-            make.height.equalTo(1)
+            make.top.equalTo(informationStoryButtonStackView.snp.bottom).offset(0)
+            make.height.equalTo(3)
             make.bottom.equalTo(contentView.snp.bottom)
-            make.centerX.equalTo(informationButton)
+            make.leading.trailing.equalTo(informationButton)
         }
         informationButton.isEnabled = false
         informationButton.setTitleColor(.black, for: .normal)
         storyButton.setTitleColor(.gray, for: .normal)
         storyButton.isEnabled = true
+    }
+    func setViewModel() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        storeImageView.image = UIImage(data: viewModel.cellImageData ?? Data())
+        storeNameLabel.text = viewModel.name
+        storeDescription.text = viewModel.info
     }
 }

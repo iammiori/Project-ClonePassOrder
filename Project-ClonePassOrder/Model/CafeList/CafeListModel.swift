@@ -16,5 +16,11 @@ struct CafeListModel: Equatable {
     var lon: Double
     var orderTime: String
     var newTime: String
+    let info: String
+    let benefit: String
+    let openTime: String
+    let offDay: String
+    let phoneNumber: String
+    let address: String
 }
 

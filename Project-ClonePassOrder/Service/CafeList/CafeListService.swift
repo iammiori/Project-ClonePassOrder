@@ -38,7 +38,13 @@ struct CafeListService: CafeListServicePorotocol {
                         lat: $0.data()["lat"] as? Double ?? 0,
                         lon: $0.data()["lon"] as? Double ?? 0,
                         orderTime: $0.data()["orderTime"] as? String ?? "",
-                        newTime: $0.data()["newTime"] as? String ?? ""
+                        newTime: $0.data()["newTime"] as? String ?? "",
+                        info: $0.data()["info"] as? String ?? "",
+                        benefit: $0.data()["benefit"] as? String ?? "",
+                        openTime: $0.data()["openTime"] as? String ?? "",
+                        offDay: $0.data()["offDay"] as? String ?? "",
+                        phoneNumber: $0.data()["phoneNumber"] as? String ?? "",
+                        address: $0.data()["address"] as? String ?? ""
                     )
                 }
                 completion(.success(models))

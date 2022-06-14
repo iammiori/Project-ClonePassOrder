@@ -87,17 +87,6 @@ class SignUpUnitTest: XCTestCase {
         //then
         XCTAssertTrue(sut.imageUploadSuccess.value)
     }
-    func test_profilImageGet_호출시_이미지데이터를_model의_imageData에_전달하는지() {
-        //given
-        let imageData = UIImage(systemName: "star")?.pngData()
-        
-        //when
-        sut.profilImageGet(imageData: imageData!)
-        
-        //then
-        XCTAssertEqual(sut.model.imageData, imageData)
-        
-    }
     func test_isProfildImageEmpty_호출시_model의_imageData가_nil인경우_signupCheck에_imageEmpty를_전달하는지() {
         //given
         let data: Data? = nil

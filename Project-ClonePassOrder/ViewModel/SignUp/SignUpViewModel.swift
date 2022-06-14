@@ -109,9 +109,6 @@ extension SignUpViewModel {
                 }
             }
     }
-    func profilImageGet(imageData: Data) {
-        self.model.imageData = imageData
-    }
     func isProfileImageEmpty() {
        if self.model.imageData == nil {
            signupCheck.value = .imageEmpty

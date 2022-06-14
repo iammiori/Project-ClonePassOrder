@@ -11,11 +11,17 @@ import SnapKit
 class StoreDetailInfoTableViewCell: UITableViewCell {
 
     // MARK: - UI Properties
+    
+    var viewModel: CafeListViewModelItem? {
+        didSet {
+            setViewModel()
+        }
+    }
 
     private let couponeLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .systemGray6
-        label.text = "9개만 더 모으면 쿠폰으로 사용 가능해요 ❗️"
+        label.text = "10개만 더 모으면 쿠폰으로 사용 가능해요 ❗️"
         label.font = .boldSystemFont(ofSize: 16)
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
@@ -197,5 +203,17 @@ class StoreDetailInfoTableViewCell: UITableViewCell {
             make.height.equalTo(300)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    //MARK: - helper
+    func setViewModel() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        storeBenefitsValueLabel.text = viewModel.benefit
+        businessHoursValueLabel.text = viewModel.openTime
+        holidayValueLabel.text = viewModel.offDay
+        telNumberValueLabel.text = viewModel.phoneNumber
+        addressValueLabel.text = viewModel.address
     }
 }

@@ -42,6 +42,7 @@ class TabBarController: UITabBarController {
         setBinding()
         auth()
     }
+
     
     //MARK: - HelperFunction
     
@@ -87,6 +88,7 @@ class TabBarController: UITabBarController {
         viewControllers = [homeNavi,orderHistoryNavi,favoriteNavi,qrCameraNavi,myPasserNavi]
     }
     private func setAttribute() {
+        tabBar.backgroundImage = UIImage()
         tabBar.tintColor = .black
         tabBar.backgroundColor = .white
         tabBar.addShadow()
