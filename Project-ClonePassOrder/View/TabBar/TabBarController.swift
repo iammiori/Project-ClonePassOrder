@@ -56,7 +56,7 @@ class TabBarController: UITabBarController {
             cafeViewModel: cafe
         )
         let orderHistoryVC = OrderHistoryViewController()
-        let favoriteVC = FavoriteViewController()
+        let favoriteVC = FavoriteViewController(ADViewModel: secondAD)
         let qrCameraVC = qrCameraViewController()
         let myPasserVC = MyPasserTableViewController(style: .grouped)
         myPasserVC.viewDidLoad()

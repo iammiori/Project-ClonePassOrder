@@ -10,6 +10,7 @@ import UIKit
 class FavoriteViewController: UICollectionViewController {
 
     //MARK: - 프로퍼티
+    private let ADViewModel: ADListViewModel
     private var 임시카운트 = 0
     private let imageView: UIImageView = {
         let iv = UIImageView()
@@ -20,14 +21,14 @@ class FavoriteViewController: UICollectionViewController {
     }()
     
     //MARK: - 라이프사이클
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
         setAtrribute()
         naviSetAttribute()
     }
-    init() {
+    init(ADViewModel: ADListViewModel) {
+        self.ADViewModel = ADViewModel
         let layout = UICollectionViewCompositionalLayout { section, env in
             switch section {
             case 0:
@@ -37,12 +38,12 @@ class FavoriteViewController: UICollectionViewController {
                 )
                 let group = NSCollectionLayoutGroup.horizontal(
                    layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                     heightDimension: .absolute(90)),
+                                     heightDimension: .absolute(105)),
                    subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .none
                 section.contentInsets = NSDirectionalEdgeInsets(
-                    top: 20, leading: 10, bottom: 50, trailing: 10
+                    top: 20, leading: 10, bottom: 40, trailing: 10
                 )
                 return section
             default:
@@ -69,8 +70,8 @@ class FavoriteViewController: UICollectionViewController {
         view.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.snp.topMargin).offset(110)
-            make.bottom.equalToSuperview().offset(-120)
+            make.top.equalTo(view.snp.topMargin).offset(200)
+            make.bottom.equalToSuperview().offset(-100)
         }
     }
     private func setAtrribute() {
@@ -107,10 +108,12 @@ class FavoriteViewController: UICollectionViewController {
             return 1
         default:
             if 임시카운트 == 0 {
+                collectionView.isScrollEnabled = false
                 imageView.isHidden = false
                 return 임시카운트
             } else {
                 imageView.isHidden = true
+                collectionView.isScrollEnabled = true
                 return 임시카운트
             }
         }
@@ -124,7 +127,8 @@ class FavoriteViewController: UICollectionViewController {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SecondADCell.identifier,
                 for: indexPath
-            )
+            ) as! SecondADCell
+            cell.viewModel = ADViewModel
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(
