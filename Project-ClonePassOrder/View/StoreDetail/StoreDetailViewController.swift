@@ -158,10 +158,10 @@ class StoreDetailViewController: UIViewController {
         }
         favoriteViewModel.favoriteBool.bind { [self] bool in
             if bool {
-                favoriteButton.image = UIImage(systemName: "star.fill")
-                favoriteButton.tintColor = .systemYellow
+                favoriteButton.image = UIImage(systemName: "heart.fill")
+                favoriteButton.tintColor = .red
             } else {
-                favoriteButton.image = UIImage(systemName: "star")
+                favoriteButton.image = UIImage(systemName: "heart")
                 favoriteButton.tintColor = .black
             }
         }

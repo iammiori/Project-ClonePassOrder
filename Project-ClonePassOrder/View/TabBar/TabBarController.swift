@@ -73,7 +73,7 @@ class TabBarController: UITabBarController {
         )
         let favoriteNavi = templatNavigation(
             title: "자주가요",
-            image: UIImage(systemName: "star.fill")!,
+            image: UIImage(systemName: "heart.fill")!,
             rootViewController: favoriteVC
         )
         let qrCameraNavi = templatNavigation(
