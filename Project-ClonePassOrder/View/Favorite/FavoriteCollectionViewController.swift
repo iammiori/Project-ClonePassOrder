@@ -11,7 +11,7 @@ class FavoriteViewController: UICollectionViewController {
 
     //MARK: - 프로퍼티
     private let ADViewModel: ADListViewModel
-    private var 임시카운트 = 0
+    private let favoriteListViewModel: FavoriteListViewModel
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "즐겨찾기없음이미지")
@@ -25,10 +25,15 @@ class FavoriteViewController: UICollectionViewController {
         super.viewDidLoad()
         setLayout()
         setAtrribute()
+        setBinding()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         naviSetAttribute()
     }
-    init(ADViewModel: ADListViewModel) {
+    init(ADViewModel: ADListViewModel, favoriteListViewModel: FavoriteListViewModel) {
         self.ADViewModel = ADViewModel
+        self.favoriteListViewModel = favoriteListViewModel
         let layout = UICollectionViewCompositionalLayout { section, env in
             switch section {
             case 0:
@@ -91,8 +96,13 @@ class FavoriteViewController: UICollectionViewController {
     }
     private func naviSetAttribute() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title = "자주가요"
+    }
+    private func setBinding() {
+        favoriteListViewModel.fetchFavoriteSuccess.bind { [weak self] _ in
+            self!.collectionView.reloadData()
+        }
     }
     
     //MARK: - 컬렉션뷰 데이터소스
@@ -107,14 +117,14 @@ class FavoriteViewController: UICollectionViewController {
         case 0:
             return 1
         default:
-            if 임시카운트 == 0 {
+            if favoriteListViewModel.count() == 0 {
                 collectionView.isScrollEnabled = false
                 imageView.isHidden = false
-                return 임시카운트
+                return favoriteListViewModel.count()
             } else {
                 imageView.isHidden = true
                 collectionView.isScrollEnabled = true
-                return 임시카운트
+                return favoriteListViewModel.count()
             }
         }
     }
@@ -134,7 +144,8 @@ class FavoriteViewController: UICollectionViewController {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SortCell.identifier,
                 for: indexPath
-            )
+            ) as! SortCell
+            cell.viewModel = favoriteListViewModel.itemAtIndex(indexPath.row)
             return cell
         }
     }
@@ -149,5 +160,14 @@ class FavoriteViewController: UICollectionViewController {
             for: indexPath
         ) as! FavoriteHeader
         return header
+    }
+    
+    //MARK: - 컬렉션뷰 델리게이트
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let vc = StoreDetailViewController(viewModel: favoriteListViewModel.itemAtIndex(indexPath.row))
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
