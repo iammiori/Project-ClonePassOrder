@@ -35,7 +35,7 @@ struct FavoriteService: FavoriteServiceProtocol {
         Firestore.firestore().collection("user").document(Auth.auth().currentUser?.uid ?? "").collection("favorite").document(model.name).delete()
     }
     func existsFavorite(model: CafeListModel, completion: @escaping (Result<Bool,FavoriteServiceError>) -> Void) {
-        Firestore.firestore().collection("user").document(Auth.auth().currentUser?.uid ?? "").collection("favorite").document(model.name).getDocument { snapshot, error in
+        Firestore.firestore().collection("user").document(Auth.auth().currentUser?.uid ?? "").collection("favorite").document(model.name).addSnapshotListener { snapshot, error in
             if error != nil {
                 completion(.failure(.existsError))
             } else {
