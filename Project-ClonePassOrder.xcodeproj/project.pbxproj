@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1557F0E3A4E7CE5FD0217522 /* Pods_UnitTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96A2F4D938A5485CA964749 /* Pods_UnitTest.framework */; };
 		3D2ED9B828354579000B0501 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2ED9B628354579000B0501 /* Constant.swift */; };
+		3DABBA47285710C70065D1F2 /* OrderMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABBA46285710C70065D1F2 /* OrderMenuService.swift */; };
+		3DB41FCC285848CE0085B096 /* MenuCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB41FCB285848CE0085B096 /* MenuCollectionCellViewModel.swift */; };
+		3DB41FCE2858EF930085B096 /* CafeMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB41FCD2858EF930085B096 /* CafeMenuModel.swift */; };
 		4B870C8CF724795D1547B76C /* Pods_Project_ClonePassOrder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007EB4BE1D657C1590A20F12 /* Pods_Project_ClonePassOrder.framework */; };
 		8956F68D283C6E9200A94EC2 /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956F68C283C6E9200A94EC2 /* OrderHistoryTableViewCell.swift */; };
 		8956F697283D762B00A94EC2 /* WriteStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956F696283D762B00A94EC2 /* WriteStoryViewController.swift */; };
@@ -221,6 +224,9 @@
 		007EB4BE1D657C1590A20F12 /* Pods_Project_ClonePassOrder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_ClonePassOrder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F70F3F07B065D56A210BFAD /* Pods-IntegrationUITest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntegrationUITest.release.xcconfig"; path = "Target Support Files/Pods-IntegrationUITest/Pods-IntegrationUITest.release.xcconfig"; sourceTree = "<group>"; };
 		3D2ED9B628354579000B0501 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		3DABBA46285710C70065D1F2 /* OrderMenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMenuService.swift; sourceTree = "<group>"; };
+		3DB41FCB285848CE0085B096 /* MenuCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		3DB41FCD2858EF930085B096 /* CafeMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMenuModel.swift; sourceTree = "<group>"; };
 		3F9585D1E0C44B8B8D912868 /* Pods-UnitTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTest.debug.xcconfig"; path = "Target Support Files/Pods-UnitTest/Pods-UnitTest.debug.xcconfig"; sourceTree = "<group>"; };
 		41182F546245F6F7250EAD4D /* Pods_ViewUITest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewUITest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A68B7288909C723AAF56091 /* Pods-ViewUITest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewUITest.debug.xcconfig"; path = "Target Support Files/Pods-ViewUITest/Pods-ViewUITest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -406,6 +412,36 @@
 				3D2ED9B628354579000B0501 /* Constant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		3DABBA44285710900065D1F2 /* OrderMenu */ = {
+			isa = PBXGroup;
+			children = (
+				3DABBA46285710C70065D1F2 /* OrderMenuService.swift */,
+			);
+			path = OrderMenu;
+			sourceTree = "<group>";
+		};
+		3DB41FCA285848BB0085B096 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3DB41FCB285848CE0085B096 /* MenuCollectionCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3DBA9336285C45F700596BAE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3DBA9337285C45FF00596BAE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C9D5BDBACCE62F352D461422 /* Frameworks */ = {
@@ -768,6 +804,7 @@
 				FEBA7E342845EDCB00BCD132 /* SignUp */,
 				FECC824B2845BF49005FCCFA /* Auth */,
 				FEBA7E3C2845F59000BCD132 /* ImageUploader */,
+				3DABBA44285710900065D1F2 /* OrderMenu */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -885,26 +922,12 @@
 		FED480EB2840923800A36638 /* OrderMenuDetail */ = {
 			isa = PBXGroup;
 			children = (
+				3DBA9337285C45FF00596BAE /* Model */,
+				3DBA9336285C45F700596BAE /* ViewModel */,
 				FED480EC2840923800A36638 /* OrderMenuDetailViewController.swift */,
-				FED480ED2840923800A36638 /* ViewModel */,
-				FED480EE2840923800A36638 /* Model */,
 				FED480EF2840923800A36638 /* View */,
 			);
 			path = OrderMenuDetail;
-			sourceTree = "<group>";
-		};
-		FED480ED2840923800A36638 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		FED480EE2840923800A36638 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		FED480EF2840923800A36638 /* View */ = {
@@ -1059,6 +1082,7 @@
 		FED4813F2840939F00A36638 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3DB41FCA285848BB0085B096 /* Cell */,
 				FED481402840939F00A36638 /* MenuCollectionViewModel.swift */,
 				FED481412840939F00A36638 /* DetailMenuTableViewModel.swift */,
 			);
@@ -1069,6 +1093,7 @@
 			isa = PBXGroup;
 			children = (
 				FED481432840939F00A36638 /* CategoryModel.swift */,
+				3DB41FCD2858EF930085B096 /* CafeMenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1437,6 +1462,7 @@
 				FE8AAAE82858729D00CACBF5 /* FavoriteService.swift in Sources */,
 				FE1287E82836002600B7CDC4 /* ThirdListCell.swift in Sources */,
 				FED481362840924F00A36638 /* LeftRightLabel.swift in Sources */,
+				3DABBA47285710C70065D1F2 /* OrderMenuService.swift in Sources */,
 				FEBBEC44283678180027EE4F /* SortCell.swift in Sources */,
 				FEBA7E392845EE2D00BCD132 /* SignUpModel.swift in Sources */,
 				FED481302840924F00A36638 /* ThreeLabelView.swift in Sources */,
@@ -1466,6 +1492,7 @@
 				FED480FC2840923800A36638 /* MoneyCircleButton.swift in Sources */,
 				FED4812A2840924F00A36638 /* CardCollectionViewCell.swift in Sources */,
 				FE6D68142838A02500184329 /* MyPasserHeader.swift in Sources */,
+				3DB41FCC285848CE0085B096 /* MenuCollectionCellViewModel.swift in Sources */,
 				FED158CD282DFB2900605A25 /* Extenstion.swift in Sources */,
 				FE6D68122838914C00184329 /* MyPasserCell.swift in Sources */,
 				FE8E661D28490AB000F8708D /* CafeListModel.swift in Sources */,
@@ -1494,6 +1521,7 @@
 				FED480FB2840923800A36638 /* OrangeSelectButton.swift in Sources */,
 				FE1287E62835FFD600B7CDC4 /* SecondListCell.swift in Sources */,
 				FED4812C2840924F00A36638 /* RequirementView.swift in Sources */,
+				3DB41FCE2858EF930085B096 /* CafeMenuModel.swift in Sources */,
 				FEED608528449DE800CD8FC1 /* MockAuthService.swift in Sources */,
 				FE6D680C28378C2100184329 /* CompositionalLayoutExtension.swift in Sources */,
 				FE5840B328322EC100287753 /* EmailLoginViewController.swift in Sources */,
